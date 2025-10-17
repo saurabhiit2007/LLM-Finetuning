@@ -557,15 +557,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#11-example-readmemd-github-pages-setup-notes" class="md-nav__link">
-    <span class="md-ellipsis">
-      11. Example README.md / GitHub Pages setup notes
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#12-references-further-reading" class="md-nav__link">
     <span class="md-ellipsis">
       12. References &amp; further reading
@@ -993,15 +984,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#11-example-readmemd-github-pages-setup-notes" class="md-nav__link">
-    <span class="md-ellipsis">
-      11. Example README.md / GitHub Pages setup notes
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#12-references-further-reading" class="md-nav__link">
     <span class="md-ellipsis">
       12. References &amp; further reading
@@ -1040,21 +1022,16 @@
 <li>Quick summary / TL;DR</li>
 <li>LoRA: the idea and math</li>
 <li>Where to apply LoRA in a Transformer</li>
-<li>
-<p>Implementation recipes</p>
-</li>
-<li>
-<p>Minimal PyTorch pseudocode</p>
-</li>
+<li>Implementation recipes</li>
+<li>Minimal PyTorch pseudocode</li>
 <li>Hugging Face + PEFT example</li>
 <li>Working with quantized models (QLoRA)</li>
 <li>Hyperparameters &amp; heuristics (rank <code>r</code>, alpha, learning rate)</li>
 <li>Practical training configurations (memory, precision, optimizers)</li>
 <li>Common issues and concrete solutions</li>
 <li>Best practices &amp; checklist</li>
-<li>FAQ (ten targeted questions)</li>
-<li>Example <code>README.md</code> / GitHub Pages setup notes</li>
-<li>References &amp; further reading</li>
+<li>FAQ (ten targeted questions)
+1References &amp; further reading</li>
 </ol>
 <hr />
 <h2 id="1-introduction">1. Introduction<a class="headerlink" href="#1-introduction" title="Permanent link">&para;</a></h2>
@@ -1254,48 +1231,26 @@
 <ul>
 <li>Yes — LoRA is well-suited for domain adaptation because it allows task- or domain-specific lightweight adjustments without altering base knowledge.</li>
 </ul>
-<p><strong>Q3: How do you select the best rank <code>r</code>?</strong></p>
-<ul>
-<li>Start small and increase until validation performance and resource budget trade-offs are acceptable. Try <code>r</code> values like 8, 32, 64, 256 (if memory allows) to explore the curve.</li>
-</ul>
-<p><strong>Q4: Does LoRA need to be enabled for all layers?</strong></p>
-<ul>
-<li>Not strictly. Enabling LoRA on Q &amp; V is common and effective. Enabling it across more layers (all attention + projections) typically increases performance at the cost of memory.</li>
-</ul>
-<p><strong>Q5: How to avoid overfitting?</strong></p>
+<p><strong>Q3: How to avoid overfitting?</strong></p>
 <ul>
 <li>Use conservative epochs, regularization, smaller ranks/lr, mixed datasets, and early stopping. For instruction finetuning, multiple epochs on small datasets often degrade performance.</li>
 </ul>
-<p><strong>Q6: What about optimizers?</strong></p>
-<ul>
-<li>AdamW is a good default. Switch to SGD only if trying to save memory at large <code>r</code> values or if experimentation suggests benefits.</li>
-</ul>
-<p><strong>Q7: What other factors influence memory usage?</strong></p>
+<p><strong>Q4: What other factors influence memory usage?</strong></p>
 <ul>
 <li>Model size, <code>r</code>, precision (<code>fp16</code>/<code>bf16</code> vs <code>fp32</code>), optimizer states, batch size, sequence length, gradient checkpointing, and whether you offload weights.</li>
 </ul>
-<p><strong>Q8: How does LoRA compare to full finetuning and RLHF?</strong></p>
+<p><strong>Q5: How does LoRA compare to full finetuning and RLHF?</strong></p>
 <ul>
 <li>LoRA is a parameter-efficient alternative to full finetuning (less memory, storage and faster). RLHF is a separate training paradigm (reward modeling and policy optimization) used to align models; LoRA is a mechanism to adapt parameters, not a replacement for RLHF.</li>
 </ul>
-<p><strong>Q9: Can LoRA weights be combined?</strong></p>
+<p><strong>Q6: Can LoRA weights be combined?</strong></p>
 <ul>
 <li>Yes — you can merge or sequentially apply adapters, and adapter fusion methods exist. Be careful about overlapping modifications to the same submodules.</li>
 </ul>
-<p><strong>Q10: What about layer-wise optimal rank adaptation?</strong></p>
+<p><strong>Q7: What about layer-wise optimal rank adaptation?</strong></p>
 <ul>
 <li>It's plausible that different layers need different <code>r</code> values. Automated layer-wise rank selection is an active topic. A practical approach is to tune <code>r</code> for groups of layers or use heuristics (more adaptation for later layers may help in some tasks).</li>
 </ul>
-<hr />
-<h2 id="11-example-readmemd-github-pages-setup-notes">11. Example <code>README.md</code> / GitHub Pages setup notes<a class="headerlink" href="#11-example-readmemd-github-pages-setup-notes" title="Permanent link">&para;</a></h2>
-<p>To turn this into a simple GitHub Page:</p>
-<ol>
-<li>Create a repository (public or private with Pages enabled).</li>
-<li>Add this file as <code>README.md</code> (root) or create <code>docs/index.md</code> to serve using GitHub Pages.</li>
-<li>In repository Settings -&gt; Pages, set the source branch (<code>main</code>/<code>gh-pages</code>) and folder (<code>/ (root)</code> or <code>/docs</code>).</li>
-<li>Commit and push. GitHub will serve the markdown as a static page.</li>
-</ol>
-<p>Use headings and links in this markdown to create a friendly navigable documentation site.</p>
 <hr />
 <h2 id="12-references-further-reading">12. References &amp; further reading<a class="headerlink" href="#12-references-further-reading" title="Permanent link">&para;</a></h2>
 <ul>
@@ -1305,7 +1260,6 @@
 <li>Hugging Face PEFT documentation — parameter-efficient fine-tuning utilities</li>
 </ul>
 <hr />
-<p><em>End of document.</em></p>
 
 
 
