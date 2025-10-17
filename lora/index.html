@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#lora-low-rank-adaptation" class="md-skip">
+        <a href="#lora-low-rank-adaptation-a-practical-guide-for-fine-tuning-llms" class="md-skip">
           Skip to content
         </a>
       
@@ -365,18 +365,210 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#key-idea" class="md-nav__link">
+  <a href="#table-of-contents" class="md-nav__link">
     <span class="md-ellipsis">
-      Key Idea
+      Table of contents
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#advantages" class="md-nav__link">
+  <a href="#1-introduction" class="md-nav__link">
     <span class="md-ellipsis">
-      Advantages
+      1. Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-quick-summary-tldr" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Quick summary / TL;DR
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-lora-the-idea-and-math" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. LoRA: the idea and math
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-where-to-apply-lora-in-a-transformer" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Where to apply LoRA in a Transformer
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-implementation-recipes" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Implementation recipes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Implementation recipes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-minimal-pytorch-style-lora-layer-pseudocode" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.1 Minimal PyTorch-style LoRA layer (pseudocode)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-hugging-face-peft-recommended" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.2 Hugging Face + PEFT (recommended)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-hyperparameters-heuristics" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Hyperparameters &amp; heuristics
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-practical-training-configurations" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Practical training configurations
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-common-issues-and-concrete-solutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Common issues and concrete solutions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Common issues and concrete solutions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#issue-gpu-oom-during-training" class="md-nav__link">
+    <span class="md-ellipsis">
+      Issue: GPU OOM during training
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#issue-choosing-r-incorrectly-underoverfitting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Issue: Choosing r incorrectly (under/overfitting)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#issue-divergence-instability-in-training" class="md-nav__link">
+    <span class="md-ellipsis">
+      Issue: Divergence / instability in training
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#issue-quantization-compatibility-lora-with-8-bit-4-bit" class="md-nav__link">
+    <span class="md-ellipsis">
+      Issue: Quantization compatibility (LoRA with 8-bit / 4-bit)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#issue-overfitting-on-small-static-datasets" class="md-nav__link">
+    <span class="md-ellipsis">
+      Issue: Overfitting on small static datasets
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#issue-adapter-conflicts-when-stacking-multiple-lora-modules" class="md-nav__link">
+    <span class="md-ellipsis">
+      Issue: Adapter conflicts when stacking multiple LoRA modules
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#issue-savingloading-mismatches" class="md-nav__link">
+    <span class="md-ellipsis">
+      Issue: Saving/loading mismatches
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-best-practices-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Best practices &amp; checklist
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-faq-answers-summarised" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. FAQ (answers summarised)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-example-readmemd-github-pages-setup-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      11. Example README.md / GitHub Pages setup notes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-references-further-reading" class="md-nav__link">
+    <span class="md-ellipsis">
+      12. References &amp; further reading
     </span>
   </a>
   
@@ -609,18 +801,210 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#key-idea" class="md-nav__link">
+  <a href="#table-of-contents" class="md-nav__link">
     <span class="md-ellipsis">
-      Key Idea
+      Table of contents
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#advantages" class="md-nav__link">
+  <a href="#1-introduction" class="md-nav__link">
     <span class="md-ellipsis">
-      Advantages
+      1. Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-quick-summary-tldr" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Quick summary / TL;DR
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-lora-the-idea-and-math" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. LoRA: the idea and math
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-where-to-apply-lora-in-a-transformer" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Where to apply LoRA in a Transformer
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-implementation-recipes" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Implementation recipes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Implementation recipes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-minimal-pytorch-style-lora-layer-pseudocode" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.1 Minimal PyTorch-style LoRA layer (pseudocode)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-hugging-face-peft-recommended" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.2 Hugging Face + PEFT (recommended)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-hyperparameters-heuristics" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Hyperparameters &amp; heuristics
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-practical-training-configurations" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Practical training configurations
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-common-issues-and-concrete-solutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Common issues and concrete solutions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Common issues and concrete solutions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#issue-gpu-oom-during-training" class="md-nav__link">
+    <span class="md-ellipsis">
+      Issue: GPU OOM during training
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#issue-choosing-r-incorrectly-underoverfitting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Issue: Choosing r incorrectly (under/overfitting)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#issue-divergence-instability-in-training" class="md-nav__link">
+    <span class="md-ellipsis">
+      Issue: Divergence / instability in training
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#issue-quantization-compatibility-lora-with-8-bit-4-bit" class="md-nav__link">
+    <span class="md-ellipsis">
+      Issue: Quantization compatibility (LoRA with 8-bit / 4-bit)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#issue-overfitting-on-small-static-datasets" class="md-nav__link">
+    <span class="md-ellipsis">
+      Issue: Overfitting on small static datasets
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#issue-adapter-conflicts-when-stacking-multiple-lora-modules" class="md-nav__link">
+    <span class="md-ellipsis">
+      Issue: Adapter conflicts when stacking multiple LoRA modules
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#issue-savingloading-mismatches" class="md-nav__link">
+    <span class="md-ellipsis">
+      Issue: Saving/loading mismatches
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-best-practices-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Best practices &amp; checklist
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-faq-answers-summarised" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. FAQ (answers summarised)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-example-readmemd-github-pages-setup-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      11. Example README.md / GitHub Pages setup notes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-references-further-reading" class="md-nav__link">
+    <span class="md-ellipsis">
+      12. References &amp; further reading
     </span>
   </a>
   
@@ -645,25 +1029,283 @@
   
 
 
-<h1 id="lora-low-rank-adaptation">LoRA (Low-Rank Adaptation)<a class="headerlink" href="#lora-low-rank-adaptation" title="Permanent link">&para;</a></h1>
-<p>LoRA introduces trainable low-rank adapters into pretrained model layers.</p>
-<h2 id="key-idea">Key Idea<a class="headerlink" href="#key-idea" title="Permanent link">&para;</a></h2>
-<p>Instead of fine-tuning all weights <span class="arithmatex"><span class="MathJax_Preview"> W </span><script type="math/tex"> W </script></span>, we express the update as:</p>
-<div class="arithmatex">
-<div class="MathJax_Preview">
-\Delta W = A \times B
-</div>
-<script type="math/tex; mode=display">
-\Delta W = A \times B
-</script>
-</div>
-<p>where rank(<span class="arithmatex"><span class="MathJax_Preview">A, B</span><script type="math/tex">A, B</script></span>) &lt;&lt; rank(<span class="arithmatex"><span class="MathJax_Preview">W</span><script type="math/tex">W</script></span>).</p>
-<h2 id="advantages">Advantages<a class="headerlink" href="#advantages" title="Permanent link">&para;</a></h2>
+<h1 id="lora-low-rank-adaptation-a-practical-guide-for-fine-tuning-llms">LoRA (Low-Rank Adaptation) — A Practical Guide for Fine-tuning LLMs<a class="headerlink" href="#lora-low-rank-adaptation-a-practical-guide-for-fine-tuning-llms" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p>A practical, hands-on guide for using LoRA adapters to fine-tune large language models (LLMs). This document compiles conceptual background, implementation recipes, hyperparameter heuristics, common pitfalls and solutions, and answers to frequently asked questions.</p>
+</blockquote>
+<hr />
+<h2 id="table-of-contents">Table of contents<a class="headerlink" href="#table-of-contents" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Introduction</li>
+<li>Quick summary / TL;DR</li>
+<li>LoRA: the idea and math</li>
+<li>Where to apply LoRA in a Transformer</li>
+<li>
+<p>Implementation recipes</p>
+</li>
+<li>
+<p>Minimal PyTorch pseudocode</p>
+</li>
+<li>Hugging Face + PEFT example</li>
+<li>Working with quantized models (QLoRA)</li>
+<li>Hyperparameters &amp; heuristics (rank <code>r</code>, alpha, learning rate)</li>
+<li>Practical training configurations (memory, precision, optimizers)</li>
+<li>Common issues and concrete solutions</li>
+<li>Best practices &amp; checklist</li>
+<li>FAQ (ten targeted questions)</li>
+<li>Example <code>README.md</code> / GitHub Pages setup notes</li>
+<li>References &amp; further reading</li>
+</ol>
+<hr />
+<h2 id="1-introduction">1. Introduction<a class="headerlink" href="#1-introduction" title="Permanent link">&para;</a></h2>
+<p>LoRA (Low-Rank Adaptation) is a parameter-efficient way to fine-tune large pretrained models by injecting small low-rank learnable matrices into existing weight projections instead of updating the entire model. LoRA reduces trainable parameters dramatically while preserving the pretrained weights — making it ideal when GPU memory or compute is constrained.</p>
+<p>This guide combines broadly useful LoRA knowledge with practical insights and caveats distilled from hundreds of experiments (notably, the "Practical Tips for Finetuning LLMs Using LoRA" writeup by Sebastian Raschka).</p>
+<hr />
+<h2 id="2-quick-summary-tldr">2. Quick summary / TL;DR<a class="headerlink" href="#2-quick-summary-tldr" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Reduces trainable parameters</li>
-<li>Enables adapter fusion and reuse</li>
-<li>Works well with transformer architectures</li>
+<li>LoRA replaces full-weight updates ΔW by a low-rank decomposition: ΔW = A · B, where <code>A</code> and <code>B</code> are small trainable matrices and the base weight <code>W</code> remains frozen.</li>
+<li>Typical ranks <code>r</code> are small (e.g., 4–64) for most use cases; increasing <code>r</code> increases capacity and memory usage.</li>
+<li>A commonly used heuristic is <code>alpha ≈ 2 × r</code> (scaling factor), but it's worth tuning for large <code>r</code> values.</li>
+<li>QLoRA (quantized LoRA) reduces memory usage further (e.g., ~33%) at the cost of additional runtime (~39% slower in reported experiments) and more complex setup.</li>
+<li>Avoid naïve multi-epoch training on small static instruction datasets — this often hurts performance (likely overfitting).</li>
 </ul>
+<hr />
+<h2 id="3-lora-the-idea-and-math">3. LoRA: the idea and math<a class="headerlink" href="#3-lora-the-idea-and-math" title="Permanent link">&para;</a></h2>
+<p>Suppose a pretrained linear layer has weights <code>W ∈ R^{d_out×d_in}</code>. Standard fine-tuning updates <code>W</code> directly (ΔW). LoRA parametrizes the update as:</p>
+<div class="highlight"><pre><span></span><code>ΔW = A @ B
+</code></pre></div>
+<p>where <code>A ∈ R^{d_out×r}</code>, <code>B ∈ R^{r×d_in}</code>, and <code>r &lt;&lt; min(d_out, d_in)</code>.</p>
+<p>During forward pass we compute:</p>
+<div class="highlight"><pre><span></span><code>y = W x + scaling * (A (B x))
+</code></pre></div>
+<p><code>scaling</code> is commonly <code>alpha / r</code>.</p>
+<p>This reduces stored trainable parameters from <code>d_out×d_in</code> to <code>(d_out + d_in)×r</code> and avoids storing large optimizer states for the frozen base model.</p>
+<hr />
+<h2 id="4-where-to-apply-lora-in-a-transformer">4. Where to apply LoRA in a Transformer<a class="headerlink" href="#4-where-to-apply-lora-in-a-transformer" title="Permanent link">&para;</a></h2>
+<p>Most practitioners apply LoRA to the attention projection matrices because adapting attention often yields high returns:</p>
+<ul>
+<li>Query (<code>W_q</code>)</li>
+<li>Key (<code>W_k</code>)</li>
+<li>Value (<code>W_v</code>)</li>
+<li>Output projection (<code>W_o</code>)</li>
+</ul>
+<p>You can also enable LoRA on intermediate feed-forward (MLP) projections or projection layers between attention blocks. Enabling LoRA for <em>more</em> layers increases capacity (and memory) and frequently improves performance — e.g., enabling LoRA across all transformer layers may multiply the number of trainable parameters by ~5× compared to only Q &amp; V.</p>
+<hr />
+<h2 id="5-implementation-recipes">5. Implementation recipes<a class="headerlink" href="#5-implementation-recipes" title="Permanent link">&para;</a></h2>
+<h3 id="51-minimal-pytorch-style-lora-layer-pseudocode">5.1 Minimal PyTorch-style LoRA layer (pseudocode)<a class="headerlink" href="#51-minimal-pytorch-style-lora-layer-pseudocode" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch.nn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nn</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">LoRA</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">orig_linear</span><span class="p">:</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">,</span> <span class="n">r</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">8</span><span class="p">,</span> <span class="n">alpha</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">16</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">orig</span> <span class="o">=</span> <span class="n">orig_linear</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">r</span> <span class="o">=</span> <span class="n">r</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">alpha</span> <span class="o">=</span> <span class="n">alpha</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">scaling</span> <span class="o">=</span> <span class="n">alpha</span> <span class="o">/</span> <span class="n">r</span>
+        <span class="c1"># LoRA: A and B (we follow convention B then A in many libs)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lora_B</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">orig_linear</span><span class="o">.</span><span class="n">in_features</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lora_A</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">orig_linear</span><span class="o">.</span><span class="n">out_features</span><span class="p">,</span> <span class="n">r</span><span class="p">))</span>
+        <span class="c1"># init: small values</span>
+        <span class="n">nn</span><span class="o">.</span><span class="n">init</span><span class="o">.</span><span class="n">kaiming_uniform_</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lora_B</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+        <span class="n">nn</span><span class="o">.</span><span class="n">init</span><span class="o">.</span><span class="n">zeros_</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lora_A</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="n">base</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">orig</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">lora_update</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">@</span> <span class="bp">self</span><span class="o">.</span><span class="n">lora_B</span><span class="o">.</span><span class="n">T</span><span class="p">)</span> <span class="o">@</span> <span class="bp">self</span><span class="o">.</span><span class="n">lora_A</span><span class="o">.</span><span class="n">T</span>
+        <span class="k">return</span> <span class="n">base</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">scaling</span> <span class="o">*</span> <span class="n">lora_update</span>
+</code></pre></div>
+<blockquote>
+<p>Notes: this is illustrative. For batching and shapes ensure correct broadcasting. Many libraries (PEFT, LoRA implementations) implement optimizations to avoid extra copies and to fuse operations.</p>
+</blockquote>
+<h3 id="52-hugging-face-peft-recommended">5.2 Hugging Face + PEFT (recommended)<a class="headerlink" href="#52-hugging-face-peft-recommended" title="Permanent link">&para;</a></h3>
+<p><code>PEFT</code> (Parameter-Efficient Fine-Tuning) by Hugging Face is the de-facto standard for LoRA integration with Transformers. It abstracts away wiring adapters and saving/loading.</p>
+<p>Example outline (pseudo-commands):</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">transformers</span><span class="w"> </span><span class="kn">import</span> <span class="n">AutoModelForCausalLM</span><span class="p">,</span> <span class="n">AutoTokenizer</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">peft</span><span class="w"> </span><span class="kn">import</span> <span class="n">LoraConfig</span><span class="p">,</span> <span class="n">get_peft_model</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">AutoModelForCausalLM</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s2">&quot;meta-llama/Llama-2-7b&quot;</span><span class="p">,</span> <span class="n">torch_dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float16</span><span class="p">)</span>
+<span class="n">config</span> <span class="o">=</span> <span class="n">LoraConfig</span><span class="p">(</span>
+    <span class="n">r</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>
+    <span class="n">lora_alpha</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span>
+    <span class="n">lora_dropout</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span>
+    <span class="n">target_modules</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;q_proj&quot;</span><span class="p">,</span> <span class="s2">&quot;v_proj&quot;</span><span class="p">],</span>  <span class="c1"># example names depending on model</span>
+    <span class="n">bias</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">,</span>
+    <span class="n">task_type</span><span class="o">=</span><span class="s2">&quot;CAUSAL_LM&quot;</span>
+<span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">get_peft_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">config</span><span class="p">)</span>
+
+<span class="c1"># Then use Trainer or custom loop with model.parameters() (only LoRA params are trainable)</span>
+</code></pre></div>
+<p>PEFT handles saving and loading adapters via <code>model.save_pretrained(path)</code> and <code>from_pretrained</code> utilities.</p>
+<hr />
+<h2 id="6-hyperparameters-heuristics">6. Hyperparameters &amp; heuristics<a class="headerlink" href="#6-hyperparameters-heuristics" title="Permanent link">&para;</a></h2>
+<p><strong>Rank <code>r</code></strong></p>
+<ul>
+<li>Typical starting values: <code>r = 4, 8, 16</code> for small/medium tasks.</li>
+<li>For more complex adaptation or domain shift, try <code>r</code> up to <code>64</code> or <code>256</code> (if memory allows). In experiments, <code>r=256</code> sometimes outperforms smaller <code>r</code> for certain tasks, but be mindful of memory.</li>
+</ul>
+<p><strong>Alpha (<code>α</code>) / scaling</strong></p>
+<ul>
+<li>Heuristic: <code>alpha = 2 × r</code> is a stable starting point.</li>
+<li>Compute <code>scaling = alpha / r</code>. If <code>alpha</code> is large relative to <code>r</code>, LoRA updates have a larger influence on outputs.</li>
+<li>Empirical note: <code>alpha = 2×r</code> is a good default, but at large <code>r</code> it may be worth trying smaller relative alpha (e.g., in experiments <code>r=256</code> with <code>alpha=128</code> gave strong results).</li>
+</ul>
+<p><strong>Learning rate</strong></p>
+<ul>
+<li>LoRA often works well with modest learning rates: <code>1e-4</code> to <code>5e-4</code> for many setups, but tune per-task.</li>
+<li>Smaller lr helps avoid overfitting / catastrophic drift from pretrained behavior.</li>
+</ul>
+<p><strong>Dropout (lora_dropout)</strong></p>
+<ul>
+<li>Small dropout (0.05) can help regularize LoRA weights on smaller datasets.</li>
+</ul>
+<hr />
+<h2 id="7-practical-training-configurations">7. Practical training configurations<a class="headerlink" href="#7-practical-training-configurations" title="Permanent link">&para;</a></h2>
+<p><strong>Memory &amp; precision</strong></p>
+<ul>
+<li>Use mixed precision (<code>fp16</code> or <code>bf16</code>) to reduce memory and speed up training. Most GPUs and Transformers support <code>torch_dtype=torch.float16</code> or <code>accelerate</code> flags.</li>
+<li>Consider gradient checkpointing to reduce activation memory at the cost of extra compute.</li>
+</ul>
+<p><strong>Batch size &amp; gradient accumulation</strong></p>
+<ul>
+<li>Small GPUs may need tiny per-device batch sizes; compensate with gradient accumulation to simulate larger batches.</li>
+</ul>
+<p><strong>Optimizers</strong></p>
+<ul>
+<li>AdamW is the default and works well for most <code>r</code> values.</li>
+<li>If <code>r</code> is small, switching from AdamW to SGD yields minimal memory savings. For large <code>r</code> (e.g., 256), SGD can reduce optimizer memory because Adam stores additional moment estimates.</li>
+</ul>
+<p><strong>Epochs &amp; dataset iterations</strong></p>
+<ul>
+<li>For static/small instruction datasets, multiple epochs can harm performance through overfitting. Consider single-epoch passes with thorough data curation, or heavy data augmentation / mixing diverse sources.</li>
+</ul>
+<hr />
+<h2 id="8-common-issues-and-concrete-solutions">8. Common issues and concrete solutions<a class="headerlink" href="#8-common-issues-and-concrete-solutions" title="Permanent link">&para;</a></h2>
+<p>This section enumerates common pitfalls and what to do about them.</p>
+<h3 id="issue-gpu-oom-during-training">Issue: GPU OOM during training<a class="headerlink" href="#issue-gpu-oom-during-training" title="Permanent link">&para;</a></h3>
+<p><strong>Solutions:</strong></p>
+<ul>
+<li>Lower <code>r</code> (rank) for LoRA adapters.</li>
+<li>Use QLoRA (4-bit quantization) to reduce model memory footprint.</li>
+<li>Enable <code>torch.cuda.amp</code> mixed precision (<code>fp16</code>/<code>bf16</code>).</li>
+<li>Use gradient checkpointing.</li>
+<li>Reduce batch size and use gradient accumulation.</li>
+<li>Offload frozen model weights to CPU (Hugging Face <code>accelerate</code> device_map and <code>offload_folder</code> options).</li>
+</ul>
+<h3 id="issue-choosing-r-incorrectly-underoverfitting">Issue: Choosing <code>r</code> incorrectly (under/overfitting)<a class="headerlink" href="#issue-choosing-r-incorrectly-underoverfitting" title="Permanent link">&para;</a></h3>
+<p><strong>Solutions:</strong></p>
+<ul>
+<li>Start small (e.g., 8) and increase if validation performance plateaus/underfits.</li>
+<li>If model capacity seems insufficient for the task, increase <code>r</code> incrementally. Monitor memory use.</li>
+</ul>
+<h3 id="issue-divergence-instability-in-training">Issue: Divergence / instability in training<a class="headerlink" href="#issue-divergence-instability-in-training" title="Permanent link">&para;</a></h3>
+<p><strong>Solutions:</strong></p>
+<ul>
+<li>Lower learning rate.</li>
+<li>Reduce alpha or use <code>alpha = 2*r</code> heuristic.</li>
+<li>Add small dropout to LoRA layers.</li>
+<li>Use learning rate schedulers (cosine annealing / half-cycle often helps SGD more than Adam variants).</li>
+</ul>
+<h3 id="issue-quantization-compatibility-lora-with-8-bit-4-bit">Issue: Quantization compatibility (LoRA with 8-bit / 4-bit)<a class="headerlink" href="#issue-quantization-compatibility-lora-with-8-bit-4-bit" title="Permanent link">&para;</a></h3>
+<p><strong>Solutions:</strong></p>
+<ul>
+<li>Use libs designed for quantization + adapters (e.g., <code>bitsandbytes</code> + HuggingFace + PEFT). Many community recipes load base model in 4-bit, add LoRA using PEFT, and train with paged optimizers.</li>
+<li>Validate that numeric stability is acceptable; QLoRA tends to slightly increase runtime and may need hyperparameter tweaks.</li>
+</ul>
+<h3 id="issue-overfitting-on-small-static-datasets">Issue: Overfitting on small static datasets<a class="headerlink" href="#issue-overfitting-on-small-static-datasets" title="Permanent link">&para;</a></h3>
+<p><strong>Solutions:</strong></p>
+<ul>
+<li>Use early stopping and validation monitoring.</li>
+<li>Mix diverse datasets or use data augmentation.</li>
+<li>Use smaller <code>r</code> and smaller lr; apply regularization.</li>
+<li>Avoid unnecessary multiple epochs on small instruction-only sets.</li>
+</ul>
+<h3 id="issue-adapter-conflicts-when-stacking-multiple-lora-modules">Issue: Adapter conflicts when stacking multiple LoRA modules<a class="headerlink" href="#issue-adapter-conflicts-when-stacking-multiple-lora-modules" title="Permanent link">&para;</a></h3>
+<p><strong>Solutions:</strong></p>
+<ul>
+<li>Avoid enabling LoRA on the exact same submodule in conflicting adapters unless you plan adapter fusion.</li>
+<li>Use sequential or non-overlapping layer adaptation.</li>
+<li>Consider adapter fusion techniques if combining multiple task adapters.</li>
+</ul>
+<h3 id="issue-savingloading-mismatches">Issue: Saving/loading mismatches<a class="headerlink" href="#issue-savingloading-mismatches" title="Permanent link">&para;</a></h3>
+<p><strong>Solutions:</strong></p>
+<ul>
+<li>Prefer PEFT's save/load utilities (<code>model.save_pretrained(...)</code> and <code>PeftModel.from_pretrained(...)</code>) to manage adapter metadata and ensure correct wiring on load.</li>
+</ul>
+<hr />
+<h2 id="9-best-practices-checklist">9. Best practices &amp; checklist<a class="headerlink" href="#9-best-practices-checklist" title="Permanent link">&para;</a></h2>
+<ul class="task-list">
+<li class="task-list-item"><input type="checkbox" disabled/> Start with a small rank (<code>r = 4–16</code>) and <code>alpha = 2*r</code> as a baseline.</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Freeze base model weights; only LoRA params should be trainable.</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Use mixed precision and gradient checkpointing where possible.</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Use PEFT/Hugging Face tooling to manage adapters reliably.</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Monitor validation performance closely — be conservative with epoch count on small datasets.</li>
+<li class="task-list-item"><input type="checkbox" disabled/> If memory-limited, try QLoRA and bitsandbytes-backed 4-bit loading.</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Keep training logs and seed multiple runs if you require reproducibility — results are generally consistent but still benefit from plotting.</li>
+</ul>
+<hr />
+<h2 id="10-faq-answers-summarised">10. FAQ (answers summarised)<a class="headerlink" href="#10-faq-answers-summarised" title="Permanent link">&para;</a></h2>
+<p><strong>Q1: How important is the dataset?</strong></p>
+<ul>
+<li>Extremely. LoRA adapts model behavior based on the finetuning data. For instruction tuning and domain adaptation, richness and diversity of examples matter more than repeated passes over a small set.</li>
+</ul>
+<p><strong>Q2: Does LoRA work for domain adaptation?</strong></p>
+<ul>
+<li>Yes — LoRA is well-suited for domain adaptation because it allows task- or domain-specific lightweight adjustments without altering base knowledge.</li>
+</ul>
+<p><strong>Q3: How do you select the best rank <code>r</code>?</strong></p>
+<ul>
+<li>Start small and increase until validation performance and resource budget trade-offs are acceptable. Try <code>r</code> values like 8, 32, 64, 256 (if memory allows) to explore the curve.</li>
+</ul>
+<p><strong>Q4: Does LoRA need to be enabled for all layers?</strong></p>
+<ul>
+<li>Not strictly. Enabling LoRA on Q &amp; V is common and effective. Enabling it across more layers (all attention + projections) typically increases performance at the cost of memory.</li>
+</ul>
+<p><strong>Q5: How to avoid overfitting?</strong></p>
+<ul>
+<li>Use conservative epochs, regularization, smaller ranks/lr, mixed datasets, and early stopping. For instruction finetuning, multiple epochs on small datasets often degrade performance.</li>
+</ul>
+<p><strong>Q6: What about optimizers?</strong></p>
+<ul>
+<li>AdamW is a good default. Switch to SGD only if trying to save memory at large <code>r</code> values or if experimentation suggests benefits.</li>
+</ul>
+<p><strong>Q7: What other factors influence memory usage?</strong></p>
+<ul>
+<li>Model size, <code>r</code>, precision (<code>fp16</code>/<code>bf16</code> vs <code>fp32</code>), optimizer states, batch size, sequence length, gradient checkpointing, and whether you offload weights.</li>
+</ul>
+<p><strong>Q8: How does LoRA compare to full finetuning and RLHF?</strong></p>
+<ul>
+<li>LoRA is a parameter-efficient alternative to full finetuning (less memory, storage and faster). RLHF is a separate training paradigm (reward modeling and policy optimization) used to align models; LoRA is a mechanism to adapt parameters, not a replacement for RLHF.</li>
+</ul>
+<p><strong>Q9: Can LoRA weights be combined?</strong></p>
+<ul>
+<li>Yes — you can merge or sequentially apply adapters, and adapter fusion methods exist. Be careful about overlapping modifications to the same submodules.</li>
+</ul>
+<p><strong>Q10: What about layer-wise optimal rank adaptation?</strong></p>
+<ul>
+<li>It's plausible that different layers need different <code>r</code> values. Automated layer-wise rank selection is an active topic. A practical approach is to tune <code>r</code> for groups of layers or use heuristics (more adaptation for later layers may help in some tasks).</li>
+</ul>
+<hr />
+<h2 id="11-example-readmemd-github-pages-setup-notes">11. Example <code>README.md</code> / GitHub Pages setup notes<a class="headerlink" href="#11-example-readmemd-github-pages-setup-notes" title="Permanent link">&para;</a></h2>
+<p>To turn this into a simple GitHub Page:</p>
+<ol>
+<li>Create a repository (public or private with Pages enabled).</li>
+<li>Add this file as <code>README.md</code> (root) or create <code>docs/index.md</code> to serve using GitHub Pages.</li>
+<li>In repository Settings -&gt; Pages, set the source branch (<code>main</code>/<code>gh-pages</code>) and folder (<code>/ (root)</code> or <code>/docs</code>).</li>
+<li>Commit and push. GitHub will serve the markdown as a static page.</li>
+</ol>
+<p>Use headings and links in this markdown to create a friendly navigable documentation site.</p>
+<hr />
+<h2 id="12-references-further-reading">12. References &amp; further reading<a class="headerlink" href="#12-references-further-reading" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Practical Tips for Finetuning LLMs Using LoRA — Sebastian Raschka (Ahead of AI / Magazine): <a href="https://magazine.sebastianraschka.com/p/practical-tips-for-finetuning-llms">https://magazine.sebastianraschka.com/p/practical-tips-for-finetuning-llms</a></li>
+<li>LoRA paper and original references (Hu et al.) — search <code>LoRA arXiv Hu et al.</code></li>
+<li>QLoRA (Dettmers et al.) — for 4-bit quantized LoRA approaches</li>
+<li>Hugging Face PEFT documentation — parameter-efficient fine-tuning utilities</li>
+</ul>
+<hr />
+<p><em>End of document.</em></p>
 
 
 
