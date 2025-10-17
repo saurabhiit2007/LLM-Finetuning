@@ -1,0 +1,52 @@
+site_name: Fine-Tuning Methods Documentation
+site_description: A technical reference for LoRA, QLoRA, and other fine-tuning techniques.
+site_author: Saurabh Goyal
+repo_url: https://github.com/saurabhiit2007/LLM-Finetuning
+theme:
+  name: material
+  features:
+    - navigation.expand
+    - navigation.top
+    - search.highlight
+    - search.share
+    - content.code.copy
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: blue
+      accent: deep purple
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: blue
+      accent: lime
+  font:
+    text: Inter
+    code: JetBrains Mono
+
+nav:
+  - Home: index.md
+  - Fine-Tuning Techniques:
+      - LoRA: lora.md
+      - QLoRA: qlora.md
+      - PEFT Overview: peft.md
+      - Adapter Methods: adapters.md
+  - Experiments:
+      - LoRA Experiments: ../experiments/lora_experiments.md
+      - QLoRA Experiments: ../experiments/qlora_experiments.md
+  - References: references.md
+
+markdown_extensions:
+  - admonition
+  - codehilite
+  - toc:
+      permalink: true
+  - footnotes
+  - tables
+  - pymdownx.arithmatex
+  - pymdownx.highlight
+  - pymdownx.superfences
+  - pymdownx.details
+  - pymdownx.tasklist
+  - pymdownx.snippets
+  - pymdownx.inlinehilite
+  - pymdownx.magiclink
