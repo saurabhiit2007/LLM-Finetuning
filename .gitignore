@@ -1,0 +1,96 @@
+# ===============================
+# Python build and cache files
+# ===============================
+__pycache__/
+*.py[cod]
+*.so
+*.pyd
+*.pyo
+*.pkl
+
+# ===============================
+# Virtual environments
+# ===============================
+.venv/
+venv/
+env/
+ENV/
+.uv/
+.python-version
+
+# ===============================
+# Data files and generated datasets
+# ===============================
+data/
+datasets/
+*.csv
+*.tsv
+*.json
+*.jsonl
+*.txt
+
+# ===============================
+# Model checkpoints and weights
+# ===============================
+*.bin
+*.pt
+*.ckpt
+*.safetensors
+*.h5
+*.onnx
+checkpoints/
+outputs/
+models/
+saved_models/
+tmp/
+
+# ===============================
+# Logs, metrics, and experiment outputs
+# ===============================
+*.log
+logs/
+wandb/
+runs/
+mlruns/
+tensorboard/
+results/
+metrics/
+
+# ===============================
+# Configs and secrets
+# ===============================
+.env
+secrets.yaml
+
+# ===============================
+# Hugging Face and cache dirs
+# ===============================
+~/.cache/
+cache/
+huggingface/
+huggingface_cache/
+transformers_cache/
+datasets_cache/
+
+# ===============================
+# IDE and OS specific files
+# ===============================
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.swp
+
+# ===============================
+# Temporary and build artifacts
+# ===============================
+build/
+dist/
+*.egg-info/
+*.tar.gz
+site/
+
+# ===============================
+# Notebooks and checkpoints
+# ===============================
+.ipynb_checkpoints/
