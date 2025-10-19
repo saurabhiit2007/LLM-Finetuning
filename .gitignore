@@ -89,6 +89,8 @@ dist/
 *.egg-info/
 *.tar.gz
 site/
+.idea/
+*.iml
 
 # ===============================
 # Notebooks and checkpoints
