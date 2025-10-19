@@ -245,15 +245,13 @@ def main(config):
 
     lm_datasets = dataset.map(group_texts, batched=True, num_proc=4)
 
+    train_dataset = lm_datasets["train"]
     if data_cfg["train_subset_size"]:
-        train_dataset = lm_datasets["train"].select(range(data_cfg["train_subset_size"]))
-    else:
-        train_dataset = lm_datasets["train"]
+        train_dataset = train_dataset.select(range(data_cfg["train_subset_size"]))
 
+    eval_dataset = lm_datasets["validation"]
     if data_cfg["eval_subset_size"]:
-        eval_dataset = lm_datasets["validation"].select(range(data_cfg["eval_subset_size"]))
-    else:
-        eval_dataset = lm_datasets["validation"]
+        eval_dataset = eval_dataset.select(range(data_cfg["eval_subset_size"]))
 
     data_collator = DataCollatorForLanguageModeling(tokenizer=tokenizer, mlm=False)
 
