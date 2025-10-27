@@ -8,16 +8,30 @@ import time
 
 
 def get_gpu_memory():
-    """Returns total allocated GPU memory in MB"""
-    if torch.cuda.is_available():
-        return torch.cuda.memory_allocated(0) / (1024 * 1024)
-    return None
+    """Returns GPU memory usage info (current + peak in MB)."""
+    if not torch.cuda.is_available():
+        return None, None
+    torch.cuda.synchronize()
+    current = torch.cuda.memory_allocated(0) / (1024 * 1024)
+    peak = torch.cuda.max_memory_allocated(0) / (1024 * 1024)
+    return current, peak
+
+
+def get_cpu_memory():
+    """Returns process-specific CPU memory usage in MB."""
+    process = psutil.Process(os.getpid())
+    return process.memory_info().rss / (1024 * 1024)
+
+
+def count_trainable_params(model):
+    """Returns total and trainable parameter counts."""
+    total = sum(p.numel() for p in model.parameters())
+    trainable = sum(p.numel() for p in model.parameters() if p.requires_grad)
+    return total, trainable
 
 
 def log_experiment(config, eval_results, train_metrics=None, output_dir="logs"):
-    """
-    Logs hyperparameters, evaluation results, training metrics, GPU usage, and sample text to a CSV.
-    """
+    """Logs hyperparameters, evaluation results, and summary metrics."""
     os.makedirs(output_dir, exist_ok=True)
     log_file = os.path.join(output_dir, "experiment_log.csv")
 
@@ -42,9 +56,9 @@ def log_experiment(config, eval_results, train_metrics=None, output_dir="logs"):
             flat_train[f"train.{k}"] = v
 
     # Resource usage
-    gpu_mem = get_gpu_memory()
-    cpu_mem = psutil.virtual_memory().used / (1024 * 1024)
-    flat_resource = {"gpu_memory_mb": gpu_mem, "cpu_memory_mb": cpu_mem}
+    gpu_cur, gpu_peak = get_gpu_memory()
+    cpu_mem = get_cpu_memory()
+    flat_resource = {"gpu_current_mb": gpu_cur, "gpu_peak_mb": gpu_peak, "cpu_memory_mb": cpu_mem}
 
     # Combine all logs
     log_row = {
@@ -68,18 +82,50 @@ def log_experiment(config, eval_results, train_metrics=None, output_dir="logs"):
 
 class MetricsLoggerCallback(TrainerCallback):
     """
-    Custom callback to log per-epoch training time and loss.
+    Logs per-epoch timing, loss, and resource usage.
     """
-    def __init__(self):
+
+    def __init__(self, model=None, output_dir="logs"):
+        self.model = model
+        self.output_dir = output_dir
+        os.makedirs(output_dir, exist_ok=True)
         self.epoch_start_time = None
-        self.epoch_times = []
-        self.epoch_losses = []
+        self.csv_file = os.path.join(output_dir, "epoch_metrics.csv")
+
+        if not os.path.exists(self.csv_file):
+            with open(self.csv_file, "w", newline="") as f:
+                writer = csv.writer(f)
+                writer.writerow([
+                    "epoch", "train_loss", "epoch_time_sec",
+                    "gpu_current_mb", "gpu_peak_mb", "cpu_memory_mb",
+                    "total_params", "trainable_params", "timestamp"
+                ])
 
     def on_epoch_begin(self, args, state: TrainerState, control: TrainerControl, **kwargs):
+        torch.cuda.reset_peak_memory_stats()
+        torch.cuda.synchronize()
         self.epoch_start_time = time.time()
 
     def on_epoch_end(self, args, state: TrainerState, control: TrainerControl, **kwargs):
+        torch.cuda.synchronize()
         epoch_time = time.time() - self.epoch_start_time
-        self.epoch_times.append(epoch_time)
-        # average loss for epoch
-        self.epoch_losses.append(state.log_history[-1]["loss"] if state.log_history else None)
+        gpu_cur, gpu_peak = get_gpu_memory()
+        cpu_mem = get_cpu_memory()
+        loss = state.log_history[-1].get("loss", None) if state.log_history else None
+        total_params, trainable_params = count_trainable_params(self.model)
+
+        with open(self.csv_file, "a", newline="") as f:
+            writer = csv.writer(f)
+            writer.writerow([
+                state.epoch, loss, epoch_time,
+                gpu_cur, gpu_peak, cpu_mem,
+                total_params, trainable_params,
+                datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            ])
+
+        print(
+            f"[Epoch {state.epoch}] time={epoch_time:.2f}s | "
+            f"loss={loss:.4f if loss else 'N/A'} | "
+            f"GPU peak={gpu_peak:.2f} MB | CPU={cpu_mem:.2f} MB | "
+            f"trainable={trainable_params / 1e6:.2f}M/{total_params / 1e6:.2f}M"
+        )
