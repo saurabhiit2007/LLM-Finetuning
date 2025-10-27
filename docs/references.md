@@ -1,0 +1,4 @@
+- Hu, E. J., et al. *LoRA: Low-Rank Adaptation of Large Language Models.* [arXiv:2106.09685](https://arxiv.org/abs/2106.09685)  
+- Dettmers, T., et al. *QLoRA: Efficient Finetuning of Quantized LLMs.* [arXiv:2305.14314](https://arxiv.org/abs/2305.14314)  
+- **Hugging Face PEFT documentation:** [https://huggingface.co/docs/peft](https://huggingface.co/docs/peft)  
+- Community writeups and practical tips (e.g., blog posts and notebooks on LoRA/QLoRA setups).
