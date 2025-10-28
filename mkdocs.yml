@@ -33,8 +33,11 @@ nav:
   - Fine-Tuning Techniques:
       - LoRA: ./finetuning_techniques/lora.md
       - QLoRA: ./finetuning_techniques/qlora.md
-      - PEFT Overview: ./finetuning_techniques/peft.md
-      - Adapter Methods: ./finetuning_techniques/adapters.md
+      #- PEFT Overview: ./finetuning_techniques/peft.md
+      #- Adapter Methods: ./finetuning_techniques/adapters.md
+  - Advanced Topics:
+      - 4-bit NormalFloat (NF4): ./advanced_topics/4bit_normal_float.md
+      - Block-wise k-bit Quantization: ./advanced_topics/blockwise_kbit_quantization.md
   - References: references.md
 
 markdown_extensions:

@@ -1,4 +1,4 @@
-# 🧩 Low-Rank Adaptation (LoRA)
+# 🧩 LORA: Low-Rank Adaptation
 
 ---
 
