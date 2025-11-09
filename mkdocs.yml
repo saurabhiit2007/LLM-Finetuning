@@ -39,6 +39,7 @@ nav:
   - Supporting Topics:
       - 4-bit NormalFloat (NF4): ./supporting_topics/4bit_normal_float.md
       - Block-wise k-bit Quantization: ./supporting_topics/blockwise_kbit_quantization.md
+      - Accelerate Framework: ./advanced_topics/accelerate.md
   - References: references.md
 
 markdown_extensions:
