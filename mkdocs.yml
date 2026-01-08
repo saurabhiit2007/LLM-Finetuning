@@ -41,6 +41,7 @@ nav:
       - Block-wise k-bit Quantization: ./supporting_topics/blockwise_kbit_quantization.md
       - Accelerate Framework: ./supporting_topics/accelerate.md
       - BP16: ./supporting_topics/bp16.md
+      - Flash Attention: ./supporting_topics/flash_attention.md
   - References: references.md
 
 markdown_extensions:
