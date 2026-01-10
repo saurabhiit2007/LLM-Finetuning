@@ -142,6 +142,7 @@ This process continues until an end-of-sequence token is produced or a maximum l
 This section describes the speculative decoding algorithm precisely, step by step, focusing on what each model does and why it is needed.
 
 Assume:
+
 - Prompt tokens: $x$
 - Draft model: $q$
 - Target model: $p$
@@ -157,6 +158,7 @@ y_i \sim q(\cdot \mid x, y_{<i}) \quad \text{for } i = 1 \dots k
 $$
 
 Key points:
+
 - This step is fast because the draft model is small
 - Tokens are sampled, not greedily selected
 - The draft model also records the probability of each sampled token
@@ -172,6 +174,7 @@ p(y_i \mid x, y_{<i}) \quad \text{for } i = 1 \dots k
 $$
 
 Important clarification:
+
 - The target model naturally computes logits for all positions
 - Only logits corresponding to the drafted tokens are used
 - Logits for the prompt tokens are ignored
@@ -185,6 +188,7 @@ $$
 $$
 
 Procedure:
+
 1. Sample $u \sim \text{Uniform}(0, 1)$
 2. Accept token $y_i$ if $u \le \alpha_i$
 3. Stop at the first rejected token
