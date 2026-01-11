@@ -44,6 +44,7 @@ nav:
       - Flash Attention: ./supporting_topics/flash_attention.md
       - Decoding Strategies: ./supporting_topics/decoding_strategies.md
       - Speculative Decoding & Medusa: ./supporting_topics/speculative_decoding.md
+      - KV Caching: ./supporting_topics/kv_caching.md
   - References: references.md
 
 markdown_extensions:
