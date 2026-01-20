@@ -13,24 +13,28 @@
       
       
       
+        <link rel="prev" href="../accelerate/">
+      
+      
+        <link rel="next" href="../flash_attention/">
       
       
         
       
       
-      <link rel="icon" href="/assets/images/favicon.png">
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
     
     
       
-        <title>Fine-Tuning Methods Documentation</title>
+        <title>BP16 - Fine-Tuning Methods Documentation</title>
       
     
     
-      <link rel="stylesheet" href="/assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
       
         
-        <link rel="stylesheet" href="/assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -49,7 +53,7 @@
       
     
     
-    <script>__md_scope=new URL("/",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -73,6 +77,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#bf16-bfloat16-mixed-precision-for-stable-llm-training" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -85,7 +94,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="/." title="Fine-Tuning Methods Documentation" class="md-header__button md-logo" aria-label="Fine-Tuning Methods Documentation" data-md-component="logo">
+    <a href="../.." title="Fine-Tuning Methods Documentation" class="md-header__button md-logo" aria-label="Fine-Tuning Methods Documentation" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -105,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              
+              BP16
             
           </span>
         </div>
@@ -218,7 +227,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="/." title="Fine-Tuning Methods Documentation" class="md-nav__button md-logo" aria-label="Fine-Tuning Methods Documentation" data-md-component="logo">
+    <a href="../.." title="Fine-Tuning Methods Documentation" class="md-nav__button md-logo" aria-label="Fine-Tuning Methods Documentation" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -248,7 +257,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   
@@ -324,7 +333,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/finetuning_techniques/prefix_tuning/" class="md-nav__link">
+      <a href="../../finetuning_techniques/prefix_tuning/" class="md-nav__link">
         
   
   
@@ -352,7 +361,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/finetuning_techniques/lora/" class="md-nav__link">
+      <a href="../../finetuning_techniques/lora/" class="md-nav__link">
         
   
   
@@ -380,7 +389,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/finetuning_techniques/qlora/" class="md-nav__link">
+      <a href="../../finetuning_techniques/qlora/" class="md-nav__link">
         
   
   
@@ -412,20 +421,20 @@
       
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
@@ -446,7 +455,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -464,7 +473,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/supporting_topics/4bit_normal_float/" class="md-nav__link">
+      <a href="../4bit_normal_float/" class="md-nav__link">
         
   
   
@@ -492,7 +501,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/supporting_topics/blockwise_kbit_quantization/" class="md-nav__link">
+      <a href="../blockwise_kbit_quantization/" class="md-nav__link">
         
   
   
@@ -520,7 +529,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/supporting_topics/accelerate/" class="md-nav__link">
+      <a href="../accelerate/" class="md-nav__link">
         
   
   
@@ -545,10 +554,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="/supporting_topics/bp16/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BP16
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -564,6 +600,114 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-motivation-what-goes-wrong-with-lower-precision" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Motivation: What Goes Wrong with Lower Precision
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-bf16-vs-fp16-vs-fp32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. BF16 vs FP16 vs FP32
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-fp16-vs-bf16-precision-vs-range-through-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. FP16 vs BF16: Precision vs Range Through Examples
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-why-bf16-is-stable-during-training" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Why BF16 Is Stable During Training
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-loss-scaling-and-why-bf16-usually-does-not-need-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Loss Scaling and Why BF16 Usually Does Not Need It
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-performance-and-memory-characteristics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Performance and Memory Characteristics
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-bf16-in-practice-pytorch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. BF16 in Practice (PyTorch)
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -576,7 +720,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/supporting_topics/flash_attention/" class="md-nav__link">
+      <a href="../flash_attention/" class="md-nav__link">
         
   
   
@@ -604,7 +748,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/supporting_topics/decoding_strategies/" class="md-nav__link">
+      <a href="../decoding_strategies/" class="md-nav__link">
         
   
   
@@ -632,7 +776,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/supporting_topics/speculative_decoding/" class="md-nav__link">
+      <a href="../speculative_decoding/" class="md-nav__link">
         
   
   
@@ -660,7 +804,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/supporting_topics/kv_caching/" class="md-nav__link">
+      <a href="../kv_caching/" class="md-nav__link">
         
   
   
@@ -744,7 +888,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/training_techniques/foundation/" class="md-nav__link">
+      <a href="../../training_techniques/foundation/" class="md-nav__link">
         
   
   
@@ -772,7 +916,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/training_techniques/pre_training/pre_training/" class="md-nav__link">
+      <a href="../../training_techniques/pre_training/pre_training/" class="md-nav__link">
         
   
   
@@ -807,7 +951,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/references/" class="md-nav__link">
+      <a href="../../references/" class="md-nav__link">
         
   
   
@@ -844,6 +988,104 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-motivation-what-goes-wrong-with-lower-precision" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Motivation: What Goes Wrong with Lower Precision
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-bf16-vs-fp16-vs-fp32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. BF16 vs FP16 vs FP32
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-fp16-vs-bf16-precision-vs-range-through-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. FP16 vs BF16: Precision vs Range Through Examples
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-why-bf16-is-stable-during-training" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Why BF16 Is Stable During Training
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-loss-scaling-and-why-bf16-usually-does-not-need-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Loss Scaling and Why BF16 Usually Does Not Need It
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-performance-and-memory-characteristics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Performance and Memory Characteristics
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-bf16-in-practice-pytorch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. BF16 in Practice (PyTorch)
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -856,8 +1098,206 @@
               
               <article class="md-content__inner md-typeset">
                 
-  <h1>404 - Not found</h1>
+                  
 
+
+  
+  
+
+
+<h1 id="bf16-bfloat16-mixed-precision-for-stable-llm-training">🧮 BF16 (BFloat16): Mixed Precision for Stable LLM Training<a class="headerlink" href="#bf16-bfloat16-mixed-precision-for-stable-llm-training" title="Permanent link">&para;</a></h1>
+<h3 id="1-overview">1. Overview<a class="headerlink" href="#1-overview" title="Permanent link">&para;</a></h3>
+<p><strong>BF16 (Brain Floating Point 16)</strong> is a 16-bit floating-point format designed specifically for <strong>numerically stable neural network training</strong>.</p>
+<p>The core idea behind BF16 is simple:</p>
+<blockquote>
+<p>Preserve the numerical range required for training, while reducing memory and compute cost.</p>
+</blockquote>
+<p>This makes BF16 especially suitable for training large models such as LLMs, where values can vary widely during forward and backward passes.</p>
+<hr />
+<h3 id="2-motivation-what-goes-wrong-with-lower-precision">2. Motivation: What Goes Wrong with Lower Precision<a class="headerlink" href="#2-motivation-what-goes-wrong-with-lower-precision" title="Permanent link">&para;</a></h3>
+<p>Training deep neural networks involves:
+- Very large values in activations and gradients
+- Very small gradient updates
+- Accumulation of numerical error over long runs</p>
+<p>Standard <strong>FP16</strong> improves speed and memory usage but introduces a major issue:
+- Its limited exponent range causes <strong>gradient underflow and overflow</strong></p>
+<p>BF16 was introduced to solve these stability issues <strong>without reverting to FP32</strong>.</p>
+<hr />
+<h3 id="3-bf16-vs-fp16-vs-fp32">3. BF16 vs FP16 vs FP32<a class="headerlink" href="#3-bf16-vs-fp16-vs-fp32" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Format</th>
+<th>Bits</th>
+<th>Exponent Bits</th>
+<th>Mantissa Bits</th>
+<th>Dynamic Range</th>
+<th>Precision</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FP32</td>
+<td>32</td>
+<td>8</td>
+<td>23</td>
+<td>High</td>
+<td>High</td>
+</tr>
+<tr>
+<td>FP16</td>
+<td>16</td>
+<td>5</td>
+<td>10</td>
+<td>Low</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>BF16</td>
+<td>16</td>
+<td>8</td>
+<td>7</td>
+<td>High (same as FP32)</td>
+<td>Lower</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Justification</strong>
+- Training stability depends more on <strong>range</strong> than fine-grained precision
+- Small rounding errors are usually tolerable
+- Underflow and overflow are not</p>
+<p>BF16 keeps the FP32 exponent, which directly addresses instability.</p>
+<hr />
+<h3 id="4-fp16-vs-bf16-precision-vs-range-through-examples">4. FP16 vs BF16: Precision vs Range Through Examples<a class="headerlink" href="#4-fp16-vs-bf16-precision-vs-range-through-examples" title="Permanent link">&para;</a></h3>
+<p>These examples illustrate the core tradeoff between <strong>FP16 and BF16</strong>:<br />
+FP16 has <strong>higher precision</strong>, while BF16 has <strong>larger numerical range</strong>.</p>
+<hr />
+<p><strong>Example 1: Small but representable value</strong></p>
+<p>Original value: <code>0.0001</code></p>
+<ul>
+<li>FP16: <code>0.00010001659393</code><br />
+  (10-bit mantissa, 5-bit exponent)</li>
+<li>BF16: <code>0.00010013580322</code><br />
+  (7-bit mantissa, 8-bit exponent)</li>
+</ul>
+<p><strong>Explanation</strong></p>
+<p>Both formats can represent this value, but FP16 is closer to the original because it has more mantissa bits. This shows FP16’s advantage in precision when the value lies within its representable range.</p>
+<hr />
+<p><strong>Example 2: Very small value</strong></p>
+<p>Original value: <code>1e-08</code></p>
+<ul>
+<li>FP16: <code>0.0</code><br />
+  (underflow)</li>
+<li>BF16: <code>0.00000001001172</code></li>
+</ul>
+<p><strong>Explanation</strong></p>
+<p>FP16 cannot represent this value because its <strong>binary exponent range is too small</strong>, even though it has 10 mantissa bits.<br />
+The number of decimal zeros is irrelevant — FP16’s minimum normalized positive number is about <code>6.1e-5</code>, and numbers smaller than this either underflow or rely on very low-precision subnormals.<br />
+BF16 succeeds because it has the <strong>same exponent range as FP32</strong>, allowing much smaller numbers to be represented reliably.</p>
+<p>This is a key reason BF16 is more stable during training, especially for gradients that can be extremely small.</p>
+<hr />
+<p><strong>Example 3: Large value</strong></p>
+<p>Original value: <code>100000.00001</code></p>
+<ul>
+<li>FP16: <code>inf</code><br />
+  (overflow)</li>
+<li>BF16: <code>99840.0</code></li>
+</ul>
+<p><strong>Explanation</strong></p>
+<p>FP16 overflows because all exponent bits are exhausted.<br />
+BF16 can still represent the value, though with reduced precision, because it has more exponent bits.</p>
+<hr />
+<p><strong>Key takeaway</strong></p>
+<ul>
+<li>FP16 represents values <strong>more accurately</strong> within its limited range  </li>
+<li>BF16 represents values <strong>more reliably</strong> across a wide range  </li>
+<li>Training prefers <strong>range over precision</strong>, which is why BF16 is often safer for large models</li>
+</ul>
+<hr />
+<h3 id="5-why-bf16-is-stable-during-training">5. Why BF16 Is Stable During Training<a class="headerlink" href="#5-why-bf16-is-stable-during-training" title="Permanent link">&para;</a></h3>
+<p>During backpropagation:
+- Gradients can span many orders of magnitude
+- Values that fall outside representable range collapse to zero or NaN</p>
+<p>Because BF16 has the same exponent range as FP32:
+- Gradients rarely underflow
+- Overflow is significantly reduced</p>
+<p>This leads to more predictable and stable optimization behavior.</p>
+<hr />
+<h3 id="6-loss-scaling-and-why-bf16-usually-does-not-need-it">6. Loss Scaling and Why BF16 Usually Does Not Need It<a class="headerlink" href="#6-loss-scaling-and-why-bf16-usually-does-not-need-it" title="Permanent link">&para;</a></h3>
+<p><strong>Loss scaling</strong> multiplies the loss to push gradients into a representable range.</p>
+<ul>
+<li>FP16 requires loss scaling because its exponent range is small</li>
+<li>BF16 usually does not, because the range is already sufficient</li>
+</ul>
+<p><strong>Implication</strong>
+- BF16 simplifies training pipelines
+- Fewer tuning knobs
+- Fewer silent numerical failures</p>
+<details>
+<summary><strong>Loss Scaling (click to expand)</strong></summary>
+In mixed-precision training with FP16, gradients can become too small to be represented and underflow to zero, which stops learning.<br>
+
+Loss scaling prevents this by temporarily increasing gradient magnitudes without changing the true optimization objective.
+<br><br>
+
+How it works<br>
+1. Multiply the loss by a scale factor  <br>
+2. Backpropagate using the scaled loss  <br>
+3. Divide gradients by the same factor before the optimizer step
+
+<br><br>
+**Example**<br>
+A true gradient:
+<br>
+$$
+g = 1 \times 10^{-9}
+$$
+<br>
+In FP16, this value underflows to zero.<br>
+With a scale factor \( S = 1024 \):
+<br>
+$$
+g' = S \cdot g = 1.024 \times 10^{-6}
+$$
+<br>
+This value is representable in FP16. Before the optimizer update, gradients are divided by \( S \), preserving the correct update.
+<br><br>
+Key point<br>
+- FP16 requires loss scaling due to limited exponent range  <br>
+- BF16 usually does not, because it preserves FP32’s range
+
+</details>
+<hr />
+<h3 id="7-performance-and-memory-characteristics">7. Performance and Memory Characteristics<a class="headerlink" href="#7-performance-and-memory-characteristics" title="Permanent link">&para;</a></h3>
+<p>BF16 reduces memory usage by half compared to FP32, which:
+- Allows larger batch sizes
+- Reduces memory bandwidth pressure</p>
+<p>On supported hardware, BF16:
+- Uses tensor cores
+- Achieves near-FP16 throughput
+- Converges similarly to FP32 in practice</p>
+<p>The slight loss in mantissa precision rarely affects convergence for deep models.</p>
+<hr />
+<h3 id="8-bf16-in-practice-pytorch">8. BF16 in Practice (PyTorch)<a class="headerlink" href="#8-bf16-in-practice-pytorch" title="Permanent link">&para;</a></h3>
+<p>```python
+import torch</p>
+<p>model = model.to(dtype=torch.bfloat16)</p>
+<p>with torch.autocast(device_type="cuda", dtype=torch.bfloat16):
+    outputs = model(inputs)
+    loss = outputs.loss</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
               </article>
             </div>
           
@@ -900,10 +1340,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "/", "features": ["navigation.expand", "navigation.top", "search.highlight", "search.share", "content.code.copy", "mathjax"], "search": "/assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.expand", "navigation.top", "search.highlight", "search.share", "content.code.copy", "mathjax"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="/assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
         <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
       

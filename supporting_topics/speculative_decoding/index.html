@@ -1,0 +1,1991 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A technical reference for LoRA, QLoRA, and other fine-tuning techniques.">
+      
+      
+        <meta name="author" content="Saurabh Goyal">
+      
+      
+      
+        <link rel="prev" href="../decoding_strategies/">
+      
+      
+        <link rel="next" href="../kv_caching/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Speculative Decoding & Medusa - Fine-Tuning Methods Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#1-speculative-decoding-overview" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Fine-Tuning Methods Documentation" class="md-header__button md-logo" aria-label="Fine-Tuning Methods Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Fine-Tuning Methods Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Speculative Decoding & Medusa
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="deep-purple"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="lime"  aria-hidden="true"  type="radio" name="__palette" id="__palette_1">
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/saurabhiit2007/LLM-Finetuning" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Fine-Tuning Methods Documentation" class="md-nav__button md-logo" aria-label="Fine-Tuning Methods Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Fine-Tuning Methods Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/saurabhiit2007/LLM-Finetuning" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PEFT Techniques
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    PEFT Techniques
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../finetuning_techniques/prefix_tuning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prefix Tuning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../finetuning_techniques/lora/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LoRA
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../finetuning_techniques/qlora/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    QLoRA
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Supporting Topics
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Supporting Topics
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4bit_normal_float/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4-bit NormalFloat (NF4)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blockwise_kbit_quantization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Block-wise k-bit Quantization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../accelerate/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Accelerate Framework
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bp16/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BP16
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../flash_attention/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Flash Attention
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../decoding_strategies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Decoding Strategies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Speculative Decoding & Medusa
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Speculative Decoding & Medusa
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-speculative-decoding-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📦1. Speculative Decoding: Overview
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📦1. Speculative Decoding: Overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-why-standard-decoding-is-slow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 Why standard decoding is slow
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-core-idea" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 Core idea
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-background-how-decoding-works-in-decoder-only-llms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📦2. Background: How Decoding Works in Decoder-Only LLMs
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📦2. Background: How Decoding Works in Decoder-Only LLMs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-autoregressive-modeling-assumption" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Autoregressive modeling assumption
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-what-happens-in-one-forward-pass" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 What happens in one forward pass
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-1-embedding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1: Embedding
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-masked-self-attention" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2: Masked self-attention
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-feed-forward-network-ffn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3: Feed Forward Network (FFN)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-computing-logits-and-selecting-the-next-token" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 Computing logits and selecting the next token
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-autoregressive-decoding-loop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 Autoregressive decoding loop
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-key-limitation-of-standard-decoding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5 Key limitation of standard decoding
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-step-by-step-algorithm-for-speculative-decoding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📦3. Step-by-Step Algorithm for Speculative Decoding
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📦3. Step-by-Step Algorithm for Speculative Decoding">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-draft-model-proposes-tokens" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1: Draft model proposes tokens
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-target-model-verifies-the-draft" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2: Target model verifies the draft
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-acceptance-test" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3: Acceptance test
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-rejection-handling-and-fallback" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 4: Rejection handling and fallback
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-this-preserves-correctness" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why this preserves correctness
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-why-speculative-decoding-is-faster" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📦4. Why Speculative Decoding Is Faster
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📦4. Why Speculative Decoding Is Faster">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-standard-decoding-vs-speculative-decoding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Standard decoding vs speculative decoding
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-source-of-the-speedup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Source of the speedup
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-what-speculative-decoding-does-not-optimize" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 What speculative decoding does not optimize
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-practical-speedups" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 Practical speedups
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-relationship-to-logits-for-all-tokens" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Relationship to Logits for All Tokens
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Relationship to Logits for All Tokens">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-standard-transformer-behavior" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 Standard Transformer behavior
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-how-logits-are-used-in-speculative-decoding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 How logits are used in speculative decoding
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-what-speculative-decoding-does-not-do" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 What speculative decoding does not do
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-interaction-with-kv-cache" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Interaction with KV Cache
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Interaction with KV Cache">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-kv-cache-in-the-draft-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 KV cache in the draft model
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-kv-cache-in-the-target-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 KV cache in the target model
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-why-kv-cache-matters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 Why KV cache matters
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kv_caching/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    KV Caching
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Training Pipeline
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Training Pipeline
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../training_techniques/foundation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Foundation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../training_techniques/pre_training/pre_training/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pre-Training
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    References
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-speculative-decoding-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📦1. Speculative Decoding: Overview
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📦1. Speculative Decoding: Overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-why-standard-decoding-is-slow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 Why standard decoding is slow
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-core-idea" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 Core idea
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-background-how-decoding-works-in-decoder-only-llms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📦2. Background: How Decoding Works in Decoder-Only LLMs
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📦2. Background: How Decoding Works in Decoder-Only LLMs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-autoregressive-modeling-assumption" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Autoregressive modeling assumption
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-what-happens-in-one-forward-pass" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 What happens in one forward pass
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-1-embedding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1: Embedding
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-masked-self-attention" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2: Masked self-attention
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-feed-forward-network-ffn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3: Feed Forward Network (FFN)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-computing-logits-and-selecting-the-next-token" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 Computing logits and selecting the next token
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-autoregressive-decoding-loop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 Autoregressive decoding loop
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-key-limitation-of-standard-decoding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5 Key limitation of standard decoding
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-step-by-step-algorithm-for-speculative-decoding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📦3. Step-by-Step Algorithm for Speculative Decoding
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📦3. Step-by-Step Algorithm for Speculative Decoding">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-draft-model-proposes-tokens" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1: Draft model proposes tokens
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-target-model-verifies-the-draft" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2: Target model verifies the draft
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-acceptance-test" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3: Acceptance test
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-rejection-handling-and-fallback" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 4: Rejection handling and fallback
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-this-preserves-correctness" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why this preserves correctness
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-why-speculative-decoding-is-faster" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📦4. Why Speculative Decoding Is Faster
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📦4. Why Speculative Decoding Is Faster">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-standard-decoding-vs-speculative-decoding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Standard decoding vs speculative decoding
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-source-of-the-speedup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Source of the speedup
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-what-speculative-decoding-does-not-optimize" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 What speculative decoding does not optimize
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-practical-speedups" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 Practical speedups
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-relationship-to-logits-for-all-tokens" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Relationship to Logits for All Tokens
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Relationship to Logits for All Tokens">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-standard-transformer-behavior" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 Standard Transformer behavior
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-how-logits-are-used-in-speculative-decoding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 How logits are used in speculative decoding
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-what-speculative-decoding-does-not-do" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 What speculative decoding does not do
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-interaction-with-kv-cache" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Interaction with KV Cache
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Interaction with KV Cache">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-kv-cache-in-the-draft-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 KV cache in the draft model
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-kv-cache-in-the-target-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 KV cache in the target model
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-why-kv-cache-matters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 Why KV cache matters
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+  <h1>Speculative Decoding & Medusa</h1>
+
+<h3 id="1-speculative-decoding-overview">📦1. Speculative Decoding: Overview<a class="headerlink" href="#1-speculative-decoding-overview" title="Permanent link">&para;</a></h3>
+<p>Speculative decoding reduces <strong>inference latency</strong> in decoder-only LLMs while preserving the <strong>exact output distribution</strong> of a large target model.</p>
+<h4 id="11-why-standard-decoding-is-slow">1.1 Why standard decoding is slow<a class="headerlink" href="#11-why-standard-decoding-is-slow" title="Permanent link">&para;</a></h4>
+<p>In standard autoregressive decoding:</p>
+<ul>
+<li>The target model generates <strong>one token per forward pass</strong></li>
+<li>The model is large and expensive</li>
+<li>Latency grows linearly with output length</li>
+</ul>
+<p>KV cache reduces computation but does not remove the sequential bottleneck.</p>
+<h4 id="12-core-idea">1.2 Core idea<a class="headerlink" href="#12-core-idea" title="Permanent link">&para;</a></h4>
+<p>Speculative decoding separates <strong>token proposal</strong> from <strong>token verification</strong>:</p>
+<ul>
+<li>A <strong>draft model</strong> proposes multiple tokens cheaply</li>
+<li>A <strong>target model</strong> verifies them efficiently</li>
+</ul>
+<p>If most draft tokens are accepted, multiple tokens are generated per expensive target model forward pass.</p>
+<hr />
+<h3 id="2-background-how-decoding-works-in-decoder-only-llms">📦2. Background: How Decoding Works in Decoder-Only LLMs<a class="headerlink" href="#2-background-how-decoding-works-in-decoder-only-llms" title="Permanent link">&para;</a></h3>
+<p>Before speculative decoding, it is critical to understand standard autoregressive decoding.</p>
+<h4 id="21-autoregressive-modeling-assumption">2.1 Autoregressive modeling assumption<a class="headerlink" href="#21-autoregressive-modeling-assumption" title="Permanent link">&para;</a></h4>
+<p>A decoder-only LLM models a sequence of tokens using the following factorization:</p>
+<div class="arithmatex">\[
+P(x_1, x_2, \dots, x_T) = \prod_{t=1}^{T} P(x_t \mid x_1, \dots, x_{t-1})
+\]</div>
+<p>Key points:</p>
+<ul>
+<li>Tokens are generated <strong>left to right</strong></li>
+<li>Each new token depends on <strong>all previous tokens</strong></li>
+<li>There is no notion of predicting multiple future tokens independently</li>
+</ul>
+<h4 id="22-what-happens-in-one-forward-pass">2.2 What happens in one forward pass<a class="headerlink" href="#22-what-happens-in-one-forward-pass" title="Permanent link">&para;</a></h4>
+<p>Assume the current sequence length is <span class="arithmatex">\(T\)</span>.</p>
+<h4 id="step-1-embedding">Step 1: Embedding<a class="headerlink" href="#step-1-embedding" title="Permanent link">&para;</a></h4>
+<p>Each token <span class="arithmatex">\(x_t\)</span> is mapped to a vector representation:</p>
+<div class="arithmatex">\[
+\mathbf{e}_t = \text{TokenEmbed}(x_t) + \text{PosEmbed}(t)
+\]</div>
+<h4 id="step-2-masked-self-attention">Step 2: Masked self-attention<a class="headerlink" href="#step-2-masked-self-attention" title="Permanent link">&para;</a></h4>
+<p>For each token position <span class="arithmatex">\(t\)</span>:</p>
+<div class="arithmatex">\[
+\mathbf{q}_t = \mathbf{e}_t W_Q,\quad
+\mathbf{k}_t = \mathbf{e}_t W_K,\quad
+\mathbf{v}_t = \mathbf{e}_t W_V
+\]</div>
+<p>Attention scores are computed as:</p>
+<div class="arithmatex">\[
+\alpha_{t,i} = \frac{\mathbf{q}_t \cdot \mathbf{k}_i}{\sqrt{d_k}}
+\]</div>
+<p>A <strong>causal mask</strong> ensures token <span class="arithmatex">\(t\)</span> can only attend to tokens <span class="arithmatex">\(i \le t\)</span>.</p>
+<p>The attended representation is:</p>
+<div class="arithmatex">\[
+\mathbf{a}_t = \sum_{i=1}^{t} \text{softmax}(\alpha_{t,i}) \mathbf{v}_i
+\]</div>
+<p>This is followed by a linear projection:</p>
+<div class="arithmatex">\[
+\mathbf{o}_t = \mathbf{a}_t W_O
+\]</div>
+<h4 id="step-3-feed-forward-network-ffn">Step 3: Feed Forward Network (FFN)<a class="headerlink" href="#step-3-feed-forward-network-ffn" title="Permanent link">&para;</a></h4>
+<p>Each token is processed independently:</p>
+<div class="arithmatex">\[
+\mathbf{h}_t = \text{FFN}(\mathbf{o}_t)
+\]</div>
+<p>Residual connections and layer normalization are applied around both attention and FFN blocks.</p>
+<p>This completes one decoder layer. The same process repeats across multiple stacked layers.</p>
+<h4 id="23-computing-logits-and-selecting-the-next-token">2.3 Computing logits and selecting the next token<a class="headerlink" href="#23-computing-logits-and-selecting-the-next-token" title="Permanent link">&para;</a></h4>
+<p>After the final decoder layer, each token position has a hidden state <span class="arithmatex">\(\mathbf{h}_t\)</span>.</p>
+<p>These are projected to vocabulary logits:</p>
+<div class="arithmatex">\[
+\mathbf{z}_t = \mathbf{h}_t W_{\text{vocab}}
+\quad \text{where } \mathbf{z}_t \in \mathbb{R}^{|V|}
+\]</div>
+<p>Important clarification:</p>
+<ul>
+<li>Logits are computed <strong>for every token position</strong></li>
+<li>Softmax is applied <strong>over the vocabulary</strong></li>
+<li>During decoding, <strong>only the last position is used</strong></li>
+</ul>
+<div class="arithmatex">\[
+P(x_{T+1} \mid x_{\le T}) = \text{softmax}(\mathbf{z}_T)
+\]</div>
+<p>A token is selected using greedy decoding or sampling and appended to the sequence.</p>
+<h4 id="24-autoregressive-decoding-loop">2.4 Autoregressive decoding loop<a class="headerlink" href="#24-autoregressive-decoding-loop" title="Permanent link">&para;</a></h4>
+<p>For each generated token:</p>
+<ol>
+<li>Run the Transformer forward pass</li>
+<li>Take logits from the last token position</li>
+<li>Apply softmax over the vocabulary</li>
+<li>Select one token</li>
+<li>Append it to the sequence</li>
+<li>Repeat</li>
+</ol>
+<p>This process continues until an end-of-sequence token is produced or a maximum length is reached.</p>
+<h4 id="25-key-limitation-of-standard-decoding">2.5 Key limitation of standard decoding<a class="headerlink" href="#25-key-limitation-of-standard-decoding" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Each generated token requires a new forward pass of the model</li>
+<li>Latency grows linearly with output l</li>
+</ul>
+<h3 id="3-step-by-step-algorithm-for-speculative-decoding">📦3. Step-by-Step Algorithm for Speculative Decoding<a class="headerlink" href="#3-step-by-step-algorithm-for-speculative-decoding" title="Permanent link">&para;</a></h3>
+<p>This section describes the speculative decoding algorithm precisely, step by step, focusing on what each model does and why it is needed.</p>
+<p>Assume:</p>
+<ul>
+<li>Prompt tokens: <span class="arithmatex">\(x\)</span></li>
+<li>Draft model: <span class="arithmatex">\(q\)</span></li>
+<li>Target model: <span class="arithmatex">\(p\)</span></li>
+<li>Draft length: <span class="arithmatex">\(k\)</span></li>
+<li>Drafted tokens: <span class="arithmatex">\(y_1, y_2, \dots, y_k\)</span></li>
+</ul>
+<h4 id="step-1-draft-model-proposes-tokens">Step 1: Draft model proposes tokens<a class="headerlink" href="#step-1-draft-model-proposes-tokens" title="Permanent link">&para;</a></h4>
+<p>The draft model generates tokens autoregressively, starting from the prompt:</p>
+<div class="arithmatex">\[
+y_i \sim q(\cdot \mid x, y_{&lt;i}) \quad \text{for } i = 1 \dots k
+\]</div>
+<p>Key points:</p>
+<ul>
+<li>This step is fast because the draft model is small</li>
+<li>Tokens are sampled, not greedily selected</li>
+<li>The draft model also records the probability of each sampled token</li>
+</ul>
+<h4 id="step-2-target-model-verifies-the-draft">Step 2: Target model verifies the draft<a class="headerlink" href="#step-2-target-model-verifies-the-draft" title="Permanent link">&para;</a></h4>
+<p>The target model is run <strong>once</strong> on the combined sequence: <span class="arithmatex">\([x, y1, y2, ..., yk]\)</span></p>
+<p>This produces target model probabilities:</p>
+<div class="arithmatex">\[
+p(y_i \mid x, y_{&lt;i}) \quad \text{for } i = 1 \dots k
+\]</div>
+<p>Important clarification:</p>
+<ul>
+<li>The target model naturally computes logits for all positions</li>
+<li>Only logits corresponding to the drafted tokens are used</li>
+<li>Logits for the prompt tokens are ignored</li>
+</ul>
+<h4 id="step-3-acceptance-test">Step 3: Acceptance test<a class="headerlink" href="#step-3-acceptance-test" title="Permanent link">&para;</a></h4>
+<p>Each drafted token is accepted independently using:</p>
+<div class="arithmatex">\[
+\alpha_i = \min\left(1, \frac{p(y_i \mid x, y_{&lt;i})}{q(y_i \mid x, y_{&lt;i})}\right)
+\]</div>
+<p>Procedure:</p>
+<ol>
+<li>Sample <span class="arithmatex">\(u \sim \text{Uniform}(0, 1)\)</span></li>
+<li>Accept token <span class="arithmatex">\(y_i\)</span> if <span class="arithmatex">\(u \le \alpha_i\)</span></li>
+<li>Stop at the first rejected token</li>
+</ol>
+<h4 id="step-4-rejection-handling-and-fallback">Step 4: Rejection handling and fallback<a class="headerlink" href="#step-4-rejection-handling-and-fallback" title="Permanent link">&para;</a></h4>
+<p>If token <span class="arithmatex">\(y_j\)</span> is rejected:</p>
+<ul>
+<li>Tokens <span class="arithmatex">\(y_j, y_{j+1}, \dots, y_k\)</span> are discarded</li>
+<li>The next token is sampled directly from the target model:
+  $$
+  x_{\text{next}} \sim p(\cdot \mid x, y_{&lt;j})
+  $$</li>
+<li>Speculative decoding restarts from the new prefix</li>
+</ul>
+<p>If no token is rejected, all <span class="arithmatex">\(k\)</span> draft tokens are accepted.</p>
+<h4 id="why-this-preserves-correctness">Why this preserves correctness<a class="headerlink" href="#why-this-preserves-correctness" title="Permanent link">&para;</a></h4>
+<ul>
+<li>The acceptance rule implements rejection sampling</li>
+<li>Bias introduced by the draft model is corrected</li>
+<li>The final output distribution exactly matches the target model</li>
+</ul>
+<p>This guarantees that speculative decoding is statistically equivalent to standard decoding with the target model.</p>
+<h3 id="4-why-speculative-decoding-is-faster">📦4. Why Speculative Decoding Is Faster<a class="headerlink" href="#4-why-speculative-decoding-is-faster" title="Permanent link">&para;</a></h3>
+<p>Speculative decoding reduces inference latency by decreasing how often the expensive target model must be executed.</p>
+<h4 id="41-standard-decoding-vs-speculative-decoding">4.1 Standard decoding vs speculative decoding<a class="headerlink" href="#41-standard-decoding-vs-speculative-decoding" title="Permanent link">&para;</a></h4>
+<p><strong>Standard decoding</strong></p>
+<ul>
+<li>One target model forward pass per generated token</li>
+<li>For <span class="arithmatex">\(N\)</span> tokens, <span class="arithmatex">\(N\)</span> forward passes are required</li>
+</ul>
+<p><strong>Speculative decoding</strong></p>
+<ul>
+<li>The draft model proposes <span class="arithmatex">\(k\)</span> tokens cheaply</li>
+<li>A single target model forward pass verifies up to <span class="arithmatex">\(k\)</span> tokens</li>
+<li>Multiple tokens can be generated per target model invocation</li>
+</ul>
+<h4 id="42-source-of-the-speedup">4.2 Source of the speedup<a class="headerlink" href="#42-source-of-the-speedup" title="Permanent link">&para;</a></h4>
+<p>The speedup comes from two properties:</p>
+<ul>
+<li>The draft model is significantly cheaper than the target model</li>
+<li>The target model can evaluate multiple draft tokens in parallel</li>
+</ul>
+<p>If the acceptance rate is high, the target model is called much less frequently.</p>
+<h4 id="43-what-speculative-decoding-does-not-optimize">4.3 What speculative decoding does not optimize<a class="headerlink" href="#43-what-speculative-decoding-does-not-optimize" title="Permanent link">&para;</a></h4>
+<p>Speculative decoding does not reduce:</p>
+<ul>
+<li>The total number of FLOPs in the target model</li>
+<li>The per-token computation inside the Transformer</li>
+</ul>
+<p>It primarily reduces <strong>latency</strong>, not theoretical compute.</p>
+<h4 id="44-practical-speedups">4.4 Practical speedups<a class="headerlink" href="#44-practical-speedups" title="Permanent link">&para;</a></h4>
+<p>In practice, speculative decoding often achieves:</p>
+<ul>
+<li>1.5x to 3x latency improvement</li>
+<li>Higher gains when draft and target distributions are close</li>
+</ul>
+<p>Actual speedup depends on model sizes, hardware, and acceptance rate.</p>
+<h3 id="5-relationship-to-logits-for-all-tokens">5. Relationship to Logits for All Tokens<a class="headerlink" href="#5-relationship-to-logits-for-all-tokens" title="Permanent link">&para;</a></h3>
+<p>Speculative decoding does not introduce a new requirement to compute logits for all tokens.</p>
+<h4 id="51-standard-transformer-behavior">5.1 Standard Transformer behavior<a class="headerlink" href="#51-standard-transformer-behavior" title="Permanent link">&para;</a></h4>
+<p>A Transformer forward pass naturally produces:</p>
+<ul>
+<li>One hidden state per token position</li>
+<li>One vocabulary logits vector per token position</li>
+</ul>
+<p>This is true during both training and inference.</p>
+<h4 id="52-how-logits-are-used-in-speculative-decoding">5.2 How logits are used in speculative decoding<a class="headerlink" href="#52-how-logits-are-used-in-speculative-decoding" title="Permanent link">&para;</a></h4>
+<p>During verification:</p>
+<ul>
+<li>The target model is run once on the prompt plus draft tokens</li>
+<li>Logits for prompt tokens are ignored</li>
+<li>Only logits corresponding to the draft token positions are used</li>
+</ul>
+<p>Speculative decoding simply reuses standard per-position logits.</p>
+<h4 id="53-what-speculative-decoding-does-not-do">5.3 What speculative decoding does not do<a class="headerlink" href="#53-what-speculative-decoding-does-not-do" title="Permanent link">&para;</a></h4>
+<p>Speculative decoding does not:</p>
+<ul>
+<li>Perform softmax over token positions</li>
+<li>Predict future tokens independently</li>
+<li>Generate tokens in parallel from the target model</li>
+</ul>
+<p>The target model still defines an autoregressive distribution.</p>
+<h3 id="6-interaction-with-kv-cache">6. Interaction with KV Cache<a class="headerlink" href="#6-interaction-with-kv-cache" title="Permanent link">&para;</a></h3>
+<p>KV cache improves performance in speculative decoding but does not change the algorithm.</p>
+<h4 id="61-kv-cache-in-the-draft-model">6.1 KV cache in the draft model<a class="headerlink" href="#61-kv-cache-in-the-draft-model" title="Permanent link">&para;</a></h4>
+<ul>
+<li>The draft model maintains its own KV cache</li>
+<li>Draft tokens are generated autoregressively</li>
+<li>KV cache allows fast token proposal</li>
+</ul>
+<h4 id="62-kv-cache-in-the-target-model">6.2 KV cache in the target model<a class="headerlink" href="#62-kv-cache-in-the-target-model" title="Permanent link">&para;</a></h4>
+<ul>
+<li>The target model computes KV cache for the entire speculative window</li>
+<li>KV states corresponding to accepted tokens are reused</li>
+<li>KV states for rejected tokens are discarded</li>
+</ul>
+<h4 id="63-why-kv-cache-matters">6.3 Why KV cache matters<a class="headerlink" href="#63-why-kv-cache-matters" title="Permanent link">&para;</a></h4>
+<p>KV cache:</p>
+<ul>
+<li>Avoids recomputing attention for previously processed tokens</li>
+<li>Reduces per-step computation</li>
+<li>Improves practical throughput</li>
+</ul>
+<p>KV cache affects efficiency only, not correctness.</p>
+<hr />
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.expand", "navigation.top", "search.highlight", "search.share", "content.code.copy", "mathjax"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
