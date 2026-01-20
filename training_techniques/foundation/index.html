@@ -1477,10 +1477,12 @@
 <div class="arithmatex">\[
 P(x_1, \dots, x_T) = \prod_{t=1}^{T} P(x_t \mid x_{&lt;t})
 \]</div>
-<p>This formulation assumes:
-- Tokens are conditionally independent given their history
-- Knowledge is captured implicitly through long context dependencies
-- Tokenization defines the atomic units of prediction</p>
+<p>This formulation assumes:</p>
+<ul>
+<li>Tokens are conditionally independent given their history</li>
+<li>Knowledge is captured implicitly through long context dependencies</li>
+<li>Tokenization defines the atomic units of prediction</li>
+</ul>
 <h3 id="the-loss-function-negative-log-likelihood">The Loss Function: Negative Log-Likelihood<a class="headerlink" href="#the-loss-function-negative-log-likelihood" title="Permanent link">&para;</a></h3>
 <p>Training minimizes the <strong>Negative Log-Likelihood (NLL)</strong> of the observed data, which is equivalent to <strong>Cross-Entropy Loss</strong>:</p>
 <div class="arithmatex">\[
