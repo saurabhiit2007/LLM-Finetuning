@@ -1,5 +1,3 @@
-## KV Caching
-
 ### 📦1. Self Attention Recap
 
 Given hidden states $X \in \mathbb{R}^{T \times d}$:
