@@ -65,7 +65,7 @@ MLE provides a stable and scalable objective but does not encode preferences suc
 
 Teacher forcing is a training strategy where the model is conditioned on the **ground-truth previous token** rather than its own prediction when computing the next-token loss. For a sequence \(x_1, \dots, x_T\), the model always receives \(x_{t-1}\) as input when predicting \(x_t\), even if it would have predicted a different token at step \(t-1\).
 
-### Teacher Forcing: Small Practical Example
+**Small Practical Example**
 
 **Task:** Predict the sentence  
 > *“The cat sat on the mat”*
@@ -94,8 +94,6 @@ At each step, the model is conditioned on the **ground-truth previous token**.
 
 Even if the model predicts an incorrect token at any step, the **next input still uses the true token** from the dataset.
 
----
-
 #### Step 3: Inference time behavior
 At inference, the model must condition on its **own predictions**.
 
@@ -107,68 +105,88 @@ At inference, the model must condition on its **own predictions**.
 
 This train–test mismatch is known as **exposure bias** and is a key limitation of teacher forcing.
 
-
-This allows:
+**Advantages:**
 
 - **Full parallelization** of loss computation across all positions in a Transformer
 - **Stable gradients**, since errors do not compound during training
 
-However, teacher forcing introduces **exposure bias**: during inference, the model must condition on its own past predictions, a distribution shift that can lead to error accumulation. This gap motivates post-training techniques such as supervised fine-tuning and reinforcement learning based alignment.
-
-**Advantages:**
-
-- Enables parallel computation in Transformers
-- Stabilizes training and accelerates convergence
-
 **Limitation: Exposure Bias**
 
-- At inference time, the model conditions on its own predictions
-- Errors can compound, leading to drift
-- This motivates post-training methods like SFT, RLHF, and DPO
+- Introduces **exposure bias**: during inference, the model must condition on its own past predictions, a distribution shift that can lead to error accumulation. This gap motivates post-training techniques such as supervised fine-tuning and reinforcement learning based alignment.
 
 ### 2.3 Perplexity as an Evaluation Metric
 
-**Perplexity (PPL)** is defined as:
+**Perplexity** measures how uncertain a language model is, on average, when predicting the next token in a sequence.
+
+Formally, if a model is trained using cross-entropy loss $\mathcal{L}$, then perplexity is defined as:
 
 $$
 \text{PPL} = \exp(\mathcal{L})
 $$
 
-Interpretation:
+where $\mathcal{L}$ is the **average negative log-probability** assigned to the correct next token.
 
-- PPL approximates the average branching factor
-- Lower PPL means lower uncertainty about future tokens
+#### Intuition
 
-Limitations:
+A language model repeatedly answers the question:
 
-- PPL correlates weakly with reasoning, factuality, or alignment
-- Two models with similar PPL can differ significantly in downstream capability
+> How many plausible choices do I believe the next token could be?
+
+Perplexity converts log probabilities back into an interpretable scale representing the **effective number of choices**.
+
+- **PPL = 1**  
+  The model is fully confident and assigns probability 1 to the correct token.
+
+- **PPL = 10**  
+  The model behaves as if it is choosing uniformly among about 10 tokens.
+
+- **PPL = 100**  
+  The model is highly uncertain, with roughly 100 plausible next tokens.
+
+This is why perplexity is often described as the model’s **average branching factor**.
+
+#### Why Lower Perplexity Is Better
+
+- Lower PPL means the model assigns higher probability to the correct next token.
+- This corresponds to lower uncertainty and better next-token prediction.
+- Minimizing cross-entropy during training directly minimizes perplexity.
+
+#### Important Clarification
+
+Perplexity is **not** a direct measure of:
+- Reasoning ability
+- Factual correctness
+- Alignment or instruction following
+
+It only measures how well the model predicts the data distribution. While lower perplexity often correlates with better text quality, it does not guarantee better downstream performance.
 
 ---
 
-## 1.3 Why Scaling Works and Where it Breaks
+## 3. Why Scaling Works and Where it Breaks
 
-### Empirical Scaling Laws
+### 3.1 Empirical Scaling Laws
 
 Performance improves predictably as a power-law function of:
+
 - Model parameters
 - Training tokens
 - Compute budget
 
 This empirical behavior explains the rapid gains from larger models.
 
-### Kaplan Scaling Laws (2020)
+#### Kaplan Scaling Laws (2020)
 
 Early results suggested scaling model size was the dominant factor.
 
 - Loss scales roughly as a power-law in parameter count
 - Data was treated as effectively unlimited
 
-### Chinchilla Scaling Laws (2022)
+#### Chinchilla Scaling Laws (2022)
 
 Later work showed most large models were undertrained.
 
 Key findings:
+
 - Optimal performance requires balancing parameters and tokens
 - Roughly **20 training tokens per parameter** is compute optimal
 - Smaller models trained on more data can outperform larger undertrained models
@@ -177,23 +195,27 @@ This led to data-centric model design such as LLaMA and Mistral.
 
 ---
 
-### Where Scaling Breaks
+### 3.2 Where Scaling Breaks
 
 #### 1. Data Scarcity and Synthetic Feedback Loops
+
 - High-quality human text is limited
 - Synthetic data risks reducing diversity
 - Repeated self-training can lead to model collapse
 
 #### 2. Capability Saturation
+
 - Loss improves smoothly, but abilities emerge discontinuously
 - Reasoning, planning, and tool use do not scale linearly with perplexity
 - Small loss gains can hide large behavioral differences
 
 #### 3. Inference Cost and Latency
+
 - Larger models increase memory, latency, and cost
 - This motivates inference-efficient designs
 
 #### 4. Test-Time Scaling
+
 - Recent systems scale inference compute rather than parameters
 - Models generate longer internal reasoning traces
 - This shifts scaling from training time to inference time
@@ -201,29 +223,3 @@ This led to data-centric model design such as LLaMA and Mistral.
 Examples include OpenAI o1 and DeepSeek-R1.
 
 ---
-
-## 1.4 Interview Cheatsheet
-
-| Concept | Explanation | Interview Signal |
-|------|-------------|------------------|
-| Cross-Entropy | Optimizes token probability matching | Core training objective |
-| KL Divergence | Distance to true language distribution | Shows theory depth |
-| Teacher Forcing | Parallelizable training strategy | Leads to exposure bias |
-| Chinchilla Optimality | Tokens proportional to parameters | Compute awareness |
-| Emergence | Capabilities not directly trained | Explains scaling rationale |
-| Context Window | Maximum visible history | Limits memory and reasoning |
-
----
-
-### Key Intuition Resource
-
-[Generative AI explained](https://www.youtube.com/watch?v=G2fqAlgmoPo)
-
-This visualization explains why next-token prediction is sufficient to model complex distributions across text, images, and audio.
-
----
-
-### Next Section
-
-**2. Architecture and Attention Mechanisms**  
-Multi-Head Attention, positional encodings, KV caching, and why Transformers scale.
