@@ -19,11 +19,8 @@
         <link rel="next" href="../qlora/">
       
       
-        
-      
-      
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.23">
     
     
       
@@ -31,10 +28,10 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.84d31ad4.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -57,6 +54,7 @@
     
       
 
+    
     
     
   </head>
@@ -262,14 +260,9 @@
   
   
   <span class="md-ellipsis">
-    
-  
     Home
-  
-
     
   </span>
-  
   
 
       </a>
@@ -302,14 +295,9 @@
   
   
   <span class="md-ellipsis">
-    
-  
     PEFT Techniques
-  
-
     
   </span>
-  
   
 
             <span class="md-nav__icon md-icon"></span>
@@ -318,11 +306,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
-            
-  
-    PEFT Techniques
-  
-
+            PEFT Techniques
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -338,14 +322,9 @@
   
   
   <span class="md-ellipsis">
-    
-  
     Prefix Tuning
-  
-
     
   </span>
-  
   
 
       </a>
@@ -375,14 +354,9 @@
   
   
   <span class="md-ellipsis">
-    
-  
     LoRA
-  
-
     
   </span>
-  
   
 
           <span class="md-nav__icon md-icon"></span>
@@ -393,14 +367,9 @@
   
   
   <span class="md-ellipsis">
-    
-  
     LoRA
-  
-
     
   </span>
-  
   
 
       </a>
@@ -423,9 +392,7 @@
         <li class="md-nav__item">
   <a href="#1-overview" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        1. Overview
-      
+      1. Overview
     </span>
   </a>
   
@@ -434,9 +401,7 @@
         <li class="md-nav__item">
   <a href="#2-motivation" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        2. Motivation
-      
+      2. Motivation
     </span>
   </a>
   
@@ -445,9 +410,7 @@
         <li class="md-nav__item">
   <a href="#3-core-idea" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        3. Core Idea
-      
+      3. Core Idea
     </span>
   </a>
   
@@ -456,9 +419,7 @@
         <li class="md-nav__item">
   <a href="#4-lora-in-attention-layers" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        4. LoRA in Attention Layers
-      
+      4. LoRA in Attention Layers
     </span>
   </a>
   
@@ -467,9 +428,7 @@
         <li class="md-nav__item">
   <a href="#5-objective-function" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        5. Objective Function
-      
+      5. Objective Function
     </span>
   </a>
   
@@ -478,9 +437,7 @@
         <li class="md-nav__item">
   <a href="#6-implementation-details-pseudo-code" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        6. Implementation Details (Pseudo-Code)
-      
+      6. Implementation Details (Pseudo-Code)
     </span>
   </a>
   
@@ -489,9 +446,7 @@
         <li class="md-nav__item">
   <a href="#7-hyperparameters-heuristics" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        7. Hyperparameters &amp; Heuristics
-      
+      7. Hyperparameters &amp; Heuristics
     </span>
   </a>
   
@@ -500,9 +455,7 @@
         <li class="md-nav__item">
   <a href="#8-training-configurations-memory-optimizations" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        8. Training Configurations &amp; Memory Optimizations
-      
+      8. Training Configurations &amp; Memory Optimizations
     </span>
   </a>
   
@@ -511,9 +464,7 @@
         <li class="md-nav__item">
   <a href="#9-common-issues-and-concrete-solutions" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        9. Common Issues and Concrete Solutions
-      
+      9. Common Issues and Concrete Solutions
     </span>
   </a>
   
@@ -523,9 +474,7 @@
           <li class="md-nav__item">
   <a href="#oom-cuda-out-of-memory" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        🧠 OOM / CUDA Out of Memory
-      
+      🧠 OOM / CUDA Out of Memory
     </span>
   </a>
   
@@ -534,9 +483,7 @@
           <li class="md-nav__item">
   <a href="#training-instability-divergence" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        ⚡ Training Instability / Divergence
-      
+      ⚡ Training Instability / Divergence
     </span>
   </a>
   
@@ -545,9 +492,7 @@
           <li class="md-nav__item">
   <a href="#underfitting-insufficient-capacity" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        🪫 Underfitting (Insufficient Capacity)
-      
+      🪫 Underfitting (Insufficient Capacity)
     </span>
   </a>
   
@@ -556,9 +501,7 @@
           <li class="md-nav__item">
   <a href="#overfitting-on-small-datasets" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        🧩 Overfitting on Small Datasets
-      
+      🧩 Overfitting on Small Datasets
     </span>
   </a>
   
@@ -567,9 +510,7 @@
           <li class="md-nav__item">
   <a href="#quantization-compatibility-issues" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        ⚙️ Quantization Compatibility Issues
-      
+      ⚙️ Quantization Compatibility Issues
     </span>
   </a>
   
@@ -578,9 +519,7 @@
           <li class="md-nav__item">
   <a href="#adapter-conflicts-when-stacking" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        🔗 Adapter Conflicts When Stacking
-      
+      🔗 Adapter Conflicts When Stacking
     </span>
   </a>
   
@@ -594,9 +533,7 @@
         <li class="md-nav__item">
   <a href="#10-best-practices-checklist" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        10. Best Practices &amp; Checklist
-      
+      10. Best Practices &amp; Checklist
     </span>
   </a>
   
@@ -605,9 +542,7 @@
         <li class="md-nav__item">
   <a href="#11-limitations-challenges" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        11. Limitations &amp; Challenges
-      
+      11. Limitations &amp; Challenges
     </span>
   </a>
   
@@ -616,9 +551,7 @@
         <li class="md-nav__item">
   <a href="#12-comparison-lora-vs-other-methods" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        12. Comparison: LoRA vs Other Methods
-      
+      12. Comparison: LoRA vs Other Methods
     </span>
   </a>
   
@@ -645,14 +578,9 @@
   
   
   <span class="md-ellipsis">
-    
-  
     QLoRA
-  
-
     
   </span>
-  
   
 
       </a>
@@ -693,14 +621,9 @@
   
   
   <span class="md-ellipsis">
-    
-  
     Supporting Topics
-  
-
     
   </span>
-  
   
 
             <span class="md-nav__icon md-icon"></span>
@@ -709,11 +632,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
-            
-  
-    Supporting Topics
-  
-
+            Supporting Topics
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -729,14 +648,9 @@
   
   
   <span class="md-ellipsis">
-    
-  
     4-bit NormalFloat (NF4)
-  
-
     
   </span>
-  
   
 
       </a>
@@ -757,14 +671,9 @@
   
   
   <span class="md-ellipsis">
-    
-  
     Block-wise k-bit Quantization
-  
-
     
   </span>
-  
   
 
       </a>
@@ -785,14 +694,9 @@
   
   
   <span class="md-ellipsis">
-    
-  
     Accelerate Framework
-  
-
     
   </span>
-  
   
 
       </a>
@@ -813,14 +717,9 @@
   
   
   <span class="md-ellipsis">
-    
-  
     BP16
-  
-
     
   </span>
-  
   
 
       </a>
@@ -841,14 +740,9 @@
   
   
   <span class="md-ellipsis">
-    
-  
     Flash Attention
-  
-
     
   </span>
-  
   
 
       </a>
@@ -869,14 +763,9 @@
   
   
   <span class="md-ellipsis">
-    
-  
     Decoding Strategies
-  
-
     
   </span>
-  
   
 
       </a>
@@ -897,14 +786,9 @@
   
   
   <span class="md-ellipsis">
-    
-  
     Speculative Decoding & Medusa
-  
-
     
   </span>
-  
   
 
       </a>
@@ -925,14 +809,9 @@
   
   
   <span class="md-ellipsis">
-    
-  
     KV Caching
-  
-
     
   </span>
-  
   
 
       </a>
@@ -973,14 +852,9 @@
   
   
   <span class="md-ellipsis">
-    
-  
     Training Pipeline
-  
-
     
   </span>
-  
   
 
             <span class="md-nav__icon md-icon"></span>
@@ -989,11 +863,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
-            
-  
-    Training Pipeline
-  
-
+            Training Pipeline
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1009,14 +879,9 @@
   
   
   <span class="md-ellipsis">
-    
-  
     Foundation
-  
-
     
   </span>
-  
   
 
       </a>
@@ -1037,14 +902,9 @@
   
   
   <span class="md-ellipsis">
-    
-  
     Pre-Training
-  
-
     
   </span>
-  
   
 
       </a>
@@ -1072,14 +932,9 @@
   
   
   <span class="md-ellipsis">
-    
-  
     References
-  
-
     
   </span>
-  
   
 
       </a>
@@ -1116,9 +971,7 @@
         <li class="md-nav__item">
   <a href="#1-overview" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        1. Overview
-      
+      1. Overview
     </span>
   </a>
   
@@ -1127,9 +980,7 @@
         <li class="md-nav__item">
   <a href="#2-motivation" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        2. Motivation
-      
+      2. Motivation
     </span>
   </a>
   
@@ -1138,9 +989,7 @@
         <li class="md-nav__item">
   <a href="#3-core-idea" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        3. Core Idea
-      
+      3. Core Idea
     </span>
   </a>
   
@@ -1149,9 +998,7 @@
         <li class="md-nav__item">
   <a href="#4-lora-in-attention-layers" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        4. LoRA in Attention Layers
-      
+      4. LoRA in Attention Layers
     </span>
   </a>
   
@@ -1160,9 +1007,7 @@
         <li class="md-nav__item">
   <a href="#5-objective-function" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        5. Objective Function
-      
+      5. Objective Function
     </span>
   </a>
   
@@ -1171,9 +1016,7 @@
         <li class="md-nav__item">
   <a href="#6-implementation-details-pseudo-code" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        6. Implementation Details (Pseudo-Code)
-      
+      6. Implementation Details (Pseudo-Code)
     </span>
   </a>
   
@@ -1182,9 +1025,7 @@
         <li class="md-nav__item">
   <a href="#7-hyperparameters-heuristics" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        7. Hyperparameters &amp; Heuristics
-      
+      7. Hyperparameters &amp; Heuristics
     </span>
   </a>
   
@@ -1193,9 +1034,7 @@
         <li class="md-nav__item">
   <a href="#8-training-configurations-memory-optimizations" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        8. Training Configurations &amp; Memory Optimizations
-      
+      8. Training Configurations &amp; Memory Optimizations
     </span>
   </a>
   
@@ -1204,9 +1043,7 @@
         <li class="md-nav__item">
   <a href="#9-common-issues-and-concrete-solutions" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        9. Common Issues and Concrete Solutions
-      
+      9. Common Issues and Concrete Solutions
     </span>
   </a>
   
@@ -1216,9 +1053,7 @@
           <li class="md-nav__item">
   <a href="#oom-cuda-out-of-memory" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        🧠 OOM / CUDA Out of Memory
-      
+      🧠 OOM / CUDA Out of Memory
     </span>
   </a>
   
@@ -1227,9 +1062,7 @@
           <li class="md-nav__item">
   <a href="#training-instability-divergence" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        ⚡ Training Instability / Divergence
-      
+      ⚡ Training Instability / Divergence
     </span>
   </a>
   
@@ -1238,9 +1071,7 @@
           <li class="md-nav__item">
   <a href="#underfitting-insufficient-capacity" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        🪫 Underfitting (Insufficient Capacity)
-      
+      🪫 Underfitting (Insufficient Capacity)
     </span>
   </a>
   
@@ -1249,9 +1080,7 @@
           <li class="md-nav__item">
   <a href="#overfitting-on-small-datasets" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        🧩 Overfitting on Small Datasets
-      
+      🧩 Overfitting on Small Datasets
     </span>
   </a>
   
@@ -1260,9 +1089,7 @@
           <li class="md-nav__item">
   <a href="#quantization-compatibility-issues" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        ⚙️ Quantization Compatibility Issues
-      
+      ⚙️ Quantization Compatibility Issues
     </span>
   </a>
   
@@ -1271,9 +1098,7 @@
           <li class="md-nav__item">
   <a href="#adapter-conflicts-when-stacking" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        🔗 Adapter Conflicts When Stacking
-      
+      🔗 Adapter Conflicts When Stacking
     </span>
   </a>
   
@@ -1287,9 +1112,7 @@
         <li class="md-nav__item">
   <a href="#10-best-practices-checklist" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        10. Best Practices &amp; Checklist
-      
+      10. Best Practices &amp; Checklist
     </span>
   </a>
   
@@ -1298,9 +1121,7 @@
         <li class="md-nav__item">
   <a href="#11-limitations-challenges" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        11. Limitations &amp; Challenges
-      
+      11. Limitations &amp; Challenges
     </span>
   </a>
   
@@ -1309,9 +1130,7 @@
         <li class="md-nav__item">
   <a href="#12-comparison-lora-vs-other-methods" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        12. Comparison: LoRA vs Other Methods
-      
+      12. Comparison: LoRA vs Other Methods
     </span>
   </a>
   
@@ -1327,7 +1146,6 @@
           
           
             <div class="md-content" data-md-component="content">
-              
               <article class="md-content__inner md-typeset">
                 
                   
@@ -1401,8 +1219,8 @@ h = (W_Q + \Delta W_Q) x = W_Q x + B_Q A_Q x
 <p>This selective gradient flow drastically reduces training cost and memory footprint.</p>
 <hr />
 <h3 id="6-implementation-details-pseudo-code">6. Implementation Details (Pseudo-Code)<a class="headerlink" href="#6-implementation-details-pseudo-code" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">LoRALinear</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">in_dim</span><span class="p">,</span> <span class="n">out_dim</span><span class="p">,</span> <span class="n">r</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">16</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">LoRALinear</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">in_dim</span><span class="p">,</span> <span class="n">out_dim</span><span class="p">,</span> <span class="n">r</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">16</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">r</span> <span class="o">=</span> <span class="n">r</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">alpha</span> <span class="o">=</span> <span class="n">alpha</span>
@@ -1417,7 +1235,7 @@ h = (W_Q + \Delta W_Q) x = W_Q x + B_Q A_Q x
 
         <span class="bp">self</span><span class="o">.</span><span class="n">weight</span><span class="o">.</span><span class="n">requires_grad</span> <span class="o">=</span> <span class="kc">False</span>  <span class="c1"># Freeze base weights</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">F</span><span class="o">.</span><span class="n">linear</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">weight</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">scaling</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">B</span> <span class="o">@</span> <span class="bp">self</span><span class="o">.</span><span class="n">A</span><span class="p">)</span>
 </code></pre></div>
 <h3 id="7-hyperparameters-heuristics">7. Hyperparameters &amp; Heuristics<a class="headerlink" href="#7-hyperparameters-heuristics" title="Permanent link">&para;</a></h3>
@@ -1631,11 +1449,10 @@ h = (W_Q + \Delta W_Q) x = W_Q x + B_Q A_Q x
     
     
       
-      
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.expand", "navigation.top", "search.highlight", "search.share", "content.code.copy", "mathjax"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.expand", "navigation.top", "search.highlight", "search.share", "content.code.copy", "mathjax"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
       
         <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
       
