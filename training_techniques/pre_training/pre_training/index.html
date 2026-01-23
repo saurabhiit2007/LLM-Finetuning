@@ -801,27 +801,27 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#negative-log-likelihood-objective" class="md-nav__link">
+  <a href="#22-negative-log-likelihood-objective" class="md-nav__link">
     <span class="md-ellipsis">
-      Negative Log Likelihood Objective
+      2.2 Negative Log Likelihood Objective
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#chinchilla-scaling-laws-training-optimality" class="md-nav__link">
+  <a href="#23-chinchilla-scaling-laws-training-optimality" class="md-nav__link">
     <span class="md-ellipsis">
-      Chinchilla Scaling Laws (Training Optimality)
+      2.3 Chinchilla Scaling Laws (Training Optimality)
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#inference-optimal-scaling-the-llama-paradigm" class="md-nav__link">
+  <a href="#24-inference-optimal-scaling-the-llama-paradigm" class="md-nav__link">
     <span class="md-ellipsis">
-      Inference-Optimal Scaling (The LLaMA Paradigm)
+      2.4 Inference-Optimal Scaling (The LLaMA Paradigm)
     </span>
   </a>
   
@@ -842,13 +842,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#22-data-pipeline-and-quality" class="md-nav__link">
+  <a href="#3-data-pipeline-and-quality" class="md-nav__link">
     <span class="md-ellipsis">
-      2.2 Data Pipeline and Quality
+      3. Data Pipeline and Quality
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="2.2 Data Pipeline and Quality">
+    <nav class="md-nav" aria-label="3. Data Pipeline and Quality">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1096,27 +1096,27 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#negative-log-likelihood-objective" class="md-nav__link">
+  <a href="#22-negative-log-likelihood-objective" class="md-nav__link">
     <span class="md-ellipsis">
-      Negative Log Likelihood Objective
+      2.2 Negative Log Likelihood Objective
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#chinchilla-scaling-laws-training-optimality" class="md-nav__link">
+  <a href="#23-chinchilla-scaling-laws-training-optimality" class="md-nav__link">
     <span class="md-ellipsis">
-      Chinchilla Scaling Laws (Training Optimality)
+      2.3 Chinchilla Scaling Laws (Training Optimality)
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#inference-optimal-scaling-the-llama-paradigm" class="md-nav__link">
+  <a href="#24-inference-optimal-scaling-the-llama-paradigm" class="md-nav__link">
     <span class="md-ellipsis">
-      Inference-Optimal Scaling (The LLaMA Paradigm)
+      2.4 Inference-Optimal Scaling (The LLaMA Paradigm)
     </span>
   </a>
   
@@ -1137,13 +1137,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#22-data-pipeline-and-quality" class="md-nav__link">
+  <a href="#3-data-pipeline-and-quality" class="md-nav__link">
     <span class="md-ellipsis">
-      2.2 Data Pipeline and Quality
+      3. Data Pipeline and Quality
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="2.2 Data Pipeline and Quality">
+    <nav class="md-nav" aria-label="3. Data Pipeline and Quality">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1326,25 +1326,31 @@ x = (x_1, x_2, \dots, x_T)
 <div class="arithmatex">\[
 P(x_t \mid x_1, \dots, x_{t-1})
 \]</div>
-<p>This formulation:
-- Requires no human annotation
-- Scales naturally with data size
-- Supports emergent behaviors such as reasoning and in-context learning</p>
+<p>This formulation:</p>
+<ul>
+<li>Requires no human annotation</li>
+<li>Scales naturally with data size</li>
+<li>Supports emergent behaviors such as reasoning and in-context learning</li>
+</ul>
 <p>Despite its simplicity, this objective implicitly captures syntax, semantics, world knowledge, and procedural patterns.</p>
 <hr />
-<h3 id="negative-log-likelihood-objective">Negative Log Likelihood Objective<a class="headerlink" href="#negative-log-likelihood-objective" title="Permanent link">&para;</a></h3>
+<h3 id="22-negative-log-likelihood-objective">2.2 Negative Log Likelihood Objective<a class="headerlink" href="#22-negative-log-likelihood-objective" title="Permanent link">&para;</a></h3>
 <p>Training minimizes the <strong>Negative Log Likelihood (NLL)</strong>:</p>
 <div class="arithmatex">\[
 \mathcal{L} = - \mathbb{E}_{x \sim \mathcal{D}} \sum_{t=1}^{T} \log P_\theta(x_t \mid x_{&lt;t})
 \]</div>
-<p>Key properties:
-- Equivalent to minimizing cross-entropy
-- Strongly penalizes confident incorrect predictions
-- Encourages calibration under idealized assumptions</p>
-<p>Important limitation:
-- NLL optimizes <em>average token prediction</em>, not task success, reasoning correctness, or truthfulness.</p>
+<p>Key properties:</p>
+<ul>
+<li>Equivalent to minimizing cross-entropy</li>
+<li>Strongly penalizes confident incorrect predictions</li>
+<li>Encourages calibration under idealized assumptions</li>
+</ul>
+<p>Important limitation:</p>
+<ul>
+<li>NLL optimizes <em>average token prediction</em>, not task success, reasoning correctness, or truthfulness.</li>
+</ul>
 <hr />
-<h3 id="chinchilla-scaling-laws-training-optimality">Chinchilla Scaling Laws (Training Optimality)<a class="headerlink" href="#chinchilla-scaling-laws-training-optimality" title="Permanent link">&para;</a></h3>
+<h3 id="23-chinchilla-scaling-laws-training-optimality">2.3 Chinchilla Scaling Laws (Training Optimality)<a class="headerlink" href="#23-chinchilla-scaling-laws-training-optimality" title="Permanent link">&para;</a></h3>
 <p>The Chinchilla results (Hoffmann et al.) showed that many prior models were <strong>over-parameterized and under-trained</strong>.</p>
 <p>Core insight:</p>
 <blockquote>
@@ -1352,11 +1358,13 @@ P(x_t \mid x_1, \dots, x_{t-1})
 </blockquote>
 <p>This shifted industry practice from "bigger models" to "compute-optimal training" with massive, high-quality corpora.</p>
 <hr />
-<h3 id="inference-optimal-scaling-the-llama-paradigm">Inference-Optimal Scaling (The LLaMA Paradigm)<a class="headerlink" href="#inference-optimal-scaling-the-llama-paradigm" title="Permanent link">&para;</a></h3>
+<h3 id="24-inference-optimal-scaling-the-llama-paradigm">2.4 Inference-Optimal Scaling (The LLaMA Paradigm)<a class="headerlink" href="#24-inference-optimal-scaling-the-llama-paradigm" title="Permanent link">&para;</a></h3>
 <p>While Chinchilla optimizes <em>training</em> cost, it ignores <em>inference</em> cost. In production, inference cost is proportional to active parameters, not training tokens.</p>
-<p><strong>The Shift:</strong>
-- <strong>Chinchilla Optimal:</strong> Train a massive model on fewer tokens (Cheapest to train).
-- <strong>Inference Optimal:</strong> Train a smaller model on <em>far more</em> tokens than Chinchilla recommends (Cheapest to serve).</p>
+<p><strong>The Shift:</strong></p>
+<ul>
+<li><strong>Chinchilla Optimal:</strong> Train a massive model on fewer tokens (Cheapest to train).</li>
+<li><strong>Inference Optimal:</strong> Train a smaller model on <em>far more</em> tokens than Chinchilla recommends (Cheapest to serve).</li>
+</ul>
 <p>Modern open-weights models (e.g., LLaMA 3) are "over-trained" by Chinchilla standards (e.g., &gt;100x tokens per parameter) to maximize performance for a specific deployment footprint.</p>
 <hr />
 <h3 id="compute-vs-data-vs-parameters">Compute vs Data vs Parameters<a class="headerlink" href="#compute-vs-data-vs-parameters" title="Permanent link">&para;</a></h3>
@@ -1389,7 +1397,7 @@ P(x_t \mid x_1, \dots, x_{t-1})
 - Insufficient compute leads to undertrained representations</p>
 <p>Modern frontier models are primarily <strong>data-limited</strong>, not architecture-limited.</p>
 <hr />
-<h2 id="22-data-pipeline-and-quality">2.2 Data Pipeline and Quality<a class="headerlink" href="#22-data-pipeline-and-quality" title="Permanent link">&para;</a></h2>
+<h2 id="3-data-pipeline-and-quality">3. Data Pipeline and Quality<a class="headerlink" href="#3-data-pipeline-and-quality" title="Permanent link">&para;</a></h2>
 <p>Data quality is often more important than model size. "Garbage in, garbage out" applies strictly to LLMs.</p>
 <hr />
 <h3 id="raw-data-sources">Raw Data Sources<a class="headerlink" href="#raw-data-sources" title="Permanent link">&para;</a></h3>
