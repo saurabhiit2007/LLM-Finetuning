@@ -47,7 +47,13 @@ nav:
       - KV Caching: ./supporting_topics/kv_caching.md
   - Training Pipeline:
       - Foundation: ./training_techniques/foundation.md
-      - Pre-Training: ./training_techniques/pre_training/pre_training.md
+      - Pre-Training:
+          - Pre-Training: ./training_techniques/pre_training/pre_training.md
+          - Byte Pair Encoding: ./training_techniques/pre_training/byte_pair_encoding.md
+          - Mixture of Experts (MoE): ./training_techniques/pre_training/mixture_of_experts.md
+          - RoPe: ./training_techniques/pre_training/RoPE.md
+          - Sentence Piece Unigram: ./training_techniques/pre_training/sentence_piece_unigram.md
+          - Additional Transformer Layers: ./training_techniques/pre_training/new_transformer_layers.md
   - References: references.md
 
 markdown_extensions:
