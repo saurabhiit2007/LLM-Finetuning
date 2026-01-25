@@ -54,6 +54,7 @@ nav:
           - RoPe: ./training_techniques/pre_training/RoPE.md
           - Sentence Piece Unigram: ./training_techniques/pre_training/sentence_piece_unigram.md
           - Advanced Transformer Components & Layers: ./training_techniques/pre_training/advanced_transformer_components_and_layers.md
+      - Training Optimization and Stability: ./training_techniques/training_optimization_and_stability.md
   - References: references.md
 
 markdown_extensions:
