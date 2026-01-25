@@ -53,7 +53,7 @@ nav:
           - Mixture of Experts (MoE): ./training_techniques/pre_training/mixture_of_experts.md
           - RoPe: ./training_techniques/pre_training/RoPE.md
           - Sentence Piece Unigram: ./training_techniques/pre_training/sentence_piece_unigram.md
-          - Additional Transformer Layers: ./training_techniques/pre_training/new_transformer_layers.md
+          - Advanced Transformer Components & Layers: ./training_techniques/pre_training/advanced_transformer_components_and_layers.md
   - References: references.md
 
 markdown_extensions:
