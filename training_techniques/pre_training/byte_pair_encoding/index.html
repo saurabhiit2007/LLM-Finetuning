@@ -1155,15 +1155,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#def-get_statsids-counts-for-pair-in-zipids-ids1-countspair-countsgetpair-0-1-return-counts-def-mergeids-pair-idx-new_ids-i-0-while-i-lenids-if-i-lenids-1-and-idsi-idsi1-pair-new_idsappendidx-i-2-else-new_idsappendidsi-i-1-return-new_ids" class="md-nav__link">
-    <span class="md-ellipsis">
-      def get_stats(ids): counts = {} for pair in zip(ids, ids[1:]): counts[pair] = counts.get(pair, 0) + 1 return counts def merge(ids, pair, idx): new_ids = [] i = 0 while i &lt; len(ids): if i &lt; len(ids) - 1 and (ids[i], ids[i+1]) == pair: new_ids.append(idx) i += 2 else: new_ids.append(ids[i]) i += 1 return new_ids
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -1686,15 +1677,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#def-get_statsids-counts-for-pair-in-zipids-ids1-countspair-countsgetpair-0-1-return-counts-def-mergeids-pair-idx-new_ids-i-0-while-i-lenids-if-i-lenids-1-and-idsi-idsi1-pair-new_idsappendidx-i-2-else-new_idsappendidsi-i-1-return-new_ids" class="md-nav__link">
-    <span class="md-ellipsis">
-      def get_stats(ids): counts = {} for pair in zip(ids, ids[1:]): counts[pair] = counts.get(pair, 0) + 1 return counts def merge(ids, pair, idx): new_ids = [] i = 0 while i &lt; len(ids): if i &lt; len(ids) - 1 and (ids[i], ids[i+1]) == pair: new_ids.append(idx) i += 2 else: new_ids.append(ids[i]) i += 1 return new_ids
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -2019,7 +2001,7 @@ It excels at efficiency and scalability but introduces structural biases that di
 <strong>A:</strong> Not easily. Tokenization changes typically require retraining embeddings and often the full model.</p>
 <hr />
 <h2 id="13-conceptual-implementation-snippet">13. Conceptual Implementation Snippet<a class="headerlink" href="#13-conceptual-implementation-snippet" title="Permanent link">&para;</a></h2>
-<h2 id="def-get_statsids-counts-for-pair-in-zipids-ids1-countspair-countsgetpair-0-1-return-counts-def-mergeids-pair-idx-new_ids-i-0-while-i-lenids-if-i-lenids-1-and-idsi-idsi1-pair-new_idsappendidx-i-2-else-new_idsappendidsi-i-1-return-new_ids"><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_stats</span><span class="p">(</span><span class="n">ids</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_stats</span><span class="p">(</span><span class="n">ids</span><span class="p">):</span>
     <span class="n">counts</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="k">for</span> <span class="n">pair</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">ids</span><span class="p">,</span> <span class="n">ids</span><span class="p">[</span><span class="mi">1</span><span class="p">:]):</span>
         <span class="n">counts</span><span class="p">[</span><span class="n">pair</span><span class="p">]</span> <span class="o">=</span> <span class="n">counts</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">pair</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
@@ -2036,7 +2018,7 @@ It excels at efficiency and scalability but introduces structural biases that di
             <span class="n">new_ids</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ids</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
             <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
     <span class="k">return</span> <span class="n">new_ids</span>
-</code></pre></div><a class="headerlink" href="#def-get_statsids-counts-for-pair-in-zipids-ids1-countspair-countsgetpair-0-1-return-counts-def-mergeids-pair-idx-new_ids-i-0-while-i-lenids-if-i-lenids-1-and-idsi-idsi1-pair-new_idsappendidx-i-2-else-new_idsappendidsi-i-1-return-new_ids" title="Permanent link">&para;</a></h2>
+</code></pre></div>
 
 
 
