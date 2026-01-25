@@ -16,7 +16,7 @@
         <link rel="prev" href="../RoPE/">
       
       
-        <link rel="next" href="../new_transformer_layers/">
+        <link rel="next" href="../advanced_transformer_components_and_layers/">
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
@@ -74,6 +74,11 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
+      
+        
+        <a href="#1-the-probabilistic-framework" class="md-skip">
+          Skip to content
+        </a>
       
     </div>
     <div data-md-component="announce">
@@ -821,6 +826,19 @@
       
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Sentence Piece Unigram
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -832,6 +850,134 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-the-probabilistic-framework" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. The Probabilistic Framework
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. The Probabilistic Framework">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-objective-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Objective Function
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-training-the-em-style-pruning-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Training: The EM-Style Pruning Process
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-small-intuitive-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Small Intuitive Example
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Small Intuitive Example">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#possible-segmentations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Possible Segmentations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#selected-tokenization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Selected Tokenization
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-the-sentencepiece-secret-sauce" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. The SentencePiece "Secret Sauce"
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-subword-regularization-sampling" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Subword Regularization (Sampling)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-comparison-bpe-vs-unigram" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Comparison: BPE vs. Unigram
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-practical-limitations" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Practical Limitations
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Summary
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -845,12 +991,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../new_transformer_layers/" class="md-nav__link">
+      <a href="../advanced_transformer_components_and_layers/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    Additional Transformer Layers
+    Advanced Transformer Components & Layers
     
   </span>
   
@@ -916,6 +1062,125 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-the-probabilistic-framework" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. The Probabilistic Framework
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. The Probabilistic Framework">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-objective-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Objective Function
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-training-the-em-style-pruning-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Training: The EM-Style Pruning Process
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-small-intuitive-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Small Intuitive Example
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Small Intuitive Example">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#possible-segmentations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Possible Segmentations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#selected-tokenization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Selected Tokenization
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-the-sentencepiece-secret-sauce" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. The SentencePiece "Secret Sauce"
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-subword-regularization-sampling" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Subword Regularization (Sampling)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-comparison-bpe-vs-unigram" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Comparison: BPE vs. Unigram
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-practical-limitations" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Practical Limitations
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Summary
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -935,7 +1200,147 @@
 
   <h1>Sentence Piece Unigram</h1>
 
-
+<p>The <strong>Unigram Language Model</strong> is a probabilistic, top-down subword tokenization algorithm. While often associated with the <strong>SentencePiece</strong> library (the framework for lossless, language-agnostic tokenization), Unigram itself is a distinct algorithm used by models like <strong>T5, XLNet, ALBERT, and many modern multilingual LLMs</strong>.</p>
+<hr />
+<h2 id="1-the-probabilistic-framework">1. The Probabilistic Framework<a class="headerlink" href="#1-the-probabilistic-framework" title="Permanent link">&para;</a></h2>
+<p>Unlike BPE, which is a greedy heuristic, Unigram treats tokenization as a statistical inference problem. It assumes that a sequence is generated by independently sampling tokens from a vocabulary.</p>
+<h3 id="the-objective-function">The Objective Function<a class="headerlink" href="#the-objective-function" title="Permanent link">&para;</a></h3>
+<p>Given a sentence <span class="arithmatex">\(S\)</span> and a candidate segmentation <span class="arithmatex">\(\mathbf{x} = \{t_1, t_2, \dots, t_k\}\)</span>, the model calculates the probability of that segmentation as:</p>
+<div class="arithmatex">\[P(\mathbf{x}) = \prod_{i=1}^{k} P(t_i)\]</div>
+<p>The goal of the tokenizer is to find the segmentation that <strong>maximizes this likelihood</strong>:</p>
+<div class="arithmatex">\[\mathbf{x}^* = \arg\max_{\mathbf{x} \in \mathcal{S}} \sum_{i=1}^{k} \log P(t_i)\]</div>
+<p>Where <span class="arithmatex">\(\mathcal{S}\)</span> is the set of all possible segmentations. This is efficiently solved using <strong>Viterbi decoding</strong> (Dynamic Programming) in <span class="arithmatex">\(O(N^2)\)</span> time relative to string length.</p>
+<hr />
+<h2 id="2-training-the-em-style-pruning-process">2. Training: The EM-Style Pruning Process<a class="headerlink" href="#2-training-the-em-style-pruning-process" title="Permanent link">&para;</a></h2>
+<p>Unigram training is a "top-down" approach. Instead of merging small units (like BPE), it starts with a massive vocabulary and prunes it down.</p>
+<ol>
+<li><strong>Initialization</strong>: Start with a very large vocabulary (e.g., every character in the corpus plus the most frequent substrings).</li>
+<li><strong>Expectation (E-step)</strong>: Given the current vocabulary and token probabilities, find the optimal (Viterbi) segmentation for every sentence in the corpus.</li>
+<li><strong>Maximization (M-step)</strong>: Update the token probabilities <span class="arithmatex">\(P(t_i)\)</span> based on their frequency in the newly computed optimal segmentations.</li>
+<li><strong>Pruning</strong>:<ul>
+<li>For each token, calculate the <strong>loss</strong>: how much the total corpus likelihood would decrease if that token were removed from the vocabulary.</li>
+<li>Discard the bottom <span class="arithmatex">\(X\%\)</span> of tokens with the lowest loss.</li>
+<li><em>Note: To ensure every string remains segmentable, single characters are never pruned.</em></li>
+</ul>
+</li>
+<li><strong>Iteration</strong>: Repeat until the target vocabulary size is reached.</li>
+</ol>
+<hr />
+<h2 id="3-small-intuitive-example">3. Small Intuitive Example<a class="headerlink" href="#3-small-intuitive-example" title="Permanent link">&para;</a></h2>
+<p>Assume the vocabulary contains the following tokens with probabilities:</p>
+<table>
+<thead>
+<tr>
+<th>Token</th>
+<th>Probability</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>low</code></td>
+<td>0.30</td>
+</tr>
+<tr>
+<td><code>lower</code></td>
+<td>0.25</td>
+</tr>
+<tr>
+<td><code>er</code></td>
+<td>0.20</td>
+</tr>
+<tr>
+<td><code>l</code></td>
+<td>0.05</td>
+</tr>
+<tr>
+<td><code>o</code></td>
+<td>0.05</td>
+</tr>
+<tr>
+<td><code>w</code></td>
+<td>0.05</td>
+</tr>
+</tbody>
+</table>
+<p>Input word: <code>lower</code></p>
+<h3 id="possible-segmentations">Possible Segmentations<a class="headerlink" href="#possible-segmentations" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p><code>lower</code><br />
+<span class="arithmatex">\(P = 0.25\)</span></p>
+</li>
+<li>
+<p><code>low + er</code>
+   <span class="arithmatex">\(P = 0.30 \times 0.20 = 0.06\)</span></p>
+</li>
+<li>
+<p><code>l + o + w + er</code><br />
+<span class="arithmatex">\(P = 0.05^3 \times 0.20 = 0.00025\)</span></p>
+</li>
+</ol>
+<h3 id="selected-tokenization">Selected Tokenization<a class="headerlink" href="#selected-tokenization" title="Permanent link">&para;</a></h3>
+<p>The tokenizer selects <code>lower</code> because it maximizes the likelihood.</p>
+<hr />
+<h2 id="4-the-sentencepiece-secret-sauce">4. The SentencePiece "Secret Sauce"<a class="headerlink" href="#4-the-sentencepiece-secret-sauce" title="Permanent link">&para;</a></h2>
+<p>SentencePiece is the implementation wrapper that adds critical features for modern LLMs:</p>
+<ul>
+<li><strong>Lossless Reversibility</strong>: It replaces spaces with a meta-symbol (usually <code>_</code>). Because the space is treated as a standard character, the original string can be reconstructed perfectly (detokenized) without complex rules.</li>
+<li><strong>Byte-Fallback</strong>: If the model encounters a character not in its vocabulary, it falls back to <strong>UTF-8 bytes</strong>. This effectively eliminates the "Unknown Token" (<code>UNK</code>) problem.</li>
+<li><strong>Pre-tokenization Independence</strong>: It does not require splitting text by spaces first. This makes it natively compatible with non-segmented languages like Chinese, Japanese, or Thai.</li>
+</ul>
+<hr />
+<h2 id="5-subword-regularization-sampling">5. Subword Regularization (Sampling)<a class="headerlink" href="#5-subword-regularization-sampling" title="Permanent link">&para;</a></h2>
+<p>This is a major advantage for model robustness. During training, instead of always using the "best" (Viterbi) segmentation, we sample different segmentations based on their probabilities:</p>
+<div class="arithmatex">\[P(\mathbf{x}) = \frac{P(\mathbf{x})^\alpha}{\sum_{\mathbf{x}' \in \mathcal{S}} P(\mathbf{x}')^\alpha}\]</div>
+<p>By exposing the model to multiple ways of segmenting the same word (e.g., <code>higher</code> as <code>high + er</code> vs <code>h + igher</code>), the model becomes more robust to spelling variations and noise.</p>
+<hr />
+<h2 id="6-comparison-bpe-vs-unigram">6. Comparison: BPE vs. Unigram<a class="headerlink" href="#6-comparison-bpe-vs-unigram" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Feature</th>
+<th style="text-align: left;">BPE (Byte-Pair Encoding)</th>
+<th style="text-align: left;">Unigram (SentencePiece)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Logic</strong></td>
+<td style="text-align: left;">Bottom-up (Iterative Merging)</td>
+<td style="text-align: left;">Top-down (Iterative Pruning)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Philosophy</strong></td>
+<td style="text-align: left;">Frequency-based heuristic</td>
+<td style="text-align: left;">Probabilistic Likelihood</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Optimality</strong></td>
+<td style="text-align: left;">Greedy (not globally optimal)</td>
+<td style="text-align: left;">Global Optimum (via Viterbi)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Regularization</strong></td>
+<td style="text-align: left;">Difficult to implement</td>
+<td style="text-align: left;">Natively supports subword sampling</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Use Case</strong></td>
+<td style="text-align: left;">GPT-family, Llama, RoBERTa</td>
+<td style="text-align: left;">T5, ALBERT, Multilingual models</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="6-practical-limitations">6. Practical Limitations<a class="headerlink" href="#6-practical-limitations" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Complexity</strong>: Viterbi decoding is more computationally expensive than the greedy merges of BPE.</li>
+<li><strong>Independence Assumption</strong>: It assumes tokens are independent, ignoring the linguistic context in which a subword appears.</li>
+<li><strong>Training Time</strong>: The EM pruning process on a massive corpus is generally slower than BPE's initial merge-counting.</li>
+</ul>
+<hr />
+<h2 id="7-summary">7. Summary<a class="headerlink" href="#7-summary" title="Permanent link">&para;</a></h2>
+<p>SentencePiece Unigram provides a <strong>principled, probabilistic objective</strong> for tokenization. Its ability to provide <strong>globally optimal segmentations</strong>, support <strong>subword regularization</strong>, and maintain <strong>lossless reversibility</strong> makes it a preferred choice for high-performance, multilingual Large Language Models.</p>
 
 
 

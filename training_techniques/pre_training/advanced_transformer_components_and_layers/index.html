@@ -13,10 +13,10 @@
       
       
       
-        <link rel="prev" href="../mixture_of_experts/">
+        <link rel="prev" href="../sentence_piece_unigram/">
       
       
-        <link rel="next" href="../sentence_piece_unigram/">
+        <link rel="next" href="../../../references/">
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
@@ -24,7 +24,7 @@
     
     
       
-        <title>RoPe - Fine-Tuning Methods Documentation</title>
+        <title>Advanced Transformer Components & Layers - Fine-Tuning Methods Documentation</title>
       
     
     
@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#1-the-core-concept" class="md-skip">
+        <a href="#1-normalization-rmsnorm" class="md-skip">
           Skip to content
         </a>
       
@@ -112,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              RoPe
+              Advanced Transformer Components & Layers
             
           </span>
         </div>
@@ -793,30 +793,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    RoPe
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../RoPE/" class="md-nav__link">
         
   
   
@@ -827,207 +807,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#1-the-core-concept" class="md-nav__link">
-    <span class="md-ellipsis">
-      1. The Core Concept
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="1. The Core Concept">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#why-rotate" class="md-nav__link">
-    <span class="md-ellipsis">
-      Why rotate?
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Why rotate?">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#why-this-matters" class="md-nav__link">
-    <span class="md-ellipsis">
-      Why This Matters
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2-the-algorithm" class="md-nav__link">
-    <span class="md-ellipsis">
-      2. The Algorithm
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3-where-exactly-is-rope-applied" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. Where Exactly Is RoPE Applied?
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4-why-rope-works-for-dot-product-attention" class="md-nav__link">
-    <span class="md-ellipsis">
-      4. Why RoPE Works for Dot-Product Attention
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="4. Why RoPE Works for Dot-Product Attention">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#step-by-step-intuition" class="md-nav__link">
-    <span class="md-ellipsis">
-      Step-by-Step Intuition
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#5-rope-and-multi-head-attention" class="md-nav__link">
-    <span class="md-ellipsis">
-      5. RoPE and Multi-Head Attention
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#6-comparison-why-rope-won" class="md-nav__link">
-    <span class="md-ellipsis">
-      6. Comparison: Why RoPE Won
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#7-small-intuitive-example" class="md-nav__link">
-    <span class="md-ellipsis">
-      7. Small Intuitive Example
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="7. Small Intuitive Example">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#position-1" class="md-nav__link">
-    <span class="md-ellipsis">
-      Position 1
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#position-3" class="md-nav__link">
-    <span class="md-ellipsis">
-      Position 3
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#8-interview-deep-dive-topics" class="md-nav__link">
-    <span class="md-ellipsis">
-      8. Interview Deep Dive Topics
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="8. Interview Deep Dive Topics">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#a-context-window-extension-rope-scaling" class="md-nav__link">
-    <span class="md-ellipsis">
-      A. Context Window Extension (RoPE Scaling)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#b-long-term-decay-property" class="md-nav__link">
-    <span class="md-ellipsis">
-      B. Long-Term Decay Property
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#c-rope-vs-alibi" class="md-nav__link">
-    <span class="md-ellipsis">
-      C. RoPE vs ALiBi
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#9-practical-limitations-and-caveats" class="md-nav__link">
-    <span class="md-ellipsis">
-      9. Practical Limitations and Caveats
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1060,10 +839,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../advanced_transformer_components_and_layers/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Advanced Transformer Components & Layers
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1074,6 +873,366 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-normalization-rmsnorm" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Normalization: RMSNorm
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Normalization: RMSNorm">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-math" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Math
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      Takeaways
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-structural-shift-pre-norm-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Structural Shift: Pre-Norm Architecture
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Structural Shift: Pre-Norm Architecture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#formulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Formulation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#takeaways_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Takeaways
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-activation-excellence-swiglu" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Activation Excellence: SwiGLU
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Activation Excellence: SwiGLU">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-math_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Math
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#takeaways_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Takeaways
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-stability-choice-bias-free-linear-layers" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Stability Choice: Bias-Free Linear Layers
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Stability Choice: Bias-Free Linear Layers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#takeaways_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Takeaways
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-positional-encoding-rotary-positional-embeddings-rope" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Positional Encoding: Rotary Positional Embeddings (RoPE)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Positional Encoding: Rotary Positional Embeddings (RoPE)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#takeaways_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Takeaways
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-efficient-attention-grouped-query-attention-gqa" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Efficient Attention: Grouped-Query Attention (GQA)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Efficient Attention: Grouped-Query Attention (GQA)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#takeaways_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Takeaways
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-attention-kernel-optimization-flashattention" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Attention Kernel Optimization: FlashAttention
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Attention Kernel Optimization: FlashAttention">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#takeaways_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Takeaways
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-parallel-attention-and-ffn" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Parallel Attention and FFN
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Parallel Attention and FFN">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#takeaways_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Takeaways
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-context-extension-beyond-rope" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Context Extension Beyond RoPE
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Context Extension Beyond RoPE">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#91-rope-scaling-and-interpolation" class="md-nav__link">
+    <span class="md-ellipsis">
+      9.1 RoPE Scaling and Interpolation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#92-sliding-window-attention" class="md-nav__link">
+    <span class="md-ellipsis">
+      9.2 Sliding Window Attention
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#takeaways_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      Takeaways
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-mixture-of-experts-moe" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. Mixture of Experts (MoE)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. Mixture of Experts (MoE)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#takeaways_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      Takeaways
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-kv-cache-optimizations" class="md-nav__link">
+    <span class="md-ellipsis">
+      11. KV Cache Optimizations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11. KV Cache Optimizations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#takeaways_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      Takeaways
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-weight-tying-and-parameter-sharing" class="md-nav__link">
+    <span class="md-ellipsis">
+      12. Weight Tying and Parameter Sharing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="12. Weight Tying and Parameter Sharing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#takeaways_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      Takeaways
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      📊 Summary Table
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1141,76 +1300,28 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-the-core-concept" class="md-nav__link">
+  <a href="#1-normalization-rmsnorm" class="md-nav__link">
     <span class="md-ellipsis">
-      1. The Core Concept
+      1. Normalization: RMSNorm
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="1. The Core Concept">
+    <nav class="md-nav" aria-label="1. Normalization: RMSNorm">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#why-rotate" class="md-nav__link">
+  <a href="#the-math" class="md-nav__link">
     <span class="md-ellipsis">
-      Why rotate?
+      The Math
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Why rotate?">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
-  <a href="#why-this-matters" class="md-nav__link">
+  <a href="#takeaways" class="md-nav__link">
     <span class="md-ellipsis">
-      Why This Matters
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2-the-algorithm" class="md-nav__link">
-    <span class="md-ellipsis">
-      2. The Algorithm
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3-where-exactly-is-rope-applied" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. Where Exactly Is RoPE Applied?
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4-why-rope-works-for-dot-product-attention" class="md-nav__link">
-    <span class="md-ellipsis">
-      4. Why RoPE Works for Dot-Product Attention
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="4. Why RoPE Works for Dot-Product Attention">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#step-by-step-intuition" class="md-nav__link">
-    <span class="md-ellipsis">
-      Step-by-Step Intuition
+      Takeaways
     </span>
   </a>
   
@@ -1222,46 +1333,28 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#5-rope-and-multi-head-attention" class="md-nav__link">
+  <a href="#2-structural-shift-pre-norm-architecture" class="md-nav__link">
     <span class="md-ellipsis">
-      5. RoPE and Multi-Head Attention
+      2. Structural Shift: Pre-Norm Architecture
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#6-comparison-why-rope-won" class="md-nav__link">
-    <span class="md-ellipsis">
-      6. Comparison: Why RoPE Won
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#7-small-intuitive-example" class="md-nav__link">
-    <span class="md-ellipsis">
-      7. Small Intuitive Example
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="7. Small Intuitive Example">
+    <nav class="md-nav" aria-label="2. Structural Shift: Pre-Norm Architecture">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#position-1" class="md-nav__link">
+  <a href="#formulation" class="md-nav__link">
     <span class="md-ellipsis">
-      Position 1
+      Formulation
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#position-3" class="md-nav__link">
+  <a href="#takeaways_1" class="md-nav__link">
     <span class="md-ellipsis">
-      Position 3
+      Takeaways
     </span>
   </a>
   
@@ -1273,37 +1366,28 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#8-interview-deep-dive-topics" class="md-nav__link">
+  <a href="#3-activation-excellence-swiglu" class="md-nav__link">
     <span class="md-ellipsis">
-      8. Interview Deep Dive Topics
+      3. Activation Excellence: SwiGLU
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="8. Interview Deep Dive Topics">
+    <nav class="md-nav" aria-label="3. Activation Excellence: SwiGLU">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#a-context-window-extension-rope-scaling" class="md-nav__link">
+  <a href="#the-math_1" class="md-nav__link">
     <span class="md-ellipsis">
-      A. Context Window Extension (RoPE Scaling)
+      The Math
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#b-long-term-decay-property" class="md-nav__link">
+  <a href="#takeaways_2" class="md-nav__link">
     <span class="md-ellipsis">
-      B. Long-Term Decay Property
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#c-rope-vs-alibi" class="md-nav__link">
-    <span class="md-ellipsis">
-      C. RoPE vs ALiBi
+      Takeaways
     </span>
   </a>
   
@@ -1315,9 +1399,243 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#9-practical-limitations-and-caveats" class="md-nav__link">
+  <a href="#4-stability-choice-bias-free-linear-layers" class="md-nav__link">
     <span class="md-ellipsis">
-      9. Practical Limitations and Caveats
+      4. Stability Choice: Bias-Free Linear Layers
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Stability Choice: Bias-Free Linear Layers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#takeaways_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Takeaways
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-positional-encoding-rotary-positional-embeddings-rope" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Positional Encoding: Rotary Positional Embeddings (RoPE)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Positional Encoding: Rotary Positional Embeddings (RoPE)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#takeaways_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Takeaways
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-efficient-attention-grouped-query-attention-gqa" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Efficient Attention: Grouped-Query Attention (GQA)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Efficient Attention: Grouped-Query Attention (GQA)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#takeaways_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Takeaways
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-attention-kernel-optimization-flashattention" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Attention Kernel Optimization: FlashAttention
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Attention Kernel Optimization: FlashAttention">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#takeaways_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Takeaways
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-parallel-attention-and-ffn" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Parallel Attention and FFN
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Parallel Attention and FFN">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#takeaways_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Takeaways
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-context-extension-beyond-rope" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Context Extension Beyond RoPE
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Context Extension Beyond RoPE">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#91-rope-scaling-and-interpolation" class="md-nav__link">
+    <span class="md-ellipsis">
+      9.1 RoPE Scaling and Interpolation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#92-sliding-window-attention" class="md-nav__link">
+    <span class="md-ellipsis">
+      9.2 Sliding Window Attention
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#takeaways_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      Takeaways
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-mixture-of-experts-moe" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. Mixture of Experts (MoE)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. Mixture of Experts (MoE)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#takeaways_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      Takeaways
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-kv-cache-optimizations" class="md-nav__link">
+    <span class="md-ellipsis">
+      11. KV Cache Optimizations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11. KV Cache Optimizations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#takeaways_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      Takeaways
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-weight-tying-and-parameter-sharing" class="md-nav__link">
+    <span class="md-ellipsis">
+      12. Weight Tying and Parameter Sharing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="12. Weight Tying and Parameter Sharing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#takeaways_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      Takeaways
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      📊 Summary Table
     </span>
   </a>
   
@@ -1342,264 +1660,239 @@
   
 
 
-  <h1>RoPe</h1>
+  <h1>Advanced Transformer Components & Layers</h1>
 
-<p>Rotary Positional Embedding (RoPE) is the state-of-the-art method for encoding positional information in Transformers. It is the default choice for modern LLMs, including <strong>Llama 2/3, Mistral, and PaLM</strong>.</p>
+<p>This section covers the architectural evolutions that define the <strong>Modern Transformer</strong>, as used in Llama 3, Mistral, PaLM, GPT-4, and similar large-scale language models. Moving beyond the original 2017 Transformer is a common requirement for senior-level AI and ML engineering interviews.</p>
 <hr />
-<h2 id="1-the-core-concept">1. The Core Concept<a class="headerlink" href="#1-the-core-concept" title="Permanent link">&para;</a></h2>
-<p>Traditional embeddings like Sinusoidal or Learned Absolute Embeddings are <strong>additive</strong>:</p>
+<h2 id="1-normalization-rmsnorm">1. Normalization: RMSNorm<a class="headerlink" href="#1-normalization-rmsnorm" title="Permanent link">&para;</a></h2>
+<p><strong>Replaces:</strong> LayerNorm (LN)</p>
+<p>Traditional LayerNorm centers the input by subtracting the mean and then scales it by the variance. <strong>RMSNorm</strong> (Root Mean Square Layer Normalization) simplifies this by removing the mean-centering step and only normalizing by the root mean square.</p>
+<h3 id="the-math">The Math<a class="headerlink" href="#the-math" title="Permanent link">&para;</a></h3>
 <div class="arithmatex">\[
-x_i = e_i + p_i
-\]</div>
-<p><strong>RoPE</strong> is <strong>multiplicative</strong>. It treats the embedding vector as a set of complex numbers and rotates them in a high-dimensional space based on their position.</p>
-<h3 id="why-rotate">Why rotate?<a class="headerlink" href="#why-rotate" title="Permanent link">&para;</a></h3>
-<p>The primary goal of RoPE is to ensure that the <strong>dot product</strong> between two tokens (Query and Key) depends only on their <strong>relative distance</strong>, not their absolute positions.</p>
-<div class="arithmatex">\[
-\langle f_q(x_m, m), f_k(x_n, n) \rangle = g(x_m, x_n, m - n)
+\bar{a}_i = \frac{a_i}{\text{RMS}(\mathbf{a})} g_i
+\quad \text{where} \quad
+\text{RMS}(\mathbf{a}) = \sqrt{\frac{1}{n} \sum_{i=1}^n a_i^2 + \epsilon}
 \]</div>
 <p>Where:</p>
 <ul>
 <li>
-<p><strong><span class="arithmatex">\(x_m, x_n\)</span></strong> : The original content embeddings of the tokens at positions <span class="arithmatex">\(m\)</span> and <span class="arithmatex">\(n\)</span>. These vectors come from the token embedding layer or the previous Transformer block and do not yet include positional information.</p>
+<p><strong><span class="arithmatex">\(\mathbf{a} \in \mathbb{R}^n\)</span></strong>: Input activation vector to the normalization layer, typically corresponding to a single token representation across the hidden dimension.</p>
 </li>
 <li>
-<p><strong><span class="arithmatex">\(m, n\)</span></strong>: The absolute token positions in the sequence. For example, <span class="arithmatex">\(m = 5\)</span> and <span class="arithmatex">\(n = 12\)</span>.</p>
+<p><strong><span class="arithmatex">\(a_i\)</span></strong>: The <span class="arithmatex">\(i\)</span>-th component of the input activation vector <span class="arithmatex">\(\mathbf{a}\)</span>.</p>
 </li>
 <li>
-<p><strong><span class="arithmatex">\(f_q(x_m, m)\)</span></strong>: The position-aware <strong>Query</strong> representation at position <span class="arithmatex">\(m\)</span>.<br />
-  This function applies the RoPE rotation to the query vector derived from <span class="arithmatex">\(x_m\)</span>.</p>
+<p><strong><span class="arithmatex">\(n\)</span></strong>: Dimensionality of the hidden representation, equal to the model hidden size.</p>
 </li>
 <li>
-<p><strong><span class="arithmatex">\(f_k(x_n, n)\)</span></strong>: The position-aware <strong>Key</strong> representation at position <span class="arithmatex">\(n\)</span>.<br />
-  This function applies the same RoPE rotation scheme to the key vector derived from <span class="arithmatex">\(x_n\)</span>.</p>
+<p><strong><span class="arithmatex">\(\text{RMS}(\mathbf{a})\)</span></strong>: Root Mean Square of the activation vector, used to normalize the input magnitude without mean-centering.</p>
 </li>
 <li>
-<p><strong><span class="arithmatex">\(\langle \cdot , \cdot \rangle\)</span></strong>: The dot product used in scaled dot-product attention to compute attention scores.</p>
+<p><strong><span class="arithmatex">\(\epsilon\)</span></strong>: Small positive constant added for numerical stability to prevent division by zero, especially important for low-precision training.</p>
 </li>
 <li>
-<p><strong><span class="arithmatex">\(g(x_m, x_n, m - n)\)</span></strong>: A function whose output depends on the token contents and <strong>only the relative position</strong> <span class="arithmatex">\((m - n)\)</span>, not on the absolute positions themselves.</p>
+<p><strong><span class="arithmatex">\(g_i\)</span></strong>: Learnable scaling parameter applied element-wise after normalization. This replaces the gain parameter in LayerNorm while omitting the additive bias.</p>
+</li>
+<li>
+<p><strong><span class="arithmatex">\(\bar{a}_i\)</span></strong>: The normalized and rescaled output activation for the <span class="arithmatex">\(i\)</span>-th dimension.</p>
 </li>
 </ul>
-<h4 id="why-this-matters">Why This Matters<a class="headerlink" href="#why-this-matters" title="Permanent link">&para;</a></h4>
-<p>This equation states that after applying RoPE:</p>
+<h3 id="takeaways">Takeaways<a class="headerlink" href="#takeaways" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Absolute positions <span class="arithmatex">\(m\)</span> and <span class="arithmatex">\(n\)</span> do not independently affect the attention score.</li>
-<li>Only the relative distance <span class="arithmatex">\((m - n)\)</span> influences how strongly two tokens attend to each other.</li>
-<li>This property enables strong length extrapolation, a natural locality bias, and robust long-context behavior.</li>
-<li>This allows the model to understand relationships between tokens regardless of where they appear in the sequence.</li>
+<li><strong>Efficiency:</strong> Eliminates mean computation and subtraction, reducing arithmetic and synchronization overhead on accelerators.</li>
+<li><strong>Stability:</strong> Avoids cancellation errors from mean-centering, which is especially beneficial in low-precision FP16 and BF16 training.</li>
+<li><strong>Simplicity:</strong> Removes the additive bias term since normalization already controls activation scale, leaving only a learnable gain.</li>
 </ul>
-<p>In contrast, additive positional embeddings typically produce attention scores that depend on both absolute and relative positions, which limits generalization to longer sequences.</p>
 <hr />
-<h2 id="2-the-algorithm">2. The Algorithm<a class="headerlink" href="#2-the-algorithm" title="Permanent link">&para;</a></h2>
-<p>RoPE works by pairing elements of the <span class="arithmatex">\(d\)</span>-dimensional embedding and applying a 2D rotation matrix to each pair.</p>
-<p>For a pair of dimensions <span class="arithmatex">\([x^{(1)}, x^{(2)}]\)</span> at position <span class="arithmatex">\(m\)</span>, the transformation is:</p>
+<h2 id="2-structural-shift-pre-norm-architecture">2. Structural Shift: Pre-Norm Architecture<a class="headerlink" href="#2-structural-shift-pre-norm-architecture" title="Permanent link">&para;</a></h2>
+<p><strong>The Change:</strong> Normalization is applied before attention or FFN blocks instead of after the residual connection.</p>
+<h3 id="formulation">Formulation<a class="headerlink" href="#formulation" title="Permanent link">&para;</a></h3>
+<p><strong>Post-Norm (Original):</strong>
+$$
+x_{next} = \text{Norm}(x + \text{Sublayer}(x))
+$$</p>
+<p><strong>Pre-Norm (Modern):</strong>
+$$
+x_{next} = x + \text{Sublayer}(\text{Norm}(x))
+$$</p>
+<h3 id="takeaways_1">Takeaways<a class="headerlink" href="#takeaways_1" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Gradient Flow:</strong> Clean residual paths enable stable training of very deep models</li>
+<li><strong>Optimization Robustness:</strong> Reduces reliance on fragile learning rate warmup</li>
+<li><strong>Industry Standard:</strong> Used in essentially all modern decoder-only LLMs</li>
+</ul>
+<hr />
+<h2 id="3-activation-excellence-swiglu">3. Activation Excellence: SwiGLU<a class="headerlink" href="#3-activation-excellence-swiglu" title="Permanent link">&para;</a></h2>
+<p><strong>Replaces:</strong> ReLU, GELU</p>
+<p><strong>SwiGLU</strong> is a gated linear unit variant that uses two linear projections, one gated by the Swish (SiLU) activation.</p>
+<h3 id="the-math_1">The Math<a class="headerlink" href="#the-math_1" title="Permanent link">&para;</a></h3>
 <div class="arithmatex">\[
-\begin{pmatrix}
-\cos m\theta &amp; -\sin m\theta \\
-\sin m\theta &amp; \cos m\theta
-\end{pmatrix}
-\begin{pmatrix}
-x^{(1)} \\
-x^{(2)}
-\end{pmatrix}
+\text{SwiGLU}(x) = \text{Swish}(xW + b) \otimes (xV + c)
 \]</div>
+<h3 id="takeaways_2">Takeaways<a class="headerlink" href="#takeaways_2" title="Permanent link">&para;</a></h3>
 <ul>
-<li>
-<p><strong>The Angle (<span class="arithmatex">\(\theta\)</span>)</strong>: The rotation frequency follows a geometric progression<br />
-  $$
-  \theta_i = 10000^{-2i/d}
-  $$
-  similar to sinusoidal embeddings.</p>
-</li>
-<li>
-<p><strong>The Result</strong>: As position <span class="arithmatex">\(m\)</span> increases, the vector rotates further. Because the rotation matrix is orthogonal, the vector norm is preserved while positional information is encoded.</p>
-</li>
+<li><strong>Higher Expressivity:</strong> Multiplicative gating enables richer feature interactions</li>
+<li><strong>Better Scaling:</strong> Improves convergence and downstream quality at large scale</li>
+<li><strong>Default Choice:</strong> Used in Llama, PaLM, and most modern LLM families</li>
 </ul>
 <hr />
-<h2 id="3-where-exactly-is-rope-applied">3. Where Exactly Is RoPE Applied?<a class="headerlink" href="#3-where-exactly-is-rope-applied" title="Permanent link">&para;</a></h2>
-<p>RoPE is applied <strong>only to the Query and Key vectors</strong> in self-attention.</p>
+<h2 id="4-stability-choice-bias-free-linear-layers">4. Stability Choice: Bias-Free Linear Layers<a class="headerlink" href="#4-stability-choice-bias-free-linear-layers" title="Permanent link">&para;</a></h2>
+<p><strong>The Change:</strong> Remove additive bias terms from linear layers.</p>
+<h3 id="takeaways_3">Takeaways<a class="headerlink" href="#takeaways_3" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Queries and Keys are rotated based on token position.</li>
-<li>Values are left unchanged.</li>
-</ul>
-<p>Reason:</p>
-<ul>
-<li>Attention scores are computed using the dot product <span class="arithmatex">\(QK^\top\)</span>.</li>
-<li>RoPE ensures this dot product captures relative position.</li>
-<li>Applying RoPE to Values does not improve positional reasoning and can degrade performance.</li>
+<li><strong>Training Stability:</strong> Reduces activation spikes in deep or wide networks</li>
+<li><strong>Length Extrapolation:</strong> Improves robustness to longer sequences than seen during training</li>
+<li><strong>Redundancy Removal:</strong> Bias is largely unnecessary when paired with normalization</li>
 </ul>
 <hr />
-<h2 id="4-why-rope-works-for-dot-product-attention">4. Why RoPE Works for Dot-Product Attention<a class="headerlink" href="#4-why-rope-works-for-dot-product-attention" title="Permanent link">&para;</a></h2>
-<p>The key mathematical insight behind RoPE is <strong>rotation composition</strong>.</p>
-<p>Consider the equation:</p>
-<div class="arithmatex">\[
-\langle R(m)x, R(n)y \rangle = \langle x, R(n - m)y \rangle
-\]</div>
-<p>Where:</p>
+<h2 id="5-positional-encoding-rotary-positional-embeddings-rope">5. Positional Encoding: Rotary Positional Embeddings (RoPE)<a class="headerlink" href="#5-positional-encoding-rotary-positional-embeddings-rope" title="Permanent link">&para;</a></h2>
+<p><strong>Replaces:</strong> Absolute or learned positional embeddings</p>
+<p>RoPE encodes positional information by rotating query and key vectors in a complex plane.</p>
+<h3 id="takeaways_4">Takeaways<a class="headerlink" href="#takeaways_4" title="Permanent link">&para;</a></h3>
 <ul>
-<li>
-<p><strong><span class="arithmatex">\(x, y\)</span></strong>: Content vectors representing token embeddings after linear projection into Query or Key space. These vectors do not contain positional information by themselves.</p>
-</li>
-<li>
-<p><strong><span class="arithmatex">\(m, n\)</span></strong>: Absolute token positions in the sequence. For example, <span class="arithmatex">\(m = 4\)</span> and <span class="arithmatex">\(n = 10\)</span></p>
-</li>
-<li>
-<p><strong><span class="arithmatex">\(R(m)\)</span>, <span class="arithmatex">\(R(n)\)</span></strong>: Orthogonal rotation matrices parameterized by position.<br />
-  Each matrix applies a set of 2D rotations across paired embedding dimensions, with rotation angles proportional to the position index.</p>
-</li>
-<li>
-<p><strong><span class="arithmatex">\(\langle \cdot , \cdot \rangle\)</span></strong>: The standard dot product used in attention score computation.</p>
-</li>
+<li><strong>Relative Positioning:</strong> Attention depends on relative token distance</li>
+<li><strong>Natural Decay:</strong> Long-range attention strength decreases smoothly</li>
+<li><strong>Context Extension:</strong> Enables interpolation and scaling for long context windows</li>
 </ul>
 <hr />
-<h4 id="step-by-step-intuition">Step-by-Step Intuition<a class="headerlink" href="#step-by-step-intuition" title="Permanent link">&para;</a></h4>
-<ol>
-<li>
-<p><strong>Position Encoding via Rotation</strong><br />
-   Applying <span class="arithmatex">\(R(m)\)</span> to <span class="arithmatex">\(x\)</span> rotates the vector in embedding space by an amount determined by position <span class="arithmatex">\(m\)</span>.<br />
-   Similarly, <span class="arithmatex">\(R(n)\)</span> rotates <span class="arithmatex">\(y\)</span> according to position <span class="arithmatex">\(n\)</span>.</p>
-</li>
-<li>
-<p><strong>Orthogonality Property</strong><br />
-   Rotation matrices are orthogonal, meaning:
-   $$
-   R(m)^\top = R(-m)
-   $$</p>
-</li>
-<li>
-<p><strong>Rewriting the Dot Product</strong><br />
-   Using orthogonality:
-   $$
-   \langle R(m)x, R(n)y \rangle
-   =
-   \langle x, R(m)^\top R(n) y \rangle
-   =
-   \langle x, R(n - m) y \rangle
-   $$</p>
-</li>
-<li>
-<p><strong>Cancellation of Absolute Position</strong><br />
-   The absolute positions <span class="arithmatex">\(m\)</span> and <span class="arithmatex">\(n\)</span> collapse into a single relative offset <span class="arithmatex">\((n - m)\)</span>.</p>
-</li>
-</ol>
-<hr />
-<p>This identity captures the core mathematical reason why RoPE encodes <strong>relative position</strong> rather than absolute position. Below is a detailed explanation of each term and why the equation holds.</p>
-<p>Key implications:</p>
+<h2 id="6-efficient-attention-grouped-query-attention-gqa">6. Efficient Attention: Grouped-Query Attention (GQA)<a class="headerlink" href="#6-efficient-attention-grouped-query-attention-gqa" title="Permanent link">&para;</a></h2>
+<p><strong>The Middle Ground:</strong> Between Multi-Head Attention (MHA) and Multi-Query Attention (MQA)</p>
+<p>In GQA, multiple query heads share a smaller set of key and value heads.</p>
+<h3 id="takeaways_5">Takeaways<a class="headerlink" href="#takeaways_5" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Absolute positions cancel out.</li>
-<li>Only the relative offset <span class="arithmatex">\((n - m)\)</span> matters.</li>
-<li>This property aligns perfectly with dot-product attention.</li>
-<li>Tokens with the same relative spacing produce the same positional interaction, regardless of where they appear in the sequence.</li>
+<li><strong>KV Cache Efficiency:</strong> Substantially reduces inference memory usage</li>
+<li><strong>Quality Retention:</strong> Maintains accuracy close to full MHA</li>
+<li><strong>Inference Speed:</strong> Critical for fast generation on modern hardware</li>
 </ul>
-<p>This is why RoPE integrates naturally into Transformer architectures.</p>
 <hr />
-<h2 id="5-rope-and-multi-head-attention">5. RoPE and Multi-Head Attention<a class="headerlink" href="#5-rope-and-multi-head-attention" title="Permanent link">&para;</a></h2>
-<p>In multi-head attention:</p>
+<h2 id="7-attention-kernel-optimization-flashattention">7. Attention Kernel Optimization: FlashAttention<a class="headerlink" href="#7-attention-kernel-optimization-flashattention" title="Permanent link">&para;</a></h2>
+<p><strong>What It Is:</strong> A fused attention kernel that avoids materializing the full attention matrix in memory.</p>
+<h3 id="takeaways_6">Takeaways<a class="headerlink" href="#takeaways_6" title="Permanent link">&para;</a></h3>
 <ul>
-<li>RoPE is applied independently within each attention head.</li>
-<li>Each head operates on a lower-dimensional subspace and applies the same frequency schedule.</li>
+<li><strong>Memory Bandwidth Optimization:</strong> Turns attention into a compute-efficient operation</li>
+<li><strong>Asymptotic Improvement:</strong> Reduces memory from O(n²) to O(n)</li>
+<li><strong>Production Standard:</strong> Used in nearly all state-of-the-art LLM stacks</li>
 </ul>
-<p>As a result:</p>
-<ul>
-<li>Low-frequency dimensions capture long-range dependencies.</li>
-<li>High-frequency dimensions focus on local structure.</li>
-</ul>
-<p>This creates a multi-scale positional representation across heads.</p>
 <hr />
-<h2 id="6-comparison-why-rope-won">6. Comparison: Why RoPE Won<a class="headerlink" href="#6-comparison-why-rope-won" title="Permanent link">&para;</a></h2>
+<h2 id="8-parallel-attention-and-ffn">8. Parallel Attention and FFN<a class="headerlink" href="#8-parallel-attention-and-ffn" title="Permanent link">&para;</a></h2>
+<p><strong>The Change:</strong> Attention and FFN blocks are computed in parallel rather than sequentially within a transformer layer.</p>
+<h3 id="takeaways_7">Takeaways<a class="headerlink" href="#takeaways_7" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Lower Latency:</strong> Improves throughput in training and inference</li>
+<li><strong>Scalability:</strong> Works well at large model scales</li>
+<li><strong>Adopted By:</strong> PaLM and related architectures</li>
+</ul>
+<hr />
+<h2 id="9-context-extension-beyond-rope">9. Context Extension Beyond RoPE<a class="headerlink" href="#9-context-extension-beyond-rope" title="Permanent link">&para;</a></h2>
+<h3 id="91-rope-scaling-and-interpolation">9.1 RoPE Scaling and Interpolation<a class="headerlink" href="#91-rope-scaling-and-interpolation" title="Permanent link">&para;</a></h3>
+<ul>
+<li>NTK-aware scaling</li>
+<li>Linear or dynamic position scaling</li>
+</ul>
+<h3 id="92-sliding-window-attention">9.2 Sliding Window Attention<a class="headerlink" href="#92-sliding-window-attention" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Restricts attention to a fixed recent context</li>
+<li>Prevents unbounded KV cache growth</li>
+</ul>
+<h3 id="takeaways_8">Takeaways<a class="headerlink" href="#takeaways_8" title="Permanent link">&para;</a></h3>
+<ul>
+<li>These are architectural inference-time decisions</li>
+<li>Often combined with GQA for long-context efficiency</li>
+</ul>
+<hr />
+<h2 id="10-mixture-of-experts-moe">10. Mixture of Experts (MoE)<a class="headerlink" href="#10-mixture-of-experts-moe" title="Permanent link">&para;</a></h2>
+<p><strong>What Changes:</strong> Dense FFNs are replaced with multiple expert FFNs and a learned routing mechanism.</p>
+<h3 id="takeaways_9">Takeaways<a class="headerlink" href="#takeaways_9" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Sparse Activation:</strong> Only a small subset of experts is active per token</li>
+<li><strong>Efficient Scaling:</strong> Parameter count increases without proportional compute</li>
+<li><strong>Systems Complexity:</strong> Routing and load balancing dominate implementation challenges</li>
+</ul>
+<hr />
+<h2 id="11-kv-cache-optimizations">11. KV Cache Optimizations<a class="headerlink" href="#11-kv-cache-optimizations" title="Permanent link">&para;</a></h2>
+<p>Beyond GQA, modern systems apply several cache-level improvements:</p>
+<ul>
+<li>Reduced precision KV storage</li>
+<li>Prefix and prompt caching</li>
+<li>Cache eviction or compression strategies</li>
+</ul>
+<h3 id="takeaways_10">Takeaways<a class="headerlink" href="#takeaways_10" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Inference performance is usually memory-bound</li>
+<li>KV cache design often dominates real-world latency</li>
+</ul>
+<hr />
+<h2 id="12-weight-tying-and-parameter-sharing">12. Weight Tying and Parameter Sharing<a class="headerlink" href="#12-weight-tying-and-parameter-sharing" title="Permanent link">&para;</a></h2>
+<p><strong>What It Is:</strong> Sharing token embedding and output projection weights.</p>
+<h3 id="takeaways_11">Takeaways<a class="headerlink" href="#takeaways_11" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Improves sample efficiency</li>
+<li>Reduces total parameter count</li>
+<li>Remains standard in decoder-only LLMs</li>
+</ul>
+<hr />
+<h2 id="summary-table">📊 Summary Table<a class="headerlink" href="#summary-table" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
-<th>Feature</th>
-<th>Absolute (Sinusoidal)</th>
-<th>RoPE</th>
+<th>Component</th>
+<th>Modern Standard</th>
+<th>Key Advantage</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><strong>Operation</strong></td>
-<td>Addition</td>
-<td>Rotation (Multiplication)</td>
+<td>Normalization</td>
+<td>RMSNorm</td>
+<td>Stable and efficient normalization</td>
 </tr>
 <tr>
-<td><strong>Relative Distance</strong></td>
-<td>Not explicit</td>
-<td>Naturally captured via dot product</td>
+<td>Norm Placement</td>
+<td>Pre-Norm</td>
+<td>Enables deep transformer training</td>
 </tr>
 <tr>
-<td><strong>Extrapolation</strong></td>
-<td>Weak for long contexts</td>
-<td>Strong with scaling</td>
+<td>Activation</td>
+<td>SwiGLU</td>
+<td>Improved expressivity and convergence</td>
 </tr>
 <tr>
-<td><strong>Decay</strong></td>
-<td>No natural decay</td>
-<td>Distance-based interaction decay</td>
+<td>Positional Encoding</td>
+<td>RoPE + Scaling</td>
+<td>Relative positioning and long context</td>
 </tr>
 <tr>
-<td><strong>Implementation</strong></td>
-<td>Simple</td>
-<td>Moderate complexity</td>
+<td>Attention Type</td>
+<td>GQA</td>
+<td>Efficient KV cache usage</td>
+</tr>
+<tr>
+<td>Attention Kernel</td>
+<td>FlashAttention</td>
+<td>Memory-efficient long-context attention</td>
+</tr>
+<tr>
+<td>FFN Structure</td>
+<td>Parallel FFN</td>
+<td>Reduced latency</td>
+</tr>
+<tr>
+<td>Linear Layers</td>
+<td>Bias-Free</td>
+<td>Stability at scale</td>
+</tr>
+<tr>
+<td>Context Handling</td>
+<td>Sliding Window</td>
+<td>Bounded memory growth</td>
+</tr>
+<tr>
+<td>Scaling Strategy</td>
+<td>MoE</td>
+<td>Sparse compute scaling</td>
 </tr>
 </tbody>
 </table>
-<hr />
-<h2 id="7-small-intuitive-example">7. Small Intuitive Example<a class="headerlink" href="#7-small-intuitive-example" title="Permanent link">&para;</a></h2>
-<p>Consider a single 2D vector:</p>
-<div class="arithmatex">\[
-x = [1, 0]
-\]</div>
-<p>Assume one frequency <span class="arithmatex">\(\theta = 0.1\)</span>.</p>
-<h3 id="position-1">Position 1<a class="headerlink" href="#position-1" title="Permanent link">&para;</a></h3>
-<p>Rotation angle = <span class="arithmatex">\(0.1\)</span></p>
-<div class="arithmatex">\[
-R(0.1)x = [\cos 0.1, \sin 0.1] \approx [0.995, 0.100]
-\]</div>
-<h3 id="position-3">Position 3<a class="headerlink" href="#position-3" title="Permanent link">&para;</a></h3>
-<p>Rotation angle = <span class="arithmatex">\(0.3\)</span></p>
-<div class="arithmatex">\[
-R(0.3)x = [\cos 0.3, \sin 0.3] \approx [0.955, 0.296]
-\]</div>
-<p>Dot product between the two:</p>
-<div class="arithmatex">\[
-\langle R(0.1)x, R(0.3)x \rangle = \cos(0.2)
-\]</div>
-<p>Observation:
-- The dot product depends only on the positional difference <span class="arithmatex">\((3 - 1)\)</span>.
-- Vector magnitude is preserved.
-- Relative distance is directly encoded into attention.</p>
-<hr />
-<h2 id="8-interview-deep-dive-topics">8. Interview Deep Dive Topics<a class="headerlink" href="#8-interview-deep-dive-topics" title="Permanent link">&para;</a></h2>
-<h3 id="a-context-window-extension-rope-scaling">A. Context Window Extension (RoPE Scaling)<a class="headerlink" href="#a-context-window-extension-rope-scaling" title="Permanent link">&para;</a></h3>
-<p><strong>Question</strong>: If a model is trained on 4k context, how can it be extended to 128k?</p>
-<ul>
-<li>
-<p><strong>Linear Interpolation</strong>: Scale positions as<br />
-  $$
-  m \rightarrow m \cdot \frac{L}{L'}
-  $$
-  to avoid unseen large angles.</p>
-</li>
-<li>
-<p><strong>NTK-aware Scaling</strong>: Scale different frequencies differently to preserve high-frequency information for nearby tokens.</p>
-</li>
-</ul>
-<hr />
-<h3 id="b-long-term-decay-property">B. Long-Term Decay Property<a class="headerlink" href="#b-long-term-decay-property" title="Permanent link">&para;</a></h3>
-<p>RoPE introduces a natural decay in interaction strength as <span class="arithmatex">\(|m - n|\)</span> increases. This provides a locality bias without enforcing a hard attention window, aligning well with natural language structure.</p>
-<hr />
-<h3 id="c-rope-vs-alibi">C. RoPE vs ALiBi<a class="headerlink" href="#c-rope-vs-alibi" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>ALiBi</strong> adds a linear bias to attention scores based on distance.</li>
-<li><strong>RoPE</strong> encodes position directly into representations, allowing richer and more flexible positional reasoning.</li>
-</ul>
-<hr />
-<h2 id="9-practical-limitations-and-caveats">9. Practical Limitations and Caveats<a class="headerlink" href="#9-practical-limitations-and-caveats" title="Permanent link">&para;</a></h2>
-<ul>
-<li>RoPE assumes evenly spaced token positions.</li>
-<li>Extreme extrapolation without scaling can cause numerical instability.</li>
-<li>Relative position is encoded strongly, but absolute position is implicit, which may matter for structured tasks.</li>
-</ul>
 <hr />
 
 
