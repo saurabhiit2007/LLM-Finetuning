@@ -349,7 +349,7 @@ As of 2025, BPE-based methods remain dominant due to their efficiency and scalab
 
 ---
 
-## Conceptual Implementation Snippet
+## 13. Conceptual Implementation Snippet
 
 ```python
 def get_stats(ids):
@@ -369,4 +369,5 @@ def merge(ids, pair, idx):
             new_ids.append(ids[i])
             i += 1
     return new_ids
-
+```
+---
