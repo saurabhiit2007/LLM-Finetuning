@@ -75,6 +75,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#1-overview" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -752,6 +757,19 @@
       
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Byte Pair Encoding
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -763,6 +781,383 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-how-bpe-works-the-algorithm" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. How BPE Works (The Algorithm)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. How BPE Works (The Algorithm)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-step-by-step-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1 Step-by-Step Example
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.1 Step-by-Step Example">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-initialize" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1: Initialize
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-frequency-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2: Frequency Analysis
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-merge" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3: Merge
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-iterate" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 4: Iterate
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-vocabulary-size" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2 Vocabulary Size
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-key-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3 Key Properties
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-where-bpe-shines" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.4 Where BPE Shines
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.4 Where BPE Shines">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-common-words-and-morphemes" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Common Words and Morphemes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-open-vocabulary" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Open Vocabulary
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-web-scale-text" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Web-Scale Text
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-where-bpe-fails-or-struggles" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.5 Where BPE Fails or Struggles
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.5 Where BPE Fails or Struggles">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-rare-words-and-low-resource-languages" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Rare Words and Low-Resource Languages
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-numbers-and-arithmetic" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Numbers and Arithmetic
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-spelling-and-character-level-tasks" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Spelling and Character-Level Tasks
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-early-merge-bias" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Early Merge Bias
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-sensitivity-to-formatting" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Sensitivity to Formatting
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-tokenization-strategies-compared" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Tokenization Strategies Compared
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-why-bpe-works-well-for-llms" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Why BPE Works Well for LLMs
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-bpe-variants-used-in-practice" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. BPE Variants Used in Practice
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-pre-tokenization-and-whitespace-effects" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Pre-tokenization and Whitespace Effects
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-tokenization-paradoxes-interview-level-insights" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Tokenization Paradoxes (Interview-Level Insights)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Tokenization Paradoxes (Interview-Level Insights)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-spelling-paradox" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Spelling Paradox
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-arithmetic-paradox" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Arithmetic Paradox
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-case-sensitivity-trap" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Case Sensitivity Trap
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-pros-and-cons-of-bpe" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Pros and Cons of BPE
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Pros and Cons of BPE">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pros" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pros
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cons" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cons
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#takeaway" class="md-nav__link">
+    <span class="md-ellipsis">
+      Takeaway
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-tokenization-is-part-of-the-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Tokenization Is Part of the Model
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-tokenization-and-cost" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. Tokenization and Cost
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-beyond-bpe-emerging-alternatives" class="md-nav__link">
+    <span class="md-ellipsis">
+      11. Beyond BPE: Emerging Alternatives
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-interview-faq" class="md-nav__link">
+    <span class="md-ellipsis">
+      12. Interview FAQ
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conceptual-implementation-snippet" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conceptual Implementation Snippet
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -916,6 +1311,374 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-how-bpe-works-the-algorithm" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. How BPE Works (The Algorithm)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. How BPE Works (The Algorithm)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-step-by-step-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1 Step-by-Step Example
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.1 Step-by-Step Example">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-initialize" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1: Initialize
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-frequency-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2: Frequency Analysis
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-merge" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3: Merge
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-iterate" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 4: Iterate
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-vocabulary-size" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2 Vocabulary Size
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-key-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3 Key Properties
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-where-bpe-shines" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.4 Where BPE Shines
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.4 Where BPE Shines">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-common-words-and-morphemes" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Common Words and Morphemes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-open-vocabulary" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Open Vocabulary
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-web-scale-text" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Web-Scale Text
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-where-bpe-fails-or-struggles" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.5 Where BPE Fails or Struggles
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.5 Where BPE Fails or Struggles">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-rare-words-and-low-resource-languages" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Rare Words and Low-Resource Languages
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-numbers-and-arithmetic" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Numbers and Arithmetic
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-spelling-and-character-level-tasks" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Spelling and Character-Level Tasks
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-early-merge-bias" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Early Merge Bias
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-sensitivity-to-formatting" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Sensitivity to Formatting
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-tokenization-strategies-compared" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Tokenization Strategies Compared
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-why-bpe-works-well-for-llms" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Why BPE Works Well for LLMs
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-bpe-variants-used-in-practice" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. BPE Variants Used in Practice
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-pre-tokenization-and-whitespace-effects" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Pre-tokenization and Whitespace Effects
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-tokenization-paradoxes-interview-level-insights" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Tokenization Paradoxes (Interview-Level Insights)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Tokenization Paradoxes (Interview-Level Insights)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-spelling-paradox" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Spelling Paradox
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-arithmetic-paradox" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Arithmetic Paradox
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-case-sensitivity-trap" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Case Sensitivity Trap
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-pros-and-cons-of-bpe" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Pros and Cons of BPE
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Pros and Cons of BPE">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pros" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pros
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cons" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cons
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#takeaway" class="md-nav__link">
+    <span class="md-ellipsis">
+      Takeaway
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-tokenization-is-part-of-the-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Tokenization Is Part of the Model
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-tokenization-and-cost" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. Tokenization and Cost
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-beyond-bpe-emerging-alternatives" class="md-nav__link">
+    <span class="md-ellipsis">
+      11. Beyond BPE: Emerging Alternatives
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-interview-faq" class="md-nav__link">
+    <span class="md-ellipsis">
+      12. Interview FAQ
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conceptual-implementation-snippet" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conceptual Implementation Snippet
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -935,7 +1698,326 @@
 
   <h1>Byte Pair Encoding</h1>
 
-
+<h2 id="1-overview">1. Overview<a class="headerlink" href="#1-overview" title="Permanent link">&para;</a></h2>
+<p>Byte Pair Encoding (BPE) and its modern variants are the dominant subword tokenization methods used in today’s Large Language Models (LLMs), including <strong>GPT-3, GPT-4, and LLaMA</strong>. BPE strikes a practical balance between word-level and character-level tokenization, enabling scalable training while avoiding out-of-vocabulary failures.</p>
+<p>BPE addresses the <strong>out-of-vocabulary (OOV)</strong> problem by decomposing text into frequently occurring subword units instead of relying on a fixed word vocabulary. Any unseen word can still be represented as a sequence of known subcomponents.</p>
+<p>This makes BPE robust, flexible, and suitable for web-scale corpora with noisy and evolving language.</p>
+<hr />
+<h2 id="2-how-bpe-works-the-algorithm">2. How BPE Works (The Algorithm)<a class="headerlink" href="#2-how-bpe-works-the-algorithm" title="Permanent link">&para;</a></h2>
+<ol>
+<li>
+<p><strong>Initialize</strong><br />
+   Start with a vocabulary of base symbols, either characters or UTF-8 bytes.</p>
+</li>
+<li>
+<p><strong>Frequency Analysis</strong><br />
+   Count all adjacent token pairs in the training corpus.</p>
+</li>
+<li>
+<p><strong>Merge</strong><br />
+   Replace the most frequent adjacent pair with a new token.</p>
+</li>
+<li>
+<p><strong>Iterate</strong><br />
+   Repeat until a predefined vocabulary size is reached.</p>
+</li>
+</ol>
+<h3 id="21-step-by-step-example">2.1 Step-by-Step Example<a class="headerlink" href="#21-step-by-step-example" title="Permanent link">&para;</a></h3>
+<p>Consider a tiny corpus: [low, lower, newest, widest]</p>
+<h4 id="step-1-initialize">Step 1: Initialize<a class="headerlink" href="#step-1-initialize" title="Permanent link">&para;</a></h4>
+<p>Start with characters as the base vocabulary and mark word boundaries:</p>
+<blockquote>
+<p>l o w _ <br>
+l o w e r _ <br>
+n e w e s t _ <br>
+w i d e s t _ <br></p>
+</blockquote>
+<p>Initial tokens are individual characters.</p>
+<hr />
+<h4 id="step-2-frequency-analysis">Step 2: Frequency Analysis<a class="headerlink" href="#step-2-frequency-analysis" title="Permanent link">&para;</a></h4>
+<p>Count all adjacent token pairs across the corpus.</p>
+<p>Some frequent pairs:</p>
+<ul>
+<li><code>l o</code></li>
+<li><code>o w</code></li>
+<li><code>e s</code></li>
+<li><code>s t</code></li>
+</ul>
+<p>Assume <code>o w</code> is the most frequent pair.</p>
+<hr />
+<h4 id="step-3-merge">Step 3: Merge<a class="headerlink" href="#step-3-merge" title="Permanent link">&para;</a></h4>
+<p>Merge <code>o w → ow</code> everywhere:</p>
+<blockquote>
+<p>l ow _ <br>
+l ow e r _ <br>
+n e w e s t _ <br>
+w i d e s t _ <br></p>
+</blockquote>
+<p>Vocabulary now includes <code>ow</code>.</p>
+<hr />
+<h4 id="step-4-iterate">Step 4: Iterate<a class="headerlink" href="#step-4-iterate" title="Permanent link">&para;</a></h4>
+<p>Repeat frequency analysis and merging.</p>
+<p>Next merges might be:</p>
+<ul>
+<li><code>l ow → low</code></li>
+<li><code>e s → es</code></li>
+<li><code>es t → est</code></li>
+</ul>
+<p>Eventually the corpus may look like:</p>
+<blockquote>
+<p>low _ <br>
+lower _ <br>
+new est _ <br>
+wid est _ <br></p>
+</blockquote>
+<p>And the vocabulary contains: [l, o, w, e, r, n, i, d, t, low, est, wid, lower, _]</p>
+<p>The process stops once the target vocabulary size is reached.</p>
+<hr />
+<h3 id="22-vocabulary-size">2.2 Vocabulary Size<a class="headerlink" href="#22-vocabulary-size" title="Permanent link">&para;</a></h3>
+<p>The final vocabulary size is:</p>
+<div class="arithmatex">\[
+V = S + N_{\text{merges}}
+\]</div>
+<p>Where:
+- <span class="arithmatex">\(S\)</span> is the number of base symbols
+- <span class="arithmatex">\(N_{\text{merges}}\)</span> is the number of merge operations</p>
+<p>Each merge permanently adds one new token.</p>
+<hr />
+<h3 id="23-key-properties">2.3 Key Properties<a class="headerlink" href="#23-key-properties" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Greedy:</strong> Always merges the most frequent pair</li>
+<li><strong>Deterministic:</strong> Same data and merges produce the same vocabulary</li>
+<li><strong>Irreversible:</strong> Bad early merges cannot be undone</li>
+</ul>
+<hr />
+<h3 id="24-where-bpe-shines">2.4 Where BPE Shines<a class="headerlink" href="#24-where-bpe-shines" title="Permanent link">&para;</a></h3>
+<h4 id="1-common-words-and-morphemes">1. Common Words and Morphemes<a class="headerlink" href="#1-common-words-and-morphemes" title="Permanent link">&para;</a></h4>
+<p>Frequently occurring patterns like:</p>
+<ul>
+<li><code>ing</code>, <code>tion</code>, <code>http</code>, <code>://</code>
+become single tokens, reducing sequence length and improving efficiency.</li>
+</ul>
+<h4 id="2-open-vocabulary">2. Open Vocabulary<a class="headerlink" href="#2-open-vocabulary" title="Permanent link">&para;</a></h4>
+<p>Any new word can be represented as subwords: </p>
+<p><code>unhappiness → un + happi + ness</code></p>
+<p>No <code>[UNK]</code> tokens are required.</p>
+<h4 id="3-web-scale-text">3. Web-Scale Text<a class="headerlink" href="#3-web-scale-text" title="Permanent link">&para;</a></h4>
+<p>BPE handles:</p>
+<ul>
+<li>URLs</li>
+<li>Code</li>
+<li>Typos</li>
+<li>Mixed-language text</li>
+</ul>
+<p>very well, especially in byte-level variants.</p>
+<h3 id="25-where-bpe-fails-or-struggles">2.5 Where BPE Fails or Struggles<a class="headerlink" href="#25-where-bpe-fails-or-struggles" title="Permanent link">&para;</a></h3>
+<h4 id="1-rare-words-and-low-resource-languages">1. Rare Words and Low-Resource Languages<a class="headerlink" href="#1-rare-words-and-low-resource-languages" title="Permanent link">&para;</a></h4>
+<p>Languages with rich morphology or limited data are often split into many tokens, making them:</p>
+<ul>
+<li>More expensive to process</li>
+<li>Harder to learn effectively</li>
+</ul>
+<h4 id="2-numbers-and-arithmetic">2. Numbers and Arithmetic<a class="headerlink" href="#2-numbers-and-arithmetic" title="Permanent link">&para;</a></h4>
+<p>BPE tokenizes numbers inconsistently:</p>
+<p><code>1000 → [1000]</code>
+<code>10001 → [100, 01]</code></p>
+<p>This breaks digit-level reasoning and arithmetic.</p>
+<h4 id="3-spelling-and-character-level-tasks">3. Spelling and Character-Level Tasks<a class="headerlink" href="#3-spelling-and-character-level-tasks" title="Permanent link">&para;</a></h4>
+<p>If a word becomes a single token:
+<code>strawberry → [strawberry]</code></p>
+<p>The model cannot directly reason about individual letters.</p>
+<h4 id="4-early-merge-bias">4. Early Merge Bias<a class="headerlink" href="#4-early-merge-bias" title="Permanent link">&para;</a></h4>
+<p>Because merges are greedy:</p>
+<ul>
+<li>Early frequent patterns dominate the vocabulary</li>
+<li>Suboptimal merges persist forever</li>
+<li>Later data distributions cannot correct them</li>
+</ul>
+<h4 id="5-sensitivity-to-formatting">5. Sensitivity to Formatting<a class="headerlink" href="#5-sensitivity-to-formatting" title="Permanent link">&para;</a></h4>
+<p>Whitespace, casing, and punctuation affect token boundaries: <code>"hello" ≠ " hello"</code></p>
+<p>Prompt formatting can significantly change tokenization.</p>
+<hr />
+<h2 id="3-tokenization-strategies-compared">3. Tokenization Strategies Compared<a class="headerlink" href="#3-tokenization-strategies-compared" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Strategy</th>
+<th>Pros</th>
+<th>Cons</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Word-level</td>
+<td>High semantic meaning</td>
+<td>Huge vocabulary, OOV issues</td>
+</tr>
+<tr>
+<td>Character-level</td>
+<td>No OOV, small vocabulary</td>
+<td>Long sequences, weak semantics</td>
+</tr>
+<tr>
+<td>Subword (BPE)</td>
+<td>Balanced efficiency and flexibility</td>
+<td>Linguistically unintuitive splits</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="4-why-bpe-works-well-for-llms">4. Why BPE Works Well for LLMs<a class="headerlink" href="#4-why-bpe-works-well-for-llms" title="Permanent link">&para;</a></h2>
+<ul>
+<li>
+<p><strong>Token Efficiency</strong><br />
+  Frequent strings like <code>the</code>, <code>ing</code>, or <code>http</code> become single tokens, reducing sequence length.</p>
+</li>
+<li>
+<p><strong>Statistical Morphology</strong><br />
+  Related words such as <code>play</code>, <code>playing</code>, and <code>played</code> often share subword units.<br />
+  This is an emergent frequency effect, not explicit linguistic understanding.</p>
+</li>
+<li>
+<p><strong>Byte-level Robustness</strong><br />
+  Byte-level BPE operates on UTF-8 bytes, guaranteeing that any string can be tokenized without an <code>[UNK]</code> token.</p>
+</li>
+</ul>
+<hr />
+<h2 id="5-bpe-variants-used-in-practice">5. BPE Variants Used in Practice<a class="headerlink" href="#5-bpe-variants-used-in-practice" title="Permanent link">&para;</a></h2>
+<p>Modern LLMs rarely use vanilla BPE.</p>
+<ul>
+<li>
+<p><strong>Byte-level BPE (GPT-2, GPT-4)</strong><br />
+  Uses bytes as base symbols, eliminating unknown tokens.</p>
+</li>
+<li>
+<p><strong>SentencePiece BPE (LLaMA)</strong><br />
+  Avoids pre-tokenization and treats whitespace as a normal symbol.</p>
+</li>
+<li>
+<p><strong>Unigram Language Model (SentencePiece)</strong><br />
+  Uses a probabilistic model over subwords instead of greedy merges, allowing multiple valid tokenizations.</p>
+</li>
+</ul>
+<p>Key distinction:</p>
+<ul>
+<li>BPE is deterministic and greedy</li>
+<li>Unigram LM is probabilistic and more flexible</li>
+</ul>
+<hr />
+<h2 id="6-pre-tokenization-and-whitespace-effects">6. Pre-tokenization and Whitespace Effects<a class="headerlink" href="#6-pre-tokenization-and-whitespace-effects" title="Permanent link">&para;</a></h2>
+<p>Tokenization is sensitive to whitespace and formatting.</p>
+<ul>
+<li><code>"hello"</code> and <code>" hello"</code> may map to different tokens</li>
+<li>Leading spaces often act as token boundaries</li>
+<li>Prompt formatting directly influences tokenization</li>
+</ul>
+<p>These effects explain why small formatting changes can significantly alter model behavior.</p>
+<hr />
+<h2 id="7-tokenization-paradoxes-interview-level-insights">7. Tokenization Paradoxes (Interview-Level Insights)<a class="headerlink" href="#7-tokenization-paradoxes-interview-level-insights" title="Permanent link">&para;</a></h2>
+<h3 id="the-spelling-paradox">The Spelling Paradox<a class="headerlink" href="#the-spelling-paradox" title="Permanent link">&para;</a></h3>
+<p>LLMs struggle to count letters in words.
+- Reason: words often appear as single tokens, hiding character-level structure.</p>
+<h3 id="the-arithmetic-paradox">The Arithmetic Paradox<a class="headerlink" href="#the-arithmetic-paradox" title="Permanent link">&para;</a></h3>
+<p>LLMs fail at digit-wise arithmetic on large numbers.
+- Reason: numbers are split inconsistently across tokens.</p>
+<h3 id="the-case-sensitivity-trap">The Case Sensitivity Trap<a class="headerlink" href="#the-case-sensitivity-trap" title="Permanent link">&para;</a></h3>
+<p><code>Hello</code>, <code>hello</code>, and <code>HELLO</code> are distinct tokens.
+- Effect: the model must learn redundant representations.</p>
+<hr />
+<h2 id="8-pros-and-cons-of-bpe">8. Pros and Cons of BPE<a class="headerlink" href="#8-pros-and-cons-of-bpe" title="Permanent link">&para;</a></h2>
+<h3 id="pros">Pros<a class="headerlink" href="#pros" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Adaptive to training data</li>
+<li>No OOV failures</li>
+<li>Balanced embedding matrix size (typically 32k–100k tokens)</li>
+</ul>
+<h3 id="cons">Cons<a class="headerlink" href="#cons" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Greedy and irreversible merges</li>
+<li>English-centric bias</li>
+<li>Poor handling of low-resource languages</li>
+<li>Weak inductive bias for spelling and arithmetic</li>
+</ul>
+<h3 id="takeaway">Takeaway<a class="headerlink" href="#takeaway" title="Permanent link">&para;</a></h3>
+<p>BPE is best understood as a <strong>compression-driven algorithm</strong>, not a linguistic one.<br />
+It excels at efficiency and scalability but introduces structural biases that directly affect reasoning, arithmetic, and multilingual performance.</p>
+<p>Many LLM failure modes are rooted in tokenization choices rather than model architecture.</p>
+<hr />
+<h2 id="9-tokenization-is-part-of-the-model">9. Tokenization Is Part of the Model<a class="headerlink" href="#9-tokenization-is-part-of-the-model" title="Permanent link">&para;</a></h2>
+<p>Tokenization defines:</p>
+<ul>
+<li>The atomic prediction units</li>
+<li>The embedding space structure</li>
+<li>What patterns are easy or hard to learn</li>
+</ul>
+<p>Changing tokenization usually requires:</p>
+<ul>
+<li>Relearning embeddings</li>
+<li>Often retraining the entire model</li>
+</ul>
+<p>Tokenization errors cannot be fixed by fine-tuning alone.</p>
+<hr />
+<h2 id="10-tokenization-and-cost">10. Tokenization and Cost<a class="headerlink" href="#10-tokenization-and-cost" title="Permanent link">&para;</a></h2>
+<p>Tokenization affects:</p>
+<ul>
+<li>Context length utilization</li>
+<li>Inference latency</li>
+<li>Serving cost</li>
+</ul>
+<p>Languages or domains that produce more tokens:</p>
+<ul>
+<li>Consume context faster</li>
+<li>Cost more to serve</li>
+<li>Often exhibit lower effective performance</li>
+</ul>
+<p>This creates fairness and efficiency challenges in multilingual models.</p>
+<hr />
+<h2 id="11-beyond-bpe-emerging-alternatives">11. Beyond BPE: Emerging Alternatives<a class="headerlink" href="#11-beyond-bpe-emerging-alternatives" title="Permanent link">&para;</a></h2>
+<p>Active research explores:</p>
+<ul>
+<li>Character-aware transformers</li>
+<li>Byte-level models without merges</li>
+<li>Token-free architectures</li>
+</ul>
+<p>Motivation:</p>
+<ul>
+<li>Reduce tokenization artifacts</li>
+<li>Improve multilingual equity</li>
+<li>Improve spelling and arithmetic</li>
+</ul>
+<p>Trade-off:</p>
+<ul>
+<li>Higher compute cost</li>
+<li>Slower convergence</li>
+</ul>
+<p>As of 2025, BPE-based methods remain dominant due to their efficiency and scalability.</p>
+<hr />
+<h2 id="12-interview-faq">12. Interview FAQ<a class="headerlink" href="#12-interview-faq" title="Permanent link">&para;</a></h2>
+<p><strong>Q: How is BPE different from WordPiece?</strong><br />
+<strong>A:</strong> BPE merges based on raw frequency, while WordPiece merges to maximize likelihood under a language model.</p>
+<p><strong>Q: Why use byte-level BPE?</strong><br />
+<strong>A:</strong> It guarantees full coverage with a base vocabulary of 256 bytes, eliminating unknown tokens.</p>
+<p><strong>Q: Can tokenization be changed after training?</strong><br />
+<strong>A:</strong> Not easily. Tokenization changes typically require retraining embeddings and often the full model.</p>
+<hr />
+<h2 id="conceptual-implementation-snippet">Conceptual Implementation Snippet<a class="headerlink" href="#conceptual-implementation-snippet" title="Permanent link">&para;</a></h2>
+<p>```python
+def get_stats(ids):
+    counts = {}
+    for pair in zip(ids, ids[1:]):
+        counts[pair] = counts.get(pair, 0) + 1
+    return counts</p>
+<p>def merge(ids, pair, idx):
+    new_ids = []
+    i = 0
+    while i &lt; len(ids):
+        if i &lt; len(ids) - 1 and (ids[i], ids[i+1]) == pair:
+            new_ids.append(idx)
+            i += 2
+        else:
+            new_ids.append(ids[i])
+            i += 1
+    return new_ids</p>
 
 
 
