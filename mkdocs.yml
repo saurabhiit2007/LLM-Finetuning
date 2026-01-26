@@ -56,6 +56,8 @@ nav:
           - Advanced Transformer Components & Layers: ./training_techniques/pre_training/advanced_transformer_components_and_layers.md
       - Training Optimization and Stability: ./training_techniques/training_optimization_and_stability.md
       - Distributed Training Systems: ./training_techniques/distributed_training_systems.md
+      - Post-Training:
+          - Supervised Fine-Tuning (SFT): ./training_techniques/post_training/sft.md
   - References: references.md
 
 markdown_extensions:
