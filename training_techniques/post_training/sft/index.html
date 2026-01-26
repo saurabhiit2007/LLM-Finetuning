@@ -13,10 +13,10 @@
       
       
       
-        <link rel="prev" href="../sentence_piece_unigram/">
+        <link rel="prev" href="../../distributed_training_systems/">
       
       
-        <link rel="next" href="../../training_optimization_and_stability/">
+        <link rel="next" href="../../../references/">
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
@@ -24,7 +24,7 @@
     
     
       
-        <title>Advanced Transformer Components & Layers - Fine-Tuning Methods Documentation</title>
+        <title>Supervised Fine-Tuning (SFT) - Fine-Tuning Methods Documentation</title>
       
     
     
@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#1-normalization-rmsnorm" class="md-skip">
+        <a href="#1-what-sft-optimizes" class="md-skip">
           Skip to content
         </a>
       
@@ -112,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Advanced Transformer Components & Layers
+              Supervised Fine-Tuning (SFT)
             
           </span>
         </div>
@@ -684,20 +684,20 @@
                 
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" checked>
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_2" >
         
           
           <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
@@ -713,7 +713,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4_2">
             <span class="md-nav__icon md-icon"></span>
             Pre-Training
@@ -727,7 +727,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../pre_training/" class="md-nav__link">
+      <a href="../../pre_training/pre_training/" class="md-nav__link">
         
   
   
@@ -750,7 +750,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../byte_pair_encoding/" class="md-nav__link">
+      <a href="../../pre_training/byte_pair_encoding/" class="md-nav__link">
         
   
   
@@ -773,7 +773,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../mixture_of_experts/" class="md-nav__link">
+      <a href="../../pre_training/mixture_of_experts/" class="md-nav__link">
         
   
   
@@ -796,7 +796,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../RoPE/" class="md-nav__link">
+      <a href="../../pre_training/RoPE/" class="md-nav__link">
         
   
   
@@ -819,7 +819,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../sentence_piece_unigram/" class="md-nav__link">
+      <a href="../../pre_training/sentence_piece_unigram/" class="md-nav__link">
         
   
   
@@ -839,30 +839,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    Advanced Transformer Components & Layers
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../pre_training/advanced_transformer_components_and_layers/" class="md-nav__link">
         
   
   
@@ -873,366 +853,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#1-normalization-rmsnorm" class="md-nav__link">
-    <span class="md-ellipsis">
-      1. Normalization: RMSNorm
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="1. Normalization: RMSNorm">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#the-math" class="md-nav__link">
-    <span class="md-ellipsis">
-      The Math
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#takeaways" class="md-nav__link">
-    <span class="md-ellipsis">
-      Takeaways
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2-structural-shift-pre-norm-architecture" class="md-nav__link">
-    <span class="md-ellipsis">
-      2. Structural Shift: Pre-Norm Architecture
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="2. Structural Shift: Pre-Norm Architecture">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#formulation" class="md-nav__link">
-    <span class="md-ellipsis">
-      Formulation
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#takeaways_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      Takeaways
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3-activation-excellence-swiglu" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. Activation Excellence: SwiGLU
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="3. Activation Excellence: SwiGLU">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#the-math_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      The Math
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#takeaways_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      Takeaways
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4-stability-choice-bias-free-linear-layers" class="md-nav__link">
-    <span class="md-ellipsis">
-      4. Stability Choice: Bias-Free Linear Layers
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="4. Stability Choice: Bias-Free Linear Layers">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#takeaways_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      Takeaways
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#5-positional-encoding-rotary-positional-embeddings-rope" class="md-nav__link">
-    <span class="md-ellipsis">
-      5. Positional Encoding: Rotary Positional Embeddings (RoPE)
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="5. Positional Encoding: Rotary Positional Embeddings (RoPE)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#takeaways_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      Takeaways
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#6-efficient-attention-grouped-query-attention-gqa" class="md-nav__link">
-    <span class="md-ellipsis">
-      6. Efficient Attention: Grouped-Query Attention (GQA)
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="6. Efficient Attention: Grouped-Query Attention (GQA)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#takeaways_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      Takeaways
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#7-attention-kernel-optimization-flashattention" class="md-nav__link">
-    <span class="md-ellipsis">
-      7. Attention Kernel Optimization: FlashAttention
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="7. Attention Kernel Optimization: FlashAttention">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#takeaways_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      Takeaways
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#8-parallel-attention-and-ffn" class="md-nav__link">
-    <span class="md-ellipsis">
-      8. Parallel Attention and FFN
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="8. Parallel Attention and FFN">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#takeaways_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      Takeaways
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#9-context-extension-beyond-rope" class="md-nav__link">
-    <span class="md-ellipsis">
-      9. Context Extension Beyond RoPE
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="9. Context Extension Beyond RoPE">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#91-rope-scaling-and-interpolation" class="md-nav__link">
-    <span class="md-ellipsis">
-      9.1 RoPE Scaling and Interpolation
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#92-sliding-window-attention" class="md-nav__link">
-    <span class="md-ellipsis">
-      9.2 Sliding Window Attention
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#takeaways_8" class="md-nav__link">
-    <span class="md-ellipsis">
-      Takeaways
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#10-mixture-of-experts-moe" class="md-nav__link">
-    <span class="md-ellipsis">
-      10. Mixture of Experts (MoE)
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="10. Mixture of Experts (MoE)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#takeaways_9" class="md-nav__link">
-    <span class="md-ellipsis">
-      Takeaways
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#11-kv-cache-optimizations" class="md-nav__link">
-    <span class="md-ellipsis">
-      11. KV Cache Optimizations
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="11. KV Cache Optimizations">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#takeaways_10" class="md-nav__link">
-    <span class="md-ellipsis">
-      Takeaways
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#12-weight-tying-and-parameter-sharing" class="md-nav__link">
-    <span class="md-ellipsis">
-      12. Weight Tying and Parameter Sharing
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="12. Weight Tying and Parameter Sharing">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#takeaways_11" class="md-nav__link">
-    <span class="md-ellipsis">
-      Takeaways
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#summary-table" class="md-nav__link">
-    <span class="md-ellipsis">
-      📊 Summary Table
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1296,20 +916,20 @@
                 
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" checked>
         
           
           <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
@@ -1325,7 +945,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4_5">
             <span class="md-nav__icon md-icon"></span>
             Post-Training
@@ -1336,10 +956,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../post_training/sft/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Supervised Fine-Tuning (SFT)
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1350,6 +990,399 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-what-sft-optimizes" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. What SFT Optimizes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-instruction-tuning-and-task-formatting" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Instruction Tuning and Task Formatting
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Instruction Tuning and Task Formatting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#instruction-tuning" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instruction Tuning
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#task-and-prompt-formatting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Task and Prompt Formatting
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-formatting-matters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why Formatting Matters
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prompt-diversity-as-regularization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prompt Diversity as Regularization
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Prompt Diversity as Regularization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#semantic-diversity" class="md-nav__link">
+    <span class="md-ellipsis">
+      Semantic Diversity
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#structural-diversity" class="md-nav__link">
+    <span class="md-ellipsis">
+      Structural Diversity
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#513-human-vs-synthetic-supervision" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.1.3 Human vs Synthetic Supervision
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.1.3 Human vs Synthetic Supervision">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#human-labeled-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Human-Labeled Data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#synthetic-supervision" class="md-nav__link">
+    <span class="md-ellipsis">
+      Synthetic Supervision
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Synthetic Supervision">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#self-instruct" class="md-nav__link">
+    <span class="md-ellipsis">
+      Self-Instruct
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#evol-instruct-as-curriculum-learning" class="md-nav__link">
+    <span class="md-ellipsis">
+      Evol-Instruct as Curriculum Learning
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rejection-sampling-best-of-n" class="md-nav__link">
+    <span class="md-ellipsis">
+      Rejection Sampling (Best-of-N)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#514-data-quality-over-quantity" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.1.4 Data Quality over Quantity
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.1.4 Data Quality over Quantity">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-lima-hypothesis" class="md-nav__link">
+    <span class="md-ellipsis">
+      The LIMA Hypothesis
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#typical-sft-data-mix" class="md-nav__link">
+    <span class="md-ellipsis">
+      Typical SFT Data Mix
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#515-training-optimizations-and-stability" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.1.5 Training Optimizations and Stability
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.1.5 Training Optimizations and Stability">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#packing-vs-padding" class="md-nav__link">
+    <span class="md-ellipsis">
+      Packing vs Padding
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Packing vs Padding">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#padding" class="md-nav__link">
+    <span class="md-ellipsis">
+      Padding
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#packing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Packing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-packing-improves-gpu-utilization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why Packing Improves GPU Utilization
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#important-implementation-details" class="md-nav__link">
+    <span class="md-ellipsis">
+      Important Implementation Details
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#padding-vs-packing-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Padding vs Packing Summary
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interview-insight" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interview Insight
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#516-overfitting-and-catastrophic-forgetting" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.1.6 Overfitting and Catastrophic Forgetting
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.1.6 Overfitting and Catastrophic Forgetting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#catastrophic-forgetting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Catastrophic Forgetting
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#overfitting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overfitting
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#517-lora-vs-full-fine-tuning" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.1.7 LoRA vs Full Fine-Tuning
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.1.7 LoRA vs Full Fine-Tuning">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lora-and-peft" class="md-nav__link">
+    <span class="md-ellipsis">
+      LoRA and PEFT
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#full-fine-tuning" class="md-nav__link">
+    <span class="md-ellipsis">
+      Full Fine-Tuning
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#518-common-failure-modes-after-sft" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.1.8 Common Failure Modes After SFT
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.1.8 Common Failure Modes After SFT">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#increased-hallucinations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Increased Hallucinations
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#519-sft-vs-pre-training-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.1.9 SFT vs Pre-training Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5110-interview-level-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.1.10 Interview-Level Takeaways
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1417,28 +1450,37 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-normalization-rmsnorm" class="md-nav__link">
+  <a href="#1-what-sft-optimizes" class="md-nav__link">
     <span class="md-ellipsis">
-      1. Normalization: RMSNorm
+      1. What SFT Optimizes
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="1. Normalization: RMSNorm">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-instruction-tuning-and-task-formatting" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Instruction Tuning and Task Formatting
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Instruction Tuning and Task Formatting">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#the-math" class="md-nav__link">
+  <a href="#instruction-tuning" class="md-nav__link">
     <span class="md-ellipsis">
-      The Math
+      Instruction Tuning
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#takeaways" class="md-nav__link">
+  <a href="#task-and-prompt-formatting" class="md-nav__link">
     <span class="md-ellipsis">
-      Takeaways
+      Task and Prompt Formatting
     </span>
   </a>
   
@@ -1450,28 +1492,37 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-structural-shift-pre-norm-architecture" class="md-nav__link">
+  <a href="#why-formatting-matters" class="md-nav__link">
     <span class="md-ellipsis">
-      2. Structural Shift: Pre-Norm Architecture
+      Why Formatting Matters
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="2. Structural Shift: Pre-Norm Architecture">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prompt-diversity-as-regularization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prompt Diversity as Regularization
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Prompt Diversity as Regularization">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#formulation" class="md-nav__link">
+  <a href="#semantic-diversity" class="md-nav__link">
     <span class="md-ellipsis">
-      Formulation
+      Semantic Diversity
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#takeaways_1" class="md-nav__link">
+  <a href="#structural-diversity" class="md-nav__link">
     <span class="md-ellipsis">
-      Takeaways
+      Structural Diversity
     </span>
   </a>
   
@@ -1483,28 +1534,61 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-activation-excellence-swiglu" class="md-nav__link">
+  <a href="#513-human-vs-synthetic-supervision" class="md-nav__link">
     <span class="md-ellipsis">
-      3. Activation Excellence: SwiGLU
+      5.1.3 Human vs Synthetic Supervision
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="3. Activation Excellence: SwiGLU">
+    <nav class="md-nav" aria-label="5.1.3 Human vs Synthetic Supervision">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#the-math_1" class="md-nav__link">
+  <a href="#human-labeled-data" class="md-nav__link">
     <span class="md-ellipsis">
-      The Math
+      Human-Labeled Data
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#takeaways_2" class="md-nav__link">
+  <a href="#synthetic-supervision" class="md-nav__link">
     <span class="md-ellipsis">
-      Takeaways
+      Synthetic Supervision
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Synthetic Supervision">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#self-instruct" class="md-nav__link">
+    <span class="md-ellipsis">
+      Self-Instruct
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#evol-instruct-as-curriculum-learning" class="md-nav__link">
+    <span class="md-ellipsis">
+      Evol-Instruct as Curriculum Learning
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rejection-sampling-best-of-n" class="md-nav__link">
+    <span class="md-ellipsis">
+      Rejection Sampling (Best-of-N)
     </span>
   </a>
   
@@ -1516,19 +1600,28 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-stability-choice-bias-free-linear-layers" class="md-nav__link">
+  <a href="#514-data-quality-over-quantity" class="md-nav__link">
     <span class="md-ellipsis">
-      4. Stability Choice: Bias-Free Linear Layers
+      5.1.4 Data Quality over Quantity
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="4. Stability Choice: Bias-Free Linear Layers">
+    <nav class="md-nav" aria-label="5.1.4 Data Quality over Quantity">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#takeaways_3" class="md-nav__link">
+  <a href="#the-lima-hypothesis" class="md-nav__link">
     <span class="md-ellipsis">
-      Takeaways
+      The LIMA Hypothesis
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#typical-sft-data-mix" class="md-nav__link">
+    <span class="md-ellipsis">
+      Typical SFT Data Mix
     </span>
   </a>
   
@@ -1540,19 +1633,112 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#5-positional-encoding-rotary-positional-embeddings-rope" class="md-nav__link">
+  <a href="#515-training-optimizations-and-stability" class="md-nav__link">
     <span class="md-ellipsis">
-      5. Positional Encoding: Rotary Positional Embeddings (RoPE)
+      5.1.5 Training Optimizations and Stability
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="5. Positional Encoding: Rotary Positional Embeddings (RoPE)">
+    <nav class="md-nav" aria-label="5.1.5 Training Optimizations and Stability">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#takeaways_4" class="md-nav__link">
+  <a href="#packing-vs-padding" class="md-nav__link">
     <span class="md-ellipsis">
-      Takeaways
+      Packing vs Padding
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Packing vs Padding">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#padding" class="md-nav__link">
+    <span class="md-ellipsis">
+      Padding
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#packing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Packing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-packing-improves-gpu-utilization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why Packing Improves GPU Utilization
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#important-implementation-details" class="md-nav__link">
+    <span class="md-ellipsis">
+      Important Implementation Details
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#padding-vs-packing-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Padding vs Packing Summary
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interview-insight" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interview Insight
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#516-overfitting-and-catastrophic-forgetting" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.1.6 Overfitting and Catastrophic Forgetting
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.1.6 Overfitting and Catastrophic Forgetting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#catastrophic-forgetting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Catastrophic Forgetting
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#overfitting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overfitting
     </span>
   </a>
   
@@ -1564,19 +1750,28 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#6-efficient-attention-grouped-query-attention-gqa" class="md-nav__link">
+  <a href="#517-lora-vs-full-fine-tuning" class="md-nav__link">
     <span class="md-ellipsis">
-      6. Efficient Attention: Grouped-Query Attention (GQA)
+      5.1.7 LoRA vs Full Fine-Tuning
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="6. Efficient Attention: Grouped-Query Attention (GQA)">
+    <nav class="md-nav" aria-label="5.1.7 LoRA vs Full Fine-Tuning">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#takeaways_5" class="md-nav__link">
+  <a href="#lora-and-peft" class="md-nav__link">
     <span class="md-ellipsis">
-      Takeaways
+      LoRA and PEFT
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#full-fine-tuning" class="md-nav__link">
+    <span class="md-ellipsis">
+      Full Fine-Tuning
     </span>
   </a>
   
@@ -1588,19 +1783,19 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#7-attention-kernel-optimization-flashattention" class="md-nav__link">
+  <a href="#518-common-failure-modes-after-sft" class="md-nav__link">
     <span class="md-ellipsis">
-      7. Attention Kernel Optimization: FlashAttention
+      5.1.8 Common Failure Modes After SFT
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="7. Attention Kernel Optimization: FlashAttention">
+    <nav class="md-nav" aria-label="5.1.8 Common Failure Modes After SFT">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#takeaways_6" class="md-nav__link">
+  <a href="#increased-hallucinations" class="md-nav__link">
     <span class="md-ellipsis">
-      Takeaways
+      Increased Hallucinations
     </span>
   </a>
   
@@ -1612,147 +1807,18 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#8-parallel-attention-and-ffn" class="md-nav__link">
+  <a href="#519-sft-vs-pre-training-summary" class="md-nav__link">
     <span class="md-ellipsis">
-      8. Parallel Attention and FFN
+      5.1.9 SFT vs Pre-training Summary
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="8. Parallel Attention and FFN">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#takeaways_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      Takeaways
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#9-context-extension-beyond-rope" class="md-nav__link">
+  <a href="#5110-interview-level-takeaways" class="md-nav__link">
     <span class="md-ellipsis">
-      9. Context Extension Beyond RoPE
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="9. Context Extension Beyond RoPE">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#91-rope-scaling-and-interpolation" class="md-nav__link">
-    <span class="md-ellipsis">
-      9.1 RoPE Scaling and Interpolation
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#92-sliding-window-attention" class="md-nav__link">
-    <span class="md-ellipsis">
-      9.2 Sliding Window Attention
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#takeaways_8" class="md-nav__link">
-    <span class="md-ellipsis">
-      Takeaways
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#10-mixture-of-experts-moe" class="md-nav__link">
-    <span class="md-ellipsis">
-      10. Mixture of Experts (MoE)
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="10. Mixture of Experts (MoE)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#takeaways_9" class="md-nav__link">
-    <span class="md-ellipsis">
-      Takeaways
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#11-kv-cache-optimizations" class="md-nav__link">
-    <span class="md-ellipsis">
-      11. KV Cache Optimizations
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="11. KV Cache Optimizations">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#takeaways_10" class="md-nav__link">
-    <span class="md-ellipsis">
-      Takeaways
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#12-weight-tying-and-parameter-sharing" class="md-nav__link">
-    <span class="md-ellipsis">
-      12. Weight Tying and Parameter Sharing
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="12. Weight Tying and Parameter Sharing">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#takeaways_11" class="md-nav__link">
-    <span class="md-ellipsis">
-      Takeaways
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#summary-table" class="md-nav__link">
-    <span class="md-ellipsis">
-      📊 Summary Table
+      5.1.10 Interview-Level Takeaways
     </span>
   </a>
   
@@ -1777,240 +1843,415 @@
   
 
 
-  <h1>Advanced Transformer Components & Layers</h1>
+  <h1>Supervised Fine-Tuning (SFT)</h1>
 
-<p>This section covers the architectural evolutions that define the <strong>Modern Transformer</strong>, as used in Llama 3, Mistral, PaLM, GPT-4, and similar large-scale language models. Moving beyond the original 2017 Transformer is a common requirement for senior-level AI and ML engineering interviews.</p>
+<p>Supervised Fine-Tuning (SFT) is the stage where a <strong>pre-trained base model</strong> is transformed into a <strong>useful assistant</strong> that follows instructions, respects formats, and exhibits desired interaction behavior. While pre-training builds a broad world model, SFT shapes <em>how</em> that knowledge is expressed.</p>
+<p>From an interview perspective, SFT is best understood as <strong>behavioral alignment via supervised learning</strong>.</p>
 <hr />
-<h2 id="1-normalization-rmsnorm">1. Normalization: RMSNorm<a class="headerlink" href="#1-normalization-rmsnorm" title="Permanent link">&para;</a></h2>
-<p><strong>Replaces:</strong> LayerNorm (LN)</p>
-<p>Traditional LayerNorm centers the input by subtracting the mean and then scales it by the variance. <strong>RMSNorm</strong> (Root Mean Square Layer Normalization) simplifies this by removing the mean-centering step and only normalizing by the root mean square.</p>
-<h3 id="the-math">The Math<a class="headerlink" href="#the-math" title="Permanent link">&para;</a></h3>
+<h2 id="1-what-sft-optimizes">1. What SFT Optimizes<a class="headerlink" href="#1-what-sft-optimizes" title="Permanent link">&para;</a></h2>
+<p><strong>Goal</strong>  </p>
+<p>Map broad knowledge into a consistent, controllable interface.</p>
+<p><strong>Conceptual shift</strong></p>
+<ul>
+<li>Pre-training: “Continue the text”</li>
+<li>SFT: “Respond appropriately to a user instruction”</li>
+</ul>
+<p>This is achieved without reinforcement learning. The training signal is fully supervised.</p>
+<hr />
+<h2 id="2-instruction-tuning-and-task-formatting">2. Instruction Tuning and Task Formatting<a class="headerlink" href="#2-instruction-tuning-and-task-formatting" title="Permanent link">&para;</a></h2>
+<h3 id="instruction-tuning">Instruction Tuning<a class="headerlink" href="#instruction-tuning" title="Permanent link">&para;</a></h3>
+<p>Instruction tuning teaches the model to condition its output on an explicit instruction rather than implicit continuation.</p>
+<p><strong>Training objective</strong></p>
+<p>Standard cross-entropy loss with <strong>selective loss masking</strong>.</p>
+<p>If:</p>
+<ul>
+<li><span class="arithmatex">\(x\)</span> = prompt tokens (system + user)</li>
+<li><span class="arithmatex">\(y\)</span> = assistant response tokens</li>
+</ul>
+<p>Then SFT minimizes:</p>
 <div class="arithmatex">\[
-\bar{a}_i = \frac{a_i}{\text{RMS}(\mathbf{a})} g_i
-\quad \text{where} \quad
-\text{RMS}(\mathbf{a}) = \sqrt{\frac{1}{n} \sum_{i=1}^n a_i^2 + \epsilon}
+\mathcal{L}_{\text{SFT}} = -\sum_{t=1}^{|y|} \log P(y_t \mid x, y_{&lt;t})
 \]</div>
-<p>Where:</p>
+<p>Tokens belonging to <span class="arithmatex">\(x\)</span> are excluded from the loss.</p>
+<p><strong>Why masking matters</strong></p>
+<ul>
+<li>Prevents memorization of prompts</li>
+<li>Ensures gradients only optimize response generation</li>
+<li>Stabilizes alignment behavior</li>
+</ul>
+<hr />
+<h3 id="task-and-prompt-formatting">Task and Prompt Formatting<a class="headerlink" href="#task-and-prompt-formatting" title="Permanent link">&para;</a></h3>
+<p>Modern SFT relies heavily on <strong>structured role-based templates</strong>, such as ChatML or LLaMA-style formats.</p>
+<p><strong>Example</strong>
+<div class="highlight"><pre><span></span><code>&lt;|system|&gt; You are a helpful assistant. &lt;|end_of_text|&gt;
+&lt;|user|&gt; Summarize this article. &lt;|end_of_text|&gt;
+&lt;|assistant|&gt; The article discusses...
+</code></pre></div></p>
+<h2 id="why-formatting-matters">Why Formatting Matters<a class="headerlink" href="#why-formatting-matters" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Separates intent, context, and response  </li>
+<li>Enables multi-turn dialogue modeling  </li>
+<li>Reduces ambiguity during inference  </li>
+</ul>
+<p>Formatting does more than separate roles.</p>
 <ul>
 <li>
-<p><strong><span class="arithmatex">\(\mathbf{a} \in \mathbb{R}^n\)</span></strong>: Input activation vector to the normalization layer, typically corresponding to a single token representation across the hidden dimension.</p>
+<p><strong>Implicit policy learning</strong><br />
+  Role tokens and system messages act as soft constraints that the model internalizes as behavioral priors.</p>
 </li>
 <li>
-<p><strong><span class="arithmatex">\(a_i\)</span></strong>: The <span class="arithmatex">\(i\)</span>-th component of the input activation vector <span class="arithmatex">\(\mathbf{a}\)</span>.</p>
+<p><strong>Gradient routing</strong><br />
+  Loss masking combined with role tokens ensures gradients primarily shape response behavior rather than prompt reconstruction.</p>
 </li>
 <li>
-<p><strong><span class="arithmatex">\(n\)</span></strong>: Dimensionality of the hidden representation, equal to the model hidden size.</p>
+<p><strong>Inference controllability</strong><br />
+  Well-designed templates allow downstream systems to inject safety, tools, or routing instructions without retraining.</p>
 </li>
 <li>
-<p><strong><span class="arithmatex">\(\text{RMS}(\mathbf{a})\)</span></strong>: Root Mean Square of the activation vector, used to normalize the input magnitude without mean-centering.</p>
-</li>
-<li>
-<p><strong><span class="arithmatex">\(\epsilon\)</span></strong>: Small positive constant added for numerical stability to prevent division by zero, especially important for low-precision training.</p>
-</li>
-<li>
-<p><strong><span class="arithmatex">\(g_i\)</span></strong>: Learnable scaling parameter applied element-wise after normalization. This replaces the gain parameter in LayerNorm while omitting the additive bias.</p>
-</li>
-<li>
-<p><strong><span class="arithmatex">\(\bar{a}_i\)</span></strong>: The normalized and rescaled output activation for the <span class="arithmatex">\(i\)</span>-th dimension.</p>
+<p><strong>Multi-turn state compression</strong><br />
+  Structured formatting helps the model compress dialogue history into latent state representations instead of treating each turn independently.</p>
 </li>
 </ul>
-<h3 id="takeaways">Takeaways<a class="headerlink" href="#takeaways" title="Permanent link">&para;</a></h3>
+<hr />
+<h2 id="prompt-diversity-as-regularization">Prompt Diversity as Regularization<a class="headerlink" href="#prompt-diversity-as-regularization" title="Permanent link">&para;</a></h2>
+<p>Prompt diversity is best understood as a <strong>regularization strategy</strong>, not just data augmentation.</p>
+<h3 id="semantic-diversity">Semantic Diversity<a class="headerlink" href="#semantic-diversity" title="Permanent link">&para;</a></h3>
+<p>Maintains coverage of distinct internal circuits:
+- Symbolic reasoning and math
+- Program synthesis and execution-style reasoning
+- Creative and stylistic generation
+- Factual recall under instruction pressure
+- Conversational grounding</p>
+<h3 id="structural-diversity">Structural Diversity<a class="headerlink" href="#structural-diversity" title="Permanent link">&para;</a></h3>
+<p>Reduces shortcut learning:
+- Paraphrased intents prevent lexical memorization
+- Variable verbosity avoids length priors
+- Explicit vs implicit constraints force instruction parsing</p>
+<p><strong>Key insight</strong><br />
+Insufficient structural diversity causes the model to learn <em>response templates</em> instead of <em>instruction semantics</em>.</p>
+<hr />
+<h2 id="513-human-vs-synthetic-supervision">5.1.3 Human vs Synthetic Supervision<a class="headerlink" href="#513-human-vs-synthetic-supervision" title="Permanent link">&para;</a></h2>
+<h3 id="human-labeled-data">Human-Labeled Data<a class="headerlink" href="#human-labeled-data" title="Permanent link">&para;</a></h3>
+<p><strong>Strengths</strong></p>
 <ul>
-<li><strong>Efficiency:</strong> Eliminates mean computation and subtraction, reducing arithmetic and synchronization overhead on accelerators.</li>
-<li><strong>Stability:</strong> Avoids cancellation errors from mean-centering, which is especially beneficial in low-precision FP16 and BF16 training.</li>
-<li><strong>Simplicity:</strong> Removes the additive bias term since normalization already controls activation scale, leaving only a learnable gain.</li>
+<li>High factual accuracy  </li>
+<li>Strong alignment with human preferences  </li>
+<li>Better safety and tone control  </li>
+</ul>
+<p><strong>Limitations</strong></p>
+<ul>
+<li>Expensive  </li>
+<li>Slow to scale  </li>
+<li>Limited coverage of edge cases  </li>
 </ul>
 <hr />
-<h2 id="2-structural-shift-pre-norm-architecture">2. Structural Shift: Pre-Norm Architecture<a class="headerlink" href="#2-structural-shift-pre-norm-architecture" title="Permanent link">&para;</a></h2>
-<p><strong>The Change:</strong> Normalization is applied before attention or FFN blocks instead of after the residual connection.</p>
-<h3 id="formulation">Formulation<a class="headerlink" href="#formulation" title="Permanent link">&para;</a></h3>
-<p><strong>Post-Norm (Original):</strong>
-$$
-x_{next} = \text{Norm}(x + \text{Sublayer}(x))
-$$</p>
-<p><strong>Pre-Norm (Modern):</strong>
-$$
-x_{next} = x + \text{Sublayer}(\text{Norm}(x))
-$$</p>
-<h3 id="takeaways_1">Takeaways<a class="headerlink" href="#takeaways_1" title="Permanent link">&para;</a></h3>
+<h3 id="synthetic-supervision">Synthetic Supervision<a class="headerlink" href="#synthetic-supervision" title="Permanent link">&para;</a></h3>
+<p>Modern post-training pipelines rely heavily on synthetic data generation.</p>
+<h4 id="self-instruct">Self-Instruct<a class="headerlink" href="#self-instruct" title="Permanent link">&para;</a></h4>
 <ul>
-<li><strong>Gradient Flow:</strong> Clean residual paths enable stable training of very deep models</li>
-<li><strong>Optimization Robustness:</strong> Reduces reliance on fragile learning rate warmup</li>
-<li><strong>Industry Standard:</strong> Used in essentially all modern decoder-only LLMs</li>
+<li>Start with a small human-curated seed set  </li>
+<li>Use a strong model to generate new instructions and responses  </li>
+<li>Filter for quality  </li>
+</ul>
+<h4 id="evol-instruct-as-curriculum-learning">Evol-Instruct as Curriculum Learning<a class="headerlink" href="#evol-instruct-as-curriculum-learning" title="Permanent link">&para;</a></h4>
+<p>Evol-Instruct implicitly creates a <strong>difficulty curriculum</strong>:
+- Base instruction
+- Added constraints
+- Multi-hop or multi-objective reasoning
+- Strict formatting or safety requirements</p>
+<p>This improves:
+- Instruction decomposition
+- Constraint satisfaction
+- Planning depth</p>
+<hr />
+<h3 id="rejection-sampling-best-of-n">Rejection Sampling (Best-of-N)<a class="headerlink" href="#rejection-sampling-best-of-n" title="Permanent link">&para;</a></h3>
+<p>A widely used but often overlooked step in SFT.</p>
+<p><strong>Process</strong></p>
+<ol>
+<li>Generate <span class="arithmatex">\(K\)</span> responses per prompt  </li>
+<li>Score them using:  </li>
+<li>A reward model, or  </li>
+<li>A stronger reference model  </li>
+<li>Select the best response  </li>
+<li>Fine-tune on the selected outputs  </li>
+</ol>
+<p><strong>Key properties</strong></p>
+<ul>
+<li>Sharpens instruction adherence without policy gradients</li>
+<li>Reduces variance compared to RLHF</li>
+<li>Biases the model toward high-reward modes</li>
+</ul>
+<p><strong>Advanced risk</strong></p>
+<ul>
+<li>Over-optimization toward the reward model</li>
+<li>Reduced output diversity</li>
+<li>Reward hacking if the scorer is weak</li>
 </ul>
 <hr />
-<h2 id="3-activation-excellence-swiglu">3. Activation Excellence: SwiGLU<a class="headerlink" href="#3-activation-excellence-swiglu" title="Permanent link">&para;</a></h2>
-<p><strong>Replaces:</strong> ReLU, GELU</p>
-<p><strong>SwiGLU</strong> is a gated linear unit variant that uses two linear projections, one gated by the Swish (SiLU) activation.</p>
-<h3 id="the-math_1">The Math<a class="headerlink" href="#the-math_1" title="Permanent link">&para;</a></h3>
-<div class="arithmatex">\[
-\text{SwiGLU}(x) = \text{Swish}(xW + b) \otimes (xV + c)
-\]</div>
-<h3 id="takeaways_2">Takeaways<a class="headerlink" href="#takeaways_2" title="Permanent link">&para;</a></h3>
+<h2 id="514-data-quality-over-quantity">5.1.4 Data Quality over Quantity<a class="headerlink" href="#514-data-quality-over-quantity" title="Permanent link">&para;</a></h2>
+<h3 id="the-lima-hypothesis">The LIMA Hypothesis<a class="headerlink" href="#the-lima-hypothesis" title="Permanent link">&para;</a></h3>
+<p><strong>“Less Is More for Alignment”</strong></p>
+<p><strong>Key insight:</strong>  </p>
+<p>~1,000 extremely high-quality examples can outperform tens of thousands of noisy ones  </p>
+<p><strong>Implications:</strong>  </p>
 <ul>
-<li><strong>Higher Expressivity:</strong> Multiplicative gating enables richer feature interactions</li>
-<li><strong>Better Scaling:</strong> Improves convergence and downstream quality at large scale</li>
-<li><strong>Default Choice:</strong> Used in Llama, PaLM, and most modern LLM families</li>
+<li>Careful curation matters more than scale  </li>
+<li>Labeler expertise is critical  </li>
+<li>Reduces overfitting and style bias  </li>
 </ul>
 <hr />
-<h2 id="4-stability-choice-bias-free-linear-layers">4. Stability Choice: Bias-Free Linear Layers<a class="headerlink" href="#4-stability-choice-bias-free-linear-layers" title="Permanent link">&para;</a></h2>
-<p><strong>The Change:</strong> Remove additive bias terms from linear layers.</p>
-<h3 id="takeaways_3">Takeaways<a class="headerlink" href="#takeaways_3" title="Permanent link">&para;</a></h3>
+<h3 id="typical-sft-data-mix">Typical SFT Data Mix<a class="headerlink" href="#typical-sft-data-mix" title="Permanent link">&para;</a></h3>
+<p>A strong SFT dataset often includes:</p>
 <ul>
-<li><strong>Training Stability:</strong> Reduces activation spikes in deep or wide networks</li>
-<li><strong>Length Extrapolation:</strong> Improves robustness to longer sequences than seen during training</li>
-<li><strong>Redundancy Removal:</strong> Bias is largely unnecessary when paired with normalization</li>
+<li>Reasoning and step-by-step explanations  </li>
+<li>Creative and stylistic writing  </li>
+<li>Coding and math problems  </li>
+<li>Safety and refusal examples  </li>
+<li>Multi-turn conversations  </li>
 </ul>
 <hr />
-<h2 id="5-positional-encoding-rotary-positional-embeddings-rope">5. Positional Encoding: Rotary Positional Embeddings (RoPE)<a class="headerlink" href="#5-positional-encoding-rotary-positional-embeddings-rope" title="Permanent link">&para;</a></h2>
-<p><strong>Replaces:</strong> Absolute or learned positional embeddings</p>
-<p>RoPE encodes positional information by rotating query and key vectors in a complex plane.</p>
-<h3 id="takeaways_4">Takeaways<a class="headerlink" href="#takeaways_4" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>Relative Positioning:</strong> Attention depends on relative token distance</li>
-<li><strong>Natural Decay:</strong> Long-range attention strength decreases smoothly</li>
-<li><strong>Context Extension:</strong> Enables interpolation and scaling for long context windows</li>
-</ul>
-<hr />
-<h2 id="6-efficient-attention-grouped-query-attention-gqa">6. Efficient Attention: Grouped-Query Attention (GQA)<a class="headerlink" href="#6-efficient-attention-grouped-query-attention-gqa" title="Permanent link">&para;</a></h2>
-<p><strong>The Middle Ground:</strong> Between Multi-Head Attention (MHA) and Multi-Query Attention (MQA)</p>
-<p>In GQA, multiple query heads share a smaller set of key and value heads.</p>
-<h3 id="takeaways_5">Takeaways<a class="headerlink" href="#takeaways_5" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>KV Cache Efficiency:</strong> Substantially reduces inference memory usage</li>
-<li><strong>Quality Retention:</strong> Maintains accuracy close to full MHA</li>
-<li><strong>Inference Speed:</strong> Critical for fast generation on modern hardware</li>
-</ul>
-<hr />
-<h2 id="7-attention-kernel-optimization-flashattention">7. Attention Kernel Optimization: FlashAttention<a class="headerlink" href="#7-attention-kernel-optimization-flashattention" title="Permanent link">&para;</a></h2>
-<p><strong>What It Is:</strong> A fused attention kernel that avoids materializing the full attention matrix in memory.</p>
-<h3 id="takeaways_6">Takeaways<a class="headerlink" href="#takeaways_6" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>Memory Bandwidth Optimization:</strong> Turns attention into a compute-efficient operation</li>
-<li><strong>Asymptotic Improvement:</strong> Reduces memory from O(n²) to O(n)</li>
-<li><strong>Production Standard:</strong> Used in nearly all state-of-the-art LLM stacks</li>
-</ul>
-<hr />
-<h2 id="8-parallel-attention-and-ffn">8. Parallel Attention and FFN<a class="headerlink" href="#8-parallel-attention-and-ffn" title="Permanent link">&para;</a></h2>
-<p><strong>The Change:</strong> Attention and FFN blocks are computed in parallel rather than sequentially within a transformer layer.</p>
-<h3 id="takeaways_7">Takeaways<a class="headerlink" href="#takeaways_7" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>Lower Latency:</strong> Improves throughput in training and inference</li>
-<li><strong>Scalability:</strong> Works well at large model scales</li>
-<li><strong>Adopted By:</strong> PaLM and related architectures</li>
-</ul>
-<hr />
-<h2 id="9-context-extension-beyond-rope">9. Context Extension Beyond RoPE<a class="headerlink" href="#9-context-extension-beyond-rope" title="Permanent link">&para;</a></h2>
-<h3 id="91-rope-scaling-and-interpolation">9.1 RoPE Scaling and Interpolation<a class="headerlink" href="#91-rope-scaling-and-interpolation" title="Permanent link">&para;</a></h3>
-<ul>
-<li>NTK-aware scaling</li>
-<li>Linear or dynamic position scaling</li>
-</ul>
-<h3 id="92-sliding-window-attention">9.2 Sliding Window Attention<a class="headerlink" href="#92-sliding-window-attention" title="Permanent link">&para;</a></h3>
-<ul>
-<li>Restricts attention to a fixed recent context</li>
-<li>Prevents unbounded KV cache growth</li>
-</ul>
-<h3 id="takeaways_8">Takeaways<a class="headerlink" href="#takeaways_8" title="Permanent link">&para;</a></h3>
-<ul>
-<li>These are architectural inference-time decisions</li>
-<li>Often combined with GQA for long-context efficiency</li>
-</ul>
-<hr />
-<h2 id="10-mixture-of-experts-moe">10. Mixture of Experts (MoE)<a class="headerlink" href="#10-mixture-of-experts-moe" title="Permanent link">&para;</a></h2>
-<p><strong>What Changes:</strong> Dense FFNs are replaced with multiple expert FFNs and a learned routing mechanism.</p>
-<h3 id="takeaways_9">Takeaways<a class="headerlink" href="#takeaways_9" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>Sparse Activation:</strong> Only a small subset of experts is active per token</li>
-<li><strong>Efficient Scaling:</strong> Parameter count increases without proportional compute</li>
-<li><strong>Systems Complexity:</strong> Routing and load balancing dominate implementation challenges</li>
-</ul>
-<hr />
-<h2 id="11-kv-cache-optimizations">11. KV Cache Optimizations<a class="headerlink" href="#11-kv-cache-optimizations" title="Permanent link">&para;</a></h2>
-<p>Beyond GQA, modern systems apply several cache-level improvements:</p>
-<ul>
-<li>Reduced precision KV storage</li>
-<li>Prefix and prompt caching</li>
-<li>Cache eviction or compression strategies</li>
-</ul>
-<h3 id="takeaways_10">Takeaways<a class="headerlink" href="#takeaways_10" title="Permanent link">&para;</a></h3>
-<ul>
-<li>Inference performance is usually memory-bound</li>
-<li>KV cache design often dominates real-world latency</li>
-</ul>
-<hr />
-<h2 id="12-weight-tying-and-parameter-sharing">12. Weight Tying and Parameter Sharing<a class="headerlink" href="#12-weight-tying-and-parameter-sharing" title="Permanent link">&para;</a></h2>
-<p><strong>What It Is:</strong> Sharing token embedding and output projection weights.</p>
-<h3 id="takeaways_11">Takeaways<a class="headerlink" href="#takeaways_11" title="Permanent link">&para;</a></h3>
-<ul>
-<li>Improves sample efficiency</li>
-<li>Reduces total parameter count</li>
-<li>Remains standard in decoder-only LLMs</li>
-</ul>
-<hr />
-<h2 id="summary-table">📊 Summary Table<a class="headerlink" href="#summary-table" title="Permanent link">&para;</a></h2>
+<h2 id="515-training-optimizations-and-stability">5.1.5 Training Optimizations and Stability<a class="headerlink" href="#515-training-optimizations-and-stability" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
-<th>Component</th>
-<th>Modern Standard</th>
-<th>Key Advantage</th>
+<th>Technique</th>
+<th>Purpose</th>
+<th>Explanation</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Normalization</td>
-<td>RMSNorm</td>
-<td>Stable and efficient normalization</td>
+<td>Packing</td>
+<td>Throughput</td>
+<td>Concatenates multiple short samples into a single context window to avoid padding waste</td>
 </tr>
 <tr>
-<td>Norm Placement</td>
-<td>Pre-Norm</td>
-<td>Enables deep transformer training</td>
+<td>Loss Masking</td>
+<td>Correct gradients</td>
+<td>Computes loss only on assistant tokens</td>
 </tr>
 <tr>
-<td>Activation</td>
-<td>SwiGLU</td>
-<td>Improved expressivity and convergence</td>
+<td>NEFTune</td>
+<td>Generalization</td>
+<td>Adds noise to embeddings during SFT to prevent token-level overfitting</td>
 </tr>
 <tr>
-<td>Positional Encoding</td>
-<td>RoPE + Scaling</td>
-<td>Relative positioning and long context</td>
+<td>Low learning rate</td>
+<td>Stability</td>
+<td>Typical values are <span class="arithmatex">\(1e^{-6}\)</span> to <span class="arithmatex">\(5e^{-6}\)</span></td>
 </tr>
 <tr>
-<td>Attention Type</td>
-<td>GQA</td>
-<td>Efficient KV cache usage</td>
+<td>Dropout</td>
+<td>Regularization</td>
+<td>Reduces stylistic memorization</td>
+</tr>
+</tbody>
+</table>
+<h3 id="packing-vs-padding">Packing vs Padding<a class="headerlink" href="#packing-vs-padding" title="Permanent link">&para;</a></h3>
+<p>In Supervised Fine-Tuning, training samples vary widely in length. How these samples are batched has a <strong>direct impact on compute efficiency, gradient quality, and training stability</strong>.</p>
+<hr />
+<h4 id="padding">Padding<a class="headerlink" href="#padding" title="Permanent link">&para;</a></h4>
+<p><strong>What it is</strong><br />
+All sequences in a batch are padded to the length of the longest sequence using <code>[PAD]</code> tokens.</p>
+<p><strong>Example</strong></p>
+<ul>
+<li><code>Seq 1: [x x x x x x]</code></li>
+<li><code>Seq 2: [x x x PAD PAD PAD]</code></li>
+<li><code>Seq 3: [x x x x PAD PAD]</code></li>
+</ul>
+<p><strong>Why it is inefficient</strong>
+- Attention, feedforward layers, and layer norms still execute on padded tokens
+- Memory bandwidth and FLOPs are wasted on tokens that contribute no gradient
+- Effective tokens per batch can drop sharply when length variance is high</p>
+<p><strong>Impact at scale</strong>
+- Lowers tokens processed per second
+- Increases training cost
+- Reduces gradient signal density</p>
+<hr />
+<h4 id="packing">Packing<a class="headerlink" href="#packing" title="Permanent link">&para;</a></h4>
+<p><strong>What it is</strong><br />
+Multiple short samples are concatenated into a single long sequence up to the model’s maximum context length. Each sample is separated by an EOS or special boundary token, and loss masking prevents cross-sample leakage.</p>
+<p><strong>Example</strong></p>
+<p><code>[Prompt₁ → Response₁ &lt;EOS&gt; Prompt₂ → Response₂ &lt;EOS&gt; Prompt₃ → Response₃]</code></p>
+<p><strong>Why it is efficient</strong>
+- Nearly every token contributes to loss
+- Attention computation is fully utilized
+- Higher effective batch token count without increasing memory</p>
+<hr />
+<h4 id="why-packing-improves-gpu-utilization">Why Packing Improves GPU Utilization<a class="headerlink" href="#why-packing-improves-gpu-utilization" title="Permanent link">&para;</a></h4>
+<p>Packing increases:
+- <strong>Arithmetic intensity</strong> by reducing idle FLOPs
+- <strong>Token density per batch</strong>, improving gradient signal-to-noise ratio
+- <strong>Throughput</strong>, often by 2x to 3x in instruction-tuning workloads where samples are short</p>
+<p>This is especially impactful for:
+- Instruction datasets with short prompts
+- Chat-style SFT data
+- Small to medium batch sizes constrained by memory</p>
+<hr />
+<h4 id="important-implementation-details">Important Implementation Details<a class="headerlink" href="#important-implementation-details" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Loss masking</strong> must reset at each sample boundary</li>
+<li><strong>Attention masking</strong> must prevent tokens from attending across examples</li>
+<li><strong>EOS handling</strong> is critical to avoid information leakage</li>
+<li><strong>Position indices</strong> may need resetting depending on the architecture</li>
+</ul>
+<p>Incorrect packing can cause:
+- Cross-example contamination
+- Training instability
+- Spurious memorization</p>
+<hr />
+<h4 id="padding-vs-packing-summary">Padding vs Packing Summary<a class="headerlink" href="#padding-vs-packing-summary" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Aspect</th>
+<th>Padding</th>
+<th>Packing</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Compute efficiency</td>
+<td>Low</td>
+<td>High</td>
 </tr>
 <tr>
-<td>Attention Kernel</td>
-<td>FlashAttention</td>
-<td>Memory-efficient long-context attention</td>
+<td>Token utilization</td>
+<td>Sparse</td>
+<td>Dense</td>
 </tr>
 <tr>
-<td>FFN Structure</td>
-<td>Parallel FFN</td>
-<td>Reduced latency</td>
+<td>Training speed</td>
+<td>Slow</td>
+<td>Fast</td>
 </tr>
 <tr>
-<td>Linear Layers</td>
-<td>Bias-Free</td>
-<td>Stability at scale</td>
+<td>Implementation complexity</td>
+<td>Simple</td>
+<td>Moderate</td>
 </tr>
 <tr>
-<td>Context Handling</td>
-<td>Sliding Window</td>
-<td>Bounded memory growth</td>
-</tr>
-<tr>
-<td>Scaling Strategy</td>
-<td>MoE</td>
-<td>Sparse compute scaling</td>
+<td>Risk of leakage</td>
+<td>None</td>
+<td>Requires care</td>
 </tr>
 </tbody>
 </table>
 <hr />
+<h4 id="interview-insight">Interview Insight<a class="headerlink" href="#interview-insight" title="Permanent link">&para;</a></h4>
+<p>Packing is not just an optimization. It changes the <strong>effective learning dynamics</strong> by increasing gradient density and stabilizing updates, which is why it is now standard practice in large-scale SFT pipelines.</p>
+<hr />
+<h2 id="516-overfitting-and-catastrophic-forgetting">5.1.6 Overfitting and Catastrophic Forgetting<a class="headerlink" href="#516-overfitting-and-catastrophic-forgetting" title="Permanent link">&para;</a></h2>
+<h3 id="catastrophic-forgetting">Catastrophic Forgetting<a class="headerlink" href="#catastrophic-forgetting" title="Permanent link">&para;</a></h3>
+<p>The model loses general reasoning or factual knowledge learned during pre-training.</p>
+<p><strong>Causes</strong></p>
+<ul>
+<li>Narrow SFT domain  </li>
+<li>High learning rates  </li>
+<li>Full fine-tuning on small datasets  </li>
+</ul>
+<p><strong>Mitigations</strong></p>
+<ul>
+<li>Mix 5–10% pre-training style data  </li>
+<li>Use PEFT methods such as LoRA  </li>
+<li>Lower learning rates  </li>
+<li>Shorter training schedules  </li>
+</ul>
+<hr />
+<h3 id="overfitting">Overfitting<a class="headerlink" href="#overfitting" title="Permanent link">&para;</a></h3>
+<p>The model learns labeler-specific style rather than task intent.</p>
+<p><strong>Symptoms</strong></p>
+<ul>
+<li>Over-politeness  </li>
+<li>Repetitive phrasing  </li>
+<li>Template-like answers  </li>
+</ul>
+<p><strong>Mitigations</strong></p>
+<ul>
+<li>Prompt diversity  </li>
+<li>Early stopping  </li>
+<li>Noise injection such as NEFTune  </li>
+</ul>
+<hr />
+<h2 id="517-lora-vs-full-fine-tuning">5.1.7 LoRA vs Full Fine-Tuning<a class="headerlink" href="#517-lora-vs-full-fine-tuning" title="Permanent link">&para;</a></h2>
+<h3 id="lora-and-peft">LoRA and PEFT<a class="headerlink" href="#lora-and-peft" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Low compute cost  </li>
+<li>Preserves base model knowledge  </li>
+<li>Lower risk of catastrophic forgetting  </li>
+<li>Preferred for alignment and style shifts  </li>
+</ul>
+<h3 id="full-fine-tuning">Full Fine-Tuning<a class="headerlink" href="#full-fine-tuning" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Needed for large domain shifts  </li>
+<li>Higher risk of forgetting  </li>
+<li>Requires careful regularization  </li>
+</ul>
+<p><strong>Rule of thumb:</strong>  </p>
+<ul>
+<li>Behavior change → LoRA  </li>
+<li>Knowledge change → Full fine-tuning  </li>
+</ul>
+<hr />
+<h2 id="518-common-failure-modes-after-sft">5.1.8 Common Failure Modes After SFT<a class="headerlink" href="#518-common-failure-modes-after-sft" title="Permanent link">&para;</a></h2>
+<h3 id="increased-hallucinations">Increased Hallucinations<a class="headerlink" href="#increased-hallucinations" title="Permanent link">&para;</a></h3>
+<p>Often caused by <strong>knowledge contradiction</strong>.</p>
+<p>If SFT data conflicts with pre-training facts, the model may prioritize format compliance over correctness.</p>
+<p><strong>Mitigations</strong></p>
+<ul>
+<li>Fact-consistent SFT data  </li>
+<li>Retrieval-augmented generation  </li>
+<li>Post-SFT preference optimization  </li>
+</ul>
+<hr />
+<h2 id="519-sft-vs-pre-training-summary">5.1.9 SFT vs Pre-training Summary<a class="headerlink" href="#519-sft-vs-pre-training-summary" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Aspect</th>
+<th>Pre-training</th>
+<th>Supervised Fine-Tuning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Objective</td>
+<td>World modeling</td>
+<td>Behavior alignment</td>
+</tr>
+<tr>
+<td>Data scale</td>
+<td>Trillions of tokens</td>
+<td>10k to 100k samples</td>
+</tr>
+<tr>
+<td>Loss</td>
+<td>Full sequence NTP</td>
+<td>Masked response NTP</td>
+</tr>
+<tr>
+<td>Compute</td>
+<td>Massive</td>
+<td>Moderate</td>
+</tr>
+<tr>
+<td>Primary risk</td>
+<td>Under-training</td>
+<td>Overfitting and forgetting</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="5110-interview-level-takeaways">5.1.10 Interview-Level Takeaways<a class="headerlink" href="#5110-interview-level-takeaways" title="Permanent link">&para;</a></h2>
+<ul>
+<li>SFT aligns behavior rather than knowledge  </li>
+<li>Loss masking is essential  </li>
+<li>Data quality dominates data scale  </li>
+<li>Synthetic data is now standard  </li>
+<li>Rejection sampling is widely used  </li>
+<li>Forgetting is a first-order concern  </li>
+<li>SFT sets the foundation for RLHF and preference optimization  </li>
+</ul>
 
 
 
