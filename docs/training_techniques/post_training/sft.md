@@ -6,8 +6,6 @@ From an interview perspective, SFT is best understood as **behavioral alignment 
 
 ## 1. What SFT Optimizes
 
-**Goal**  
-
 Map broad knowledge into a consistent, controllable interface.
 
 **Conceptual shift**
@@ -17,11 +15,18 @@ Map broad knowledge into a consistent, controllable interface.
 
 This is achieved without reinforcement learning. The training signal is fully supervised.
 
+Within SFT:
+
+- **Instruction Tuning** defines what behavior you are teaching
+- **Task Formatting** defines how that behavior is presented to the model
+
+---
+
 ---
 
 ## 2. Instruction Tuning and Task Formatting
 
-### Instruction Tuning
+### 2.1 Instruction Tuning
 
 Instruction tuning teaches the model to condition its output on an explicit instruction rather than implicit continuation.
 
@@ -50,7 +55,7 @@ Tokens belonging to $x$ are excluded from the loss.
 
 ---
 
-### Task and Prompt Formatting
+### 2.2 Task and Prompt Formatting
 
 Modern SFT relies heavily on **structured role-based templates**, such as ChatML or LLaMA-style formats.
 
@@ -61,7 +66,7 @@ Modern SFT relies heavily on **structured role-based templates**, such as ChatML
 <|assistant|> The article discusses...
 ```
 
-## Why Formatting Matters
+**Why Formatting Matters**
 
 - Separates intent, context, and response  
 - Enables multi-turn dialogue modeling  
@@ -81,23 +86,30 @@ Formatting does more than separate roles.
 - **Multi-turn state compression**  
   Structured formatting helps the model compress dialogue history into latent state representations instead of treating each turn independently.
 
+---
 
 ---
 
-## Prompt Diversity as Regularization
+## 3. Prompt Diversity as Regularization
 
 Prompt diversity is best understood as a **regularization strategy**, not just data augmentation.
 
-### Semantic Diversity
+---
+
+### 3.1 Semantic Diversity
 Maintains coverage of distinct internal circuits:
+
 - Symbolic reasoning and math
 - Program synthesis and execution-style reasoning
 - Creative and stylistic generation
 - Factual recall under instruction pressure
 - Conversational grounding
 
-### Structural Diversity
+---
+
+### 3.2 Structural Diversity
 Reduces shortcut learning:
+
 - Paraphrased intents prevent lexical memorization
 - Variable verbosity avoids length priors
 - Explicit vs implicit constraints force instruction parsing
@@ -107,9 +119,11 @@ Insufficient structural diversity causes the model to learn *response templates*
 
 ---
 
-## 5.1.3 Human vs Synthetic Supervision
+---
 
-### Human-Labeled Data
+## 4. Human vs Synthetic Supervision
+
+### 4.1 Human-Labeled Data
 
 **Strengths**
 
@@ -125,7 +139,7 @@ Insufficient structural diversity causes the model to learn *response templates*
 
 ---
 
-### Synthetic Supervision
+### 4.2 Synthetic Supervision
 
 Modern post-training pipelines rely heavily on synthetic data generation.
 
@@ -138,28 +152,28 @@ Modern post-training pipelines rely heavily on synthetic data generation.
 #### Evol-Instruct as Curriculum Learning
 
 Evol-Instruct implicitly creates a **difficulty curriculum**:
+
 - Base instruction
 - Added constraints
 - Multi-hop or multi-objective reasoning
 - Strict formatting or safety requirements
 
 This improves:
+
 - Instruction decomposition
 - Constraint satisfaction
 - Planning depth
 
 ---
 
-### Rejection Sampling (Best-of-N)
-
-A widely used but often overlooked step in SFT.
+### 4.3 Rejection Sampling (Best-of-N)
 
 **Process**
 
 1. Generate $K$ responses per prompt  
-2. Score them using:  
-   - A reward model, or  
-   - A stronger reference model  
+2. Score them using:
+     - A reward model, or  
+     - A stronger reference model  
 3. Select the best response  
 4. Fine-tune on the selected outputs  
 
@@ -175,12 +189,13 @@ A widely used but often overlooked step in SFT.
 - Reduced output diversity
 - Reward hacking if the scorer is weak
 
+---
 
 ---
 
-## 5.1.4 Data Quality over Quantity
+## 5. Data Quality over Quantity
 
-### The LIMA Hypothesis
+### 5.1 The LIMA Hypothesis
 
 **“Less Is More for Alignment”**
 
@@ -196,7 +211,7 @@ A widely used but often overlooked step in SFT.
 
 ---
 
-### Typical SFT Data Mix
+### 5.2 Typical SFT Data Mix
 
 A strong SFT dataset often includes:
 
@@ -208,7 +223,9 @@ A strong SFT dataset often includes:
 
 ---
 
-## 5.1.5 Training Optimizations and Stability
+---
+
+## 6. Training Optimizations and Stability
 
 | Technique       | Purpose         | Explanation                                                                             |
 |-----------------|----------------|-----------------------------------------------------------------------------------------|
@@ -218,7 +235,9 @@ A strong SFT dataset often includes:
 | Low learning rate | Stability     | Typical values are $1e^{-6}$ to $5e^{-6}$                                               |
 | Dropout         | Regularization | Reduces stylistic memorization                                                          |
 
-### Packing vs Padding
+---
+
+### 6.1 Packing vs Padding
 
 In Supervised Fine-Tuning, training samples vary widely in length. How these samples are batched has a **direct impact on compute efficiency, gradient quality, and training stability**.
 
@@ -226,7 +245,6 @@ In Supervised Fine-Tuning, training samples vary widely in length. How these sam
 
 #### Padding
 
-**What it is**  
 All sequences in a batch are padded to the length of the longest sequence using `[PAD]` tokens.
 
 **Example**
@@ -237,11 +255,13 @@ All sequences in a batch are padded to the length of the longest sequence using 
 
 
 **Why it is inefficient**
+
 - Attention, feedforward layers, and layer norms still execute on padded tokens
 - Memory bandwidth and FLOPs are wasted on tokens that contribute no gradient
 - Effective tokens per batch can drop sharply when length variance is high
 
 **Impact at scale**
+
 - Lowers tokens processed per second
 - Increases training cost
 - Reduces gradient signal density
@@ -250,51 +270,50 @@ All sequences in a batch are padded to the length of the longest sequence using 
 
 #### Packing
 
-**What it is**  
 Multiple short samples are concatenated into a single long sequence up to the model’s maximum context length. Each sample is separated by an EOS or special boundary token, and loss masking prevents cross-sample leakage.
 
 **Example**
 
 `[Prompt₁ → Response₁ <EOS> Prompt₂ → Response₂ <EOS> Prompt₃ → Response₃]`
 
-
-
 **Why it is efficient**
+
 - Nearly every token contributes to loss
 - Attention computation is fully utilized
 - Higher effective batch token count without increasing memory
 
----
-
-#### Why Packing Improves GPU Utilization
+**Why Packing Improves GPU Utilization**
 
 Packing increases:
+
 - **Arithmetic intensity** by reducing idle FLOPs
 - **Token density per batch**, improving gradient signal-to-noise ratio
 - **Throughput**, often by 2x to 3x in instruction-tuning workloads where samples are short
 
 This is especially impactful for:
+
 - Instruction datasets with short prompts
 - Chat-style SFT data
 - Small to medium batch sizes constrained by memory
 
 ---
 
-#### Important Implementation Details
+**Important Implementation Details**
 
 - **Loss masking** must reset at each sample boundary
 - **Attention masking** must prevent tokens from attending across examples
 - **EOS handling** is critical to avoid information leakage
 - **Position indices** may need resetting depending on the architecture
 
-Incorrect packing can cause:
+**Incorrect packing can cause:**
+
 - Cross-example contamination
 - Training instability
 - Spurious memorization
 
 ---
 
-#### Padding vs Packing Summary
+**Padding vs Packing Summary**
 
 | Aspect | Padding | Packing |
 |------|--------|--------|
@@ -304,15 +323,58 @@ Incorrect packing can cause:
 | Implementation complexity | Simple | Moderate |
 | Risk of leakage | None | Requires care |
 
----
-
-#### Interview Insight
-
-Packing is not just an optimization. It changes the **effective learning dynamics** by increasing gradient density and stabilizing updates, which is why it is now standard practice in large-scale SFT pipelines.
+> **Takeaway:** Packing is not just an optimization. It changes the **effective learning dynamics** by increasing gradient density and stabilizing updates, which is why it is now standard practice in large-scale SFT pipelines.
 
 ---
 
-## 5.1.6 Overfitting and Catastrophic Forgetting
+## 6.2 NEFTune: Concept and Recent Insights
+
+**NEFTune** (Noisy Embeddings Fine-Tuning) is a targeted regularization method used during supervised fine-tuning to improve generalization and stability.
+
+### Core Idea
+
+During SFT, small **controlled noise** is injected into the **embedding layer** (or early representation layers). The noise acts as a soft regularizer that prevents the model from over-specializing on specific training tokens or patterns.
+
+Instead of purely minimizing loss on the fine-tuning dataset, NEFTune encourages the model to learn representations that are **robust to small perturbations**, resulting in better performance on unseen prompts and fewer hallucinations.
+
+### Why It Works
+
+- **Prevents token memorization**  
+  Noise makes exact token sequences less predictable, forcing the model to rely on deeper semantic features instead of surface patterns.
+
+- **Improves out-of-distribution (OOD) robustness**  
+  Tuning with noise helps the model resist over-confidence on narrow fine-tuning distributions.
+
+- **Smooths loss landscape**  
+  By blurring precise embedding positions, NEFTune reduces sharp local minima that often cause overfitting.
+
+### How It Is Applied
+
+A typical NEFTune variant:
+
+- Add Gaussian noise $\epsilon \sim \mathcal{N}(0, \sigma^2)$ to embeddings each forward pass
+- The noise scale $\sigma$ is kept small so that semantics are preserved but spurious correlations are suppressed
+
+During backpropagation the noise is **not removed**; it shapes gradient updates continuously.
+
+### Recent Trends (2025–2026)
+
+- NEFTune has emerged as a standard trick in instruction-tuning pipelines for models like LLaMA-derivatives and open-weight assistants.
+- Research shows it consistently boosts generalization metrics (e.g., AlpacaEval, Ultrachat) without increasing dataset size.
+- Some systems use **layer-wise noise schedules**, adding noise in early layers and reducing it in later layers to balance representation robustness with output precision.
+- Combined with packing and rejection sampling, NEFTune significantly improves instruction fidelity on long-context dialogues.
+
+### Practical Tips
+
+- Use a conservative noise magnitude to avoid destabilizing training
+- Pair NEFTune with low learning rates and dropout for maximum regularization
+- Monitor validation generalization rather than training loss to tune noise hyperparameters
+
+---
+
+---
+
+## 7. Overfitting and Catastrophic Forgetting
 
 ### Catastrophic Forgetting
 
@@ -351,7 +413,9 @@ The model learns labeler-specific style rather than task intent.
 
 ---
 
-## 5.1.7 LoRA vs Full Fine-Tuning
+---
+
+## 8. LoRA vs Full Fine-Tuning
 
 ### LoRA and PEFT
 
@@ -373,7 +437,9 @@ The model learns labeler-specific style rather than task intent.
 
 ---
 
-## 5.1.8 Common Failure Modes After SFT
+---
+
+## 9. Common Failure Modes After SFT
 
 ### Increased Hallucinations
 
@@ -389,7 +455,9 @@ If SFT data conflicts with pre-training facts, the model may prioritize format c
 
 ---
 
-## 5.1.9 SFT vs Pre-training Summary
+---
+
+## 10. SFT vs Pre-training Summary
 
 | Aspect         | Pre-training     | Supervised Fine-Tuning |
 |----------------|-----------------|-----------------------|
@@ -400,13 +468,3 @@ If SFT data conflicts with pre-training facts, the model may prioritize format c
 | Primary risk   | Under-training  | Overfitting and forgetting |
 
 ---
-
-## 5.1.10 Interview-Level Takeaways
-
-- SFT aligns behavior rather than knowledge  
-- Loss masking is essential  
-- Data quality dominates data scale  
-- Synthetic data is now standard  
-- Rejection sampling is widely used  
-- Forgetting is a first-order concern  
-- SFT sets the foundation for RLHF and preference optimization  
