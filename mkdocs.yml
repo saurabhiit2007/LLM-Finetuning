@@ -58,6 +58,7 @@ nav:
       - Distributed Training Systems: ./training_techniques/distributed_training_systems.md
       - Post-Training:
           - Supervised Fine-Tuning (SFT): ./training_techniques/post_training/sft.md
+          - Reasoning & Test-Time Compute (System 2): ./training_techniques/system2.md
   - References: references.md
 
 markdown_extensions:
