@@ -15,19 +15,19 @@
       
       
       
-      <link rel="icon" href="../../assets/images/favicon.png">
+      <link rel="icon" href="../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.23">
     
     
       
-        <title>Bitsandbytes - Fine-Tuning Methods Documentation</title>
+        <title>System2 - Fine-Tuning Methods Documentation</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.84d31ad4.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.84d31ad4.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -46,7 +46,7 @@
       
     
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -71,6 +71,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#the-three-pillars-of-ai-reasoning" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -83,7 +88,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="Fine-Tuning Methods Documentation" class="md-header__button md-logo" aria-label="Fine-Tuning Methods Documentation" data-md-component="logo">
+    <a href="../../.." title="Fine-Tuning Methods Documentation" class="md-header__button md-logo" aria-label="Fine-Tuning Methods Documentation" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -103,7 +108,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Bitsandbytes
+              System2
             
           </span>
         </div>
@@ -216,7 +221,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="Fine-Tuning Methods Documentation" class="md-nav__button md-logo" aria-label="Fine-Tuning Methods Documentation" data-md-component="logo">
+    <a href="../../.." title="Fine-Tuning Methods Documentation" class="md-nav__button md-logo" aria-label="Fine-Tuning Methods Documentation" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -246,7 +251,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
+      <a href="../../.." class="md-nav__link">
         
   
   
@@ -308,7 +313,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../finetuning_techniques/prefix_tuning/" class="md-nav__link">
+      <a href="../../../finetuning_techniques/prefix_tuning/" class="md-nav__link">
         
   
   
@@ -331,7 +336,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../finetuning_techniques/lora/" class="md-nav__link">
+      <a href="../../../finetuning_techniques/lora/" class="md-nav__link">
         
   
   
@@ -354,7 +359,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../finetuning_techniques/qlora/" class="md-nav__link">
+      <a href="../../../finetuning_techniques/qlora/" class="md-nav__link">
         
   
   
@@ -424,7 +429,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../4bit_normal_float/" class="md-nav__link">
+      <a href="../../../supporting_topics/4bit_normal_float/" class="md-nav__link">
         
   
   
@@ -447,7 +452,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../blockwise_kbit_quantization/" class="md-nav__link">
+      <a href="../../../supporting_topics/blockwise_kbit_quantization/" class="md-nav__link">
         
   
   
@@ -470,7 +475,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../accelerate/" class="md-nav__link">
+      <a href="../../../supporting_topics/accelerate/" class="md-nav__link">
         
   
   
@@ -493,7 +498,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../bp16/" class="md-nav__link">
+      <a href="../../../supporting_topics/bp16/" class="md-nav__link">
         
   
   
@@ -516,7 +521,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../flash_attention/" class="md-nav__link">
+      <a href="../../../supporting_topics/flash_attention/" class="md-nav__link">
         
   
   
@@ -539,7 +544,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../decoding_strategies/" class="md-nav__link">
+      <a href="../../../supporting_topics/decoding_strategies/" class="md-nav__link">
         
   
   
@@ -562,7 +567,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../speculative_decoding/" class="md-nav__link">
+      <a href="../../../supporting_topics/speculative_decoding/" class="md-nav__link">
         
   
   
@@ -585,7 +590,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../kv_caching/" class="md-nav__link">
+      <a href="../../../supporting_topics/kv_caching/" class="md-nav__link">
         
   
   
@@ -655,7 +660,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../training_techniques/foundation/" class="md-nav__link">
+      <a href="../../foundation/" class="md-nav__link">
         
   
   
@@ -718,7 +723,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../training_techniques/pre_training/pre_training/" class="md-nav__link">
+      <a href="../../pre_training/pre_training/" class="md-nav__link">
         
   
   
@@ -741,7 +746,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../training_techniques/pre_training/byte_pair_encoding/" class="md-nav__link">
+      <a href="../../pre_training/byte_pair_encoding/" class="md-nav__link">
         
   
   
@@ -764,7 +769,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../training_techniques/pre_training/mixture_of_experts/" class="md-nav__link">
+      <a href="../../pre_training/mixture_of_experts/" class="md-nav__link">
         
   
   
@@ -787,7 +792,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../training_techniques/pre_training/RoPE/" class="md-nav__link">
+      <a href="../../pre_training/RoPE/" class="md-nav__link">
         
   
   
@@ -810,7 +815,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../training_techniques/pre_training/sentence_piece_unigram/" class="md-nav__link">
+      <a href="../../pre_training/sentence_piece_unigram/" class="md-nav__link">
         
   
   
@@ -833,7 +838,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../training_techniques/pre_training/advanced_transformer_components_and_layers/" class="md-nav__link">
+      <a href="../../pre_training/advanced_transformer_components_and_layers/" class="md-nav__link">
         
   
   
@@ -864,7 +869,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../training_techniques/training_optimization_and_stability/" class="md-nav__link">
+      <a href="../../training_optimization_and_stability/" class="md-nav__link">
         
   
   
@@ -887,7 +892,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../training_techniques/distributed_training_systems/" class="md-nav__link">
+      <a href="../../distributed_training_systems/" class="md-nav__link">
         
   
   
@@ -950,7 +955,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../training_techniques/post_training/sft/" class="md-nav__link">
+      <a href="../sft/" class="md-nav__link">
         
   
   
@@ -973,7 +978,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../training_techniques/system2.md" class="md-nav__link">
+      <a href="../../system2.md" class="md-nav__link">
         
   
   
@@ -1011,7 +1016,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../references/" class="md-nav__link">
+      <a href="../../../references/" class="md-nav__link">
         
   
   
@@ -1044,6 +1049,74 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-three-pillars-of-ai-reasoning" class="md-nav__link">
+    <span class="md-ellipsis">
+      🏗️ The Three Pillars of AI Reasoning
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🏗️ The Three Pillars of AI Reasoning">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-the-training-objective-learning-to-think" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. The Training Objective: Learning to Think
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-the-inference-architecture-scaling-test-time-compute-ttc" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. The Inference Architecture: Scaling Test-Time Compute (TTC)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-behavioral-dynamics-self-correction-traces" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Behavioral Dynamics: Self-Correction &amp; Traces
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#interview-prep-high-signal-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      🚀 Interview Prep: High-Signal Questions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#project-ideas-for-this-repo" class="md-nav__link">
+    <span class="md-ellipsis">
+      🛠️ Project Ideas for this Repo
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1061,9 +1134,98 @@
   
 
 
-  <h1>Bitsandbytes</h1>
+  <h1>System2</h1>
 
-
+<p>This documentation tracks the transition from "System 1" (probabilistic next-token prediction) to "System 2" (deliberate, slow thinking) in Large Language Models.</p>
+<hr />
+<h2 id="the-three-pillars-of-ai-reasoning">🏗️ The Three Pillars of AI Reasoning<a class="headerlink" href="#the-three-pillars-of-ai-reasoning" title="Permanent link">&para;</a></h2>
+<h3 id="1-the-training-objective-learning-to-think">1. The Training Objective: Learning to Think<a class="headerlink" href="#1-the-training-objective-learning-to-think" title="Permanent link">&para;</a></h3>
+<p>Reasoning is not just a prompting trick; it is a learned capability baked into model weights during post-training.</p>
+<ul>
+<li><strong>CoT Training (STaR):</strong> Moving beyond simple "think step-by-step" prompts. We now fine-tune models on massive datasets of reasoning traces where the model has successfully "self-corrected" to reach a solution.</li>
+<li><strong>RLVR (Reinforcement Learning from Verifiable Rewards):</strong> Unlike RLHF, which is subjective, RLVR uses objective ground truths.<ul>
+<li><strong>Math &amp; Code:</strong> These serve as "Gold Standard" domains because the reward signal is binary (the code compiles or it doesn't; the equation balances or it doesn't).</li>
+</ul>
+</li>
+<li><strong>PRM vs. ORM:</strong><ul>
+<li><strong>ORM (Outcome Reward Model):</strong> Rewards only the final answer. High risk of "reward hacking" (getting the right answer for the wrong reason).</li>
+<li><strong>PRM (Process Reward Model):</strong> Rewards the model for every intermediate logical step. This is the primary driver of performance in models like OpenAI o1.</li>
+</ul>
+</li>
+</ul>
+<hr />
+<hr />
+<h3 id="2-the-inference-architecture-scaling-test-time-compute-ttc">2. The Inference Architecture: Scaling Test-Time Compute (TTC)<a class="headerlink" href="#2-the-inference-architecture-scaling-test-time-compute-ttc" title="Permanent link">&para;</a></h3>
+<p>The "Inference Scaling Law" states that model performance scales with the amount of compute dedicated to "thinking" during the generation phase.</p>
+<ul>
+<li>
+<p><strong>Search Strategies:</strong></p>
+<ul>
+<li><strong>Best-of-N:</strong> Sampling <span class="arithmatex">\(N\)</span> different completions and using a verifier to pick the best one.</li>
+<li><strong>MCTS (Monte Carlo Tree Search):</strong> Navigating a tree of possible reasoning steps, simulating outcomes, and backtracking when a path fails.</li>
+</ul>
+</li>
+<li>
+<p><strong>Compute-Optimal Allocation:</strong> Modern systems use a "router" to decide how much TTC to spend.</p>
+<ul>
+<li><em>Low Difficulty:</em> 1 forward pass (System 1).</li>
+<li><em>High Difficulty:</em> Thousands of search iterations (System 2).</li>
+</ul>
+</li>
+<li>
+<p><strong>Speculative Reasoning:</strong> Using a small, fast model to draft reasoning steps and a large model to verify them in batches, reducing latency.</p>
+</li>
+</ul>
+<hr />
+<hr />
+<h3 id="3-behavioral-dynamics-self-correction-traces">3. Behavioral Dynamics: Self-Correction &amp; Traces<a class="headerlink" href="#3-behavioral-dynamics-self-correction-traces" title="Permanent link">&para;</a></h3>
+<p>How a model manages its internal logic and interacts with the user.</p>
+<ul>
+<li>
+<p><strong>Hidden vs. Visible Traces:</strong></p>
+<ul>
+<li><strong>Visible:</strong> High interpretability, but prone to user-influence and "sycophancy."</li>
+<li><strong>Hidden:</strong> Used by o1/R1 to prevent "Chain-of-Thought hacking." It allows for <strong>Neuralese</strong>—an internal, highly efficient symbolic language the model develops to reason faster than human language allows.</li>
+</ul>
+</li>
+<li>
+<p><strong>Reflection Loops:</strong> The model is trained to recognize "dead ends." If a logic path contradicts a prior step, the model is penalized and forced to backtrack.</p>
+</li>
+<li>
+<p><strong>Steganography Risk:</strong> A safety concern where models might hide "unsafe" reasoning or planning within hidden thought traces to bypass monitoring.</p>
+</li>
+</ul>
+<hr />
+<h2 id="interview-prep-high-signal-questions">🚀 Interview Prep: High-Signal Questions<a class="headerlink" href="#interview-prep-high-signal-questions" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Question</th>
+<th style="text-align: left;">Key Insight</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Why use RLVR over RLHF for reasoning?</strong></td>
+<td style="text-align: left;">RLHF is limited by human checking speed and bias; RLVR uses automated verifiers (compilers/solvers) to scale exponentially.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>What is the "Pause" token?</strong></td>
+<td style="text-align: left;">A latent mechanism (or specific token) that allows a model to perform more internal computation before committing to a visible output.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>How does DeepSeek's GRPO change scaling?</strong></td>
+<td style="text-align: left;">It removes the need for a separate "Critic" model during RL, significantly reducing the VRAM required to train reasoning capabilities.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="project-ideas-for-this-repo">🛠️ Project Ideas for this Repo<a class="headerlink" href="#project-ideas-for-this-repo" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>Verifier Implementation:</strong> Build a Python script that uses a Process Reward Model to score a math reasoning trace.</li>
+<li><strong>TTC Benchmark:</strong> Compare the accuracy of a 7B model using "Best-of-10" search against a 70B model using a single pass.</li>
+<li><strong>Trace Visualization:</strong> Create a tool to visualize MCTS tree exploration in a logical puzzle.</li>
+</ol>
 
 
 
@@ -1118,10 +1280,10 @@
     
     
       
-      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.expand", "navigation.top", "search.highlight", "search.share", "content.code.copy", "mathjax"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.expand", "navigation.top", "search.highlight", "search.share", "content.code.copy", "mathjax"], "search": "../../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.f55a23d4.min.js"></script>
       
         <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
       
