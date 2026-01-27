@@ -45,6 +45,7 @@ nav:
       - Decoding Strategies: ./supporting_topics/decoding_strategies.md
       - Speculative Decoding & Medusa: ./supporting_topics/speculative_decoding.md
       - KV Caching: ./supporting_topics/kv_caching.md
+      - vLLM: ./supporting_topics/vllm.md
   - Training Pipeline:
       - Foundation: ./training_techniques/foundation.md
       - Pre-Training:
