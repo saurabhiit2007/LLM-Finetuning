@@ -61,6 +61,7 @@ nav:
           - Reasoning & Test-Time Compute (System 2): ./training_techniques/system2.md
       - Mid-Training:
           - Mid Training Fundamentals: ./training_techniques/mid_training/mid_training.md
+      - LLM Reasoning & Thinking Models: ./training_techniques/thinking_llms.md
   - References: references.md
 
 markdown_extensions:
