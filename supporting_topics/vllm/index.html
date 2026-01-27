@@ -789,35 +789,29 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#7-architectural-comparison" class="md-nav__link">
+  <a href="#8-memory-pressure-and-preemption" class="md-nav__link">
     <span class="md-ellipsis">
-      7. Architectural Comparison
+      8. Memory Pressure and Preemption
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#7-useful-memory-approximation" class="md-nav__link">
+  <a href="#9-architectural-comparison" class="md-nav__link">
     <span class="md-ellipsis">
-      7. Useful Memory Approximation
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="7. Useful Memory Approximation">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#interview-ready-example" class="md-nav__link">
-    <span class="md-ellipsis">
-      Interview-Ready Example
+      9. Architectural Comparison
     </span>
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
+      
+        <li class="md-nav__item">
+  <a href="#10-useful-memory-approximation" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. Useful Memory Approximation
+    </span>
+  </a>
   
 </li>
       
@@ -1509,35 +1503,29 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#7-architectural-comparison" class="md-nav__link">
+  <a href="#8-memory-pressure-and-preemption" class="md-nav__link">
     <span class="md-ellipsis">
-      7. Architectural Comparison
+      8. Memory Pressure and Preemption
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#7-useful-memory-approximation" class="md-nav__link">
+  <a href="#9-architectural-comparison" class="md-nav__link">
     <span class="md-ellipsis">
-      7. Useful Memory Approximation
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="7. Useful Memory Approximation">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#interview-ready-example" class="md-nav__link">
-    <span class="md-ellipsis">
-      Interview-Ready Example
+      9. Architectural Comparison
     </span>
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
+      
+        <li class="md-nav__item">
+  <a href="#10-useful-memory-approximation" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. Useful Memory Approximation
+    </span>
+  </a>
   
 </li>
       
@@ -1650,7 +1638,16 @@
 <p>vLLM introduces <strong>Chunked Prefill</strong> to prevent long prompts from blocking decode for other users.</p>
 <hr />
 <hr />
-<h2 id="7-architectural-comparison">7. Architectural Comparison<a class="headerlink" href="#7-architectural-comparison" title="Permanent link">&para;</a></h2>
+<h2 id="8-memory-pressure-and-preemption">8. Memory Pressure and Preemption<a class="headerlink" href="#8-memory-pressure-and-preemption" title="Permanent link">&para;</a></h2>
+<p>When GPU memory becomes constrained, vLLM supports <strong>preemption</strong> strategies:</p>
+<ul>
+<li><strong>Swap:</strong> Move KV blocks to CPU memory</li>
+<li><strong>Recompute:</strong> Drop KV blocks and recompute them later</li>
+</ul>
+<p>Recompute trades extra compute for lower memory pressure and is often preferred on fast GPUs.</p>
+<hr />
+<hr />
+<h2 id="9-architectural-comparison">9. Architectural Comparison<a class="headerlink" href="#9-architectural-comparison" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
@@ -1683,7 +1680,7 @@
 </table>
 <hr />
 <hr />
-<h2 id="7-useful-memory-approximation">7. Useful Memory Approximation<a class="headerlink" href="#7-useful-memory-approximation" title="Permanent link">&para;</a></h2>
+<h2 id="10-useful-memory-approximation">10. Useful Memory Approximation<a class="headerlink" href="#10-useful-memory-approximation" title="Permanent link">&para;</a></h2>
 <p>Approximate KV cache memory usage in bytes:</p>
 <div class="arithmatex">\[
 \text{KV Memory} \;\approx\; 2 \times L \times T \times H \times D_h \times B
@@ -1695,8 +1692,7 @@
 - <span class="arithmatex">\(B\)</span> is the number of bytes per element (2 for FP16, 1 for FP8)
 - <span class="arithmatex">\(D_h\)</span> is the per-head hidden dimension
 - <span class="arithmatex">\(T\)</span> is the sequence length (number of cached tokens)</p>
-<p>Example:</p>
-<h3 id="interview-ready-example">Interview-Ready Example<a class="headerlink" href="#interview-ready-example" title="Permanent link">&para;</a></h3>
+<p><strong>Example:</strong></p>
 <p>For <strong>Llama-3 8B</strong>:</p>
 <ul>
 <li><span class="arithmatex">\(L = 32\)</span></li>
