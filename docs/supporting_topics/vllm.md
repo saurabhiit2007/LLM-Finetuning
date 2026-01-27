@@ -91,7 +91,20 @@ vLLM introduces **Chunked Prefill** to prevent long prompts from blocking decode
 
 ---
 
-## 7. Architectural Comparison
+## 8. Memory Pressure and Preemption
+
+When GPU memory becomes constrained, vLLM supports **preemption** strategies:
+
+- **Swap:** Move KV blocks to CPU memory
+- **Recompute:** Drop KV blocks and recompute them later
+
+Recompute trades extra compute for lower memory pressure and is often preferred on fast GPUs.
+
+---
+
+---
+
+## 9. Architectural Comparison
 
 | Feature | vLLM | Hugging Face TGI | NVIDIA TensorRT-LLM |
 | :--- | :--- | :--- | :--- |
@@ -103,7 +116,7 @@ vLLM introduces **Chunked Prefill** to prevent long prompts from blocking decode
 
 ---
 
-## 7. Useful Memory Approximation
+## 10. Useful Memory Approximation
 
 Approximate KV cache memory usage in bytes:
 
@@ -120,9 +133,7 @@ Where:
 - $D_h$ is the per-head hidden dimension
 - $T$ is the sequence length (number of cached tokens)
 
-Example:
-
-### Interview-Ready Example
+**Example:**
 
 For **Llama-3 8B**:
 
