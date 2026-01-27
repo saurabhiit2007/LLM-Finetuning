@@ -59,6 +59,8 @@ nav:
       - Post-Training:
           - Supervised Fine-Tuning (SFT): ./training_techniques/post_training/sft.md
           - Reasoning & Test-Time Compute (System 2): ./training_techniques/system2.md
+      - Mid-Training:
+          - Mid Training Fundamentals: ./training_techniques/mid_training/mid_training.md
   - References: references.md
 
 markdown_extensions:
