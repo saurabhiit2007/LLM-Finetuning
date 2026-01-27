@@ -13,10 +13,10 @@
       
       
       
-        <link rel="prev" href="../mixture_of_experts/">
+        <link rel="prev" href="../../post_training/sft/">
       
       
-        <link rel="next" href="../sentence_piece_unigram/">
+        <link rel="next" href="../../../references/">
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
@@ -24,7 +24,7 @@
     
     
       
-        <title>RoPe - Fine-Tuning Methods Documentation</title>
+        <title>Mid Training Fundamentals - Fine-Tuning Methods Documentation</title>
       
     
     
@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#1-the-core-concept" class="md-skip">
+        <a href="#1-overview" class="md-skip">
           Skip to content
         </a>
       
@@ -112,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              RoPe
+              Mid Training Fundamentals
             
           </span>
         </div>
@@ -684,20 +684,20 @@
                 
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" checked>
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_2" >
         
           
           <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
@@ -713,7 +713,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4_2">
             <span class="md-nav__icon md-icon"></span>
             Pre-Training
@@ -727,7 +727,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../pre_training/" class="md-nav__link">
+      <a href="../../pre_training/pre_training/" class="md-nav__link">
         
   
   
@@ -750,7 +750,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../byte_pair_encoding/" class="md-nav__link">
+      <a href="../../pre_training/byte_pair_encoding/" class="md-nav__link">
         
   
   
@@ -773,7 +773,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../mixture_of_experts/" class="md-nav__link">
+      <a href="../../pre_training/mixture_of_experts/" class="md-nav__link">
         
   
   
@@ -793,30 +793,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    RoPe
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../pre_training/RoPE/" class="md-nav__link">
         
   
   
@@ -827,207 +807,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#1-the-core-concept" class="md-nav__link">
-    <span class="md-ellipsis">
-      1. The Core Concept
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="1. The Core Concept">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#why-rotate" class="md-nav__link">
-    <span class="md-ellipsis">
-      Why rotate?
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Why rotate?">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#why-this-matters" class="md-nav__link">
-    <span class="md-ellipsis">
-      Why This Matters
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2-the-algorithm" class="md-nav__link">
-    <span class="md-ellipsis">
-      2. The Algorithm
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3-where-exactly-is-rope-applied" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. Where Exactly Is RoPE Applied?
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4-why-rope-works-for-dot-product-attention" class="md-nav__link">
-    <span class="md-ellipsis">
-      4. Why RoPE Works for Dot-Product Attention
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="4. Why RoPE Works for Dot-Product Attention">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#step-by-step-intuition" class="md-nav__link">
-    <span class="md-ellipsis">
-      Step-by-Step Intuition
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#5-rope-and-multi-head-attention" class="md-nav__link">
-    <span class="md-ellipsis">
-      5. RoPE and Multi-Head Attention
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#6-comparison-why-rope-won" class="md-nav__link">
-    <span class="md-ellipsis">
-      6. Comparison: Why RoPE Won
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#7-small-intuitive-example" class="md-nav__link">
-    <span class="md-ellipsis">
-      7. Small Intuitive Example
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="7. Small Intuitive Example">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#position-1" class="md-nav__link">
-    <span class="md-ellipsis">
-      Position 1
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#position-3" class="md-nav__link">
-    <span class="md-ellipsis">
-      Position 3
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#8-interview-deep-dive-topics" class="md-nav__link">
-    <span class="md-ellipsis">
-      8. Interview Deep Dive Topics
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="8. Interview Deep Dive Topics">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#a-context-window-extension-rope-scaling" class="md-nav__link">
-    <span class="md-ellipsis">
-      A. Context Window Extension (RoPE Scaling)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#b-long-term-decay-property" class="md-nav__link">
-    <span class="md-ellipsis">
-      B. Long-Term Decay Property
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#c-rope-vs-alibi" class="md-nav__link">
-    <span class="md-ellipsis">
-      C. RoPE vs ALiBi
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#9-practical-limitations-and-caveats" class="md-nav__link">
-    <span class="md-ellipsis">
-      9. Practical Limitations and Caveats
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1040,7 +819,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../sentence_piece_unigram/" class="md-nav__link">
+      <a href="../../pre_training/sentence_piece_unigram/" class="md-nav__link">
         
   
   
@@ -1063,7 +842,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../advanced_transformer_components_and_layers/" class="md-nav__link">
+      <a href="../../pre_training/advanced_transformer_components_and_layers/" class="md-nav__link">
         
   
   
@@ -1231,20 +1010,20 @@
                 
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_6" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" checked>
         
           
           <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
@@ -1260,7 +1039,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4_6">
             <span class="md-nav__icon md-icon"></span>
             Mid-Training
@@ -1271,10 +1050,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../mid_training/mid_training/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Mid Training Fundamentals
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1285,6 +1084,180 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-utility-and-strategic-value" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Utility and Strategic Value
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-resource-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Resource Requirements
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-training-objectives-and-loss-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Training Objectives and Loss Design
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Training Objectives and Loss Design">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-objective-continuity" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1 Objective Continuity
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-auxiliary-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2 Auxiliary Objectives
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-technical-implementation-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Technical Implementation &amp; Steps
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Technical Implementation &amp; Steps">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-data-mixture-synthesis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1: Data Mixture Synthesis
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-lr-annealing-the-spike-and-decay-and-optimization-strategy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2: LR Annealing (The "Spike and Decay") and Optimization Strategy
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-context-window-extension-rope-scaling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3: Context Window Extension (RoPE Scaling)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-parameter-freezing-and-selective-training" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Parameter Freezing and Selective Training
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-failure-modes-and-diagnostics" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Failure Modes and Diagnostics
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-evaluation-during-mid-training" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Evaluation During Mid-Training
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-impact-on-post-training-and-alignment" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Impact on Post-Training and Alignment
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-recent-work-and-2026-breakthroughs" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. Recent Work and 2026 Breakthroughs
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-comparison-of-training-phases" class="md-nav__link">
+    <span class="md-ellipsis">
+      11. Comparison of Training Phases
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1352,76 +1325,55 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-the-core-concept" class="md-nav__link">
+  <a href="#1-overview" class="md-nav__link">
     <span class="md-ellipsis">
-      1. The Core Concept
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="1. The Core Concept">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#why-rotate" class="md-nav__link">
-    <span class="md-ellipsis">
-      Why rotate?
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Why rotate?">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#why-this-matters" class="md-nav__link">
-    <span class="md-ellipsis">
-      Why This Matters
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2-the-algorithm" class="md-nav__link">
-    <span class="md-ellipsis">
-      2. The Algorithm
+      1. Overview
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-where-exactly-is-rope-applied" class="md-nav__link">
+  <a href="#2-utility-and-strategic-value" class="md-nav__link">
     <span class="md-ellipsis">
-      3. Where Exactly Is RoPE Applied?
+      2. Utility and Strategic Value
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-why-rope-works-for-dot-product-attention" class="md-nav__link">
+  <a href="#3-resource-requirements" class="md-nav__link">
     <span class="md-ellipsis">
-      4. Why RoPE Works for Dot-Product Attention
+      3. Resource Requirements
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="4. Why RoPE Works for Dot-Product Attention">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-training-objectives-and-loss-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Training Objectives and Loss Design
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Training Objectives and Loss Design">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#step-by-step-intuition" class="md-nav__link">
+  <a href="#41-objective-continuity" class="md-nav__link">
     <span class="md-ellipsis">
-      Step-by-Step Intuition
+      4.1 Objective Continuity
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-auxiliary-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2 Auxiliary Objectives
     </span>
   </a>
   
@@ -1433,46 +1385,37 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#5-rope-and-multi-head-attention" class="md-nav__link">
+  <a href="#5-technical-implementation-steps" class="md-nav__link">
     <span class="md-ellipsis">
-      5. RoPE and Multi-Head Attention
+      5. Technical Implementation &amp; Steps
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#6-comparison-why-rope-won" class="md-nav__link">
-    <span class="md-ellipsis">
-      6. Comparison: Why RoPE Won
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#7-small-intuitive-example" class="md-nav__link">
-    <span class="md-ellipsis">
-      7. Small Intuitive Example
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="7. Small Intuitive Example">
+    <nav class="md-nav" aria-label="5. Technical Implementation &amp; Steps">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#position-1" class="md-nav__link">
+  <a href="#step-1-data-mixture-synthesis" class="md-nav__link">
     <span class="md-ellipsis">
-      Position 1
+      Step 1: Data Mixture Synthesis
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#position-3" class="md-nav__link">
+  <a href="#step-2-lr-annealing-the-spike-and-decay-and-optimization-strategy" class="md-nav__link">
     <span class="md-ellipsis">
-      Position 3
+      Step 2: LR Annealing (The "Spike and Decay") and Optimization Strategy
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-context-window-extension-rope-scaling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3: Context Window Extension (RoPE Scaling)
     </span>
   </a>
   
@@ -1484,51 +1427,54 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#8-interview-deep-dive-topics" class="md-nav__link">
+  <a href="#6-parameter-freezing-and-selective-training" class="md-nav__link">
     <span class="md-ellipsis">
-      8. Interview Deep Dive Topics
+      6. Parameter Freezing and Selective Training
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="8. Interview Deep Dive Topics">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#a-context-window-extension-rope-scaling" class="md-nav__link">
-    <span class="md-ellipsis">
-      A. Context Window Extension (RoPE Scaling)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#b-long-term-decay-property" class="md-nav__link">
-    <span class="md-ellipsis">
-      B. Long-Term Decay Property
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#c-rope-vs-alibi" class="md-nav__link">
-    <span class="md-ellipsis">
-      C. RoPE vs ALiBi
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#9-practical-limitations-and-caveats" class="md-nav__link">
+  <a href="#7-failure-modes-and-diagnostics" class="md-nav__link">
     <span class="md-ellipsis">
-      9. Practical Limitations and Caveats
+      7. Failure Modes and Diagnostics
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-evaluation-during-mid-training" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Evaluation During Mid-Training
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-impact-on-post-training-and-alignment" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Impact on Post-Training and Alignment
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-recent-work-and-2026-breakthroughs" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. Recent Work and 2026 Breakthroughs
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-comparison-of-training-phases" class="md-nav__link">
+    <span class="md-ellipsis">
+      11. Comparison of Training Phases
     </span>
   </a>
   
@@ -1553,265 +1499,202 @@
   
 
 
-  <h1>RoPe</h1>
+  <h1>Mid Training Fundamentals</h1>
 
-<p>Rotary Positional Embedding (RoPE) is the state-of-the-art method for encoding positional information in Transformers. It is the default choice for modern LLMs, including <strong>Llama 2/3, Mistral, and PaLM</strong>.</p>
+<h2 id="1-overview">1. Overview<a class="headerlink" href="#1-overview" title="Permanent link">&para;</a></h2>
+<p>In the 2025–2026 development cycle, <strong>Mid-training</strong> (often called <strong>Continued Pre-training</strong> or the <strong>Annealing Phase</strong>) has solidified as a critical third pillar in the LLM lifecycle. 
+It sits between massive-scale general pre-training and task-specific alignment (SFT/RLHF). Its primary purpose is to transform a general-purpose foundation model into a high-reasoning, domain-specialized system while minimizing catastrophic forgetting and preserving global language competence.</p>
+<p>Mid-training is now viewed not only as a quality enhancer but also as a cost and stability optimization stage that significantly reduces downstream alignment complexity.</p>
 <hr />
-<h2 id="1-the-core-concept">1. The Core Concept<a class="headerlink" href="#1-the-core-concept" title="Permanent link">&para;</a></h2>
-<p>Traditional embeddings like Sinusoidal or Learned Absolute Embeddings are <strong>additive</strong>:</p>
-<div class="arithmatex">\[
-x_i = e_i + p_i
-\]</div>
-<p><strong>RoPE</strong> is <strong>multiplicative</strong>. It treats the embedding vector as a set of complex numbers and rotates them in a high-dimensional space based on their position.</p>
-<h3 id="why-rotate">Why rotate?<a class="headerlink" href="#why-rotate" title="Permanent link">&para;</a></h3>
-<p>The primary goal of RoPE is to ensure that the <strong>dot product</strong> between two tokens (Query and Key) depends only on their <strong>relative distance</strong>, not their absolute positions.</p>
-<div class="arithmatex">\[
-\langle f_q(x_m, m), f_k(x_n, n) \rangle = g(x_m, x_n, m - n)
-\]</div>
-<p>Where:</p>
-<ul>
-<li>
-<p><strong><span class="arithmatex">\(x_m, x_n\)</span></strong> : The original content embeddings of the tokens at positions <span class="arithmatex">\(m\)</span> and <span class="arithmatex">\(n\)</span>. These vectors come from the token embedding layer or the previous Transformer block and do not yet include positional information.</p>
-</li>
-<li>
-<p><strong><span class="arithmatex">\(m, n\)</span></strong>: The absolute token positions in the sequence. For example, <span class="arithmatex">\(m = 5\)</span> and <span class="arithmatex">\(n = 12\)</span>.</p>
-</li>
-<li>
-<p><strong><span class="arithmatex">\(f_q(x_m, m)\)</span></strong>: The position-aware <strong>Query</strong> representation at position <span class="arithmatex">\(m\)</span>.<br />
-  This function applies the RoPE rotation to the query vector derived from <span class="arithmatex">\(x_m\)</span>.</p>
-</li>
-<li>
-<p><strong><span class="arithmatex">\(f_k(x_n, n)\)</span></strong>: The position-aware <strong>Key</strong> representation at position <span class="arithmatex">\(n\)</span>.<br />
-  This function applies the same RoPE rotation scheme to the key vector derived from <span class="arithmatex">\(x_n\)</span>.</p>
-</li>
-<li>
-<p><strong><span class="arithmatex">\(\langle \cdot , \cdot \rangle\)</span></strong>: The dot product used in scaled dot-product attention to compute attention scores.</p>
-</li>
-<li>
-<p><strong><span class="arithmatex">\(g(x_m, x_n, m - n)\)</span></strong>: A function whose output depends on the token contents and <strong>only the relative position</strong> <span class="arithmatex">\((m - n)\)</span>, not on the absolute positions themselves.</p>
-</li>
-</ul>
-<h4 id="why-this-matters">Why This Matters<a class="headerlink" href="#why-this-matters" title="Permanent link">&para;</a></h4>
-<p>This equation states that after applying RoPE:</p>
-<ul>
-<li>Absolute positions <span class="arithmatex">\(m\)</span> and <span class="arithmatex">\(n\)</span> do not independently affect the attention score.</li>
-<li>Only the relative distance <span class="arithmatex">\((m - n)\)</span> influences how strongly two tokens attend to each other.</li>
-<li>This property enables strong length extrapolation, a natural locality bias, and robust long-context behavior.</li>
-<li>This allows the model to understand relationships between tokens regardless of where they appear in the sequence.</li>
-</ul>
-<p>In contrast, additive positional embeddings typically produce attention scores that depend on both absolute and relative positions, which limits generalization to longer sequences.</p>
 <hr />
-<h2 id="2-the-algorithm">2. The Algorithm<a class="headerlink" href="#2-the-algorithm" title="Permanent link">&para;</a></h2>
-<p>RoPE works by pairing elements of the <span class="arithmatex">\(d\)</span>-dimensional embedding and applying a 2D rotation matrix to each pair.</p>
-<p>For a pair of dimensions <span class="arithmatex">\([x^{(1)}, x^{(2)}]\)</span> at position <span class="arithmatex">\(m\)</span>, the transformation is:</p>
-<div class="arithmatex">\[
-\begin{pmatrix}
-\cos m\theta &amp; -\sin m\theta \\
-\sin m\theta &amp; \cos m\theta
-\end{pmatrix}
-\begin{pmatrix}
-x^{(1)} \\
-x^{(2)}
-\end{pmatrix}
-\]</div>
+<h2 id="2-utility-and-strategic-value">2. Utility and Strategic Value<a class="headerlink" href="#2-utility-and-strategic-value" title="Permanent link">&para;</a></h2>
+<p>Mid-training is no longer optional for frontier models. Its utility lies in three main areas:</p>
 <ul>
 <li>
-<p><strong>The Angle (<span class="arithmatex">\(\theta\)</span>)</strong>: The rotation frequency follows a geometric progression<br />
-  $$
-  \theta_i = 10000^{-2i/d}
-  $$
-  similar to sinusoidal embeddings.</p>
+<p><strong>Domain Deep-Diving:</strong> Injection of large-scale, high-signal domain corpora such as law, biomedical literature, mathematics, or enterprise codebases, reaching depth that is infeasible during general pre-training.</p>
 </li>
 <li>
-<p><strong>The Result</strong>: As position <span class="arithmatex">\(m\)</span> increases, the vector rotates further. Because the rotation matrix is orthogonal, the vector norm is preserved while positional information is encoded.</p>
+<p><strong>Cognitive Architecture Scaling:</strong> Transitioning from surface-level pattern matching to structured reasoning by exposing the model to dense synthetic reasoning trajectories, proofs, and multi-step problem-solving traces.</p>
+</li>
+<li>
+<p><strong>Architectural Adaptation:</strong> Enabling long-context reasoning, tool usage priors, and agentic behaviors that require architectural stress beyond base pre-training distributions.</p>
 </li>
 </ul>
 <hr />
-<h2 id="3-where-exactly-is-rope-applied">3. Where Exactly Is RoPE Applied?<a class="headerlink" href="#3-where-exactly-is-rope-applied" title="Permanent link">&para;</a></h2>
-<p>RoPE is applied <strong>only to the Query and Key vectors</strong> in self-attention.</p>
-<ul>
-<li>Queries and Keys are rotated based on token position.</li>
-<li>Values are left unchanged.</li>
-</ul>
-<p>Reason:</p>
-<ul>
-<li>Attention scores are computed using the dot product <span class="arithmatex">\(QK^\top\)</span>.</li>
-<li>RoPE ensures this dot product captures relative position.</li>
-<li>Applying RoPE to Values does not improve positional reasoning and can degrade performance.</li>
-</ul>
 <hr />
-<h2 id="4-why-rope-works-for-dot-product-attention">4. Why RoPE Works for Dot-Product Attention<a class="headerlink" href="#4-why-rope-works-for-dot-product-attention" title="Permanent link">&para;</a></h2>
-<p>The key mathematical insight behind RoPE is <strong>rotation composition</strong>.</p>
-<p>Consider the equation:</p>
-<div class="arithmatex">\[
-\langle R(m)x, R(n)y \rangle = \langle x, R(n - m)y \rangle
-\]</div>
-<p>Where:</p>
-<ul>
-<li>
-<p><strong><span class="arithmatex">\(x, y\)</span></strong>: Content vectors representing token embeddings after linear projection into Query or Key space. These vectors do not contain positional information by themselves.</p>
-</li>
-<li>
-<p><strong><span class="arithmatex">\(m, n\)</span></strong>: Absolute token positions in the sequence. For example, <span class="arithmatex">\(m = 4\)</span> and <span class="arithmatex">\(n = 10\)</span></p>
-</li>
-<li>
-<p><strong><span class="arithmatex">\(R(m)\)</span>, <span class="arithmatex">\(R(n)\)</span></strong>: Orthogonal rotation matrices parameterized by position.<br />
-  Each matrix applies a set of 2D rotations across paired embedding dimensions, with rotation angles proportional to the position index.</p>
-</li>
-<li>
-<p><strong><span class="arithmatex">\(\langle \cdot , \cdot \rangle\)</span></strong>: The standard dot product used in attention score computation.</p>
-</li>
-</ul>
-<hr />
-<h4 id="step-by-step-intuition">Step-by-Step Intuition<a class="headerlink" href="#step-by-step-intuition" title="Permanent link">&para;</a></h4>
-<ol>
-<li>
-<p><strong>Position Encoding via Rotation</strong><br />
-   Applying <span class="arithmatex">\(R(m)\)</span> to <span class="arithmatex">\(x\)</span> rotates the vector in embedding space by an amount determined by position <span class="arithmatex">\(m\)</span>.<br />
-   Similarly, <span class="arithmatex">\(R(n)\)</span> rotates <span class="arithmatex">\(y\)</span> according to position <span class="arithmatex">\(n\)</span>.</p>
-</li>
-<li>
-<p><strong>Orthogonality Property</strong><br />
-   Rotation matrices are orthogonal, meaning:
-   $$
-   R(m)^\top = R(-m)
-   $$</p>
-</li>
-<li>
-<p><strong>Rewriting the Dot Product</strong><br />
-   Using orthogonality:
-   $$
-   \langle R(m)x, R(n)y \rangle
-   =
-   \langle x, R(m)^\top R(n) y \rangle
-   =
-   \langle x, R(n - m) y \rangle
-   $$</p>
-</li>
-<li>
-<p><strong>Cancellation of Absolute Position</strong><br />
-   The absolute positions <span class="arithmatex">\(m\)</span> and <span class="arithmatex">\(n\)</span> collapse into a single relative offset <span class="arithmatex">\((n - m)\)</span>.</p>
-</li>
-</ol>
-<hr />
-<p>This identity captures the core mathematical reason why RoPE encodes <strong>relative position</strong> rather than absolute position. Below is a detailed explanation of each term and why the equation holds.</p>
-<p>Key implications:</p>
-<ul>
-<li>Absolute positions cancel out.</li>
-<li>Only the relative offset <span class="arithmatex">\((n - m)\)</span> matters.</li>
-<li>This property aligns perfectly with dot-product attention.</li>
-<li>Tokens with the same relative spacing produce the same positional interaction, regardless of where they appear in the sequence.</li>
-</ul>
-<p>This is why RoPE integrates naturally into Transformer architectures.</p>
-<hr />
-<h2 id="5-rope-and-multi-head-attention">5. RoPE and Multi-Head Attention<a class="headerlink" href="#5-rope-and-multi-head-attention" title="Permanent link">&para;</a></h2>
-<p>In multi-head attention:</p>
-<ul>
-<li>RoPE is applied independently within each attention head.</li>
-<li>Each head operates on a lower-dimensional subspace and applies the same frequency schedule.</li>
-</ul>
-<p>As a result:</p>
-<ul>
-<li>Low-frequency dimensions capture long-range dependencies.</li>
-<li>High-frequency dimensions focus on local structure.</li>
-</ul>
-<p>This creates a multi-scale positional representation across heads.</p>
-<hr />
-<h2 id="6-comparison-why-rope-won">6. Comparison: Why RoPE Won<a class="headerlink" href="#6-comparison-why-rope-won" title="Permanent link">&para;</a></h2>
+<h2 id="3-resource-requirements">3. Resource Requirements<a class="headerlink" href="#3-resource-requirements" title="Permanent link">&para;</a></h2>
+<p>Mid-training is a "heavyweight" operation compared to post-training alignment.</p>
 <table>
 <thead>
 <tr>
-<th>Feature</th>
-<th>Absolute (Sinusoidal)</th>
-<th>RoPE</th>
+<th style="text-align: left;">Resource</th>
+<th style="text-align: left;">Requirement</th>
+<th style="text-align: left;">Note</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><strong>Operation</strong></td>
-<td>Addition</td>
-<td>Rotation (Multiplication)</td>
+<td style="text-align: left;"><strong>Compute</strong></td>
+<td style="text-align: left;">5%–15% of Pre-training FLOPs</td>
+<td style="text-align: left;">Requires high-interconnect GPU clusters (H100/B200).</td>
 </tr>
 <tr>
-<td><strong>Relative Distance</strong></td>
-<td>Not explicit</td>
-<td>Naturally captured via dot product</td>
+<td style="text-align: left;"><strong>Optimizer States</strong></td>
+<td style="text-align: left;">Full Adam or AdamW moments</td>
+<td style="text-align: left;">Must resume with original moments to avoid "loss spikes."</td>
 </tr>
 <tr>
-<td><strong>Extrapolation</strong></td>
-<td>Weak for long contexts</td>
-<td>Strong with scaling</td>
+<td style="text-align: left;"><strong>Data Quality</strong></td>
+<td style="text-align: left;">&gt;95% Signal-to-Noise</td>
+<td style="text-align: left;">Aggressive filtering, deduplication, and curriculum ordering required.</td>
 </tr>
 <tr>
-<td><strong>Decay</strong></td>
-<td>No natural decay</td>
-<td>Distance-based interaction decay</td>
-</tr>
-<tr>
-<td><strong>Implementation</strong></td>
-<td>Simple</td>
-<td>Moderate complexity</td>
+<td style="text-align: left;"><strong>Replay Buffer</strong></td>
+<td style="text-align: left;">10%–20% General Data</td>
+<td style="text-align: left;">Essential to prevent forgetting of general knowledge.</td>
 </tr>
 </tbody>
 </table>
 <hr />
-<h2 id="7-small-intuitive-example">7. Small Intuitive Example<a class="headerlink" href="#7-small-intuitive-example" title="Permanent link">&para;</a></h2>
-<p>Consider a single 2D vector:</p>
-<div class="arithmatex">\[
-x = [1, 0]
-\]</div>
-<p>Assume one frequency <span class="arithmatex">\(\theta = 0.1\)</span>.</p>
-<h3 id="position-1">Position 1<a class="headerlink" href="#position-1" title="Permanent link">&para;</a></h3>
-<p>Rotation angle = <span class="arithmatex">\(0.1\)</span></p>
-<div class="arithmatex">\[
-R(0.1)x = [\cos 0.1, \sin 0.1] \approx [0.995, 0.100]
-\]</div>
-<h3 id="position-3">Position 3<a class="headerlink" href="#position-3" title="Permanent link">&para;</a></h3>
-<p>Rotation angle = <span class="arithmatex">\(0.3\)</span></p>
-<div class="arithmatex">\[
-R(0.3)x = [\cos 0.3, \sin 0.3] \approx [0.955, 0.296]
-\]</div>
-<p>Dot product between the two:</p>
-<div class="arithmatex">\[
-\langle R(0.1)x, R(0.3)x \rangle = \cos(0.2)
-\]</div>
-<p>Observation:
-- The dot product depends only on the positional difference <span class="arithmatex">\((3 - 1)\)</span>.
-- Vector magnitude is preserved.
-- Relative distance is directly encoded into attention.</p>
 <hr />
-<h2 id="8-interview-deep-dive-topics">8. Interview Deep Dive Topics<a class="headerlink" href="#8-interview-deep-dive-topics" title="Permanent link">&para;</a></h2>
-<h3 id="a-context-window-extension-rope-scaling">A. Context Window Extension (RoPE Scaling)<a class="headerlink" href="#a-context-window-extension-rope-scaling" title="Permanent link">&para;</a></h3>
-<p><strong>Question</strong>: If a model is trained on 4k context, how can it be extended to 128k?</p>
+<h2 id="4-training-objectives-and-loss-design">4. Training Objectives and Loss Design<a class="headerlink" href="#4-training-objectives-and-loss-design" title="Permanent link">&para;</a></h2>
+<h3 id="41-objective-continuity">4.1 Objective Continuity<a class="headerlink" href="#41-objective-continuity" title="Permanent link">&para;</a></h3>
+<p>Mid-training typically preserves the original causal language modeling objective used during pre-training. Stability is achieved by changing data distribution and curriculum, not the core loss.</p>
+<h3 id="42-auxiliary-objectives">4.2 Auxiliary Objectives<a class="headerlink" href="#42-auxiliary-objectives" title="Permanent link">&para;</a></h3>
+<p>Some advanced pipelines introduce lightly weighted auxiliary losses, including:</p>
+<ul>
+<li>Contrastive losses for retrieval-aware representations</li>
+<li>Outcome-conditioned losses for tool-use traces</li>
+<li>Self-consistency rewards for reasoning trajectories</li>
+</ul>
+<p>These signals are intentionally weak to avoid destabilizing the base representation space.</p>
+<hr />
+<hr />
+<h2 id="5-technical-implementation-steps">5. Technical Implementation &amp; Steps<a class="headerlink" href="#5-technical-implementation-steps" title="Permanent link">&para;</a></h2>
+<h3 id="step-1-data-mixture-synthesis">Step 1: Data Mixture Synthesis<a class="headerlink" href="#step-1-data-mixture-synthesis" title="Permanent link">&para;</a></h3>
+<p>The "recipe" for a mid-training run is more curated than raw pre-training. A typical 2026 mixture involves:
+* <strong>40% Specialist Corpora:</strong> Textbooks, technical manuals, and white papers.
+* <strong>30% Synthetic Reasoning:</strong> Trajectories generated by larger "Teacher" models showing step-by-step logic.
+* <strong>20% General Web Scrapes:</strong> High-quality "Common Crawl" subsets (e.g., FineWeb-Edu).
+* <strong>10% Long-form Documents:</strong> Books and full codebases for context stretching.</p>
+<h3 id="step-2-lr-annealing-the-spike-and-decay-and-optimization-strategy">Step 2: LR Annealing (The "Spike and Decay") and Optimization Strategy<a class="headerlink" href="#step-2-lr-annealing-the-spike-and-decay-and-optimization-strategy" title="Permanent link">&para;</a></h3>
+<p>Mid-training utilizes a unique learning rate schedule. Instead of a flat or strictly decaying line, it often employs a <strong>Cool-down/Annealing</strong> strategy:</p>
+<ol>
+<li><strong>Re-warmup:</strong> A short period to stabilize the model on the new data distribution.</li>
+<li><strong>Cosine Decay:</strong> A deep decay toward zero to ensure the weights settle into the specialized "valleys" of the loss landscape.</li>
+</ol>
+<p><strong>Optimizer Sensitivity</strong></p>
+<ul>
+<li>Full optimizer state restoration is mandatory</li>
+<li>Partial state resets commonly cause irrecoverable divergence</li>
+</ul>
+<h3 id="step-3-context-window-extension-rope-scaling">Step 3: Context Window Extension (RoPE Scaling)<a class="headerlink" href="#step-3-context-window-extension-rope-scaling" title="Permanent link">&para;</a></h3>
+<p>To handle long-context, the mid-training phase modifies the <strong>Rotary Positional Embeddings (RoPE)</strong>. The transformation typically follows:</p>
+<div class="arithmatex">\[f(q, i, \theta) = R_{\Theta, i}^d q\]</div>
+<p>By increasing the base frequency <span class="arithmatex">\(\theta\)</span> (often called "Base Scaling"), the model learns to interpret distances between tokens that were previously "out of range."</p>
+<hr />
+<hr />
+<h2 id="6-parameter-freezing-and-selective-training">6. Parameter Freezing and Selective Training<a class="headerlink" href="#6-parameter-freezing-and-selective-training" title="Permanent link">&para;</a></h2>
+<p>Mid-training does not always update all parameters:</p>
+<ul>
+<li><strong>Frozen Components:</strong>
+   Token embeddings, early transformer blocks, or normalization statistics</li>
+<li><strong>Progressive Unfreezing:</strong>
+   Higher layers are unfrozen as specialization increases</li>
+<li><strong>Adapter-Based Mid-Training:</strong>
+   Low-rank or gated adapters may be trained and later merged, reducing compute cost</li>
+</ul>
+<p>Selective training reduces catastrophic forgetting and improves stability.</p>
+<hr />
+<hr />
+<h2 id="7-failure-modes-and-diagnostics">7. Failure Modes and Diagnostics<a class="headerlink" href="#7-failure-modes-and-diagnostics" title="Permanent link">&para;</a></h2>
+<p><strong>Common Failure Modes</strong></p>
+<ul>
+<li>Loss Spikes After Resume due to optimizer mismatch</li>
+<li>Reasoning Overfitting leading to brittle, verbose outputs</li>
+<li>Semantic Drift despite replay buffers</li>
+<li>Context Length Illusions masking real long-range reasoning deficits</li>
+</ul>
+<p><strong>Diagnostics</strong></p>
+<ul>
+<li>Perplexity on held-out general corpora</li>
+<li>Loss by token position bucket</li>
+<li>Reasoning consistency metrics</li>
+</ul>
+<hr />
+<hr />
+<h2 id="8-evaluation-during-mid-training">8. Evaluation During Mid-Training<a class="headerlink" href="#8-evaluation-during-mid-training" title="Permanent link">&para;</a></h2>
+<p>Mid-training requires continuous evaluation beyond downstream benchmarks.</p>
+<p><strong>Online Metrics</strong></p>
+<ul>
+<li>Replay buffer perplexity</li>
+<li>Long-context loss curves</li>
+<li>Reasoning trace self-consistency</li>
+</ul>
+<p><strong>Offline Probes</strong></p>
+<ul>
+<li>Needle-in-a-haystack retrieval tasks</li>
+<li>Synthetic math and code reasoning suites</li>
+<li>Tool-use simulation accuracy</li>
+</ul>
+<p>Early detection of regressions is critical due to high rollback cost.</p>
+<hr />
+<hr />
+<h2 id="9-impact-on-post-training-and-alignment">9. Impact on Post-Training and Alignment<a class="headerlink" href="#9-impact-on-post-training-and-alignment" title="Permanent link">&para;</a></h2>
+<p>A strong mid-training phase:</p>
+<ul>
+<li>Reduces SFT data needs by 2–5×</li>
+<li>Improves RLHF stability by narrowing policy search</li>
+<li>Lowers reward hacking risk by pre-internalizing reasoning norms</li>
+</ul>
+<p>This has made mid-training a core efficiency lever in modern LLM pipelines.</p>
+<hr />
+<hr />
+<h2 id="10-recent-work-and-2026-breakthroughs">10. Recent Work and 2026 Breakthroughs<a class="headerlink" href="#10-recent-work-and-2026-breakthroughs" title="Permanent link">&para;</a></h2>
 <ul>
 <li>
-<p><strong>Linear Interpolation</strong>: Scale positions as<br />
-  $$
-  m \rightarrow m \cdot \frac{L}{L'}
-  $$
-  to avoid unseen large angles.</p>
+<p><strong>Agentic Synthesis (Late 2025):</strong> Including "Action Trajectories" (logs of AI models using tools) during mid-training improves agentic performance more than SFT alone.</p>
 </li>
 <li>
-<p><strong>NTK-aware Scaling</strong>: Scale different frequencies differently to preserve high-frequency information for nearby tokens.</p>
+<p><strong>Internalized Reinforcement Learning (IRL):</strong> Applying RL during the mid-training phase to reward "correct reasoning paths" in math and code.</p>
+</li>
+<li>
+<p><strong>Curriculum Mixing:</strong> Using a small "proctor" model to dynamically change the data mixture based on the primary model's real-time loss.</p>
 </li>
 </ul>
 <hr />
-<h3 id="b-long-term-decay-property">B. Long-Term Decay Property<a class="headerlink" href="#b-long-term-decay-property" title="Permanent link">&para;</a></h3>
-<p>RoPE introduces a natural decay in interaction strength as <span class="arithmatex">\(|m - n|\)</span> increases. This provides a locality bias without enforcing a hard attention window, aligning well with natural language structure.</p>
 <hr />
-<h3 id="c-rope-vs-alibi">C. RoPE vs ALiBi<a class="headerlink" href="#c-rope-vs-alibi" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>ALiBi</strong> adds a linear bias to attention scores based on distance.</li>
-<li><strong>RoPE</strong> encodes position directly into representations, allowing richer and more flexible positional reasoning.</li>
-</ul>
-<hr />
-<h2 id="9-practical-limitations-and-caveats">9. Practical Limitations and Caveats<a class="headerlink" href="#9-practical-limitations-and-caveats" title="Permanent link">&para;</a></h2>
-<ul>
-<li>RoPE assumes evenly spaced token positions.</li>
-<li>Extreme extrapolation without scaling can cause numerical instability.</li>
-<li>Relative position is encoded strongly, but absolute position is implicit, which may matter for structured tasks.</li>
-</ul>
-<hr />
+<h2 id="11-comparison-of-training-phases">11. Comparison of Training Phases<a class="headerlink" href="#11-comparison-of-training-phases" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Feature</th>
+<th style="text-align: left;">Pre-training</th>
+<th style="text-align: left;">Mid-training</th>
+<th style="text-align: left;">Post-training (SFT)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Token Count</strong></td>
+<td style="text-align: left;">5T - 15T</td>
+<td style="text-align: left;">100B - 500B</td>
+<td style="text-align: left;">10M - 50M</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Focus</strong></td>
+<td style="text-align: left;">Breadth</td>
+<td style="text-align: left;">Depth/Logic</td>
+<td style="text-align: left;">Behavior/Safety</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Data Source</strong></td>
+<td style="text-align: left;">Raw Web</td>
+<td style="text-align: left;">Curated/Synthetic</td>
+<td style="text-align: left;">Human-labeled</td>
+</tr>
+</tbody>
+</table>
 
 
 
