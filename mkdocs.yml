@@ -47,6 +47,7 @@ nav:
       - KV Caching: ./supporting_topics/kv_caching.md
       - vLLM: ./supporting_topics/vllm.md
       - FSDP & Deep Speed: ./supporting_topics/fsdp_deepspeed.md
+      - Memory Consideration: ./supporting_topics/memory_considerations.md
   - Training Pipeline:
       - Foundation: ./training_techniques/foundation.md
       - Pre-Training:
