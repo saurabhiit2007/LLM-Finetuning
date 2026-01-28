@@ -13,6 +13,10 @@
       
       
       
+        <link rel="prev" href="../memory_considerations/">
+      
+      
+        <link rel="next" href="../../training_techniques/foundation/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -20,7 +24,7 @@
     
     
       
-        <title>Bitsandbytes - Fine-Tuning Methods Documentation</title>
+        <title>Paged Adam Optimizer - Fine-Tuning Methods Documentation</title>
       
     
     
@@ -71,6 +75,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#1-motivation" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -103,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Bitsandbytes
+              Paged Adam Optimizer
             
           </span>
         </div>
@@ -381,20 +390,20 @@
       
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
@@ -410,7 +419,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             Supporting Topics
@@ -674,10 +683,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../paged_adam/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Paged Adam Optimizer
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -688,6 +717,129 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-motivation" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Motivation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-what-is-paged-adam" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. What Is Paged Adam
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-core-idea" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Core Idea
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-step-by-step-operation" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Step by Step Operation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-memory-benefits" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Memory Benefits
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-performance-tradeoffs" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Performance Tradeoffs
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-relationship-to-other-memory-saving-techniques" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Relationship to Other Memory Saving Techniques
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Relationship to Other Memory Saving Techniques">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-paged-adam-vs-zero-offload" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.1 Paged Adam vs ZeRO Offload
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-paged-adam-and-8-bit-optimizers" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.2 Paged Adam and 8-bit Optimizers
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-when-to-use-paged-adam" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. When to Use Paged Adam
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-one-sentence-interview-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. One Sentence Interview Summary
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1230,6 +1382,119 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-motivation" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Motivation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-what-is-paged-adam" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. What Is Paged Adam
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-core-idea" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Core Idea
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-step-by-step-operation" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Step by Step Operation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-memory-benefits" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Memory Benefits
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-performance-tradeoffs" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Performance Tradeoffs
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-relationship-to-other-memory-saving-techniques" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Relationship to Other Memory Saving Techniques
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Relationship to Other Memory Saving Techniques">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-paged-adam-vs-zero-offload" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.1 Paged Adam vs ZeRO Offload
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-paged-adam-and-8-bit-optimizers" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.2 Paged Adam and 8-bit Optimizers
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-when-to-use-paged-adam" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. When to Use Paged Adam
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-one-sentence-interview-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. One Sentence Interview Summary
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1247,9 +1512,137 @@
   
 
 
-  <h1>Bitsandbytes</h1>
+  <h1>Paged Adam Optimizer</h1>
 
-
+<h2 id="1-motivation">1. Motivation<a class="headerlink" href="#1-motivation" title="Permanent link">&para;</a></h2>
+<p>The Adam optimizer maintains additional state for each trainable parameter, which becomes a major memory bottleneck when training or fine tuning large language models.</p>
+<p>For each parameter, Adam stores:</p>
+<ul>
+<li>First moment estimate <span class="arithmatex">\(m\)</span> in FP32</li>
+<li>Second moment estimate <span class="arithmatex">\(v\)</span> in FP32</li>
+</ul>
+<p>This requires <strong>8 bytes per parameter</strong>, often exceeding available GPU memory even when model weights fit.</p>
+<p>Paged Adam is designed to address this optimizer state memory bottleneck.</p>
+<hr />
+<hr />
+<h2 id="2-what-is-paged-adam">2. What Is Paged Adam<a class="headerlink" href="#2-what-is-paged-adam" title="Permanent link">&para;</a></h2>
+<p>Paged Adam is a <strong>memory managed variant of the Adam optimizer</strong> that stores optimizer states in <strong>CPU memory</strong> and moves them to <strong>GPU memory in small chunks only when needed</strong> for the update step.</p>
+<p>The Adam update rule itself is unchanged. The optimization focuses entirely on <strong>where optimizer states live and how they are accessed</strong>.</p>
+<p>Paged Adam is most commonly implemented in the <code>bitsandbytes</code> library and is widely used in large model fine tuning workflows.</p>
+<hr />
+<hr />
+<h2 id="3-core-idea">3. Core Idea<a class="headerlink" href="#3-core-idea" title="Permanent link">&para;</a></h2>
+<p>The key idea behind Paged Adam is inspired by virtual memory systems.</p>
+<ul>
+<li>Optimizer states reside primarily in host memory</li>
+<li>Small pages of optimizer states are transferred to the GPU</li>
+<li>Updates are applied for that page</li>
+<li>Updated states are written back to CPU memory</li>
+<li>The next page is processed</li>
+</ul>
+<p>At no point do all optimizer states need to be resident in GPU memory.</p>
+<hr />
+<hr />
+<h2 id="4-step-by-step-operation">4. Step by Step Operation<a class="headerlink" href="#4-step-by-step-operation" title="Permanent link">&para;</a></h2>
+<p>During each optimizer step:</p>
+<ol>
+<li>Gradients are computed on the GPU.</li>
+<li>A page of optimizer states <span class="arithmatex">\(m, v\)</span> is transferred from CPU memory to GPU memory.</li>
+<li>The Adam update is applied for the corresponding parameters.</li>
+<li>Updated optimizer states are transferred back to CPU memory.</li>
+<li>The process repeats for the next page.</li>
+</ol>
+<p>Only a small fraction of optimizer state memory is present on the GPU at any time.</p>
+<hr />
+<hr />
+<h2 id="5-memory-benefits">5. Memory Benefits<a class="headerlink" href="#5-memory-benefits" title="Permanent link">&para;</a></h2>
+<p>Paged Adam dramatically reduces GPU memory usage by optimizer states.</p>
+<ul>
+<li>GPU memory usage becomes nearly constant with respect to model size</li>
+<li>Enables fine-tuning models that exceed GPU memory limits</li>
+<li>Particularly effective when combined with LoRA or QLoRA</li>
+</ul>
+<p>This makes single GPU fine tuning of large models feasible.</p>
+<hr />
+<hr />
+<h2 id="6-performance-tradeoffs">6. Performance Tradeoffs<a class="headerlink" href="#6-performance-tradeoffs" title="Permanent link">&para;</a></h2>
+<p>The main cost of Paged Adam is performance.</p>
+<ul>
+<li>Frequent CPU to GPU memory transfers</li>
+<li>PCIe or NVLink bandwidth becomes the bottleneck</li>
+<li>Optimizer step latency increases significantly</li>
+</ul>
+<p>As a result:</p>
+<ul>
+<li>Training throughput is lower</li>
+<li>Paged Adam is better suited for fine-tuning than large scale pretraining</li>
+</ul>
+<hr />
+<hr />
+<h2 id="7-relationship-to-other-memory-saving-techniques">7. Relationship to Other Memory Saving Techniques<a class="headerlink" href="#7-relationship-to-other-memory-saving-techniques" title="Permanent link">&para;</a></h2>
+<h3 id="71-paged-adam-vs-zero-offload">7.1 Paged Adam vs ZeRO Offload<a class="headerlink" href="#71-paged-adam-vs-zero-offload" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Aspect</th>
+<th>Paged Adam</th>
+<th>ZeRO Offload</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Scope</td>
+<td>Optimizer states only</td>
+<td>Parameters, gradients, optimizer</td>
+</tr>
+<tr>
+<td>Granularity</td>
+<td>Page level</td>
+<td>Tensor or state level</td>
+</tr>
+<tr>
+<td>Typical use</td>
+<td>Single GPU setups</td>
+<td>Multi GPU distributed training</td>
+</tr>
+<tr>
+<td>Complexity</td>
+<td>Relatively simple</td>
+<td>Distributed system complexity</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="72-paged-adam-and-8-bit-optimizers">7.2 Paged Adam and 8-bit Optimizers<a class="headerlink" href="#72-paged-adam-and-8-bit-optimizers" title="Permanent link">&para;</a></h3>
+<p>Paged Adam is often combined with:</p>
+<ul>
+<li>8-bit or 4-bit optimizer states</li>
+</ul>
+<p>This reduces:</p>
+<ul>
+<li>CPU memory usage</li>
+<li>Data transfer volume per page</li>
+</ul>
+<p>This combination is common in QLoRA training pipelines.</p>
+<hr />
+<hr />
+<h2 id="8-when-to-use-paged-adam">8. When to Use Paged Adam<a class="headerlink" href="#8-when-to-use-paged-adam" title="Permanent link">&para;</a></h2>
+<p>Paged Adam is well suited for:</p>
+<ul>
+<li>Single GPU fine-tuning</li>
+<li>Memory constrained environments</li>
+<li>LoRA or QLoRA based training</li>
+</ul>
+<p>Paged Adam is less suitable for:</p>
+<ul>
+<li>High throughput multi GPU training</li>
+<li>Full model pretraining</li>
+<li>Latency sensitive workloads</li>
+</ul>
+<hr />
+<hr />
+<h2 id="9-one-sentence-interview-summary">9. One Sentence Interview Summary<a class="headerlink" href="#9-one-sentence-interview-summary" title="Permanent link">&para;</a></h2>
+<p>Paged Adam is a memory efficient variant of Adam that keeps optimizer states in CPU memory and pages them into GPU memory only during the update step, trading training throughput for the ability to fine tune models that would not otherwise fit in GPU memory.</p>
 
 
 
