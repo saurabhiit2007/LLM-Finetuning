@@ -13,10 +13,10 @@
       
       
       
-        <link rel="prev" href="../vllm/">
+        <link rel="prev" href="../fsdp_deepspeed/">
       
       
-        <link rel="next" href="../memory_considerations/">
+        <link rel="next" href="../../training_techniques/foundation/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -24,7 +24,7 @@
     
     
       
-        <title>FSDP & Deep Speed - Fine-Tuning Methods Documentation</title>
+        <title>Memory Consideration - Fine-Tuning Methods Documentation</title>
       
     
     
@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#1-executive-summary" class="md-skip">
+        <a href="#1-gpu-and-cpu-memory-and-transfer-rates" class="md-skip">
           Skip to content
         </a>
       
@@ -112,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              FSDP & Deep Speed
+              Memory Consideration
             
           </span>
         </div>
@@ -637,6 +637,29 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../fsdp_deepspeed/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    FSDP & Deep Speed
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -652,7 +675,7 @@
   
   
   <span class="md-ellipsis">
-    FSDP & Deep Speed
+    Memory Consideration
     
   </span>
   
@@ -665,7 +688,7 @@
   
   
   <span class="md-ellipsis">
-    FSDP & Deep Speed
+    Memory Consideration
     
   </span>
   
@@ -686,28 +709,37 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-executive-summary" class="md-nav__link">
+  <a href="#1-gpu-and-cpu-memory-and-transfer-rates" class="md-nav__link">
     <span class="md-ellipsis">
-      1. Executive Summary
+      1. GPU and CPU Memory and Transfer Rates
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. GPU and CPU Memory and Transfer Rates">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-gpu-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.1 GPU Memory
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#2-core-concept-the-zero-algorithm" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#12-cpu-memory" class="md-nav__link">
     <span class="md-ellipsis">
-      2. Core Concept: The ZeRO Algorithm
+      1.2 CPU Memory
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="2. Core Concept: The ZeRO Algorithm">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
-  <a href="#zero-stages-breakdown" class="md-nav__link">
+  <a href="#13-gpu-to-cpu-transfer-rates" class="md-nav__link">
     <span class="md-ellipsis">
-      ZeRO Stages Breakdown
+      1.3 GPU to CPU Transfer Rates
     </span>
   </a>
   
@@ -719,28 +751,46 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-deepspeed-specifics" class="md-nav__link">
+  <a href="#2-bandwidth-latency-and-compute" class="md-nav__link">
     <span class="md-ellipsis">
-      3. DeepSpeed Specifics
+      2. Bandwidth, Latency, and Compute
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="3. DeepSpeed Specifics">
+    <nav class="md-nav" aria-label="2. Bandwidth, Latency, and Compute">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#key-features" class="md-nav__link">
+  <a href="#21-bandwidth" class="md-nav__link">
     <span class="md-ellipsis">
-      Key Features
+      2.1 Bandwidth
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#optimizer-and-precision-support" class="md-nav__link">
+  <a href="#22-latency" class="md-nav__link">
     <span class="md-ellipsis">
-      Optimizer and Precision Support
+      2.2 Latency
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-compute" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3 Compute
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-compute-vs-memory-bound-regimes" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.4 Compute vs Memory Bound Regimes
     </span>
   </a>
   
@@ -752,19 +802,97 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-pytorch-fsdp-specifics" class="md-nav__link">
+  <a href="#3-training-considerations-for-a-7b-model-on-a-single-a100" class="md-nav__link">
     <span class="md-ellipsis">
-      4. PyTorch FSDP Specifics
+      3. Training Considerations for a 7B Model on a Single A100
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="4. PyTorch FSDP Specifics">
+    <nav class="md-nav" aria-label="3. Training Considerations for a 7B Model on a Single A100">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#key-features_1" class="md-nav__link">
+  <a href="#31-memory-components-during-training" class="md-nav__link">
     <span class="md-ellipsis">
-      Key Features
+      3.1 Memory Components During Training
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.1 Memory Components During Training">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameter-definitions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Parameter Definitions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#311-model-weights" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1.1 Model Weights
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#312-gradients" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1.2 Gradients
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#313-optimizer-states-adam-or-adamw" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1.3 Optimizer States (Adam or AdamW)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#314-activations" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1.4 Activations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#315-total-training-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1.5 Total Training Memory
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-techniques-that-enable-feasible-training" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2 Techniques That Enable Feasible Training
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-cpu-offloading" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.3 CPU Offloading
     </span>
   </a>
   
@@ -776,37 +904,37 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#5-comparative-analysis" class="md-nav__link">
+  <a href="#4-memory-differences-between-training-and-inference" class="md-nav__link">
     <span class="md-ellipsis">
-      5. Comparative Analysis
+      4. Memory Differences Between Training and Inference
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#6-system-design-scenarios" class="md-nav__link">
-    <span class="md-ellipsis">
-      6. System Design Scenarios
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="6. System Design Scenarios">
+    <nav class="md-nav" aria-label="4. Memory Differences Between Training and Inference">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#scenario-a-the-memory-calculation" class="md-nav__link">
+  <a href="#41-training-memory-profile" class="md-nav__link">
     <span class="md-ellipsis">
-      Scenario A: The Memory Calculation
+      4.1 Training Memory Profile
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#scenario-b-debugging-oom-out-of-memory" class="md-nav__link">
+  <a href="#42-inference-memory-profile" class="md-nav__link">
     <span class="md-ellipsis">
-      Scenario B: Debugging OOM (Out of Memory)
+      4.2 Inference Memory Profile
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-quantitative-difference" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.3 Quantitative Difference
     </span>
   </a>
   
@@ -818,9 +946,51 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#7-recent-trends-2025-2026" class="md-nav__link">
+  <a href="#5-kv-cache-memory-usage" class="md-nav__link">
     <span class="md-ellipsis">
-      7. Recent Trends (2025-2026)
+      5. KV Cache Memory Usage
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. KV Cache Memory Usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-what-is-the-kv-cache" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.1 What Is the KV Cache
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-which-memory-does-kv-cache-use" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.2 Which Memory Does KV Cache Use
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-kv-cache-memory-scaling" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.3 KV Cache Memory Scaling
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Summary
     </span>
   </a>
   
@@ -830,29 +1000,6 @@
   
 </nav>
       
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../memory_considerations/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Memory Consideration
-    
-  </span>
-  
-
-      </a>
     </li>
   
 
@@ -1402,28 +1549,37 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-executive-summary" class="md-nav__link">
+  <a href="#1-gpu-and-cpu-memory-and-transfer-rates" class="md-nav__link">
     <span class="md-ellipsis">
-      1. Executive Summary
+      1. GPU and CPU Memory and Transfer Rates
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. GPU and CPU Memory and Transfer Rates">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-gpu-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.1 GPU Memory
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#2-core-concept-the-zero-algorithm" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#12-cpu-memory" class="md-nav__link">
     <span class="md-ellipsis">
-      2. Core Concept: The ZeRO Algorithm
+      1.2 CPU Memory
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="2. Core Concept: The ZeRO Algorithm">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
-  <a href="#zero-stages-breakdown" class="md-nav__link">
+  <a href="#13-gpu-to-cpu-transfer-rates" class="md-nav__link">
     <span class="md-ellipsis">
-      ZeRO Stages Breakdown
+      1.3 GPU to CPU Transfer Rates
     </span>
   </a>
   
@@ -1435,28 +1591,46 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-deepspeed-specifics" class="md-nav__link">
+  <a href="#2-bandwidth-latency-and-compute" class="md-nav__link">
     <span class="md-ellipsis">
-      3. DeepSpeed Specifics
+      2. Bandwidth, Latency, and Compute
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="3. DeepSpeed Specifics">
+    <nav class="md-nav" aria-label="2. Bandwidth, Latency, and Compute">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#key-features" class="md-nav__link">
+  <a href="#21-bandwidth" class="md-nav__link">
     <span class="md-ellipsis">
-      Key Features
+      2.1 Bandwidth
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#optimizer-and-precision-support" class="md-nav__link">
+  <a href="#22-latency" class="md-nav__link">
     <span class="md-ellipsis">
-      Optimizer and Precision Support
+      2.2 Latency
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-compute" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3 Compute
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-compute-vs-memory-bound-regimes" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.4 Compute vs Memory Bound Regimes
     </span>
   </a>
   
@@ -1468,19 +1642,97 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-pytorch-fsdp-specifics" class="md-nav__link">
+  <a href="#3-training-considerations-for-a-7b-model-on-a-single-a100" class="md-nav__link">
     <span class="md-ellipsis">
-      4. PyTorch FSDP Specifics
+      3. Training Considerations for a 7B Model on a Single A100
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="4. PyTorch FSDP Specifics">
+    <nav class="md-nav" aria-label="3. Training Considerations for a 7B Model on a Single A100">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#key-features_1" class="md-nav__link">
+  <a href="#31-memory-components-during-training" class="md-nav__link">
     <span class="md-ellipsis">
-      Key Features
+      3.1 Memory Components During Training
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.1 Memory Components During Training">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameter-definitions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Parameter Definitions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#311-model-weights" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1.1 Model Weights
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#312-gradients" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1.2 Gradients
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#313-optimizer-states-adam-or-adamw" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1.3 Optimizer States (Adam or AdamW)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#314-activations" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1.4 Activations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#315-total-training-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1.5 Total Training Memory
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-techniques-that-enable-feasible-training" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2 Techniques That Enable Feasible Training
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-cpu-offloading" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.3 CPU Offloading
     </span>
   </a>
   
@@ -1492,37 +1744,37 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#5-comparative-analysis" class="md-nav__link">
+  <a href="#4-memory-differences-between-training-and-inference" class="md-nav__link">
     <span class="md-ellipsis">
-      5. Comparative Analysis
+      4. Memory Differences Between Training and Inference
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#6-system-design-scenarios" class="md-nav__link">
-    <span class="md-ellipsis">
-      6. System Design Scenarios
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="6. System Design Scenarios">
+    <nav class="md-nav" aria-label="4. Memory Differences Between Training and Inference">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#scenario-a-the-memory-calculation" class="md-nav__link">
+  <a href="#41-training-memory-profile" class="md-nav__link">
     <span class="md-ellipsis">
-      Scenario A: The Memory Calculation
+      4.1 Training Memory Profile
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#scenario-b-debugging-oom-out-of-memory" class="md-nav__link">
+  <a href="#42-inference-memory-profile" class="md-nav__link">
     <span class="md-ellipsis">
-      Scenario B: Debugging OOM (Out of Memory)
+      4.2 Inference Memory Profile
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-quantitative-difference" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.3 Quantitative Difference
     </span>
   </a>
   
@@ -1534,9 +1786,51 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#7-recent-trends-2025-2026" class="md-nav__link">
+  <a href="#5-kv-cache-memory-usage" class="md-nav__link">
     <span class="md-ellipsis">
-      7. Recent Trends (2025-2026)
+      5. KV Cache Memory Usage
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. KV Cache Memory Usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-what-is-the-kv-cache" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.1 What Is the KV Cache
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-which-memory-does-kv-cache-use" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.2 Which Memory Does KV Cache Use
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-kv-cache-memory-scaling" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.3 KV Cache Memory Scaling
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Summary
     </span>
   </a>
   
@@ -1561,149 +1855,289 @@
   
 
 
-  <h1>FSDP & Deep Speed</h1>
+  <h1>Memory Consideration</h1>
 
-<h2 id="1-executive-summary">1. Executive Summary<a class="headerlink" href="#1-executive-summary" title="Permanent link">&para;</a></h2>
-<p>In the era of Large Language Models (LLMs), the primary bottleneck is fitting billions of parameters into GPU VRAM. Both <strong>DeepSpeed</strong> and <strong>FSDP (Fully Sharded Data Parallel)</strong> address this by moving from standard Data Parallelism (where every GPU has a full copy) to <strong>Sharded Data Parallelism</strong>.</p>
+<h2 id="1-gpu-and-cpu-memory-and-transfer-rates">1. GPU and CPU Memory and Transfer Rates<a class="headerlink" href="#1-gpu-and-cpu-memory-and-transfer-rates" title="Permanent link">&para;</a></h2>
+<h3 id="11-gpu-memory">1.1 GPU Memory<a class="headerlink" href="#11-gpu-memory" title="Permanent link">&para;</a></h3>
+<p>GPU memory, often called HBM (High Bandwidth Memory) or VRAM, is high bandwidth memory physically attached to the GPU package. It is designed to feed thousands of parallel compute cores efficiently.</p>
+<p>Key characteristics:</p>
 <ul>
-<li><strong>DeepSpeed:</strong> A Microsoft library implementing the <strong>ZeRO</strong> (Zero Redundancy Optimizer) algorithm. It is highly flexible and specialized for extreme scale and offloading.</li>
-<li><strong>FSDP:</strong> PyTorch's native implementation of sharding. It is optimized for the PyTorch ecosystem, offering better integration with features like <code>torch.compile</code>.</li>
+<li>Very high bandwidth</li>
+<li>Low access latency relative to CPU memory</li>
+<li>Limited capacity compared to system RAM</li>
+</ul>
+<p>Typical values for NVIDIA A100:</p>
+<ul>
+<li>Capacity: 40GB or 80GB HBM2e</li>
+<li>Peak bandwidth: ~1.6 TB/s</li>
+</ul>
+<p>GPU memory stores:</p>
+<ul>
+<li>Model weights</li>
+<li>Activations</li>
+<li>Gradients</li>
+<li>Optimizer states</li>
+<li>KV cache during inference and decoding</li>
+</ul>
+<hr />
+<h3 id="12-cpu-memory">1.2 CPU Memory<a class="headerlink" href="#12-cpu-memory" title="Permanent link">&para;</a></h3>
+<p>CPU memory refers to system RAM, typically DDR4 or DDR5, located on the motherboard.</p>
+<p>Key characteristics:</p>
+<ul>
+<li>Much larger capacity</li>
+<li>Significantly lower bandwidth</li>
+<li>Higher latency compared to GPU memory</li>
+</ul>
+<p>Typical values:</p>
+<ul>
+<li>Capacity: 64GB to 1TB+</li>
+<li>Bandwidth: ~50 to 100 GB/s per socket</li>
+</ul>
+<p>CPU memory is commonly used for:</p>
+<ul>
+<li>Data loading and preprocessing</li>
+<li>Checkpoint storage before transfer</li>
+<li>Offloaded parameters or optimizer states in memory constrained setups</li>
+</ul>
+<hr />
+<h3 id="13-gpu-to-cpu-transfer-rates">1.3 GPU to CPU Transfer Rates<a class="headerlink" href="#13-gpu-to-cpu-transfer-rates" title="Permanent link">&para;</a></h3>
+<p>Data movement between GPU and CPU happens over interconnects.</p>
+<p>Approximate peak transfer rates:</p>
+<ul>
+<li>PCIe Gen4: ~32 GB/s</li>
+<li>PCIe Gen5: ~64 GB/s</li>
+<li>NVLink (A100): ~300 GB/s</li>
+</ul>
+<p>Even with NVLink, transfer bandwidth is far lower than on-device GPU memory bandwidth, making frequent transfers expensive.</p>
+<hr />
+<hr />
+<h2 id="2-bandwidth-latency-and-compute">2. Bandwidth, Latency, and Compute<a class="headerlink" href="#2-bandwidth-latency-and-compute" title="Permanent link">&para;</a></h2>
+<h3 id="21-bandwidth">2.1 Bandwidth<a class="headerlink" href="#21-bandwidth" title="Permanent link">&para;</a></h3>
+<p>Bandwidth measures how much data can be transferred per unit time, typically in GB/s or TB/s.</p>
+<p>In training and inference:</p>
+<ul>
+<li>Large tensors are streamed repeatedly</li>
+<li>Sustained bandwidth determines throughput</li>
+<li>Many transformer operations are memory bandwidth bound</li>
+</ul>
+<hr />
+<h3 id="22-latency">2.2 Latency<a class="headerlink" href="#22-latency" title="Permanent link">&para;</a></h3>
+<p>Latency is the delay to access the first byte of data.</p>
+<ul>
+<li>GPU memory latency is lower than CPU memory</li>
+<li>PCIe transfers have high latency relative to on-device access</li>
+</ul>
+<p>Latency matters for:</p>
+<ul>
+<li>Small tensor operations</li>
+<li>Kernel launch overhead</li>
+<li>Synchronization points</li>
+</ul>
+<p>For large matrix operations, bandwidth dominates over latency.</p>
+<hr />
+<h3 id="23-compute">2.3 Compute<a class="headerlink" href="#23-compute" title="Permanent link">&para;</a></h3>
+<p>Compute refers to the raw arithmetic capability of the processor, measured in FLOPs.</p>
+<p>A100 peak performance:
+- FP16 or BF16 Tensor Core: ~312 TFLOPs</p>
+<p>In practice:
+- Many LLM workloads are not compute bound
+- Compute units often wait on memory due to limited data reuse</p>
+<hr />
+<h3 id="24-compute-vs-memory-bound-regimes">2.4 Compute vs Memory Bound Regimes<a class="headerlink" href="#24-compute-vs-memory-bound-regimes" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Compute bound: performance limited by FLOPs</li>
+<li>Memory bound: performance limited by data movement</li>
+</ul>
+<p>Transformers often become memory bound during:</p>
+<ul>
+<li>Attention</li>
+<li>Layer normalization</li>
+<li>Optimizer updates during training</li>
 </ul>
 <hr />
 <hr />
-<h2 id="2-core-concept-the-zero-algorithm">2. Core Concept: The ZeRO Algorithm<a class="headerlink" href="#2-core-concept-the-zero-algorithm" title="Permanent link">&para;</a></h2>
-<p>To understand both frameworks, we must understand the three stages of memory consumption (Model States):</p>
+<h2 id="3-training-considerations-for-a-7b-model-on-a-single-a100">3. Training Considerations for a 7B Model on a Single A100<a class="headerlink" href="#3-training-considerations-for-a-7b-model-on-a-single-a100" title="Permanent link">&para;</a></h2>
+<h3 id="31-memory-components-during-training">3.1 Memory Components During Training<a class="headerlink" href="#31-memory-components-during-training" title="Permanent link">&para;</a></h3>
+<p>Training requires storing four major components in GPU memory:</p>
 <ol>
-<li><strong>Optimizer States</strong> (e.g., Adam momentum/variance)</li>
-<li><strong>Gradients</strong></li>
-<li><strong>Parameters</strong> (Weights)</li>
+<li>Model weights</li>
+<li>Gradients</li>
+<li>Optimizer states</li>
+<li>Activations</li>
 </ol>
-<h3 id="zero-stages-breakdown">ZeRO Stages Breakdown<a class="headerlink" href="#zero-stages-breakdown" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th style="text-align: left;">Stage</th>
-<th style="text-align: left;">Description</th>
-<th style="text-align: left;">Memory Impact</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><strong>Stage 1</strong></td>
-<td style="text-align: left;">Shards only Optimizer States.</td>
-<td style="text-align: left;">Reduces memory by ~4x.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Stage 2</strong></td>
-<td style="text-align: left;">Shards Optimizer States + Gradients.</td>
-<td style="text-align: left;">Reduces memory by ~8x.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Stage 3</strong></td>
-<td style="text-align: left;">Shards Optimizer + Gradients + Parameters.</td>
-<td style="text-align: left;">Memory scales linearly with the number of GPUs.</td>
-</tr>
-</tbody>
-</table>
-<p>ZeRO-3 and FSDP both aim to minimize peak memory by materializing parameters only when needed.</p>
-<hr />
-<hr />
-<h2 id="3-deepspeed-specifics">3. DeepSpeed Specifics<a class="headerlink" href="#3-deepspeed-specifics" title="Permanent link">&para;</a></h2>
-<p>DeepSpeed is the "power user" choice for massive models.</p>
-<h3 id="key-features">Key Features<a class="headerlink" href="#key-features" title="Permanent link">&para;</a></h3>
+<p>We quantify each component explicitly.</p>
+<h4 id="parameter-definitions">Parameter Definitions<a class="headerlink" href="#parameter-definitions" title="Permanent link">&para;</a></h4>
+<p>Let:</p>
 <ul>
-<li>
-<p><strong>ZeRO-Offload:</strong> Moves optimizer states and gradients to <strong>CPU RAM</strong>. This allows training a 13B model on a single consumer GPU.</p>
-</li>
-<li>
-<p><strong>ZeRO-Infinity:</strong> Extends offloading to <strong>NVMe SSDs</strong>, theoretically supporting trillion-parameter models.</p>
-</li>
-<li>
-<p><strong>Communication Overlap:</strong> Highly optimized C++ kernels that overlap data transfer with computation to hide latency.</p>
-</li>
-</ul>
-<h3 id="optimizer-and-precision-support">Optimizer and Precision Support<a class="headerlink" href="#optimizer-and-precision-support" title="Permanent link">&para;</a></h3>
-<ul>
-<li>FP32 master weights with FP16 or BF16 compute.</li>
-<li>Native support for 8-bit optimizers.</li>
-<li>Aggressive memory savings at the cost of increased system complexity.</li>
+<li><span class="arithmatex">\(P = 7 \times 10^9\)</span> parameters  </li>
+<li>BF16 precision for weights and gradients: 2 bytes  </li>
+<li>FP32 precision for optimizer states: 4 bytes  </li>
 </ul>
 <hr />
+<h4 id="311-model-weights">3.1.1 Model Weights<a class="headerlink" href="#311-model-weights" title="Permanent link">&para;</a></h4>
+<div class="arithmatex">\[
+M_{\text{weights}} = P \times 2 \text{ bytes}
+\]</div>
+<div class="arithmatex">\[
+= 7 \times 10^9 \times 2 = 14 \text{ GB}
+\]</div>
 <hr />
-<h2 id="4-pytorch-fsdp-specifics">4. PyTorch FSDP Specifics<a class="headerlink" href="#4-pytorch-fsdp-specifics" title="Permanent link">&para;</a></h2>
-<p>FSDP is the native, more "modern" approach for PyTorch users.</p>
-<h3 id="key-features_1">Key Features<a class="headerlink" href="#key-features_1" title="Permanent link">&para;</a></h3>
+<h4 id="312-gradients">3.1.2 Gradients<a class="headerlink" href="#312-gradients" title="Permanent link">&para;</a></h4>
+<p>Each trainable parameter produces one gradient tensor.</p>
+<div class="arithmatex">\[
+M_{\text{grads}} = P \times 2 \text{ bytes}
+\]</div>
+<div class="arithmatex">\[
+= 14 \text{ GB}
+\]</div>
+<p>Running total so far:</p>
+<div class="arithmatex">\[
+28 \text{ GB}
+\]</div>
+<hr />
+<h4 id="313-optimizer-states-adam-or-adamw">3.1.3 Optimizer States (Adam or AdamW)<a class="headerlink" href="#313-optimizer-states-adam-or-adamw" title="Permanent link">&para;</a></h4>
+<p>Adam maintains two FP32 states per parameter:</p>
 <ul>
-<li>
-<p><strong>Hybrid Sharding (HSDP):</strong> Shards parameters within a node (fast NVLink) but replicates them across nodes. This is crucial for avoiding network bottlenecks in large clusters.</p>
-</li>
-<li>
-<p><strong>FSDP2 (Recent):</strong> Built on <strong>DTensors</strong>. Unlike the original FSDP, it doesn't "flatten" parameters into a 1D buffer. This makes it compatible with <strong>torch.compile</strong> for faster execution.</p>
-</li>
-<li>
-<p><strong>Transformer Wrapping:</strong> Allows "wrapping" specific layers so they are sharded/unsharded independently, keeping the peak memory low.</p>
-</li>
+<li>First moment</li>
+<li>Second moment</li>
+</ul>
+<div class="arithmatex">\[
+M_{\text{optimizer}} = P \times 2 \times 4 \text{ bytes}
+\]</div>
+<div class="arithmatex">\[
+= 7 \times 10^9 \times 8 = 56 \text{ GB}
+\]</div>
+<p>Running total:</p>
+<div class="arithmatex">\[
+14 + 14 + 56 = 84 \text{ GB}
+\]</div>
+<p>This already exceeds the memory of an A100 80GB.</p>
+<hr />
+<h4 id="314-activations">3.1.4 Activations<a class="headerlink" href="#314-activations" title="Permanent link">&para;</a></h4>
+<p>Activation memory depends on:</p>
+<ul>
+<li>Number of layers <span class="arithmatex">\(L\)</span></li>
+<li>Batch size <span class="arithmatex">\(B\)</span></li>
+<li>Sequence length <span class="arithmatex">\(T\)</span></li>
+<li>Hidden dimension <span class="arithmatex">\(H\)</span></li>
+</ul>
+<p>A simplified scaling relation:</p>
+<div class="arithmatex">\[
+M_{\text{act}} = O(L \times B \times T \times H \times 2 \text{ bytes})
+\]</div>
+<p>For a 7B transformer with gradient checkpointing:</p>
+<ul>
+<li>Activations typically consume 5 to 15 GB</li>
+</ul>
+<hr />
+<h4 id="315-total-training-memory">3.1.5 Total Training Memory<a class="headerlink" href="#315-total-training-memory" title="Permanent link">&para;</a></h4>
+<div class="arithmatex">\[
+M_{\text{total}} = M_{\text{weights}} + M_{\text{grads}} + M_{\text{optimizer}} + M_{\text{act}}
+\]</div>
+<div class="arithmatex">\[
+\approx 90 \text{ to } 100 \text{ GB}
+\]</div>
+<p>This explains why full fine-tuning of a 7B model does not fit on a single A100.</p>
+<hr />
+<h3 id="32-techniques-that-enable-feasible-training">3.2 Techniques That Enable Feasible Training<a class="headerlink" href="#32-techniques-that-enable-feasible-training" title="Permanent link">&para;</a></h3>
+<p>Common strategies include:</p>
+<ul>
+<li>Parameter-efficient fine-tuning such as LoRA or adapters</li>
+<li>Mixed precision training using BF16</li>
+<li>Gradient checkpointing to reduce activation memory</li>
+<li>Small micro-batches with gradient accumulation</li>
+<li>Limiting sequence length</li>
+</ul>
+<p>These techniques primarily reduce:</p>
+<ul>
+<li>Gradient memory</li>
+<li>Optimizer state memory</li>
+<li>Activation memory</li>
+</ul>
+<hr />
+<h3 id="33-cpu-offloading">3.3 CPU Offloading<a class="headerlink" href="#33-cpu-offloading" title="Permanent link">&para;</a></h3>
+<p>CPU offloading can move:</p>
+<ul>
+<li>Optimizer states</li>
+<li>Parameters</li>
+</ul>
+<p>Tradeoffs:</p>
+<ul>
+<li>Enables fitting larger models</li>
+<li>Severely reduces training throughput</li>
+<li>Often impractical for production training</li>
 </ul>
 <hr />
 <hr />
-<h2 id="5-comparative-analysis">5. Comparative Analysis<a class="headerlink" href="#5-comparative-analysis" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th style="text-align: left;">Feature</th>
-<th style="text-align: left;">DeepSpeed</th>
-<th style="text-align: left;">FSDP</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><strong>Ecosystem</strong></td>
-<td style="text-align: left;">Third-party (Microsoft)</td>
-<td style="text-align: left;">Native (PyTorch)</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Ease of Use</strong></td>
-<td style="text-align: left;">JSON configuration files</td>
-<td style="text-align: left;">Pythonic API / Wrappers</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Offloading</strong></td>
-<td style="text-align: left;">Advanced (CPU/NVMe)</td>
-<td style="text-align: left;">Basic (CPU only)</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Throughput</strong></td>
-<td style="text-align: left;">Best for 100B+ models</td>
-<td style="text-align: left;">Best for &lt;20B models &amp; <code>torch.compile</code></td>
-</tr>
-</tbody>
-</table>
-<hr />
-<hr />
-<h2 id="6-system-design-scenarios">6. System Design Scenarios<a class="headerlink" href="#6-system-design-scenarios" title="Permanent link">&para;</a></h2>
-<h3 id="scenario-a-the-memory-calculation">Scenario A: The Memory Calculation<a class="headerlink" href="#scenario-a-the-memory-calculation" title="Permanent link">&para;</a></h3>
-<p><strong>Q:</strong> "How much memory do we need to train a 7B parameter model in FP16?"</p>
-<p><strong>A:</strong> * <strong>Parameters:</strong> 7B * 2 bytes = <strong>14 GB</strong></p>
+<h2 id="4-memory-differences-between-training-and-inference">4. Memory Differences Between Training and Inference<a class="headerlink" href="#4-memory-differences-between-training-and-inference" title="Permanent link">&para;</a></h2>
+<h3 id="41-training-memory-profile">4.1 Training Memory Profile<a class="headerlink" href="#41-training-memory-profile" title="Permanent link">&para;</a></h3>
+<p>Training requires:</p>
 <ul>
-<li><strong>Gradients:</strong> 7B * 2 bytes = <strong>14 GB</strong></li>
-<li><strong>Optimizer (Adam):</strong> 7B * 12 bytes = <strong>84 GB</strong></li>
-<li><strong>Total Model State:</strong> ~112 GB. </li>
-<li><strong>Conclusion:</strong> This won't fit on an 80GB A100. Mention that <strong>ZeRO-2/FSDP</strong> is required to shard the 84GB of optimizer states across multiple GPUs.</li>
+<li>Weights</li>
+<li>Activations from forward pass</li>
+<li>Gradients from backward pass</li>
+<li>Optimizer states</li>
 </ul>
-<h3 id="scenario-b-debugging-oom-out-of-memory">Scenario B: Debugging OOM (Out of Memory)<a class="headerlink" href="#scenario-b-debugging-oom-out-of-memory" title="Permanent link">&para;</a></h3>
-<p><strong>Q:</strong> "You are using FSDP but still hitting OOM. What do you check?"</p>
-<p><strong>A:</strong></p>
-<ol>
-<li><strong>Activation Memory:</strong> Sharding only handles model states. Large batch sizes or long sequences create massive activations. Use <strong>Activation Checkpointing</strong>.</li>
-<li><strong>Wrapping Policy:</strong> If the model isn't wrapped in sub-units, FSDP treats the whole model as one shard, effectively un-sharding everything at once.</li>
-<li><strong>Fragmentation:</strong> Check if the PyTorch memory allocator is fragmented (use <code>torch.cuda.memory_summary()</code>).</li>
-</ol>
+<p>Memory usage is dominated by optimizer states and activations.</p>
 <hr />
-<h2 id="7-recent-trends-2025-2026">7. Recent Trends (2025-2026)<a class="headerlink" href="#7-recent-trends-2025-2026" title="Permanent link">&para;</a></h2>
+<h3 id="42-inference-memory-profile">4.2 Inference Memory Profile<a class="headerlink" href="#42-inference-memory-profile" title="Permanent link">&para;</a></h3>
+<p>Inference requires:</p>
 <ul>
-<li><strong>Communication Compression:</strong> New methods to compress the gradients being moved during the Reduce-Scatter phase.</li>
-<li><strong>Unified Strategies:</strong> Tools like <strong>Hugging Face Accelerate</strong> now allow switching between DeepSpeed and FSDP with a single flag, making the choice more about performance tuning than code rewriting.</li>
+<li>Model weights</li>
+<li>Activations for current forward pass</li>
+<li>KV cache for attention</li>
 </ul>
+<p>Notably absent:</p>
+<ul>
+<li>Gradients</li>
+<li>Optimizer states</li>
+</ul>
+<p>This is why inference fits models that training cannot.</p>
+<hr />
+<h3 id="43-quantitative-difference">4.3 Quantitative Difference<a class="headerlink" href="#43-quantitative-difference" title="Permanent link">&para;</a></h3>
+<p>For a 7B model:</p>
+<ul>
+<li>Training memory: ~90GB or more</li>
+<li>Inference memory: ~20 to 30GB depending on sequence length and KV cache size</li>
+</ul>
+<hr />
+<hr />
+<h2 id="5-kv-cache-memory-usage">5. KV Cache Memory Usage<a class="headerlink" href="#5-kv-cache-memory-usage" title="Permanent link">&para;</a></h2>
+<h3 id="51-what-is-the-kv-cache">5.1 What Is the KV Cache<a class="headerlink" href="#51-what-is-the-kv-cache" title="Permanent link">&para;</a></h3>
+<p>The KV cache stores the key and value tensors from the attention mechanism for previously processed tokens.</p>
+<p>It avoids recomputing attention over the full context during autoregressive decoding.</p>
+<hr />
+<h3 id="52-which-memory-does-kv-cache-use">5.2 Which Memory Does KV Cache Use<a class="headerlink" href="#52-which-memory-does-kv-cache-use" title="Permanent link">&para;</a></h3>
+<p>KV cache resides in:</p>
+<ul>
+<li>GPU memory during standard inference and serving</li>
+<li>CPU memory only in specialized offloading or paging setups</li>
+</ul>
+<p>During high throughput inference:</p>
+<ul>
+<li>KV cache must stay in GPU memory</li>
+<li>Frequent access makes CPU storage impractical</li>
+</ul>
+<hr />
+<h3 id="53-kv-cache-memory-scaling">5.3 KV Cache Memory Scaling<a class="headerlink" href="#53-kv-cache-memory-scaling" title="Permanent link">&para;</a></h3>
+<p>KV cache memory scales with:</p>
+<ul>
+<li>Number of layers</li>
+<li>Number of attention heads</li>
+<li>Sequence length</li>
+<li>Batch size</li>
+</ul>
+<p>This makes KV cache the dominant memory consumer during long context inference.</p>
+<hr />
+<hr />
+<h2 id="6-summary">6. Summary<a class="headerlink" href="#6-summary" title="Permanent link">&para;</a></h2>
+<p>Key takeaways:
+- GPU memory is the primary constraint for both training and inference
+- Bandwidth often limits performance more than compute
+- Training requires additional memory for gradients and optimizer states
+- Inference is cheaper because it avoids optimizer and gradient storage
+- KV cache lives in GPU memory and dominates long-context inference memory</p>
+<p>Understanding these tradeoffs is essential for designing and debugging large-scale LLM systems.</p>
 
 
 
