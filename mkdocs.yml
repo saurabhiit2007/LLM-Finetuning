@@ -48,6 +48,7 @@ nav:
       - vLLM: ./supporting_topics/vllm.md
       - FSDP & Deep Speed: ./supporting_topics/fsdp_deepspeed.md
       - Memory Consideration: ./supporting_topics/memory_considerations.md
+      - Paged Adam Optimizer: ./supporting_topics/paged_adam.md
   - Training Pipeline:
       - Foundation: ./training_techniques/foundation.md
       - Pre-Training:
