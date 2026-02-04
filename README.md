@@ -2,7 +2,7 @@
 
 This repository explores **Parameter-Efficient Fine-Tuning (PEFT)** methods for adapting large language models (LLMs) such as **Llama**, **Mistral**, and **Gemma** to downstream tasks using minimal computational resources.
 
-> 🔗 **Documentation:** [View Detailed Docs](https://saurabhiit2007.github.io/LLM-Finetuning/)
+> 🔗 **Documentation:** [View Detailed Docs](https://saurabhiit2007.github.io/LLM-Training-Hub/)
 
 ---
 
