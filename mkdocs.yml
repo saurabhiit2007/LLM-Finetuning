@@ -30,41 +30,29 @@ extra_javascript:
 
 nav:
   - Home: index.md
+  - Phases:
+      - Pre-Training: ./phases/pre_training.md
+      - Mid-Training: ./phases/mid_training.md
+      - Post-Training: ./phases/sft.md
+  - Distributed Training:
+      - Distributed Training System: ./distributed_training/distributed_training_systems.md
+      - FSDP & DeepSpeed: ./distributed_training/fsdp_deepspeed.md
   - PEFT Techniques:
-      - Prefix Tuning: ./finetuning_techniques/prefix_tuning.md
-      - LoRA: ./finetuning_techniques/lora.md
-      - QLoRA: ./finetuning_techniques/qlora.md
-      #- PEFT Overview: ./finetuning_techniques/peft.md
-      #- Adapter Methods: ./finetuning_techniques/adapters.md
-  - Supporting Topics:
-      - 4-bit NormalFloat (NF4): ./supporting_topics/4bit_normal_float.md
-      - Block-wise k-bit Quantization: ./supporting_topics/blockwise_kbit_quantization.md
-      - Accelerate Framework: ./supporting_topics/accelerate.md
-      - BP16: ./supporting_topics/bp16.md
-      - Flash Attention: ./supporting_topics/flash_attention.md
-      - Decoding Strategies: ./supporting_topics/decoding_strategies.md
-      - Speculative Decoding & Medusa: ./supporting_topics/speculative_decoding.md
-      - KV Caching: ./supporting_topics/kv_caching.md
-      - vLLM: ./supporting_topics/vllm.md
-      - FSDP & Deep Speed: ./supporting_topics/fsdp_deepspeed.md
-      - Memory Consideration: ./supporting_topics/memory_considerations.md
-      - Paged Adam Optimizer: ./supporting_topics/paged_adam.md
+      - LoRA: ./parameter_efficient_fine_tuning/lora.md
+      - QLoRA: ./parameter_efficient_fine_tuning/qlora.md
+      - Adaptors: ./parameter_efficient_fine_tuning/adaptors.md
+      - Prefix Tuning: ./parameter_efficient_fine_tuning/prefix_tuning.md
+  - Optimization:
+      - 4-bit NormalFloat (NF4): ./optimization/4bit_normal_float.md
+      - Block-wise k-bit Quantization: ./optimization/blockwise_kbit_quantization.md
+      - Accelerate Framework: ./optimization/accelerate.md
+      - BP16: ./optimization/bp16.md
+      - Memory Consideration: ./optimization/memory_considerations.md
+      - Paged Adam Optimizer: ./optimization/paged_adam.md
+      - Training Optimization and Stability: ./optimization/training_optimization_and_stability.md
+      - Prefix Caching: ./optimization/prefix_caching.md
   - Training Pipeline:
       - Foundation: ./training_techniques/foundation.md
-      - Pre-Training:
-          - Pre-Training: ./training_techniques/pre_training/pre_training.md
-          - Byte Pair Encoding: ./training_techniques/pre_training/byte_pair_encoding.md
-          - Mixture of Experts (MoE): ./training_techniques/pre_training/mixture_of_experts.md
-          - RoPe: ./training_techniques/pre_training/RoPE.md
-          - Sentence Piece Unigram: ./training_techniques/pre_training/sentence_piece_unigram.md
-          - Advanced Transformer Components & Layers: ./training_techniques/pre_training/advanced_transformer_components_and_layers.md
-      - Training Optimization and Stability: ./training_techniques/training_optimization_and_stability.md
-      - Distributed Training Systems: ./training_techniques/distributed_training_systems.md
-      - Post-Training:
-          - Supervised Fine-Tuning (SFT): ./training_techniques/post_training/sft.md
-          - Reasoning & Test-Time Compute (System 2): ./training_techniques/system2.md
-      - Mid-Training:
-          - Mid Training Fundamentals: ./training_techniques/mid_training/mid_training.md
       - LLM Reasoning & Thinking Models: ./training_techniques/thinking_llms.md
   - References: references.md
 

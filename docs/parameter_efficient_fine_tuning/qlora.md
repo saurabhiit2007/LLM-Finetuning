@@ -6,7 +6,7 @@
 
 **QLoRA** (Quantized Low-Rank Adaptation) is a parameter-efficient fine-tuning (PEFT) technique designed to adapt large pre-trained LLMs to downstream tasks without modifying all the model weights.
 
-It achieves this by combining **4-bit quantization** (using [NormalFloat-4, or NF4](../supporting_topics/4bit_normal_float.md)) with [Low-Rank Adaptation (LoRA)](./lora.md), enabling fine-tuning of massive models (e.g., 65B parameters) on a single 48 GB GPU - with performance close to full fine-tuning.
+It achieves this by combining **4-bit quantization** (using [NormalFloat-4, or NF4](../optimization/4bit_normal_float.md)) with [Low-Rank Adaptation (LoRA)](./lora.md), enabling fine-tuning of massive models (e.g., 65B parameters) on a single 48 GB GPU - with performance close to full fine-tuning.
 
 ---
 
@@ -28,7 +28,7 @@ Fine-tuning large LLMs poses major computational and memory challenges. QLoRA ad
 The base model’s parameters are quantized into **4-bit NormalFloat (NF4)** values and kept frozen during fine-tuning.
 NF4 uses a **normal-distribution-aware quantization** scheme that minimizes the quantization error between original FP16 weights and 4-bit representations.
 
-> 🔗 *Detailed explanation:* [NF4 Quantization: Principles and Implementation](../supporting_topics/4bit_normal_float.md)
+> 🔗 *Detailed explanation:* [NF4 Quantization: Principles and Implementation](../optimization/4bit_normal_float.md)
 
 In addition, QLoRA leverages **block quantization** and **double quantization** to optimize memory even further:
 
@@ -38,7 +38,7 @@ In addition, QLoRA leverages **block quantization** and **double quantization** 
 * **Double Quantization:** Instead of storing the full-scale values for each block, these scale values are themselves quantized (typically to 8 bits).
   This reduces memory overhead by ~0.37 bits per parameter on average.
 
-> 🔗 *Detailed explanation:* [Block & Double Quantization in QLoRA](../supporting_topics/blockwise_kbit_quantization.md)
+> 🔗 *Detailed explanation:* [Block & Double Quantization in QLoRA](../optimization/blockwise_kbit_quantization.md)
 
 ---
 
@@ -170,7 +170,7 @@ QLoRA’s key innovation is the **combination of 4-bit quantization with LoRA fi
 | Training instability  | LR too high, quant noise       | Lower LR or α, use LoRA dropout               |
 | Underfitting          | Too low rank                   | Increase `r` or apply adapters to more layers |
 | Overfitting           | Too high capacity              | Reduce epochs or use dropout                  |
-| Quantization mismatch | [NF4 calibration drift](../supporting_topics/4bit_normal_float.md) | Re-quantize base model, validate small batch  |
+| Quantization mismatch | [NF4 calibration drift](../optimization/4bit_normal_float.md) | Re-quantize base model, validate small batch  |
 
 ---
 
