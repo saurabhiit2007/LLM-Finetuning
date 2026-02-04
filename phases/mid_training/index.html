@@ -13,10 +13,10 @@
       
       
       
-        <link rel="prev" href="../foundation/">
+        <link rel="prev" href="../pre_training/">
       
       
-        <link rel="next" href="../../references/">
+        <link rel="next" href="../sft/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -24,7 +24,7 @@
     
     
       
-        <title>LLM Reasoning & Thinking Models - Fine-Tuning Methods Documentation</title>
+        <title>Mid-Training - Fine-Tuning Methods Documentation</title>
       
     
     
@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#1-overview-the-system-1-vs-system-2-shift" class="md-skip">
+        <a href="#1-overview" class="md-skip">
           Skip to content
         </a>
       
@@ -112,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              LLM Reasoning & Thinking Models
+              Mid-Training
             
           </span>
         </div>
@@ -274,20 +274,20 @@
       
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
@@ -303,7 +303,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             Phases
@@ -317,7 +317,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../phases/pre_training/" class="md-nav__link">
+      <a href="../pre_training/" class="md-nav__link">
         
   
   
@@ -337,10 +337,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../phases/mid_training/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Mid-Training
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -351,6 +371,180 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-utility-and-strategic-value" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Utility and Strategic Value
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-resource-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Resource Requirements
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-training-objectives-and-loss-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Training Objectives and Loss Design
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Training Objectives and Loss Design">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-objective-continuity" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1 Objective Continuity
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-auxiliary-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2 Auxiliary Objectives
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-technical-implementation-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Technical Implementation &amp; Steps
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Technical Implementation &amp; Steps">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-data-mixture-synthesis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1: Data Mixture Synthesis
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-lr-annealing-the-spike-and-decay-and-optimization-strategy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2: LR Annealing (The "Spike and Decay") and Optimization Strategy
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-context-window-extension-rope-scaling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3: Context Window Extension (RoPE Scaling)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-parameter-freezing-and-selective-training" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Parameter Freezing and Selective Training
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-failure-modes-and-diagnostics" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Failure Modes and Diagnostics
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-evaluation-during-mid-training" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Evaluation During Mid-Training
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-impact-on-post-training-and-alignment" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Impact on Post-Training and Alignment
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-recent-work-and-2026-breakthroughs" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. Recent Work and 2026 Breakthroughs
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-comparison-of-training-phases" class="md-nav__link">
+    <span class="md-ellipsis">
+      11. Comparison of Training Phases
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -363,7 +557,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../phases/sft/" class="md-nav__link">
+      <a href="../sft/" class="md-nav__link">
         
   
   
@@ -853,20 +1047,20 @@
       
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
         
           
           <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
@@ -882,7 +1076,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             Training Pipeline
@@ -896,7 +1090,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../foundation/" class="md-nav__link">
+      <a href="../../training_techniques/foundation/" class="md-nav__link">
         
   
   
@@ -916,30 +1110,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    LLM Reasoning & Thinking Models
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../training_techniques/thinking_llms/" class="md-nav__link">
         
   
   
@@ -950,234 +1124,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#1-overview-the-system-1-vs-system-2-shift" class="md-nav__link">
-    <span class="md-ellipsis">
-      1. Overview: The System 1 vs. System 2 Shift
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2-technical-comparison-table" class="md-nav__link">
-    <span class="md-ellipsis">
-      2. Technical Comparison Table
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3-core-mechanism-test-time-compute-scaling" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. Core Mechanism: Test-Time Compute Scaling
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="3. Core Mechanism: Test-Time Compute Scaling">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#31-inference-time-scaling-laws" class="md-nav__link">
-    <span class="md-ellipsis">
-      3.1 Inference-Time Scaling Laws
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4-internal-reasoning-representations" class="md-nav__link">
-    <span class="md-ellipsis">
-      4. Internal Reasoning Representations
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="4. Internal Reasoning Representations">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#41-hidden-chain-of-thought" class="md-nav__link">
-    <span class="md-ellipsis">
-      4.1 Hidden Chain-of-Thought
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#42-search-over-reasoning-paths" class="md-nav__link">
-    <span class="md-ellipsis">
-      4.2 Search Over Reasoning Paths
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#5-reinforcement-learning-for-reasoning" class="md-nav__link">
-    <span class="md-ellipsis">
-      5. Reinforcement Learning for Reasoning
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="5. Reinforcement Learning for Reasoning">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#51-outcome-reward-models-vs-process-reward-models" class="md-nav__link">
-    <span class="md-ellipsis">
-      5.1 Outcome Reward Models vs Process Reward Models
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#52-grpo-group-relative-policy-optimization" class="md-nav__link">
-    <span class="md-ellipsis">
-      5.2 GRPO: Group Relative Policy Optimization
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#6-distillation-of-reasoning" class="md-nav__link">
-    <span class="md-ellipsis">
-      6. Distillation of Reasoning
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="6. Distillation of Reasoning">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#distillation-pipeline" class="md-nav__link">
-    <span class="md-ellipsis">
-      Distillation Pipeline
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#7-failure-modes-and-trade-offs" class="md-nav__link">
-    <span class="md-ellipsis">
-      7. Failure Modes and Trade-offs
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="7. Failure Modes and Trade-offs">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#71-reward-hacking" class="md-nav__link">
-    <span class="md-ellipsis">
-      7.1 Reward Hacking
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#72-overthinking" class="md-nav__link">
-    <span class="md-ellipsis">
-      7.2 Overthinking
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#8-evaluation-and-benchmarks" class="md-nav__link">
-    <span class="md-ellipsis">
-      8. Evaluation and Benchmarks
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#9-deployment-decision-framework" class="md-nav__link">
-    <span class="md-ellipsis">
-      9. Deployment Decision Framework
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#10-notable-models-of-20252026" class="md-nav__link">
-    <span class="md-ellipsis">
-      10. Notable Models of 2025–2026
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#11-relationship-to-training-phases" class="md-nav__link">
-    <span class="md-ellipsis">
-      11. Relationship to Training Phases
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#12-technical-qa" class="md-nav__link">
-    <span class="md-ellipsis">
-      12. Technical Q&amp;A
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1237,37 +1183,55 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-overview-the-system-1-vs-system-2-shift" class="md-nav__link">
+  <a href="#1-overview" class="md-nav__link">
     <span class="md-ellipsis">
-      1. Overview: The System 1 vs. System 2 Shift
+      1. Overview
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-technical-comparison-table" class="md-nav__link">
+  <a href="#2-utility-and-strategic-value" class="md-nav__link">
     <span class="md-ellipsis">
-      2. Technical Comparison Table
+      2. Utility and Strategic Value
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-core-mechanism-test-time-compute-scaling" class="md-nav__link">
+  <a href="#3-resource-requirements" class="md-nav__link">
     <span class="md-ellipsis">
-      3. Core Mechanism: Test-Time Compute Scaling
+      3. Resource Requirements
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="3. Core Mechanism: Test-Time Compute Scaling">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-training-objectives-and-loss-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Training Objectives and Loss Design
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Training Objectives and Loss Design">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#31-inference-time-scaling-laws" class="md-nav__link">
+  <a href="#41-objective-continuity" class="md-nav__link">
     <span class="md-ellipsis">
-      3.1 Inference-Time Scaling Laws
+      4.1 Objective Continuity
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-auxiliary-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2 Auxiliary Objectives
     </span>
   </a>
   
@@ -1279,28 +1243,37 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-internal-reasoning-representations" class="md-nav__link">
+  <a href="#5-technical-implementation-steps" class="md-nav__link">
     <span class="md-ellipsis">
-      4. Internal Reasoning Representations
+      5. Technical Implementation &amp; Steps
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="4. Internal Reasoning Representations">
+    <nav class="md-nav" aria-label="5. Technical Implementation &amp; Steps">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#41-hidden-chain-of-thought" class="md-nav__link">
+  <a href="#step-1-data-mixture-synthesis" class="md-nav__link">
     <span class="md-ellipsis">
-      4.1 Hidden Chain-of-Thought
+      Step 1: Data Mixture Synthesis
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#42-search-over-reasoning-paths" class="md-nav__link">
+  <a href="#step-2-lr-annealing-the-spike-and-decay-and-optimization-strategy" class="md-nav__link">
     <span class="md-ellipsis">
-      4.2 Search Over Reasoning Paths
+      Step 2: LR Annealing (The "Spike and Decay") and Optimization Strategy
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-context-window-extension-rope-scaling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3: Context Window Extension (RoPE Scaling)
     </span>
   </a>
   
@@ -1312,135 +1285,54 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#5-reinforcement-learning-for-reasoning" class="md-nav__link">
+  <a href="#6-parameter-freezing-and-selective-training" class="md-nav__link">
     <span class="md-ellipsis">
-      5. Reinforcement Learning for Reasoning
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="5. Reinforcement Learning for Reasoning">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#51-outcome-reward-models-vs-process-reward-models" class="md-nav__link">
-    <span class="md-ellipsis">
-      5.1 Outcome Reward Models vs Process Reward Models
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#52-grpo-group-relative-policy-optimization" class="md-nav__link">
-    <span class="md-ellipsis">
-      5.2 GRPO: Group Relative Policy Optimization
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#6-distillation-of-reasoning" class="md-nav__link">
-    <span class="md-ellipsis">
-      6. Distillation of Reasoning
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="6. Distillation of Reasoning">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#distillation-pipeline" class="md-nav__link">
-    <span class="md-ellipsis">
-      Distillation Pipeline
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#7-failure-modes-and-trade-offs" class="md-nav__link">
-    <span class="md-ellipsis">
-      7. Failure Modes and Trade-offs
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="7. Failure Modes and Trade-offs">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#71-reward-hacking" class="md-nav__link">
-    <span class="md-ellipsis">
-      7.1 Reward Hacking
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#72-overthinking" class="md-nav__link">
-    <span class="md-ellipsis">
-      7.2 Overthinking
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#8-evaluation-and-benchmarks" class="md-nav__link">
-    <span class="md-ellipsis">
-      8. Evaluation and Benchmarks
+      6. Parameter Freezing and Selective Training
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#9-deployment-decision-framework" class="md-nav__link">
+  <a href="#7-failure-modes-and-diagnostics" class="md-nav__link">
     <span class="md-ellipsis">
-      9. Deployment Decision Framework
+      7. Failure Modes and Diagnostics
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#10-notable-models-of-20252026" class="md-nav__link">
+  <a href="#8-evaluation-during-mid-training" class="md-nav__link">
     <span class="md-ellipsis">
-      10. Notable Models of 2025–2026
+      8. Evaluation During Mid-Training
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#11-relationship-to-training-phases" class="md-nav__link">
+  <a href="#9-impact-on-post-training-and-alignment" class="md-nav__link">
     <span class="md-ellipsis">
-      11. Relationship to Training Phases
+      9. Impact on Post-Training and Alignment
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#12-technical-qa" class="md-nav__link">
+  <a href="#10-recent-work-and-2026-breakthroughs" class="md-nav__link">
     <span class="md-ellipsis">
-      12. Technical Q&amp;A
+      10. Recent Work and 2026 Breakthroughs
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-comparison-of-training-phases" class="md-nav__link">
+    <span class="md-ellipsis">
+      11. Comparison of Training Phases
     </span>
   </a>
   
@@ -1465,224 +1357,202 @@
   
 
 
-  <h1>LLM Reasoning & Thinking Models</h1>
+  <h1>Mid-Training</h1>
 
-<h2 id="1-overview-the-system-1-vs-system-2-shift">1. Overview: The System 1 vs. System 2 Shift<a class="headerlink" href="#1-overview-the-system-1-vs-system-2-shift" title="Permanent link">&para;</a></h2>
-<p>In 2026, the AI landscape is defined by the transition from "Next-Token Predictors" to "Reasoning Agents." This is often explained using Daniel Kahneman's framework:</p>
+<h2 id="1-overview">1. Overview<a class="headerlink" href="#1-overview" title="Permanent link">&para;</a></h2>
+<p>In the 2025–2026 development cycle, <strong>Mid-training</strong> (often called <strong>Continued Pre-training</strong> or the <strong>Annealing Phase</strong>) has solidified as a critical third pillar in the LLM lifecycle. 
+It sits between massive-scale general pre-training and task-specific alignment (SFT/RLHF). Its primary purpose is to transform a general-purpose foundation model into a high-reasoning, domain-specialized system while minimizing catastrophic forgetting and preserving global language competence.</p>
+<p>Mid-training is now viewed not only as a quality enhancer but also as a cost and stability optimization stage that significantly reduces downstream alignment complexity.</p>
+<hr />
+<hr />
+<h2 id="2-utility-and-strategic-value">2. Utility and Strategic Value<a class="headerlink" href="#2-utility-and-strategic-value" title="Permanent link">&para;</a></h2>
+<p>Mid-training is no longer optional for frontier models. Its utility lies in three main areas:</p>
 <ul>
-<li><strong>Generic LLMs (System 1):</strong> Fast, intuitive, and associative. They respond instantly based on high-probability patterns.</li>
-<li><strong>Thinking LLMs (System 2):</strong> Slow, deliberate, and logical. They use "Inference-Time Compute" to verify their own work before displaying it.</li>
+<li>
+<p><strong>Domain Deep-Diving:</strong> Injection of large-scale, high-signal domain corpora such as law, biomedical literature, mathematics, or enterprise codebases, reaching depth that is infeasible during general pre-training.</p>
+</li>
+<li>
+<p><strong>Cognitive Architecture Scaling:</strong> Transitioning from surface-level pattern matching to structured reasoning by exposing the model to dense synthetic reasoning trajectories, proofs, and multi-step problem-solving traces.</p>
+</li>
+<li>
+<p><strong>Architectural Adaptation:</strong> Enabling long-context reasoning, tool usage priors, and agentic behaviors that require architectural stress beyond base pre-training distributions.</p>
+</li>
 </ul>
 <hr />
 <hr />
-<h2 id="2-technical-comparison-table">2. Technical Comparison Table<a class="headerlink" href="#2-technical-comparison-table" title="Permanent link">&para;</a></h2>
+<h2 id="3-resource-requirements">3. Resource Requirements<a class="headerlink" href="#3-resource-requirements" title="Permanent link">&para;</a></h2>
+<p>Mid-training is a "heavyweight" operation compared to post-training alignment.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Resource</th>
+<th style="text-align: left;">Requirement</th>
+<th style="text-align: left;">Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Compute</strong></td>
+<td style="text-align: left;">5%–15% of Pre-training FLOPs</td>
+<td style="text-align: left;">Requires high-interconnect GPU clusters (H100/B200).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Optimizer States</strong></td>
+<td style="text-align: left;">Full Adam or AdamW moments</td>
+<td style="text-align: left;">Must resume with original moments to avoid "loss spikes."</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Data Quality</strong></td>
+<td style="text-align: left;">&gt;95% Signal-to-Noise</td>
+<td style="text-align: left;">Aggressive filtering, deduplication, and curriculum ordering required.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Replay Buffer</strong></td>
+<td style="text-align: left;">10%–20% General Data</td>
+<td style="text-align: left;">Essential to prevent forgetting of general knowledge.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<hr />
+<h2 id="4-training-objectives-and-loss-design">4. Training Objectives and Loss Design<a class="headerlink" href="#4-training-objectives-and-loss-design" title="Permanent link">&para;</a></h2>
+<h3 id="41-objective-continuity">4.1 Objective Continuity<a class="headerlink" href="#41-objective-continuity" title="Permanent link">&para;</a></h3>
+<p>Mid-training typically preserves the original causal language modeling objective used during pre-training. Stability is achieved by changing data distribution and curriculum, not the core loss.</p>
+<h3 id="42-auxiliary-objectives">4.2 Auxiliary Objectives<a class="headerlink" href="#42-auxiliary-objectives" title="Permanent link">&para;</a></h3>
+<p>Some advanced pipelines introduce lightly weighted auxiliary losses, including:</p>
+<ul>
+<li>Contrastive losses for retrieval-aware representations</li>
+<li>Outcome-conditioned losses for tool-use traces</li>
+<li>Self-consistency rewards for reasoning trajectories</li>
+</ul>
+<p>These signals are intentionally weak to avoid destabilizing the base representation space.</p>
+<hr />
+<hr />
+<h2 id="5-technical-implementation-steps">5. Technical Implementation &amp; Steps<a class="headerlink" href="#5-technical-implementation-steps" title="Permanent link">&para;</a></h2>
+<h3 id="step-1-data-mixture-synthesis">Step 1: Data Mixture Synthesis<a class="headerlink" href="#step-1-data-mixture-synthesis" title="Permanent link">&para;</a></h3>
+<p>The "recipe" for a mid-training run is more curated than raw pre-training. A typical 2026 mixture involves:
+* <strong>40% Specialist Corpora:</strong> Textbooks, technical manuals, and white papers.
+* <strong>30% Synthetic Reasoning:</strong> Trajectories generated by larger "Teacher" models showing step-by-step logic.
+* <strong>20% General Web Scrapes:</strong> High-quality "Common Crawl" subsets (e.g., FineWeb-Edu).
+* <strong>10% Long-form Documents:</strong> Books and full codebases for context stretching.</p>
+<h3 id="step-2-lr-annealing-the-spike-and-decay-and-optimization-strategy">Step 2: LR Annealing (The "Spike and Decay") and Optimization Strategy<a class="headerlink" href="#step-2-lr-annealing-the-spike-and-decay-and-optimization-strategy" title="Permanent link">&para;</a></h3>
+<p>Mid-training utilizes a unique learning rate schedule. Instead of a flat or strictly decaying line, it often employs a <strong>Cool-down/Annealing</strong> strategy:</p>
+<ol>
+<li><strong>Re-warmup:</strong> A short period to stabilize the model on the new data distribution.</li>
+<li><strong>Cosine Decay:</strong> A deep decay toward zero to ensure the weights settle into the specialized "valleys" of the loss landscape.</li>
+</ol>
+<p><strong>Optimizer Sensitivity</strong></p>
+<ul>
+<li>Full optimizer state restoration is mandatory</li>
+<li>Partial state resets commonly cause irrecoverable divergence</li>
+</ul>
+<h3 id="step-3-context-window-extension-rope-scaling">Step 3: Context Window Extension (RoPE Scaling)<a class="headerlink" href="#step-3-context-window-extension-rope-scaling" title="Permanent link">&para;</a></h3>
+<p>To handle long-context, the mid-training phase modifies the <strong>Rotary Positional Embeddings (RoPE)</strong>. The transformation typically follows:</p>
+<div class="arithmatex">\[f(q, i, \theta) = R_{\Theta, i}^d q\]</div>
+<p>By increasing the base frequency <span class="arithmatex">\(\theta\)</span> (often called "Base Scaling"), the model learns to interpret distances between tokens that were previously "out of range."</p>
+<hr />
+<hr />
+<h2 id="6-parameter-freezing-and-selective-training">6. Parameter Freezing and Selective Training<a class="headerlink" href="#6-parameter-freezing-and-selective-training" title="Permanent link">&para;</a></h2>
+<p>Mid-training does not always update all parameters:</p>
+<ul>
+<li><strong>Frozen Components:</strong>
+   Token embeddings, early transformer blocks, or normalization statistics</li>
+<li><strong>Progressive Unfreezing:</strong>
+   Higher layers are unfrozen as specialization increases</li>
+<li><strong>Adapter-Based Mid-Training:</strong>
+   Low-rank or gated adapters may be trained and later merged, reducing compute cost</li>
+</ul>
+<p>Selective training reduces catastrophic forgetting and improves stability.</p>
+<hr />
+<hr />
+<h2 id="7-failure-modes-and-diagnostics">7. Failure Modes and Diagnostics<a class="headerlink" href="#7-failure-modes-and-diagnostics" title="Permanent link">&para;</a></h2>
+<p><strong>Common Failure Modes</strong></p>
+<ul>
+<li>Loss Spikes After Resume due to optimizer mismatch</li>
+<li>Reasoning Overfitting leading to brittle, verbose outputs</li>
+<li>Semantic Drift despite replay buffers</li>
+<li>Context Length Illusions masking real long-range reasoning deficits</li>
+</ul>
+<p><strong>Diagnostics</strong></p>
+<ul>
+<li>Perplexity on held-out general corpora</li>
+<li>Loss by token position bucket</li>
+<li>Reasoning consistency metrics</li>
+</ul>
+<hr />
+<hr />
+<h2 id="8-evaluation-during-mid-training">8. Evaluation During Mid-Training<a class="headerlink" href="#8-evaluation-during-mid-training" title="Permanent link">&para;</a></h2>
+<p>Mid-training requires continuous evaluation beyond downstream benchmarks.</p>
+<p><strong>Online Metrics</strong></p>
+<ul>
+<li>Replay buffer perplexity</li>
+<li>Long-context loss curves</li>
+<li>Reasoning trace self-consistency</li>
+</ul>
+<p><strong>Offline Probes</strong></p>
+<ul>
+<li>Needle-in-a-haystack retrieval tasks</li>
+<li>Synthetic math and code reasoning suites</li>
+<li>Tool-use simulation accuracy</li>
+</ul>
+<p>Early detection of regressions is critical due to high rollback cost.</p>
+<hr />
+<hr />
+<h2 id="9-impact-on-post-training-and-alignment">9. Impact on Post-Training and Alignment<a class="headerlink" href="#9-impact-on-post-training-and-alignment" title="Permanent link">&para;</a></h2>
+<p>A strong mid-training phase:</p>
+<ul>
+<li>Reduces SFT data needs by 2–5×</li>
+<li>Improves RLHF stability by narrowing policy search</li>
+<li>Lowers reward hacking risk by pre-internalizing reasoning norms</li>
+</ul>
+<p>This has made mid-training a core efficiency lever in modern LLM pipelines.</p>
+<hr />
+<hr />
+<h2 id="10-recent-work-and-2026-breakthroughs">10. Recent Work and 2026 Breakthroughs<a class="headerlink" href="#10-recent-work-and-2026-breakthroughs" title="Permanent link">&para;</a></h2>
+<ul>
+<li>
+<p><strong>Agentic Synthesis (Late 2025):</strong> Including "Action Trajectories" (logs of AI models using tools) during mid-training improves agentic performance more than SFT alone.</p>
+</li>
+<li>
+<p><strong>Internalized Reinforcement Learning (IRL):</strong> Applying RL during the mid-training phase to reward "correct reasoning paths" in math and code.</p>
+</li>
+<li>
+<p><strong>Curriculum Mixing:</strong> Using a small "proctor" model to dynamically change the data mixture based on the primary model's real-time loss.</p>
+</li>
+</ul>
+<hr />
+<hr />
+<h2 id="11-comparison-of-training-phases">11. Comparison of Training Phases<a class="headerlink" href="#11-comparison-of-training-phases" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
 <th style="text-align: left;">Feature</th>
-<th style="text-align: left;">Generic LLMs (GPT-4o, Llama 3)</th>
-<th style="text-align: left;">Thinking LLMs (o1, R1, Claude 3.7)</th>
+<th style="text-align: left;">Pre-training</th>
+<th style="text-align: left;">Mid-training</th>
+<th style="text-align: left;">Post-training (SFT)</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;"><strong>Primary Mechanism</strong></td>
-<td style="text-align: left;">Pattern Recognition</td>
-<td style="text-align: left;">Reinforcement Learning (RL) + Search</td>
+<td style="text-align: left;"><strong>Token Count</strong></td>
+<td style="text-align: left;">5T - 15T</td>
+<td style="text-align: left;">100B - 500B</td>
+<td style="text-align: left;">10M - 50M</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>Computation</strong></td>
-<td style="text-align: left;">Constant (Fixed cost per token)</td>
-<td style="text-align: left;">Variable (More time = More intelligence)</td>
+<td style="text-align: left;"><strong>Focus</strong></td>
+<td style="text-align: left;">Breadth</td>
+<td style="text-align: left;">Depth/Logic</td>
+<td style="text-align: left;">Behavior/Safety</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>Internal Process</strong></td>
-<td style="text-align: left;">Direct Output</td>
-<td style="text-align: left;">Hidden "Chain of Thought" (CoT)</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Self-Correction</strong></td>
-<td style="text-align: left;">Rare (usually hallucinations)</td>
-<td style="text-align: left;">Native (backtracks on errors)</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Best For</strong></td>
-<td style="text-align: left;">Chat, Summaries, Creative Writing</td>
-<td style="text-align: left;">Coding, Math, Strategic Planning</td>
+<td style="text-align: left;"><strong>Data Source</strong></td>
+<td style="text-align: left;">Raw Web</td>
+<td style="text-align: left;">Curated/Synthetic</td>
+<td style="text-align: left;">Human-labeled</td>
 </tr>
 </tbody>
 </table>
-<hr />
-<hr />
-<h2 id="3-core-mechanism-test-time-compute-scaling">3. Core Mechanism: Test-Time Compute Scaling<a class="headerlink" href="#3-core-mechanism-test-time-compute-scaling" title="Permanent link">&para;</a></h2>
-<h3 id="31-inference-time-scaling-laws">3.1 Inference-Time Scaling Laws<a class="headerlink" href="#31-inference-time-scaling-laws" title="Permanent link">&para;</a></h3>
-<p>Reasoning performance scales with compute allocated at inference, not just with parameter count. This manifests as:</p>
-<ul>
-<li>More internal tokens devoted to reasoning</li>
-<li>Sampling and evaluating multiple candidate solutions</li>
-<li>Backtracking and correction loops</li>
-</ul>
-<p>Empirically, reasoning benchmarks show near-log-linear gains with additional inference steps until saturation.</p>
-<p>3.2 Compute as a Control Knob</p>
-<p>Thinking models expose inference compute as a tunable parameter:</p>
-<ul>
-<li>Low compute approximates System 1 behavior</li>
-<li>High compute activates deeper reasoning loops</li>
-<li>This decouples model intelligence from latency constraints, enabling dynamic deployment strategies.</li>
-</ul>
-<hr />
-<hr />
-<h2 id="4-internal-reasoning-representations">4. Internal Reasoning Representations<a class="headerlink" href="#4-internal-reasoning-representations" title="Permanent link">&para;</a></h2>
-<h3 id="41-hidden-chain-of-thought">4.1 Hidden Chain-of-Thought<a class="headerlink" href="#41-hidden-chain-of-thought" title="Permanent link">&para;</a></h3>
-<p>Thinking LLMs generate intermediate reasoning traces that are:</p>
-<ul>
-<li>Hidden from the user</li>
-<li>Used for internal verification and search</li>
-<li>Discarded or summarized before final output</li>
-</ul>
-<p>This avoids leaking brittle or unsafe reasoning while retaining cognitive benefits.</p>
-<h3 id="42-search-over-reasoning-paths">4.2 Search Over Reasoning Paths<a class="headerlink" href="#42-search-over-reasoning-paths" title="Permanent link">&para;</a></h3>
-<p>Rather than committing to a single chain, System 2 models often:</p>
-<ul>
-<li>Generate multiple reasoning candidates</li>
-<li>Score them using reward models</li>
-<li>Select or refine the best trajectory</li>
-</ul>
-<p>This reframes inference as a planning problem rather than a single forward pass.</p>
-<hr />
-<hr />
-<h2 id="5-reinforcement-learning-for-reasoning">5. Reinforcement Learning for Reasoning<a class="headerlink" href="#5-reinforcement-learning-for-reasoning" title="Permanent link">&para;</a></h2>
-<h3 id="51-outcome-reward-models-vs-process-reward-models">5.1 Outcome Reward Models vs Process Reward Models<a class="headerlink" href="#51-outcome-reward-models-vs-process-reward-models" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th style="text-align: left;">Reward Type</th>
-<th style="text-align: left;">What It Rewards</th>
-<th style="text-align: left;">Limitation</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;">Outcome Reward Model (ORM)</td>
-<td style="text-align: left;">Final answer correctness</td>
-<td style="text-align: left;">No signal for reasoning quality</td>
-</tr>
-<tr>
-<td style="text-align: left;">Process Reward Model (PRM)</td>
-<td style="text-align: left;">Each intermediate reasoning step</td>
-<td style="text-align: left;">Higher training complexity</td>
-</tr>
-</tbody>
-</table>
-<p>PRMs dramatically reduce multi-step hallucinations by aligning rewards with valid intermediate logic.</p>
-<h3 id="52-grpo-group-relative-policy-optimization">5.2 GRPO: Group Relative Policy Optimization<a class="headerlink" href="#52-grpo-group-relative-policy-optimization" title="Permanent link">&para;</a></h3>
-<p>Introduced prominently in DeepSeek-R1, GRPO:</p>
-<ul>
-<li>Samples multiple reasoning trajectories from the same model</li>
-<li>Ranks them relative to each other</li>
-<li>Reinforces the most efficient and correct paths</li>
-</ul>
-<p>This removes reliance on large teacher models and enables reasoning capability to emerge from self-comparison.</p>
-<hr />
-<hr />
-<h2 id="6-distillation-of-reasoning">6. Distillation of Reasoning<a class="headerlink" href="#6-distillation-of-reasoning" title="Permanent link">&para;</a></h2>
-<p>Reasoning capabilities are <strong>distillable</strong>, even when learned via reinforcement learning.</p>
-<h3 id="distillation-pipeline">Distillation Pipeline<a class="headerlink" href="#distillation-pipeline" title="Permanent link">&para;</a></h3>
-<ol>
-<li>Run a large System 2 model with high inference compute</li>
-<li>Collect validated reasoning traces</li>
-<li>Use them as supervised fine-tuning data for smaller models</li>
-</ol>
-<p>This has enabled 7B–14B models to exhibit structured reasoning previously limited to frontier-scale systems.</p>
-<hr />
-<hr />
-<h2 id="7-failure-modes-and-trade-offs">7. Failure Modes and Trade-offs<a class="headerlink" href="#7-failure-modes-and-trade-offs" title="Permanent link">&para;</a></h2>
-<h3 id="71-reward-hacking">7.1 Reward Hacking<a class="headerlink" href="#71-reward-hacking" title="Permanent link">&para;</a></h3>
-<p>Models may learn that:
-- Longer reasoning chains yield higher rewards
-- Redundancy masquerades as correctness</p>
-<p>Mitigations include length penalties, diversity rewards, and consistency checks.</p>
-<h3 id="72-overthinking">7.2 Overthinking<a class="headerlink" href="#72-overthinking" title="Permanent link">&para;</a></h3>
-<ul>
-<li>Excessive inference compute yields diminishing returns</li>
-<li>Latency increases without accuracy gains</li>
-</ul>
-<p>Adaptive early stopping is commonly used to terminate reasoning once confidence thresholds are met.</p>
-<hr />
-<hr />
-<h2 id="8-evaluation-and-benchmarks">8. Evaluation and Benchmarks<a class="headerlink" href="#8-evaluation-and-benchmarks" title="Permanent link">&para;</a></h2>
-<p>Reasoning models require benchmarks that stress multi-step cognition.</p>
-<table>
-<thead>
-<tr>
-<th style="text-align: left;">Benchmark</th>
-<th style="text-align: left;">Capability Tested</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;">AIME</td>
-<td style="text-align: left;">Olympiad-level mathematics</td>
-</tr>
-<tr>
-<td style="text-align: left;">GPQA</td>
-<td style="text-align: left;">Graduate-level scientific reasoning</td>
-</tr>
-<tr>
-<td style="text-align: left;">HumanEval</td>
-<td style="text-align: left;">Algorithmic and coding logic</td>
-</tr>
-<tr>
-<td style="text-align: left;">Codeforces</td>
-<td style="text-align: left;">Long-horizon program synthesis</td>
-</tr>
-</tbody>
-</table>
-<p>Evaluation must consider <strong>accuracy versus compute trade-offs</strong>, not accuracy alone.</p>
-<hr />
-<hr />
-<h2 id="9-deployment-decision-framework">9. Deployment Decision Framework<a class="headerlink" href="#9-deployment-decision-framework" title="Permanent link">&para;</a></h2>
-<p>Choosing between System 1 and System 2 depends on:
-- Latency tolerance
-- Cost constraints
-- Error sensitivity</p>
-<p><strong>System 1</strong> models are preferred for high-throughput, low-risk tasks.</p>
-<p><strong>System 2</strong> models are preferred when correctness dominates, such as legal analysis, scientific reasoning, and complex debugging.</p>
-<p>Hybrid systems increasingly route queries dynamically based on estimated difficulty.</p>
-<hr />
-<hr />
-<h2 id="10-notable-models-of-20252026">10. Notable Models of 2025–2026<a class="headerlink" href="#10-notable-models-of-20252026" title="Permanent link">&para;</a></h2>
-<ul>
-<li><strong>OpenAI o1 &amp; o3:</strong> The first to commercialize "Reasoning Tokens." o3 is currently the gold standard for competitive programming (Codeforces) and high-level mathematics.</li>
-<li><strong>DeepSeek-R1:</strong> A massive breakthrough for open-source AI. It proved that RL can "distill" reasoning capabilities into smaller models (like 7B or 14B parameters).</li>
-<li><strong>Claude 3.7 Sonnet:</strong> Introduced "Hybrid Reasoning," allowing the user to toggle "Extended Thinking." This solves the latency issue by letting users choose when they need the model to "think."</li>
-<li><strong>Gemini 2.5 Pro (Reasoning):</strong> Uses Google’s massive context window to reason across hours of video or thousands of lines of code simultaneously.</li>
-</ul>
-<hr />
-<hr />
-<h2 id="11-relationship-to-training-phases">11. Relationship to Training Phases<a class="headerlink" href="#11-relationship-to-training-phases" title="Permanent link">&para;</a></h2>
-<p>Thinking behavior emerges from the interaction of all training stages:</p>
-<ul>
-<li>Pre-training provides linguistic and world knowledge</li>
-<li>Mid-training injects structured reasoning and long-context priors</li>
-<li>RL-based post-training activates inference-time computation strategies</li>
-</ul>
-<p>System 2 capability is therefore <strong>not purely a post-training artifact</strong>.</p>
-<hr />
-<hr />
-<h2 id="12-technical-qa">12. Technical Q&amp;A<a class="headerlink" href="#12-technical-qa" title="Permanent link">&para;</a></h2>
-<p><strong>Q: What is "Reward Hacking" in reasoning models?</strong></p>
-<p><strong>A:</strong> It’s a failure mode where a model learns that writing <em>longer</em> reasoning chains results in higher rewards from the PRM, even if the logic is circular or redundant. Engineers combat this by penalizing length or using more diverse reward signals.</p>
-<hr />
-<p><strong>Q: How do you decide when to deploy a Thinking LLM vs. a Generic LLM?</strong></p>
-<p><strong>A:</strong> It's a trade-off between <strong>Latency, Cost, and Accuracy</strong>. 
-* Use <strong>Generic</strong> for high-throughput, low-latency tasks (customer service bots, simple translations).
-* Use <strong>Thinking</strong> for high-stakes accuracy (legal analysis, complex debugging, scientific research).</p>
-<hr />
-<p><strong>Q: Can you distill reasoning?</strong></p>
-<p><strong>A:</strong> Yes. You can take the "Thinking Traces" from a large model (like o1) and use them as fine-tuning data for a smaller model (like Llama 8B). This teaches the smaller model to "mimic" the logical structure of the larger one.</p>
-<hr />
-<hr />
 
 
 

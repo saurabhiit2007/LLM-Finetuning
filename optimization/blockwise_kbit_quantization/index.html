@@ -13,10 +13,10 @@
       
       
       
-        <link rel="prev" href="../foundation/">
+        <link rel="prev" href="../4bit_normal_float/">
       
       
-        <link rel="next" href="../../references/">
+        <link rel="next" href="../bp16/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -24,7 +24,7 @@
     
     
       
-        <title>LLM Reasoning & Thinking Models - Fine-Tuning Methods Documentation</title>
+        <title>Block-wise k-bit Quantization - Fine-Tuning Methods Documentation</title>
       
     
     
@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#1-overview-the-system-1-vs-system-2-shift" class="md-skip">
+        <a href="#block-wise-k-bit-quantization" class="md-skip">
           Skip to content
         </a>
       
@@ -112,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              LLM Reasoning & Thinking Models
+              Block-wise k-bit Quantization
             
           </span>
         </div>
@@ -622,20 +622,20 @@
       
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
         
           
           <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
@@ -651,7 +651,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             Optimization
@@ -665,7 +665,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../optimization/4bit_normal_float/" class="md-nav__link">
+      <a href="../4bit_normal_float/" class="md-nav__link">
         
   
   
@@ -685,10 +685,32 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../optimization/blockwise_kbit_quantization/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Block-wise k-bit Quantization
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -699,6 +721,215 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-motivation" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Motivation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Motivation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problem-outliers-in-weight-distributions" class="md-nav__link">
+    <span class="md-ellipsis">
+      🧠 Problem: Outliers in Weight Distributions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#solution-block-wise-quantization" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Solution: Block-wise Quantization
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-mathematical-formulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Mathematical Formulation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Mathematical Formulation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-compute-local-scale-and-zero-point" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1: Compute Local Scale and Zero-Point
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-quantization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2: Quantization
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-dequantization-reconstruction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3: Dequantization (Reconstruction)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-double-quantization" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Double Quantization
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Double Quantization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-concept" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1. Concept
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2. Example
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-implementation-in-bitsandbytes" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.3. Implementation in Bitsandbytes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-key-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.4 Key Notes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-implementation-details-pseudo-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Implementation Details (Pseudo-Code)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-example-4-bit-quantization" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Example (4-bit Quantization)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-advantages" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Advantages
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-hardware-implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Hardware Implementation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-visualization" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Visualization
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-relationship-to-qlora" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. Relationship to QLoRA
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -711,7 +942,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../optimization/accelerate.md" class="md-nav__link">
+      <a href="../accelerate.md" class="md-nav__link">
         
   
   
@@ -734,7 +965,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../optimization/bp16/" class="md-nav__link">
+      <a href="../bp16/" class="md-nav__link">
         
   
   
@@ -757,7 +988,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../optimization/memory_considerations/" class="md-nav__link">
+      <a href="../memory_considerations/" class="md-nav__link">
         
   
   
@@ -780,7 +1011,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../optimization/paged_adam/" class="md-nav__link">
+      <a href="../paged_adam/" class="md-nav__link">
         
   
   
@@ -803,7 +1034,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../optimization/training_optimization_and_stability/" class="md-nav__link">
+      <a href="../training_optimization_and_stability/" class="md-nav__link">
         
   
   
@@ -826,7 +1057,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../optimization/prefix_caching/" class="md-nav__link">
+      <a href="../prefix_caching/" class="md-nav__link">
         
   
   
@@ -853,20 +1084,20 @@
       
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
         
           
           <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
@@ -882,7 +1113,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             Training Pipeline
@@ -896,7 +1127,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../foundation/" class="md-nav__link">
+      <a href="../../training_techniques/foundation/" class="md-nav__link">
         
   
   
@@ -916,30 +1147,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    LLM Reasoning & Thinking Models
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../training_techniques/thinking_llms/" class="md-nav__link">
         
   
   
@@ -950,234 +1161,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#1-overview-the-system-1-vs-system-2-shift" class="md-nav__link">
-    <span class="md-ellipsis">
-      1. Overview: The System 1 vs. System 2 Shift
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2-technical-comparison-table" class="md-nav__link">
-    <span class="md-ellipsis">
-      2. Technical Comparison Table
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3-core-mechanism-test-time-compute-scaling" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. Core Mechanism: Test-Time Compute Scaling
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="3. Core Mechanism: Test-Time Compute Scaling">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#31-inference-time-scaling-laws" class="md-nav__link">
-    <span class="md-ellipsis">
-      3.1 Inference-Time Scaling Laws
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4-internal-reasoning-representations" class="md-nav__link">
-    <span class="md-ellipsis">
-      4. Internal Reasoning Representations
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="4. Internal Reasoning Representations">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#41-hidden-chain-of-thought" class="md-nav__link">
-    <span class="md-ellipsis">
-      4.1 Hidden Chain-of-Thought
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#42-search-over-reasoning-paths" class="md-nav__link">
-    <span class="md-ellipsis">
-      4.2 Search Over Reasoning Paths
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#5-reinforcement-learning-for-reasoning" class="md-nav__link">
-    <span class="md-ellipsis">
-      5. Reinforcement Learning for Reasoning
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="5. Reinforcement Learning for Reasoning">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#51-outcome-reward-models-vs-process-reward-models" class="md-nav__link">
-    <span class="md-ellipsis">
-      5.1 Outcome Reward Models vs Process Reward Models
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#52-grpo-group-relative-policy-optimization" class="md-nav__link">
-    <span class="md-ellipsis">
-      5.2 GRPO: Group Relative Policy Optimization
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#6-distillation-of-reasoning" class="md-nav__link">
-    <span class="md-ellipsis">
-      6. Distillation of Reasoning
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="6. Distillation of Reasoning">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#distillation-pipeline" class="md-nav__link">
-    <span class="md-ellipsis">
-      Distillation Pipeline
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#7-failure-modes-and-trade-offs" class="md-nav__link">
-    <span class="md-ellipsis">
-      7. Failure Modes and Trade-offs
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="7. Failure Modes and Trade-offs">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#71-reward-hacking" class="md-nav__link">
-    <span class="md-ellipsis">
-      7.1 Reward Hacking
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#72-overthinking" class="md-nav__link">
-    <span class="md-ellipsis">
-      7.2 Overthinking
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#8-evaluation-and-benchmarks" class="md-nav__link">
-    <span class="md-ellipsis">
-      8. Evaluation and Benchmarks
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#9-deployment-decision-framework" class="md-nav__link">
-    <span class="md-ellipsis">
-      9. Deployment Decision Framework
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#10-notable-models-of-20252026" class="md-nav__link">
-    <span class="md-ellipsis">
-      10. Notable Models of 2025–2026
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#11-relationship-to-training-phases" class="md-nav__link">
-    <span class="md-ellipsis">
-      11. Relationship to Training Phases
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#12-technical-qa" class="md-nav__link">
-    <span class="md-ellipsis">
-      12. Technical Q&amp;A
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1229,6 +1212,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -1237,37 +1222,37 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-overview-the-system-1-vs-system-2-shift" class="md-nav__link">
+  <a href="#1-overview" class="md-nav__link">
     <span class="md-ellipsis">
-      1. Overview: The System 1 vs. System 2 Shift
+      1. Overview
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-technical-comparison-table" class="md-nav__link">
+  <a href="#2-motivation" class="md-nav__link">
     <span class="md-ellipsis">
-      2. Technical Comparison Table
+      2. Motivation
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3-core-mechanism-test-time-compute-scaling" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. Core Mechanism: Test-Time Compute Scaling
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="3. Core Mechanism: Test-Time Compute Scaling">
+    <nav class="md-nav" aria-label="2. Motivation">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#31-inference-time-scaling-laws" class="md-nav__link">
+  <a href="#problem-outliers-in-weight-distributions" class="md-nav__link">
     <span class="md-ellipsis">
-      3.1 Inference-Time Scaling Laws
+      🧠 Problem: Outliers in Weight Distributions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#solution-block-wise-quantization" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Solution: Block-wise Quantization
     </span>
   </a>
   
@@ -1279,28 +1264,37 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-internal-reasoning-representations" class="md-nav__link">
+  <a href="#3-mathematical-formulation" class="md-nav__link">
     <span class="md-ellipsis">
-      4. Internal Reasoning Representations
+      3. Mathematical Formulation
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="4. Internal Reasoning Representations">
+    <nav class="md-nav" aria-label="3. Mathematical Formulation">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#41-hidden-chain-of-thought" class="md-nav__link">
+  <a href="#step-1-compute-local-scale-and-zero-point" class="md-nav__link">
     <span class="md-ellipsis">
-      4.1 Hidden Chain-of-Thought
+      Step 1: Compute Local Scale and Zero-Point
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#42-search-over-reasoning-paths" class="md-nav__link">
+  <a href="#step-2-quantization" class="md-nav__link">
     <span class="md-ellipsis">
-      4.2 Search Over Reasoning Paths
+      Step 2: Quantization
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-dequantization-reconstruction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3: Dequantization (Reconstruction)
     </span>
   </a>
   
@@ -1312,28 +1306,46 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#5-reinforcement-learning-for-reasoning" class="md-nav__link">
+  <a href="#4-double-quantization" class="md-nav__link">
     <span class="md-ellipsis">
-      5. Reinforcement Learning for Reasoning
+      4. Double Quantization
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="5. Reinforcement Learning for Reasoning">
+    <nav class="md-nav" aria-label="4. Double Quantization">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#51-outcome-reward-models-vs-process-reward-models" class="md-nav__link">
+  <a href="#41-concept" class="md-nav__link">
     <span class="md-ellipsis">
-      5.1 Outcome Reward Models vs Process Reward Models
+      4.1. Concept
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#52-grpo-group-relative-policy-optimization" class="md-nav__link">
+  <a href="#42-example" class="md-nav__link">
     <span class="md-ellipsis">
-      5.2 GRPO: Group Relative Policy Optimization
+      4.2. Example
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-implementation-in-bitsandbytes" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.3. Implementation in Bitsandbytes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-key-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.4 Key Notes
     </span>
   </a>
   
@@ -1345,102 +1357,54 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#6-distillation-of-reasoning" class="md-nav__link">
+  <a href="#5-implementation-details-pseudo-code" class="md-nav__link">
     <span class="md-ellipsis">
-      6. Distillation of Reasoning
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="6. Distillation of Reasoning">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#distillation-pipeline" class="md-nav__link">
-    <span class="md-ellipsis">
-      Distillation Pipeline
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#7-failure-modes-and-trade-offs" class="md-nav__link">
-    <span class="md-ellipsis">
-      7. Failure Modes and Trade-offs
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="7. Failure Modes and Trade-offs">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#71-reward-hacking" class="md-nav__link">
-    <span class="md-ellipsis">
-      7.1 Reward Hacking
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#72-overthinking" class="md-nav__link">
-    <span class="md-ellipsis">
-      7.2 Overthinking
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#8-evaluation-and-benchmarks" class="md-nav__link">
-    <span class="md-ellipsis">
-      8. Evaluation and Benchmarks
+      5. Implementation Details (Pseudo-Code)
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#9-deployment-decision-framework" class="md-nav__link">
+  <a href="#6-example-4-bit-quantization" class="md-nav__link">
     <span class="md-ellipsis">
-      9. Deployment Decision Framework
+      6. Example (4-bit Quantization)
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#10-notable-models-of-20252026" class="md-nav__link">
+  <a href="#7-advantages" class="md-nav__link">
     <span class="md-ellipsis">
-      10. Notable Models of 2025–2026
+      7. Advantages
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#11-relationship-to-training-phases" class="md-nav__link">
+  <a href="#8-hardware-implementation" class="md-nav__link">
     <span class="md-ellipsis">
-      11. Relationship to Training Phases
+      8. Hardware Implementation
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#12-technical-qa" class="md-nav__link">
+  <a href="#9-visualization" class="md-nav__link">
     <span class="md-ellipsis">
-      12. Technical Q&amp;A
+      9. Visualization
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-relationship-to-qlora" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. Relationship to QLoRA
     </span>
   </a>
   
@@ -1465,223 +1429,274 @@
   
 
 
-  <h1>LLM Reasoning & Thinking Models</h1>
-
-<h2 id="1-overview-the-system-1-vs-system-2-shift">1. Overview: The System 1 vs. System 2 Shift<a class="headerlink" href="#1-overview-the-system-1-vs-system-2-shift" title="Permanent link">&para;</a></h2>
-<p>In 2026, the AI landscape is defined by the transition from "Next-Token Predictors" to "Reasoning Agents." This is often explained using Daniel Kahneman's framework:</p>
+<h1 id="block-wise-k-bit-quantization">⚙️ Block-wise k-bit Quantization<a class="headerlink" href="#block-wise-k-bit-quantization" title="Permanent link">&para;</a></h1>
+<hr />
+<h3 id="1-overview">1. Overview<a class="headerlink" href="#1-overview" title="Permanent link">&para;</a></h3>
+<p><strong>Block-wise k-bit quantization</strong> is a technique that compresses model weights into low-bit representations (e.g., 4-bit, 8-bit) while preserving performance and minimizing quantization error.
+Instead of quantizing each value independently, <strong>block-wise quantization</strong> divides the weight matrix into smaller <strong>blocks (chunks)</strong> and performs quantization relative to <strong>local statistics</strong> (like scale and zero-point) of each block.</p>
+<p>This local normalization significantly reduces quantization error caused by <strong>outlier values</strong> — a common issue in transformer weights.</p>
+<hr />
+<h3 id="2-motivation">2. Motivation<a class="headerlink" href="#2-motivation" title="Permanent link">&para;</a></h3>
+<h4 id="problem-outliers-in-weight-distributions">🧠 Problem: Outliers in Weight Distributions<a class="headerlink" href="#problem-outliers-in-weight-distributions" title="Permanent link">&para;</a></h4>
+<p>Weights in large models (especially in attention layers) often follow <strong>heavy-tailed distributions</strong> — a few large values coexist with many small ones.<br />
+In <strong>global quantization</strong>, a single scale <span class="arithmatex">\( s_{\text{global}} = \frac{\max(|W|)}{2^{k-1}-1} \)</span> is used for all weights.<br />
+Large outliers force the scale up, making most small weights collapse to zero after quantization.</p>
+<hr />
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p>Consider:
+$$
+W = [0.01, 0.02, -0.03, 0.05, 3.0]
+$$</p>
+<p>With <strong>4-bit global quantization</strong>:
+$$
+s_{\text{global}} = \frac{3.0}{7} \approx 0.43
+$$</p>
+<p>Quantized weights → <code>[0, 0, 0, 0, 7]</code> — almost all small weights vanish due to the single large outlier.</p>
+</div>
+<hr />
+<h4 id="solution-block-wise-quantization">✅ Solution: Block-wise Quantization<a class="headerlink" href="#solution-block-wise-quantization" title="Permanent link">&para;</a></h4>
+<p>Split weights into small <strong>blocks</strong> (e.g., 64–256 values each), and compute a separate scale per block:
+$$
+s_b = \frac{\max(|W_b|)}{2^{k-1}-1}
+$$
+Each block adapts to its local range, preserving fine details while still compressing efficiently.</p>
+<p>By partitioning weights into <strong>blocks</strong> and computing <strong>scale/offset per block</strong>, quantization adapts to local statistics and better preserves precision.</p>
+<hr />
+<h3 id="3-mathematical-formulation">3. Mathematical Formulation<a class="headerlink" href="#3-mathematical-formulation" title="Permanent link">&para;</a></h3>
+<div class="admonition example">
+<p class="admonition-title">📘 Steps for block quantization</p>
+<p>Let:</p>
 <ul>
-<li><strong>Generic LLMs (System 1):</strong> Fast, intuitive, and associative. They respond instantly based on high-probability patterns.</li>
-<li><strong>Thinking LLMs (System 2):</strong> Slow, deliberate, and logical. They use "Inference-Time Compute" to verify their own work before displaying it.</li>
+<li><span class="arithmatex">\(W \in \mathbb{R}^{d \times k}\)</span>: full-precision weight matrix</li>
+<li><span class="arithmatex">\(B_i \subset W\)</span>: the i-th block of size <span class="arithmatex">\(n_b\)</span></li>
+<li><span class="arithmatex">\(k\)</span>: number of bits used for quantization (e.g., 4 or 8)</li>
+</ul>
+<h4 id="step-1-compute-local-scale-and-zero-point">Step 1: Compute Local Scale and Zero-Point<a class="headerlink" href="#step-1-compute-local-scale-and-zero-point" title="Permanent link">&para;</a></h4>
+<p>For each block <span class="arithmatex">\(B_i\)</span>:</p>
+<div class="arithmatex">\[
+s_i = \frac{\max(B_i) - \min(B_i)}{2^k - 1}
+\]</div>
+<div class="arithmatex">\[
+z_i = \text{round}\left(-\frac{\min(B_i)}{s_i}\right)
+\]</div>
+<p>Where:</p>
+<ul>
+<li><span class="arithmatex">\(s_i\)</span>: scale factor for block <span class="arithmatex">\(i\)</span></li>
+<li><span class="arithmatex">\(z_i\)</span>: zero-point (offset)</li>
 </ul>
 <hr />
+<h4 id="step-2-quantization">Step 2: Quantization<a class="headerlink" href="#step-2-quantization" title="Permanent link">&para;</a></h4>
+<p>Quantized integer representation:</p>
+<div class="arithmatex">\[
+q_i = \text{clip}\left(\text{round}\left(\frac{B_i}{s_i}\right) + z_i, 0, 2^k - 1\right)
+\]</div>
+<h4 id="step-3-dequantization-reconstruction">Step 3: Dequantization (Reconstruction)<a class="headerlink" href="#step-3-dequantization-reconstruction" title="Permanent link">&para;</a></h4>
+<div class="arithmatex">\[
+\hat{B_i} = s_i \times (q_i - z_i)
+\]</div>
+<p>The final reconstructed weight matrix:</p>
+<div class="arithmatex">\[
+\hat{W} = \bigcup_i \hat{B_i}
+\]</div>
 <hr />
-<h2 id="2-technical-comparison-table">2. Technical Comparison Table<a class="headerlink" href="#2-technical-comparison-table" title="Permanent link">&para;</a></h2>
+</div>
+<h3 id="4-double-quantization">4. Double Quantization<a class="headerlink" href="#4-double-quantization" title="Permanent link">&para;</a></h3>
+<p><strong>Double quantization</strong> is a secondary compression layer designed to reduce the overhead of storing multiple block-wise scales. Instead of storing each block’s scaling factor <span class="arithmatex">\( s_j \)</span> as a 16-bit or 32-bit float, <strong>these scale values themselves are quantized</strong> into a lower precision representation (e.g., 8-bit or 4-bit).</p>
+<div class="admonition example">
+<p class="admonition-title">📘 Details</p>
+<h4 id="41-concept">4.1. Concept<a class="headerlink" href="#41-concept" title="Permanent link">&para;</a></h4>
+<p>If there are <span class="arithmatex">\(N\)</span> blocks, each with a scale <span class="arithmatex">\(s_j\)</span>:</p>
+<div class="arithmatex">\[
+\tilde{s_j} = \text{quantize}(s_j, s_{\text{meta}}, q_{\min}, q_{\max})
+\]</div>
+<p>Here, <span class="arithmatex">\(s_{\text{meta}}\)</span> is a higher-level scale shared across a group of block-scales.</p>
+<p>At dequantization:</p>
+<div class="arithmatex">\[
+s_j = s_{\text{meta}} \cdot \tilde{s_j}
+\]</div>
+<div class="arithmatex">\[
+\hat{x_i} = s_j \cdot q_i
+\]</div>
+<p>This approach can yield <strong>20–30% memory savings</strong>, especially when using small block sizes where the number of stored scales is large.</p>
+<h4 id="42-example">4.2. Example<a class="headerlink" href="#42-example" title="Permanent link">&para;</a></h4>
+<p>Consider a model layer with 10,000 blocks of weights.<br />
+Each block has one scale <span class="arithmatex">\( s_i \)</span>.</p>
 <table>
 <thead>
 <tr>
-<th style="text-align: left;">Feature</th>
-<th style="text-align: left;">Generic LLMs (GPT-4o, Llama 3)</th>
-<th style="text-align: left;">Thinking LLMs (o1, R1, Claude 3.7)</th>
+<th><strong>Parameter</strong></th>
+<th><strong>Value</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;"><strong>Primary Mechanism</strong></td>
-<td style="text-align: left;">Pattern Recognition</td>
-<td style="text-align: left;">Reinforcement Learning (RL) + Search</td>
+<td>Number of blocks</td>
+<td>10,000</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>Computation</strong></td>
-<td style="text-align: left;">Constant (Fixed cost per token)</td>
-<td style="text-align: left;">Variable (More time = More intelligence)</td>
+<td>Scale per block (FP16)</td>
+<td>2 bytes</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>Internal Process</strong></td>
-<td style="text-align: left;">Direct Output</td>
-<td style="text-align: left;">Hidden "Chain of Thought" (CoT)</td>
+<td>Memory (without double quantization)</td>
+<td>20 KB</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>Self-Correction</strong></td>
-<td style="text-align: left;">Rare (usually hallucinations)</td>
-<td style="text-align: left;">Native (backtracks on errors)</td>
+<td>Quantized scale (8-bit)</td>
+<td>1 byte</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>Best For</strong></td>
-<td style="text-align: left;">Chat, Summaries, Creative Writing</td>
-<td style="text-align: left;">Coding, Math, Strategic Planning</td>
+<td>Memory (with double quantization)</td>
+<td>10 KB</td>
 </tr>
 </tbody>
 </table>
-<hr />
-<hr />
-<h2 id="3-core-mechanism-test-time-compute-scaling">3. Core Mechanism: Test-Time Compute Scaling<a class="headerlink" href="#3-core-mechanism-test-time-compute-scaling" title="Permanent link">&para;</a></h2>
-<h3 id="31-inference-time-scaling-laws">3.1 Inference-Time Scaling Laws<a class="headerlink" href="#31-inference-time-scaling-laws" title="Permanent link">&para;</a></h3>
-<p>Reasoning performance scales with compute allocated at inference, not just with parameter count. This manifests as:</p>
+<p>So double quantization reduces metadata memory by <strong>50%</strong> with negligible degradation (typically &lt; 0.1% accuracy loss).</p>
+<h4 id="43-implementation-in-bitsandbytes">4.3. Implementation in Bitsandbytes<a class="headerlink" href="#43-implementation-in-bitsandbytes" title="Permanent link">&para;</a></h4>
+<p>In <strong>bitsandbytes 0.39+</strong>, both <strong>block-wise quantization</strong> and <strong>double quantization</strong> are implemented jointly:</p>
 <ul>
-<li>More internal tokens devoted to reasoning</li>
-<li>Sampling and evaluating multiple candidate solutions</li>
-<li>Backtracking and correction loops</li>
+<li>Each weight block is quantized in <strong>NF4 format</strong>.</li>
+<li>Each block’s <strong>scale value</strong> is quantized using <strong>8-bit quantization</strong>.</li>
+<li>The quantized scales are stored alongside the 4-bit codes.</li>
+<li>Dequantization happens transparently during forward passes.</li>
 </ul>
-<p>Empirically, reasoning benchmarks show near-log-linear gains with additional inference steps until saturation.</p>
-<p>3.2 Compute as a Control Knob</p>
-<p>Thinking models expose inference compute as a tunable parameter:</p>
+<p>This enables models like LLaMA-2 70B to be fine-tuned on <strong>single 48GB GPUs</strong>.</p>
+<hr />
+<h4 id="44-key-notes">4.4 Key Notes<a class="headerlink" href="#44-key-notes" title="Permanent link">&para;</a></h4>
 <ul>
-<li>Low compute approximates System 1 behavior</li>
-<li>High compute activates deeper reasoning loops</li>
-<li>This decouples model intelligence from latency constraints, enabling dynamic deployment strategies.</li>
+<li>Double quantization is orthogonal but <strong>complementary</strong> to block-wise quantization.  </li>
+<li>It primarily targets <strong>metadata compression</strong>, not model accuracy.  </li>
+<li>Used in <strong>QLoRA</strong> to compress per-block scales efficiently.</li>
 </ul>
-<hr />
-<hr />
-<h2 id="4-internal-reasoning-representations">4. Internal Reasoning Representations<a class="headerlink" href="#4-internal-reasoning-representations" title="Permanent link">&para;</a></h2>
-<h3 id="41-hidden-chain-of-thought">4.1 Hidden Chain-of-Thought<a class="headerlink" href="#41-hidden-chain-of-thought" title="Permanent link">&para;</a></h3>
-<p>Thinking LLMs generate intermediate reasoning traces that are:</p>
-<ul>
-<li>Hidden from the user</li>
-<li>Used for internal verification and search</li>
-<li>Discarded or summarized before final output</li>
-</ul>
-<p>This avoids leaking brittle or unsafe reasoning while retaining cognitive benefits.</p>
-<h3 id="42-search-over-reasoning-paths">4.2 Search Over Reasoning Paths<a class="headerlink" href="#42-search-over-reasoning-paths" title="Permanent link">&para;</a></h3>
-<p>Rather than committing to a single chain, System 2 models often:</p>
-<ul>
-<li>Generate multiple reasoning candidates</li>
-<li>Score them using reward models</li>
-<li>Select or refine the best trajectory</li>
-</ul>
-<p>This reframes inference as a planning problem rather than a single forward pass.</p>
-<hr />
-<hr />
-<h2 id="5-reinforcement-learning-for-reasoning">5. Reinforcement Learning for Reasoning<a class="headerlink" href="#5-reinforcement-learning-for-reasoning" title="Permanent link">&para;</a></h2>
-<h3 id="51-outcome-reward-models-vs-process-reward-models">5.1 Outcome Reward Models vs Process Reward Models<a class="headerlink" href="#51-outcome-reward-models-vs-process-reward-models" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
 <tr>
-<th style="text-align: left;">Reward Type</th>
-<th style="text-align: left;">What It Rewards</th>
-<th style="text-align: left;">Limitation</th>
+<th><strong>Aspect</strong></th>
+<th><strong>Effect</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;">Outcome Reward Model (ORM)</td>
-<td style="text-align: left;">Final answer correctness</td>
-<td style="text-align: left;">No signal for reasoning quality</td>
+<td><strong>Memory Efficiency</strong></td>
+<td>Up to 2× reduction in metadata storage</td>
 </tr>
 <tr>
-<td style="text-align: left;">Process Reward Model (PRM)</td>
-<td style="text-align: left;">Each intermediate reasoning step</td>
-<td style="text-align: left;">Higher training complexity</td>
+<td><strong>Accuracy Impact</strong></td>
+<td>Negligible (&lt; 0.1% degradation)</td>
+</tr>
+<tr>
+<td><strong>Computation Overhead</strong></td>
+<td>Minimal (scales dequantized once per block)</td>
+</tr>
+<tr>
+<td><strong>Compatibility</strong></td>
+<td>Fully supported in <code>bitsandbytes</code> &amp; <code>QLoRA</code> stack</td>
 </tr>
 </tbody>
 </table>
-<p>PRMs dramatically reduce multi-step hallucinations by aligning rewards with valid intermediate logic.</p>
-<h3 id="52-grpo-group-relative-policy-optimization">5.2 GRPO: Group Relative Policy Optimization<a class="headerlink" href="#52-grpo-group-relative-policy-optimization" title="Permanent link">&para;</a></h3>
-<p>Introduced prominently in DeepSeek-R1, GRPO:</p>
+<hr />
+</div>
+<h3 id="5-implementation-details-pseudo-code">5. Implementation Details (Pseudo-Code)<a class="headerlink" href="#5-implementation-details-pseudo-code" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">blockwise_quantize</span><span class="p">(</span><span class="n">weights</span><span class="p">,</span> <span class="n">block_size</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">num_bits</span><span class="o">=</span><span class="mi">4</span><span class="p">):</span>
+    <span class="n">q_blocks</span><span class="p">,</span> <span class="n">scales</span><span class="p">,</span> <span class="n">zeros</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[],</span> <span class="p">[]</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">weights</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">block_size</span><span class="p">):</span>
+        <span class="n">block</span> <span class="o">=</span> <span class="n">weights</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span><span class="o">+</span><span class="n">block_size</span><span class="p">]</span>
+        <span class="n">min_val</span><span class="p">,</span> <span class="n">max_val</span> <span class="o">=</span> <span class="n">block</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">block</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+        <span class="n">scale</span> <span class="o">=</span> <span class="p">(</span><span class="n">max_val</span> <span class="o">-</span> <span class="n">min_val</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">**</span> <span class="n">num_bits</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">zero_point</span> <span class="o">=</span> <span class="o">-</span><span class="n">min_val</span> <span class="o">/</span> <span class="n">scale</span>
+        <span class="n">q_block</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">block</span> <span class="o">/</span> <span class="n">scale</span> <span class="o">+</span> <span class="n">zero_point</span><span class="p">)</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span> <span class="o">**</span> <span class="n">num_bits</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">q_blocks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">q_block</span><span class="p">)</span>
+        <span class="n">scales</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">scale</span><span class="p">)</span>
+        <span class="n">zeros</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">zero_point</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">q_blocks</span><span class="p">,</span> <span class="n">scales</span><span class="p">,</span> <span class="n">zeros</span>
+</code></pre></div>
+<h3 id="6-example-4-bit-quantization">6. Example (4-bit Quantization)<a class="headerlink" href="#6-example-4-bit-quantization" title="Permanent link">&para;</a></h3>
+<div class="admonition example">
+<p class="admonition-title">📘 Working example</p>
+<p>Consider a block of weights:</p>
+<div class="arithmatex">\[
+B_i = [-0.9, -0.3, 0.2, 0.5, 1.0]
+\]</div>
+<p>For <span class="arithmatex">\(k = 4\)</span> bits:</p>
 <ul>
-<li>Samples multiple reasoning trajectories from the same model</li>
-<li>Ranks them relative to each other</li>
-<li>Reinforces the most efficient and correct paths</li>
+<li><span class="arithmatex">\(\min = -0.9, \max = 1.0\)</span></li>
+<li><span class="arithmatex">\(s_i = (1.0 - (-0.9)) / 15 = 0.1267\)</span></li>
+<li><span class="arithmatex">\(z_i = -(-0.9) / 0.1267 = 7.1 \approx 7\)</span></li>
 </ul>
-<p>This removes reliance on large teacher models and enables reasoning capability to emerge from self-comparison.</p>
+<p>Quantized values:</p>
+<div class="arithmatex">\[
+q_i = \text{round}(B_i / s_i + z_i) = [0, 5, 9, 11, 15]
+\]</div>
+<p>Dequantized:</p>
+<div class="arithmatex">\[
+\hat{B_i} = s_i \times (q_i - 7) = [-0.9, -0.26, 0.32, 0.51, 1.01]
+\]</div>
+<p>The reconstruction closely approximates the original block.</p>
 <hr />
-<hr />
-<h2 id="6-distillation-of-reasoning">6. Distillation of Reasoning<a class="headerlink" href="#6-distillation-of-reasoning" title="Permanent link">&para;</a></h2>
-<p>Reasoning capabilities are <strong>distillable</strong>, even when learned via reinforcement learning.</p>
-<h3 id="distillation-pipeline">Distillation Pipeline<a class="headerlink" href="#distillation-pipeline" title="Permanent link">&para;</a></h3>
-<ol>
-<li>Run a large System 2 model with high inference compute</li>
-<li>Collect validated reasoning traces</li>
-<li>Use them as supervised fine-tuning data for smaller models</li>
-</ol>
-<p>This has enabled 7B–14B models to exhibit structured reasoning previously limited to frontier-scale systems.</p>
-<hr />
-<hr />
-<h2 id="7-failure-modes-and-trade-offs">7. Failure Modes and Trade-offs<a class="headerlink" href="#7-failure-modes-and-trade-offs" title="Permanent link">&para;</a></h2>
-<h3 id="71-reward-hacking">7.1 Reward Hacking<a class="headerlink" href="#71-reward-hacking" title="Permanent link">&para;</a></h3>
-<p>Models may learn that:
-- Longer reasoning chains yield higher rewards
-- Redundancy masquerades as correctness</p>
-<p>Mitigations include length penalties, diversity rewards, and consistency checks.</p>
-<h3 id="72-overthinking">7.2 Overthinking<a class="headerlink" href="#72-overthinking" title="Permanent link">&para;</a></h3>
-<ul>
-<li>Excessive inference compute yields diminishing returns</li>
-<li>Latency increases without accuracy gains</li>
-</ul>
-<p>Adaptive early stopping is commonly used to terminate reasoning once confidence thresholds are met.</p>
-<hr />
-<hr />
-<h2 id="8-evaluation-and-benchmarks">8. Evaluation and Benchmarks<a class="headerlink" href="#8-evaluation-and-benchmarks" title="Permanent link">&para;</a></h2>
-<p>Reasoning models require benchmarks that stress multi-step cognition.</p>
+</div>
+<h3 id="7-advantages">7. Advantages<a class="headerlink" href="#7-advantages" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
 <tr>
-<th style="text-align: left;">Benchmark</th>
-<th style="text-align: left;">Capability Tested</th>
+<th><strong>Aspect</strong></th>
+<th><strong>Benefit</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;">AIME</td>
-<td style="text-align: left;">Olympiad-level mathematics</td>
+<td>Local scaling</td>
+<td>Reduces sensitivity to outliers</td>
 </tr>
 <tr>
-<td style="text-align: left;">GPQA</td>
-<td style="text-align: left;">Graduate-level scientific reasoning</td>
+<td>Memory</td>
+<td>Lower storage cost (e.g., 4-bit = 8× compression)</td>
 </tr>
 <tr>
-<td style="text-align: left;">HumanEval</td>
-<td style="text-align: left;">Algorithmic and coding logic</td>
+<td>Compute</td>
+<td>Enables efficient GPU matrix-multiplication with custom kernels</td>
 </tr>
 <tr>
-<td style="text-align: left;">Codeforces</td>
-<td style="text-align: left;">Long-horizon program synthesis</td>
+<td>Accuracy</td>
+<td>Closer performance to full precision</td>
 </tr>
 </tbody>
 </table>
-<p>Evaluation must consider <strong>accuracy versus compute trade-offs</strong>, not accuracy alone.</p>
 <hr />
-<hr />
-<h2 id="9-deployment-decision-framework">9. Deployment Decision Framework<a class="headerlink" href="#9-deployment-decision-framework" title="Permanent link">&para;</a></h2>
-<p>Choosing between System 1 and System 2 depends on:
-- Latency tolerance
-- Cost constraints
-- Error sensitivity</p>
-<p><strong>System 1</strong> models are preferred for high-throughput, low-risk tasks.</p>
-<p><strong>System 2</strong> models are preferred when correctness dominates, such as legal analysis, scientific reasoning, and complex debugging.</p>
-<p>Hybrid systems increasingly route queries dynamically based on estimated difficulty.</p>
-<hr />
-<hr />
-<h2 id="10-notable-models-of-20252026">10. Notable Models of 2025–2026<a class="headerlink" href="#10-notable-models-of-20252026" title="Permanent link">&para;</a></h2>
+<h3 id="8-hardware-implementation">8. Hardware Implementation<a class="headerlink" href="#8-hardware-implementation" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>OpenAI o1 &amp; o3:</strong> The first to commercialize "Reasoning Tokens." o3 is currently the gold standard for competitive programming (Codeforces) and high-level mathematics.</li>
-<li><strong>DeepSeek-R1:</strong> A massive breakthrough for open-source AI. It proved that RL can "distill" reasoning capabilities into smaller models (like 7B or 14B parameters).</li>
-<li><strong>Claude 3.7 Sonnet:</strong> Introduced "Hybrid Reasoning," allowing the user to toggle "Extended Thinking." This solves the latency issue by letting users choose when they need the model to "think."</li>
-<li><strong>Gemini 2.5 Pro (Reasoning):</strong> Uses Google’s massive context window to reason across hours of video or thousands of lines of code simultaneously.</li>
+<li>Most modern inference frameworks (e.g., <strong>bitsandbytes</strong>, <strong>TensorRT</strong>) store the <strong>scale and zero-point per block</strong>.</li>
+<li>For 4-bit quantization, typical block sizes: <strong>32, 64, or 128</strong>.</li>
+<li>Scales are stored in FP16 to balance precision and storage.</li>
 </ul>
 <hr />
+<h3 id="9-visualization">9. Visualization<a class="headerlink" href="#9-visualization" title="Permanent link">&para;</a></h3>
+<p>A conceptual diagram of block-wise quantization:</p>
+<div class="highlight"><pre><span></span><code>┌────────────────────────────┐
+│         Weight Matrix      │
+│  [w₁, w₂, …, wₙ]          │
+└────────────────────────────┘
+          ↓ Split into Blocks
+┌──────────────┬──────────────┐
+│ Block 1      │ Block 2      │ ...
+└──────────────┴──────────────┘
+     ↓                 ↓
+Compute s₁,z₁      Compute s₂,z₂
+     ↓                 ↓
+Quantize each block separately
+     ↓                 ↓
+Store q₁,s₁,z₁,...,qₙ,sₙ,zₙ
+</code></pre></div>
+<p>Each block retains its <strong>own quantization scale and offset</strong>, enabling more accurate low-bit representation.</p>
 <hr />
-<h2 id="11-relationship-to-training-phases">11. Relationship to Training Phases<a class="headerlink" href="#11-relationship-to-training-phases" title="Permanent link">&para;</a></h2>
-<p>Thinking behavior emerges from the interaction of all training stages:</p>
+<h3 id="10-relationship-to-qlora">10. Relationship to QLoRA<a class="headerlink" href="#10-relationship-to-qlora" title="Permanent link">&para;</a></h3>
+<p>QLoRA uses <strong>4-bit NormalFloat (NF4)</strong> quantization with <strong>block-wise statistics</strong>:</p>
 <ul>
-<li>Pre-training provides linguistic and world knowledge</li>
-<li>Mid-training injects structured reasoning and long-context priors</li>
-<li>RL-based post-training activates inference-time computation strategies</li>
+<li>Each block (typically 64 elements) uses local mean and std for normalization.</li>
+<li>NF4 values are quantized into [-1, 1] with learned scales.</li>
+<li>This approach allows fine-tuning large LLMs on a <strong>single GPU</strong> without significant accuracy loss.</li>
 </ul>
-<p>System 2 capability is therefore <strong>not purely a post-training artifact</strong>.</p>
-<hr />
-<hr />
-<h2 id="12-technical-qa">12. Technical Q&amp;A<a class="headerlink" href="#12-technical-qa" title="Permanent link">&para;</a></h2>
-<p><strong>Q: What is "Reward Hacking" in reasoning models?</strong></p>
-<p><strong>A:</strong> It’s a failure mode where a model learns that writing <em>longer</em> reasoning chains results in higher rewards from the PRM, even if the logic is circular or redundant. Engineers combat this by penalizing length or using more diverse reward signals.</p>
-<hr />
-<p><strong>Q: How do you decide when to deploy a Thinking LLM vs. a Generic LLM?</strong></p>
-<p><strong>A:</strong> It's a trade-off between <strong>Latency, Cost, and Accuracy</strong>. 
-* Use <strong>Generic</strong> for high-throughput, low-latency tasks (customer service bots, simple translations).
-* Use <strong>Thinking</strong> for high-stakes accuracy (legal analysis, complex debugging, scientific research).</p>
-<hr />
-<p><strong>Q: Can you distill reasoning?</strong></p>
-<p><strong>A:</strong> Yes. You can take the "Thinking Traces" from a large model (like o1) and use them as fine-tuning data for a smaller model (like Llama 8B). This teaches the smaller model to "mimic" the logical structure of the larger one.</p>
-<hr />
 <hr />
 
 

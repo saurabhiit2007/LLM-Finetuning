@@ -13,10 +13,10 @@
       
       
       
-        <link rel="prev" href="../foundation/">
+        <link rel="prev" href="../distributed_training_systems/">
       
       
-        <link rel="next" href="../../references/">
+        <link rel="next" href="../../parameter_efficient_fine_tuning/lora/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -24,7 +24,7 @@
     
     
       
-        <title>LLM Reasoning & Thinking Models - Fine-Tuning Methods Documentation</title>
+        <title>FSDP & DeepSpeed - Fine-Tuning Methods Documentation</title>
       
     
     
@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#1-overview-the-system-1-vs-system-2-shift" class="md-skip">
+        <a href="#1-executive-summary" class="md-skip">
           Skip to content
         </a>
       
@@ -112,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              LLM Reasoning & Thinking Models
+              FSDP & DeepSpeed
             
           </span>
         </div>
@@ -390,20 +390,20 @@
       
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
@@ -419,7 +419,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             Distributed Training
@@ -433,7 +433,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../distributed_training/distributed_training_systems/" class="md-nav__link">
+      <a href="../distributed_training_systems/" class="md-nav__link">
         
   
   
@@ -453,10 +453,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../distributed_training/fsdp_deepspeed/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    FSDP & DeepSpeed
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -467,6 +487,165 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-executive-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Executive Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-core-concept-the-zero-algorithm" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Core Concept: The ZeRO Algorithm
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Core Concept: The ZeRO Algorithm">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#zero-stages-breakdown" class="md-nav__link">
+    <span class="md-ellipsis">
+      ZeRO Stages Breakdown
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-deepspeed-specifics" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. DeepSpeed Specifics
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. DeepSpeed Specifics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#key-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Features
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optimizer-and-precision-support" class="md-nav__link">
+    <span class="md-ellipsis">
+      Optimizer and Precision Support
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-pytorch-fsdp-specifics" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. PyTorch FSDP Specifics
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. PyTorch FSDP Specifics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#key-features_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Features
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-comparative-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Comparative Analysis
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-system-design-scenarios" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. System Design Scenarios
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. System Design Scenarios">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#scenario-a-the-memory-calculation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scenario A: The Memory Calculation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scenario-b-debugging-oom-out-of-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scenario B: Debugging OOM (Out of Memory)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-recent-trends-2025-2026" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Recent Trends (2025-2026)
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -853,20 +1032,20 @@
       
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
         
           
           <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
@@ -882,7 +1061,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             Training Pipeline
@@ -896,7 +1075,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../foundation/" class="md-nav__link">
+      <a href="../../training_techniques/foundation/" class="md-nav__link">
         
   
   
@@ -916,30 +1095,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    LLM Reasoning & Thinking Models
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../training_techniques/thinking_llms/" class="md-nav__link">
         
   
   
@@ -950,234 +1109,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#1-overview-the-system-1-vs-system-2-shift" class="md-nav__link">
-    <span class="md-ellipsis">
-      1. Overview: The System 1 vs. System 2 Shift
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2-technical-comparison-table" class="md-nav__link">
-    <span class="md-ellipsis">
-      2. Technical Comparison Table
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3-core-mechanism-test-time-compute-scaling" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. Core Mechanism: Test-Time Compute Scaling
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="3. Core Mechanism: Test-Time Compute Scaling">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#31-inference-time-scaling-laws" class="md-nav__link">
-    <span class="md-ellipsis">
-      3.1 Inference-Time Scaling Laws
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4-internal-reasoning-representations" class="md-nav__link">
-    <span class="md-ellipsis">
-      4. Internal Reasoning Representations
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="4. Internal Reasoning Representations">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#41-hidden-chain-of-thought" class="md-nav__link">
-    <span class="md-ellipsis">
-      4.1 Hidden Chain-of-Thought
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#42-search-over-reasoning-paths" class="md-nav__link">
-    <span class="md-ellipsis">
-      4.2 Search Over Reasoning Paths
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#5-reinforcement-learning-for-reasoning" class="md-nav__link">
-    <span class="md-ellipsis">
-      5. Reinforcement Learning for Reasoning
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="5. Reinforcement Learning for Reasoning">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#51-outcome-reward-models-vs-process-reward-models" class="md-nav__link">
-    <span class="md-ellipsis">
-      5.1 Outcome Reward Models vs Process Reward Models
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#52-grpo-group-relative-policy-optimization" class="md-nav__link">
-    <span class="md-ellipsis">
-      5.2 GRPO: Group Relative Policy Optimization
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#6-distillation-of-reasoning" class="md-nav__link">
-    <span class="md-ellipsis">
-      6. Distillation of Reasoning
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="6. Distillation of Reasoning">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#distillation-pipeline" class="md-nav__link">
-    <span class="md-ellipsis">
-      Distillation Pipeline
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#7-failure-modes-and-trade-offs" class="md-nav__link">
-    <span class="md-ellipsis">
-      7. Failure Modes and Trade-offs
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="7. Failure Modes and Trade-offs">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#71-reward-hacking" class="md-nav__link">
-    <span class="md-ellipsis">
-      7.1 Reward Hacking
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#72-overthinking" class="md-nav__link">
-    <span class="md-ellipsis">
-      7.2 Overthinking
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#8-evaluation-and-benchmarks" class="md-nav__link">
-    <span class="md-ellipsis">
-      8. Evaluation and Benchmarks
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#9-deployment-decision-framework" class="md-nav__link">
-    <span class="md-ellipsis">
-      9. Deployment Decision Framework
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#10-notable-models-of-20252026" class="md-nav__link">
-    <span class="md-ellipsis">
-      10. Notable Models of 2025–2026
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#11-relationship-to-training-phases" class="md-nav__link">
-    <span class="md-ellipsis">
-      11. Relationship to Training Phases
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#12-technical-qa" class="md-nav__link">
-    <span class="md-ellipsis">
-      12. Technical Q&amp;A
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1237,37 +1168,28 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-overview-the-system-1-vs-system-2-shift" class="md-nav__link">
+  <a href="#1-executive-summary" class="md-nav__link">
     <span class="md-ellipsis">
-      1. Overview: The System 1 vs. System 2 Shift
+      1. Executive Summary
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-technical-comparison-table" class="md-nav__link">
+  <a href="#2-core-concept-the-zero-algorithm" class="md-nav__link">
     <span class="md-ellipsis">
-      2. Technical Comparison Table
+      2. Core Concept: The ZeRO Algorithm
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3-core-mechanism-test-time-compute-scaling" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. Core Mechanism: Test-Time Compute Scaling
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="3. Core Mechanism: Test-Time Compute Scaling">
+    <nav class="md-nav" aria-label="2. Core Concept: The ZeRO Algorithm">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#31-inference-time-scaling-laws" class="md-nav__link">
+  <a href="#zero-stages-breakdown" class="md-nav__link">
     <span class="md-ellipsis">
-      3.1 Inference-Time Scaling Laws
+      ZeRO Stages Breakdown
     </span>
   </a>
   
@@ -1279,28 +1201,28 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-internal-reasoning-representations" class="md-nav__link">
+  <a href="#3-deepspeed-specifics" class="md-nav__link">
     <span class="md-ellipsis">
-      4. Internal Reasoning Representations
+      3. DeepSpeed Specifics
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="4. Internal Reasoning Representations">
+    <nav class="md-nav" aria-label="3. DeepSpeed Specifics">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#41-hidden-chain-of-thought" class="md-nav__link">
+  <a href="#key-features" class="md-nav__link">
     <span class="md-ellipsis">
-      4.1 Hidden Chain-of-Thought
+      Key Features
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#42-search-over-reasoning-paths" class="md-nav__link">
+  <a href="#optimizer-and-precision-support" class="md-nav__link">
     <span class="md-ellipsis">
-      4.2 Search Over Reasoning Paths
+      Optimizer and Precision Support
     </span>
   </a>
   
@@ -1312,28 +1234,19 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#5-reinforcement-learning-for-reasoning" class="md-nav__link">
+  <a href="#4-pytorch-fsdp-specifics" class="md-nav__link">
     <span class="md-ellipsis">
-      5. Reinforcement Learning for Reasoning
+      4. PyTorch FSDP Specifics
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="5. Reinforcement Learning for Reasoning">
+    <nav class="md-nav" aria-label="4. PyTorch FSDP Specifics">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#51-outcome-reward-models-vs-process-reward-models" class="md-nav__link">
+  <a href="#key-features_1" class="md-nav__link">
     <span class="md-ellipsis">
-      5.1 Outcome Reward Models vs Process Reward Models
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#52-grpo-group-relative-policy-optimization" class="md-nav__link">
-    <span class="md-ellipsis">
-      5.2 GRPO: Group Relative Policy Optimization
+      Key Features
     </span>
   </a>
   
@@ -1345,19 +1258,37 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#6-distillation-of-reasoning" class="md-nav__link">
+  <a href="#5-comparative-analysis" class="md-nav__link">
     <span class="md-ellipsis">
-      6. Distillation of Reasoning
+      5. Comparative Analysis
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="6. Distillation of Reasoning">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-system-design-scenarios" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. System Design Scenarios
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. System Design Scenarios">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#distillation-pipeline" class="md-nav__link">
+  <a href="#scenario-a-the-memory-calculation" class="md-nav__link">
     <span class="md-ellipsis">
-      Distillation Pipeline
+      Scenario A: The Memory Calculation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scenario-b-debugging-oom-out-of-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scenario B: Debugging OOM (Out of Memory)
     </span>
   </a>
   
@@ -1369,78 +1300,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#7-failure-modes-and-trade-offs" class="md-nav__link">
+  <a href="#7-recent-trends-2025-2026" class="md-nav__link">
     <span class="md-ellipsis">
-      7. Failure Modes and Trade-offs
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="7. Failure Modes and Trade-offs">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#71-reward-hacking" class="md-nav__link">
-    <span class="md-ellipsis">
-      7.1 Reward Hacking
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#72-overthinking" class="md-nav__link">
-    <span class="md-ellipsis">
-      7.2 Overthinking
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#8-evaluation-and-benchmarks" class="md-nav__link">
-    <span class="md-ellipsis">
-      8. Evaluation and Benchmarks
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#9-deployment-decision-framework" class="md-nav__link">
-    <span class="md-ellipsis">
-      9. Deployment Decision Framework
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#10-notable-models-of-20252026" class="md-nav__link">
-    <span class="md-ellipsis">
-      10. Notable Models of 2025–2026
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#11-relationship-to-training-phases" class="md-nav__link">
-    <span class="md-ellipsis">
-      11. Relationship to Training Phases
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#12-technical-qa" class="md-nav__link">
-    <span class="md-ellipsis">
-      12. Technical Q&amp;A
+      7. Recent Trends (2025-2026)
     </span>
   </a>
   
@@ -1465,224 +1327,149 @@
   
 
 
-  <h1>LLM Reasoning & Thinking Models</h1>
+  <h1>FSDP & DeepSpeed</h1>
 
-<h2 id="1-overview-the-system-1-vs-system-2-shift">1. Overview: The System 1 vs. System 2 Shift<a class="headerlink" href="#1-overview-the-system-1-vs-system-2-shift" title="Permanent link">&para;</a></h2>
-<p>In 2026, the AI landscape is defined by the transition from "Next-Token Predictors" to "Reasoning Agents." This is often explained using Daniel Kahneman's framework:</p>
+<h2 id="1-executive-summary">1. Executive Summary<a class="headerlink" href="#1-executive-summary" title="Permanent link">&para;</a></h2>
+<p>In the era of Large Language Models (LLMs), the primary bottleneck is fitting billions of parameters into GPU VRAM. Both <strong>DeepSpeed</strong> and <strong>FSDP (Fully Sharded Data Parallel)</strong> address this by moving from standard Data Parallelism (where every GPU has a full copy) to <strong>Sharded Data Parallelism</strong>.</p>
 <ul>
-<li><strong>Generic LLMs (System 1):</strong> Fast, intuitive, and associative. They respond instantly based on high-probability patterns.</li>
-<li><strong>Thinking LLMs (System 2):</strong> Slow, deliberate, and logical. They use "Inference-Time Compute" to verify their own work before displaying it.</li>
+<li><strong>DeepSpeed:</strong> A Microsoft library implementing the <strong>ZeRO</strong> (Zero Redundancy Optimizer) algorithm. It is highly flexible and specialized for extreme scale and offloading.</li>
+<li><strong>FSDP:</strong> PyTorch's native implementation of sharding. It is optimized for the PyTorch ecosystem, offering better integration with features like <code>torch.compile</code>.</li>
 </ul>
 <hr />
 <hr />
-<h2 id="2-technical-comparison-table">2. Technical Comparison Table<a class="headerlink" href="#2-technical-comparison-table" title="Permanent link">&para;</a></h2>
+<h2 id="2-core-concept-the-zero-algorithm">2. Core Concept: The ZeRO Algorithm<a class="headerlink" href="#2-core-concept-the-zero-algorithm" title="Permanent link">&para;</a></h2>
+<p>To understand both frameworks, we must understand the three stages of memory consumption (Model States):</p>
+<ol>
+<li><strong>Optimizer States</strong> (e.g., Adam momentum/variance)</li>
+<li><strong>Gradients</strong></li>
+<li><strong>Parameters</strong> (Weights)</li>
+</ol>
+<h3 id="zero-stages-breakdown">ZeRO Stages Breakdown<a class="headerlink" href="#zero-stages-breakdown" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Stage</th>
+<th style="text-align: left;">Description</th>
+<th style="text-align: left;">Memory Impact</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Stage 1</strong></td>
+<td style="text-align: left;">Shards only Optimizer States.</td>
+<td style="text-align: left;">Reduces memory by ~4x.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Stage 2</strong></td>
+<td style="text-align: left;">Shards Optimizer States + Gradients.</td>
+<td style="text-align: left;">Reduces memory by ~8x.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Stage 3</strong></td>
+<td style="text-align: left;">Shards Optimizer + Gradients + Parameters.</td>
+<td style="text-align: left;">Memory scales linearly with the number of GPUs.</td>
+</tr>
+</tbody>
+</table>
+<p>ZeRO-3 and FSDP both aim to minimize peak memory by materializing parameters only when needed.</p>
+<hr />
+<hr />
+<h2 id="3-deepspeed-specifics">3. DeepSpeed Specifics<a class="headerlink" href="#3-deepspeed-specifics" title="Permanent link">&para;</a></h2>
+<p>DeepSpeed is the "power user" choice for massive models.</p>
+<h3 id="key-features">Key Features<a class="headerlink" href="#key-features" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p><strong>ZeRO-Offload:</strong> Moves optimizer states and gradients to <strong>CPU RAM</strong>. This allows training a 13B model on a single consumer GPU.</p>
+</li>
+<li>
+<p><strong>ZeRO-Infinity:</strong> Extends offloading to <strong>NVMe SSDs</strong>, theoretically supporting trillion-parameter models.</p>
+</li>
+<li>
+<p><strong>Communication Overlap:</strong> Highly optimized C++ kernels that overlap data transfer with computation to hide latency.</p>
+</li>
+</ul>
+<h3 id="optimizer-and-precision-support">Optimizer and Precision Support<a class="headerlink" href="#optimizer-and-precision-support" title="Permanent link">&para;</a></h3>
+<ul>
+<li>FP32 master weights with FP16 or BF16 compute.</li>
+<li>Native support for 8-bit optimizers.</li>
+<li>Aggressive memory savings at the cost of increased system complexity.</li>
+</ul>
+<hr />
+<hr />
+<h2 id="4-pytorch-fsdp-specifics">4. PyTorch FSDP Specifics<a class="headerlink" href="#4-pytorch-fsdp-specifics" title="Permanent link">&para;</a></h2>
+<p>FSDP is the native, more "modern" approach for PyTorch users.</p>
+<h3 id="key-features_1">Key Features<a class="headerlink" href="#key-features_1" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p><strong>Hybrid Sharding (HSDP):</strong> Shards parameters within a node (fast NVLink) but replicates them across nodes. This is crucial for avoiding network bottlenecks in large clusters.</p>
+</li>
+<li>
+<p><strong>FSDP2 (Recent):</strong> Built on <strong>DTensors</strong>. Unlike the original FSDP, it doesn't "flatten" parameters into a 1D buffer. This makes it compatible with <strong>torch.compile</strong> for faster execution.</p>
+</li>
+<li>
+<p><strong>Transformer Wrapping:</strong> Allows "wrapping" specific layers so they are sharded/unsharded independently, keeping the peak memory low.</p>
+</li>
+</ul>
+<hr />
+<hr />
+<h2 id="5-comparative-analysis">5. Comparative Analysis<a class="headerlink" href="#5-comparative-analysis" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
 <th style="text-align: left;">Feature</th>
-<th style="text-align: left;">Generic LLMs (GPT-4o, Llama 3)</th>
-<th style="text-align: left;">Thinking LLMs (o1, R1, Claude 3.7)</th>
+<th style="text-align: left;">DeepSpeed</th>
+<th style="text-align: left;">FSDP</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;"><strong>Primary Mechanism</strong></td>
-<td style="text-align: left;">Pattern Recognition</td>
-<td style="text-align: left;">Reinforcement Learning (RL) + Search</td>
+<td style="text-align: left;"><strong>Ecosystem</strong></td>
+<td style="text-align: left;">Third-party (Microsoft)</td>
+<td style="text-align: left;">Native (PyTorch)</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>Computation</strong></td>
-<td style="text-align: left;">Constant (Fixed cost per token)</td>
-<td style="text-align: left;">Variable (More time = More intelligence)</td>
+<td style="text-align: left;"><strong>Ease of Use</strong></td>
+<td style="text-align: left;">JSON configuration files</td>
+<td style="text-align: left;">Pythonic API / Wrappers</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>Internal Process</strong></td>
-<td style="text-align: left;">Direct Output</td>
-<td style="text-align: left;">Hidden "Chain of Thought" (CoT)</td>
+<td style="text-align: left;"><strong>Offloading</strong></td>
+<td style="text-align: left;">Advanced (CPU/NVMe)</td>
+<td style="text-align: left;">Basic (CPU only)</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>Self-Correction</strong></td>
-<td style="text-align: left;">Rare (usually hallucinations)</td>
-<td style="text-align: left;">Native (backtracks on errors)</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Best For</strong></td>
-<td style="text-align: left;">Chat, Summaries, Creative Writing</td>
-<td style="text-align: left;">Coding, Math, Strategic Planning</td>
+<td style="text-align: left;"><strong>Throughput</strong></td>
+<td style="text-align: left;">Best for 100B+ models</td>
+<td style="text-align: left;">Best for &lt;20B models &amp; <code>torch.compile</code></td>
 </tr>
 </tbody>
 </table>
 <hr />
 <hr />
-<h2 id="3-core-mechanism-test-time-compute-scaling">3. Core Mechanism: Test-Time Compute Scaling<a class="headerlink" href="#3-core-mechanism-test-time-compute-scaling" title="Permanent link">&para;</a></h2>
-<h3 id="31-inference-time-scaling-laws">3.1 Inference-Time Scaling Laws<a class="headerlink" href="#31-inference-time-scaling-laws" title="Permanent link">&para;</a></h3>
-<p>Reasoning performance scales with compute allocated at inference, not just with parameter count. This manifests as:</p>
+<h2 id="6-system-design-scenarios">6. System Design Scenarios<a class="headerlink" href="#6-system-design-scenarios" title="Permanent link">&para;</a></h2>
+<h3 id="scenario-a-the-memory-calculation">Scenario A: The Memory Calculation<a class="headerlink" href="#scenario-a-the-memory-calculation" title="Permanent link">&para;</a></h3>
+<p><strong>Q:</strong> "How much memory do we need to train a 7B parameter model in FP16?"</p>
+<p><strong>A:</strong> * <strong>Parameters:</strong> 7B * 2 bytes = <strong>14 GB</strong></p>
 <ul>
-<li>More internal tokens devoted to reasoning</li>
-<li>Sampling and evaluating multiple candidate solutions</li>
-<li>Backtracking and correction loops</li>
+<li><strong>Gradients:</strong> 7B * 2 bytes = <strong>14 GB</strong></li>
+<li><strong>Optimizer (Adam):</strong> 7B * 12 bytes = <strong>84 GB</strong></li>
+<li><strong>Total Model State:</strong> ~112 GB. </li>
+<li><strong>Conclusion:</strong> This won't fit on an 80GB A100. Mention that <strong>ZeRO-2/FSDP</strong> is required to shard the 84GB of optimizer states across multiple GPUs.</li>
 </ul>
-<p>Empirically, reasoning benchmarks show near-log-linear gains with additional inference steps until saturation.</p>
-<p>3.2 Compute as a Control Knob</p>
-<p>Thinking models expose inference compute as a tunable parameter:</p>
-<ul>
-<li>Low compute approximates System 1 behavior</li>
-<li>High compute activates deeper reasoning loops</li>
-<li>This decouples model intelligence from latency constraints, enabling dynamic deployment strategies.</li>
-</ul>
-<hr />
-<hr />
-<h2 id="4-internal-reasoning-representations">4. Internal Reasoning Representations<a class="headerlink" href="#4-internal-reasoning-representations" title="Permanent link">&para;</a></h2>
-<h3 id="41-hidden-chain-of-thought">4.1 Hidden Chain-of-Thought<a class="headerlink" href="#41-hidden-chain-of-thought" title="Permanent link">&para;</a></h3>
-<p>Thinking LLMs generate intermediate reasoning traces that are:</p>
-<ul>
-<li>Hidden from the user</li>
-<li>Used for internal verification and search</li>
-<li>Discarded or summarized before final output</li>
-</ul>
-<p>This avoids leaking brittle or unsafe reasoning while retaining cognitive benefits.</p>
-<h3 id="42-search-over-reasoning-paths">4.2 Search Over Reasoning Paths<a class="headerlink" href="#42-search-over-reasoning-paths" title="Permanent link">&para;</a></h3>
-<p>Rather than committing to a single chain, System 2 models often:</p>
-<ul>
-<li>Generate multiple reasoning candidates</li>
-<li>Score them using reward models</li>
-<li>Select or refine the best trajectory</li>
-</ul>
-<p>This reframes inference as a planning problem rather than a single forward pass.</p>
-<hr />
-<hr />
-<h2 id="5-reinforcement-learning-for-reasoning">5. Reinforcement Learning for Reasoning<a class="headerlink" href="#5-reinforcement-learning-for-reasoning" title="Permanent link">&para;</a></h2>
-<h3 id="51-outcome-reward-models-vs-process-reward-models">5.1 Outcome Reward Models vs Process Reward Models<a class="headerlink" href="#51-outcome-reward-models-vs-process-reward-models" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th style="text-align: left;">Reward Type</th>
-<th style="text-align: left;">What It Rewards</th>
-<th style="text-align: left;">Limitation</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;">Outcome Reward Model (ORM)</td>
-<td style="text-align: left;">Final answer correctness</td>
-<td style="text-align: left;">No signal for reasoning quality</td>
-</tr>
-<tr>
-<td style="text-align: left;">Process Reward Model (PRM)</td>
-<td style="text-align: left;">Each intermediate reasoning step</td>
-<td style="text-align: left;">Higher training complexity</td>
-</tr>
-</tbody>
-</table>
-<p>PRMs dramatically reduce multi-step hallucinations by aligning rewards with valid intermediate logic.</p>
-<h3 id="52-grpo-group-relative-policy-optimization">5.2 GRPO: Group Relative Policy Optimization<a class="headerlink" href="#52-grpo-group-relative-policy-optimization" title="Permanent link">&para;</a></h3>
-<p>Introduced prominently in DeepSeek-R1, GRPO:</p>
-<ul>
-<li>Samples multiple reasoning trajectories from the same model</li>
-<li>Ranks them relative to each other</li>
-<li>Reinforces the most efficient and correct paths</li>
-</ul>
-<p>This removes reliance on large teacher models and enables reasoning capability to emerge from self-comparison.</p>
-<hr />
-<hr />
-<h2 id="6-distillation-of-reasoning">6. Distillation of Reasoning<a class="headerlink" href="#6-distillation-of-reasoning" title="Permanent link">&para;</a></h2>
-<p>Reasoning capabilities are <strong>distillable</strong>, even when learned via reinforcement learning.</p>
-<h3 id="distillation-pipeline">Distillation Pipeline<a class="headerlink" href="#distillation-pipeline" title="Permanent link">&para;</a></h3>
+<h3 id="scenario-b-debugging-oom-out-of-memory">Scenario B: Debugging OOM (Out of Memory)<a class="headerlink" href="#scenario-b-debugging-oom-out-of-memory" title="Permanent link">&para;</a></h3>
+<p><strong>Q:</strong> "You are using FSDP but still hitting OOM. What do you check?"</p>
+<p><strong>A:</strong></p>
 <ol>
-<li>Run a large System 2 model with high inference compute</li>
-<li>Collect validated reasoning traces</li>
-<li>Use them as supervised fine-tuning data for smaller models</li>
+<li><strong>Activation Memory:</strong> Sharding only handles model states. Large batch sizes or long sequences create massive activations. Use <strong>Activation Checkpointing</strong>.</li>
+<li><strong>Wrapping Policy:</strong> If the model isn't wrapped in sub-units, FSDP treats the whole model as one shard, effectively un-sharding everything at once.</li>
+<li><strong>Fragmentation:</strong> Check if the PyTorch memory allocator is fragmented (use <code>torch.cuda.memory_summary()</code>).</li>
 </ol>
-<p>This has enabled 7B–14B models to exhibit structured reasoning previously limited to frontier-scale systems.</p>
 <hr />
-<hr />
-<h2 id="7-failure-modes-and-trade-offs">7. Failure Modes and Trade-offs<a class="headerlink" href="#7-failure-modes-and-trade-offs" title="Permanent link">&para;</a></h2>
-<h3 id="71-reward-hacking">7.1 Reward Hacking<a class="headerlink" href="#71-reward-hacking" title="Permanent link">&para;</a></h3>
-<p>Models may learn that:
-- Longer reasoning chains yield higher rewards
-- Redundancy masquerades as correctness</p>
-<p>Mitigations include length penalties, diversity rewards, and consistency checks.</p>
-<h3 id="72-overthinking">7.2 Overthinking<a class="headerlink" href="#72-overthinking" title="Permanent link">&para;</a></h3>
+<h2 id="7-recent-trends-2025-2026">7. Recent Trends (2025-2026)<a class="headerlink" href="#7-recent-trends-2025-2026" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Excessive inference compute yields diminishing returns</li>
-<li>Latency increases without accuracy gains</li>
+<li><strong>Communication Compression:</strong> New methods to compress the gradients being moved during the Reduce-Scatter phase.</li>
+<li><strong>Unified Strategies:</strong> Tools like <strong>Hugging Face Accelerate</strong> now allow switching between DeepSpeed and FSDP with a single flag, making the choice more about performance tuning than code rewriting.</li>
 </ul>
-<p>Adaptive early stopping is commonly used to terminate reasoning once confidence thresholds are met.</p>
-<hr />
-<hr />
-<h2 id="8-evaluation-and-benchmarks">8. Evaluation and Benchmarks<a class="headerlink" href="#8-evaluation-and-benchmarks" title="Permanent link">&para;</a></h2>
-<p>Reasoning models require benchmarks that stress multi-step cognition.</p>
-<table>
-<thead>
-<tr>
-<th style="text-align: left;">Benchmark</th>
-<th style="text-align: left;">Capability Tested</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;">AIME</td>
-<td style="text-align: left;">Olympiad-level mathematics</td>
-</tr>
-<tr>
-<td style="text-align: left;">GPQA</td>
-<td style="text-align: left;">Graduate-level scientific reasoning</td>
-</tr>
-<tr>
-<td style="text-align: left;">HumanEval</td>
-<td style="text-align: left;">Algorithmic and coding logic</td>
-</tr>
-<tr>
-<td style="text-align: left;">Codeforces</td>
-<td style="text-align: left;">Long-horizon program synthesis</td>
-</tr>
-</tbody>
-</table>
-<p>Evaluation must consider <strong>accuracy versus compute trade-offs</strong>, not accuracy alone.</p>
-<hr />
-<hr />
-<h2 id="9-deployment-decision-framework">9. Deployment Decision Framework<a class="headerlink" href="#9-deployment-decision-framework" title="Permanent link">&para;</a></h2>
-<p>Choosing between System 1 and System 2 depends on:
-- Latency tolerance
-- Cost constraints
-- Error sensitivity</p>
-<p><strong>System 1</strong> models are preferred for high-throughput, low-risk tasks.</p>
-<p><strong>System 2</strong> models are preferred when correctness dominates, such as legal analysis, scientific reasoning, and complex debugging.</p>
-<p>Hybrid systems increasingly route queries dynamically based on estimated difficulty.</p>
-<hr />
-<hr />
-<h2 id="10-notable-models-of-20252026">10. Notable Models of 2025–2026<a class="headerlink" href="#10-notable-models-of-20252026" title="Permanent link">&para;</a></h2>
-<ul>
-<li><strong>OpenAI o1 &amp; o3:</strong> The first to commercialize "Reasoning Tokens." o3 is currently the gold standard for competitive programming (Codeforces) and high-level mathematics.</li>
-<li><strong>DeepSeek-R1:</strong> A massive breakthrough for open-source AI. It proved that RL can "distill" reasoning capabilities into smaller models (like 7B or 14B parameters).</li>
-<li><strong>Claude 3.7 Sonnet:</strong> Introduced "Hybrid Reasoning," allowing the user to toggle "Extended Thinking." This solves the latency issue by letting users choose when they need the model to "think."</li>
-<li><strong>Gemini 2.5 Pro (Reasoning):</strong> Uses Google’s massive context window to reason across hours of video or thousands of lines of code simultaneously.</li>
-</ul>
-<hr />
-<hr />
-<h2 id="11-relationship-to-training-phases">11. Relationship to Training Phases<a class="headerlink" href="#11-relationship-to-training-phases" title="Permanent link">&para;</a></h2>
-<p>Thinking behavior emerges from the interaction of all training stages:</p>
-<ul>
-<li>Pre-training provides linguistic and world knowledge</li>
-<li>Mid-training injects structured reasoning and long-context priors</li>
-<li>RL-based post-training activates inference-time computation strategies</li>
-</ul>
-<p>System 2 capability is therefore <strong>not purely a post-training artifact</strong>.</p>
-<hr />
-<hr />
-<h2 id="12-technical-qa">12. Technical Q&amp;A<a class="headerlink" href="#12-technical-qa" title="Permanent link">&para;</a></h2>
-<p><strong>Q: What is "Reward Hacking" in reasoning models?</strong></p>
-<p><strong>A:</strong> It’s a failure mode where a model learns that writing <em>longer</em> reasoning chains results in higher rewards from the PRM, even if the logic is circular or redundant. Engineers combat this by penalizing length or using more diverse reward signals.</p>
-<hr />
-<p><strong>Q: How do you decide when to deploy a Thinking LLM vs. a Generic LLM?</strong></p>
-<p><strong>A:</strong> It's a trade-off between <strong>Latency, Cost, and Accuracy</strong>. 
-* Use <strong>Generic</strong> for high-throughput, low-latency tasks (customer service bots, simple translations).
-* Use <strong>Thinking</strong> for high-stakes accuracy (legal analysis, complex debugging, scientific research).</p>
-<hr />
-<p><strong>Q: Can you distill reasoning?</strong></p>
-<p><strong>A:</strong> Yes. You can take the "Thinking Traces" from a large model (like o1) and use them as fine-tuning data for a smaller model (like Llama 8B). This teaches the smaller model to "mimic" the logical structure of the larger one.</p>
-<hr />
-<hr />
 
 
 

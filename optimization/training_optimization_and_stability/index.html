@@ -13,10 +13,10 @@
       
       
       
-        <link rel="prev" href="../../optimization/prefix_caching/">
+        <link rel="prev" href="../paged_adam/">
       
       
-        <link rel="next" href="../thinking_llms/">
+        <link rel="next" href="../prefix_caching/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -24,7 +24,7 @@
     
     
       
-        <title>Foundation - Fine-Tuning Methods Documentation</title>
+        <title>Training Optimization and Stability - Fine-Tuning Methods Documentation</title>
       
     
     
@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#1-what-is-an-llm-optimizing" class="md-skip">
+        <a href="#1-optimizers-and-schedules" class="md-skip">
           Skip to content
         </a>
       
@@ -112,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Foundation
+              Training Optimization and Stability
             
           </span>
         </div>
@@ -622,20 +622,20 @@
       
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
         
           
           <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
@@ -651,7 +651,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             Optimization
@@ -665,7 +665,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../optimization/4bit_normal_float/" class="md-nav__link">
+      <a href="../4bit_normal_float/" class="md-nav__link">
         
   
   
@@ -688,7 +688,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../optimization/blockwise_kbit_quantization/" class="md-nav__link">
+      <a href="../blockwise_kbit_quantization/" class="md-nav__link">
         
   
   
@@ -711,7 +711,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../optimization/accelerate.md" class="md-nav__link">
+      <a href="../accelerate.md" class="md-nav__link">
         
   
   
@@ -734,7 +734,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../optimization/bp16/" class="md-nav__link">
+      <a href="../bp16/" class="md-nav__link">
         
   
   
@@ -757,7 +757,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../optimization/memory_considerations/" class="md-nav__link">
+      <a href="../memory_considerations/" class="md-nav__link">
         
   
   
@@ -780,7 +780,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../optimization/paged_adam/" class="md-nav__link">
+      <a href="../paged_adam/" class="md-nav__link">
         
   
   
@@ -800,10 +800,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../optimization/training_optimization_and_stability/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Training Optimization and Stability
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -814,6 +834,312 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-optimizers-and-schedules" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Optimizers and Schedules
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Optimizers and Schedules">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-adam-vs-adamw" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.1 Adam vs AdamW
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.1 Adam vs AdamW">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#adam-optimizer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adam Optimizer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adamw-optimizer" class="md-nav__link">
+    <span class="md-ellipsis">
+      AdamW Optimizer
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-learning-rate-warmup-and-decay" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.2 Learning Rate Warmup and Decay
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.2 Learning Rate Warmup and Decay">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#learning-rate-warmup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Learning Rate Warmup
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#learning-rate-decay" class="md-nav__link">
+    <span class="md-ellipsis">
+      Learning Rate Decay
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-weight-decay-and-regularization" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.3 Weight Decay and Regularization
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.3 Weight Decay and Regularization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#weight-decay" class="md-nav__link">
+    <span class="md-ellipsis">
+      Weight Decay
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#intuition-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Intuition Summary
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#other-regularization-techniques" class="md-nav__link">
+    <span class="md-ellipsis">
+      Other Regularization Techniques
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-numerical-stability" class="md-nav__link">
+    <span class="md-ellipsis">
+      2 Numerical Stability
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2 Numerical Stability">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-fp16-vs-bf16" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1 FP16 vs BF16
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.1 FP16 vs BF16">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fp16-half-precision" class="md-nav__link">
+    <span class="md-ellipsis">
+      FP16 (Half Precision)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bf16-brain-floating-point" class="md-nav__link">
+    <span class="md-ellipsis">
+      BF16 (Brain Floating Point)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-mixed-precision-training" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2 Mixed Precision Training
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.2 Mixed Precision Training">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#benefits" class="md-nav__link">
+    <span class="md-ellipsis">
+      Benefits
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#loss-scaling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Loss Scaling
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-gradient-clipping" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3 Gradient Clipping
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.3 Gradient Clipping">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-gradient-clipping" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is Gradient Clipping?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-it-matters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why it matters
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-loss-spikes-and-divergence-diagnosis" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.4 Loss Spikes and Divergence Diagnosis
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.4 Loss Spikes and Divergence Diagnosis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#common-causes-of-loss-spikes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Causes of Loss Spikes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diagnosis-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagnosis Checklist
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#practical-debugging-tips" class="md-nav__link">
+    <span class="md-ellipsis">
+      Practical Debugging Tips
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -826,7 +1152,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../optimization/prefix_caching/" class="md-nav__link">
+      <a href="../prefix_caching/" class="md-nav__link">
         
   
   
@@ -853,20 +1179,20 @@
       
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
         
           
           <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
@@ -882,7 +1208,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             Training Pipeline
@@ -893,30 +1219,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    Foundation
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../training_techniques/foundation/" class="md-nav__link">
         
   
   
@@ -927,282 +1233,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#1-what-is-an-llm-optimizing" class="md-nav__link">
-    <span class="md-ellipsis">
-      1 What is an LLM Optimizing?
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="1 What is an LLM Optimizing?">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#11-the-autoregressive-objective" class="md-nav__link">
-    <span class="md-ellipsis">
-      1.1 The Autoregressive Objective
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#12-the-loss-function-negative-log-likelihood" class="md-nav__link">
-    <span class="md-ellipsis">
-      1.2 The Loss Function: Negative Log-Likelihood
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#13-cross-entropy-kl-divergence-and-learning" class="md-nav__link">
-    <span class="md-ellipsis">
-      1.3 Cross-Entropy, KL Divergence, and Learning
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#14-why-next-token-prediction-works-the-compression-hypothesis" class="md-nav__link">
-    <span class="md-ellipsis">
-      1.4 Why Next-Token Prediction Works (The Compression Hypothesis)
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2-language-modeling-and-likelihood-minimization" class="md-nav__link">
-    <span class="md-ellipsis">
-      2 Language Modeling and Likelihood Minimization
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="2 Language Modeling and Likelihood Minimization">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#21-maximum-likelihood-estimation-mle" class="md-nav__link">
-    <span class="md-ellipsis">
-      2.1 Maximum Likelihood Estimation (MLE)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#22-teacher-forcing" class="md-nav__link">
-    <span class="md-ellipsis">
-      2.2 Teacher Forcing
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="2.2 Teacher Forcing">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#step-1-training-data" class="md-nav__link">
-    <span class="md-ellipsis">
-      Step 1: Training data
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-2-training-with-teacher-forcing" class="md-nav__link">
-    <span class="md-ellipsis">
-      Step 2: Training with teacher forcing
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-3-inference-time-behavior" class="md-nav__link">
-    <span class="md-ellipsis">
-      Step 3: Inference time behavior
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#23-perplexity-as-an-evaluation-metric" class="md-nav__link">
-    <span class="md-ellipsis">
-      2.3 Perplexity as an Evaluation Metric
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="2.3 Perplexity as an Evaluation Metric">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#intuition" class="md-nav__link">
-    <span class="md-ellipsis">
-      Intuition
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#why-lower-perplexity-is-better" class="md-nav__link">
-    <span class="md-ellipsis">
-      Why Lower Perplexity Is Better
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#important-clarification" class="md-nav__link">
-    <span class="md-ellipsis">
-      Important Clarification
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3-why-scaling-works-and-where-it-breaks" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. Why Scaling Works and Where it Breaks
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="3. Why Scaling Works and Where it Breaks">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#31-empirical-scaling-laws" class="md-nav__link">
-    <span class="md-ellipsis">
-      3.1 Empirical Scaling Laws
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="3.1 Empirical Scaling Laws">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#kaplan-scaling-laws-2020" class="md-nav__link">
-    <span class="md-ellipsis">
-      Kaplan Scaling Laws (2020)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#chinchilla-scaling-laws-2022" class="md-nav__link">
-    <span class="md-ellipsis">
-      Chinchilla Scaling Laws (2022)
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#32-where-scaling-breaks" class="md-nav__link">
-    <span class="md-ellipsis">
-      3.2 Where Scaling Breaks
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="3.2 Where Scaling Breaks">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-data-scarcity-and-synthetic-feedback-loops" class="md-nav__link">
-    <span class="md-ellipsis">
-      1. Data Scarcity and Synthetic Feedback Loops
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-capability-saturation" class="md-nav__link">
-    <span class="md-ellipsis">
-      2. Capability Saturation
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-inference-cost-and-latency" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. Inference Cost and Latency
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#4-test-time-scaling" class="md-nav__link">
-    <span class="md-ellipsis">
-      4. Test-Time Scaling
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1215,7 +1245,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../thinking_llms/" class="md-nav__link">
+      <a href="../../training_techniques/thinking_llms/" class="md-nav__link">
         
   
   
@@ -1285,107 +1315,38 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-what-is-an-llm-optimizing" class="md-nav__link">
+  <a href="#1-optimizers-and-schedules" class="md-nav__link">
     <span class="md-ellipsis">
-      1 What is an LLM Optimizing?
+      1. Optimizers and Schedules
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="1 What is an LLM Optimizing?">
+    <nav class="md-nav" aria-label="1. Optimizers and Schedules">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#11-the-autoregressive-objective" class="md-nav__link">
+  <a href="#11-adam-vs-adamw" class="md-nav__link">
     <span class="md-ellipsis">
-      1.1 The Autoregressive Objective
+      1.1 Adam vs AdamW
     </span>
   </a>
   
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#12-the-loss-function-negative-log-likelihood" class="md-nav__link">
-    <span class="md-ellipsis">
-      1.2 The Loss Function: Negative Log-Likelihood
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#13-cross-entropy-kl-divergence-and-learning" class="md-nav__link">
-    <span class="md-ellipsis">
-      1.3 Cross-Entropy, KL Divergence, and Learning
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#14-why-next-token-prediction-works-the-compression-hypothesis" class="md-nav__link">
-    <span class="md-ellipsis">
-      1.4 Why Next-Token Prediction Works (The Compression Hypothesis)
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2-language-modeling-and-likelihood-minimization" class="md-nav__link">
-    <span class="md-ellipsis">
-      2 Language Modeling and Likelihood Minimization
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="2 Language Modeling and Likelihood Minimization">
+    <nav class="md-nav" aria-label="1.1 Adam vs AdamW">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#21-maximum-likelihood-estimation-mle" class="md-nav__link">
+  <a href="#adam-optimizer" class="md-nav__link">
     <span class="md-ellipsis">
-      2.1 Maximum Likelihood Estimation (MLE)
+      Adam Optimizer
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#22-teacher-forcing" class="md-nav__link">
+  <a href="#adamw-optimizer" class="md-nav__link">
     <span class="md-ellipsis">
-      2.2 Teacher Forcing
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="2.2 Teacher Forcing">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#step-1-training-data" class="md-nav__link">
-    <span class="md-ellipsis">
-      Step 1: Training data
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-2-training-with-teacher-forcing" class="md-nav__link">
-    <span class="md-ellipsis">
-      Step 2: Training with teacher forcing
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-3-inference-time-behavior" class="md-nav__link">
-    <span class="md-ellipsis">
-      Step 3: Inference time behavior
+      AdamW Optimizer
     </span>
   </a>
   
@@ -1397,37 +1358,70 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#23-perplexity-as-an-evaluation-metric" class="md-nav__link">
+  <a href="#12-learning-rate-warmup-and-decay" class="md-nav__link">
     <span class="md-ellipsis">
-      2.3 Perplexity as an Evaluation Metric
+      1.2 Learning Rate Warmup and Decay
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="2.3 Perplexity as an Evaluation Metric">
+    <nav class="md-nav" aria-label="1.2 Learning Rate Warmup and Decay">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#intuition" class="md-nav__link">
+  <a href="#learning-rate-warmup" class="md-nav__link">
     <span class="md-ellipsis">
-      Intuition
+      Learning Rate Warmup
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#why-lower-perplexity-is-better" class="md-nav__link">
+  <a href="#learning-rate-decay" class="md-nav__link">
     <span class="md-ellipsis">
-      Why Lower Perplexity Is Better
+      Learning Rate Decay
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-weight-decay-and-regularization" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.3 Weight Decay and Regularization
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.3 Weight Decay and Regularization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#weight-decay" class="md-nav__link">
+    <span class="md-ellipsis">
+      Weight Decay
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#important-clarification" class="md-nav__link">
+  <a href="#intuition-summary" class="md-nav__link">
     <span class="md-ellipsis">
-      Important Clarification
+      Intuition Summary
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#other-regularization-techniques" class="md-nav__link">
+    <span class="md-ellipsis">
+      Other Regularization Techniques
     </span>
   </a>
   
@@ -1444,38 +1438,38 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-why-scaling-works-and-where-it-breaks" class="md-nav__link">
+  <a href="#2-numerical-stability" class="md-nav__link">
     <span class="md-ellipsis">
-      3. Why Scaling Works and Where it Breaks
+      2 Numerical Stability
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="3. Why Scaling Works and Where it Breaks">
+    <nav class="md-nav" aria-label="2 Numerical Stability">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#31-empirical-scaling-laws" class="md-nav__link">
+  <a href="#21-fp16-vs-bf16" class="md-nav__link">
     <span class="md-ellipsis">
-      3.1 Empirical Scaling Laws
+      2.1 FP16 vs BF16
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="3.1 Empirical Scaling Laws">
+    <nav class="md-nav" aria-label="2.1 FP16 vs BF16">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#kaplan-scaling-laws-2020" class="md-nav__link">
+  <a href="#fp16-half-precision" class="md-nav__link">
     <span class="md-ellipsis">
-      Kaplan Scaling Laws (2020)
+      FP16 (Half Precision)
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#chinchilla-scaling-laws-2022" class="md-nav__link">
+  <a href="#bf16-brain-floating-point" class="md-nav__link">
     <span class="md-ellipsis">
-      Chinchilla Scaling Laws (2022)
+      BF16 (Brain Floating Point)
     </span>
   </a>
   
@@ -1487,46 +1481,103 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#32-where-scaling-breaks" class="md-nav__link">
+  <a href="#22-mixed-precision-training" class="md-nav__link">
     <span class="md-ellipsis">
-      3.2 Where Scaling Breaks
+      2.2 Mixed Precision Training
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="3.2 Where Scaling Breaks">
+    <nav class="md-nav" aria-label="2.2 Mixed Precision Training">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-data-scarcity-and-synthetic-feedback-loops" class="md-nav__link">
+  <a href="#benefits" class="md-nav__link">
     <span class="md-ellipsis">
-      1. Data Scarcity and Synthetic Feedback Loops
+      Benefits
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-capability-saturation" class="md-nav__link">
+  <a href="#loss-scaling" class="md-nav__link">
     <span class="md-ellipsis">
-      2. Capability Saturation
+      Loss Scaling
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-gradient-clipping" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3 Gradient Clipping
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.3 Gradient Clipping">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-gradient-clipping" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is Gradient Clipping?
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#3-inference-cost-and-latency" class="md-nav__link">
+  <a href="#why-it-matters" class="md-nav__link">
     <span class="md-ellipsis">
-      3. Inference Cost and Latency
+      Why it matters
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-loss-spikes-and-divergence-diagnosis" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.4 Loss Spikes and Divergence Diagnosis
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.4 Loss Spikes and Divergence Diagnosis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#common-causes-of-loss-spikes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Causes of Loss Spikes
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#4-test-time-scaling" class="md-nav__link">
+  <a href="#diagnosis-checklist" class="md-nav__link">
     <span class="md-ellipsis">
-      4. Test-Time Scaling
+      Diagnosis Checklist
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#practical-debugging-tips" class="md-nav__link">
+    <span class="md-ellipsis">
+      Practical Debugging Tips
     </span>
   </a>
   
@@ -1539,6 +1590,15 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
   
 </li>
       
@@ -1561,200 +1621,396 @@
   
 
 
-  <h1>Foundation</h1>
+  <h1>Training Optimization and Stability</h1>
 
-<h2 id="1-what-is-an-llm-optimizing">1 What is an LLM Optimizing?<a class="headerlink" href="#1-what-is-an-llm-optimizing" title="Permanent link">&para;</a></h2>
-<p>At its core, a Large Language Model (LLM) is a probabilistic system designed to model the distribution of natural language. Despite emergent reasoning and planning behaviors, the training objective itself is simple: <strong>reduce uncertainty about the next token given prior context</strong>.</p>
-<h3 id="11-the-autoregressive-objective">1.1 The Autoregressive Objective<a class="headerlink" href="#11-the-autoregressive-objective" title="Permanent link">&para;</a></h3>
-<p>Most LLMs are trained using an <strong>Autoregressive (AR)</strong> or <strong>Causal Language Modeling (CLM)</strong> objective. The joint probability of a token sequence is factorized as a product of conditional probabilities:</p>
-<div class="arithmatex">\[
-P(x_1, \dots, x_T) = \prod_{t=1}^{T} P(x_t \mid x_{&lt;t})
-\]</div>
-<p>This formulation assumes:</p>
-<ul>
-<li>Tokens are conditionally independent given their history</li>
-<li>Knowledge is captured implicitly through long context dependencies</li>
-<li>Tokenization defines the atomic units of prediction</li>
-</ul>
-<h3 id="12-the-loss-function-negative-log-likelihood">1.2 The Loss Function: Negative Log-Likelihood<a class="headerlink" href="#12-the-loss-function-negative-log-likelihood" title="Permanent link">&para;</a></h3>
-<p>Training minimizes the <strong>Negative Log-Likelihood (NLL)</strong> of the observed data, which is equivalent to <strong>Cross-Entropy Loss</strong>:</p>
-<div class="arithmatex">\[
-\mathcal{L}(\theta) = - \mathbb{E}_{(x_1,\dots,x_T) \sim D} \sum_{t=1}^{T} \log P_\theta(x_t \mid x_{&lt;t})
-\]</div>
-<p>Where:
-- <span class="arithmatex">\(\theta\)</span> are the model parameters
-- <span class="arithmatex">\(x_{&lt;t}\)</span> is the context window
-- <span class="arithmatex">\(P_\theta\)</span> is the predicted probability distribution produced by a Softmax layer</p>
-<h3 id="13-cross-entropy-kl-divergence-and-learning">1.3 Cross-Entropy, KL Divergence, and Learning<a class="headerlink" href="#13-cross-entropy-kl-divergence-and-learning" title="Permanent link">&para;</a></h3>
-<p>Minimizing cross-entropy implicitly minimizes the <strong>KL divergence</strong> between the true data distribution <span class="arithmatex">\(P_{data}\)</span> and the model distribution <span class="arithmatex">\(P_\theta\)</span>:</p>
-<div class="arithmatex">\[
-H(P_{data}, P_\theta) = H(P_{data}) + D_{KL}(P_{data} \| P_\theta)
-\]</div>
-<p>Since <span class="arithmatex">\(H(P_{data})\)</span> is fixed, training pushes the model distribution closer to the real language distribution. This connects LLM training directly to information theory and compression.</p>
-<h3 id="14-why-next-token-prediction-works-the-compression-hypothesis">1.4 Why Next-Token Prediction Works (The Compression Hypothesis)<a class="headerlink" href="#14-why-next-token-prediction-works-the-compression-hypothesis" title="Permanent link">&para;</a></h3>
-<p>Predicting the next token forces the model to internalize structure across many domains.</p>
-<ul>
-<li><strong>Compression implies abstraction:</strong> To compress diverse text, the model must learn syntax, semantics, facts, and procedures.</li>
-<li><strong>Softmax competition:</strong> Increasing probability mass for the correct token necessarily decreases mass for alternatives, encouraging fine-grained representations.</li>
-<li><strong>Generalization pressure:</strong> Predicting well across domains requires reusable internal features, which later appear as reasoning, translation, or coding skills.</li>
-</ul>
+<p>Training large neural networks, especially Transformers, requires careful choices of optimizers, learning rate schedules, and numerical techniques to ensure fast convergence, stable training, and good generalization. This section covers the most important concepts commonly discussed in interviews and used in practice.</p>
 <hr />
-<h2 id="2-language-modeling-and-likelihood-minimization">2 Language Modeling and Likelihood Minimization<a class="headerlink" href="#2-language-modeling-and-likelihood-minimization" title="Permanent link">&para;</a></h2>
-<h3 id="21-maximum-likelihood-estimation-mle">2.1 Maximum Likelihood Estimation (MLE)<a class="headerlink" href="#21-maximum-likelihood-estimation-mle" title="Permanent link">&para;</a></h3>
-<p>LLM training is an instance of <strong>Maximum Likelihood Estimation</strong>, where we seek parameters <span class="arithmatex">\(\theta^*\)</span> that maximize the likelihood of observed text:</p>
+<h2 id="1-optimizers-and-schedules">1. Optimizers and Schedules<a class="headerlink" href="#1-optimizers-and-schedules" title="Permanent link">&para;</a></h2>
+<h3 id="11-adam-vs-adamw">1.1 Adam vs AdamW<a class="headerlink" href="#11-adam-vs-adamw" title="Permanent link">&para;</a></h3>
+<h4 id="adam-optimizer">Adam Optimizer<a class="headerlink" href="#adam-optimizer" title="Permanent link">&para;</a></h4>
+<p>Adam (Adaptive Moment Estimation) is one of the most widely used optimizers in deep learning.</p>
+<p><strong>Key ideas:</strong></p>
+<ul>
+<li>Maintains an exponential moving average of gradients (first moment)</li>
+<li>Maintains an exponential moving average of squared gradients (second moment)</li>
+<li>Uses bias correction for both moments</li>
+<li>Adapts the learning rate per parameter</li>
+</ul>
+<p><strong>Update rule (simplified):</strong></p>
 <div class="arithmatex">\[
-\theta^* = \arg\max_\theta \mathbb{E}_{x \sim D} [\log P_\theta(x)]
+\theta_{t+1} = \theta_t - \eta \frac{\hat{m}_t}{\sqrt{\hat{v}_t} + \epsilon}
 \]</div>
-<p>MLE provides a stable and scalable objective but does not encode preferences such as helpfulness, safety, or instruction following.</p>
-<h3 id="22-teacher-forcing">2.2 Teacher Forcing<a class="headerlink" href="#22-teacher-forcing" title="Permanent link">&para;</a></h3>
-<p>Teacher forcing is a training strategy where the model is conditioned on the <strong>ground-truth previous token</strong> rather than its own prediction when computing the next-token loss. For a sequence <span class="arithmatex">\(x_1, \dots, x_T\)</span>, the model always receives <span class="arithmatex">\(x_{t-1}\)</span> as input when predicting <span class="arithmatex">\(x_t\)</span>, even if it would have predicted a different token at step <span class="arithmatex">\(t-1\)</span>.</p>
-<p><strong>Small Practical Example</strong></p>
-<p><strong>Task:</strong> Predict the sentence  </p>
-<blockquote>
-<p><em>“The cat sat on the mat”</em></p>
-</blockquote>
-<h4 id="step-1-training-data">Step 1: Training data<a class="headerlink" href="#step-1-training-data" title="Permanent link">&para;</a></h4>
-<p>Tokens:<br />
-<code>[The, cat, sat, on, the, mat]</code></p>
-<h4 id="step-2-training-with-teacher-forcing">Step 2: Training with teacher forcing<a class="headerlink" href="#step-2-training-with-teacher-forcing" title="Permanent link">&para;</a></h4>
-<p>At each step, the model is conditioned on the <strong>ground-truth previous token</strong>.</p>
-<ol>
-<li>
-<p><strong>Input:</strong> <code>The</code><br />
-<strong>Target:</strong> <code>cat</code></p>
-</li>
-<li>
-<p><strong>Input:</strong> <code>The cat</code><br />
-<strong>Target:</strong> <code>sat</code></p>
-</li>
-<li>
-<p><strong>Input:</strong> <code>The cat sat</code><br />
-<strong>Target:</strong> <code>on</code></p>
-</li>
-<li>
-<p><strong>Input:</strong> <code>The cat sat on</code><br />
-<strong>Target:</strong> <code>the</code></p>
-</li>
-<li>
-<p><strong>Input:</strong> <code>The cat sat on the</code><br />
-<strong>Target:</strong> <code>mat</code></p>
-</li>
-</ol>
-<p>Even if the model predicts an incorrect token at any step, the <strong>next input still uses the true token</strong> from the dataset.</p>
-<h4 id="step-3-inference-time-behavior">Step 3: Inference time behavior<a class="headerlink" href="#step-3-inference-time-behavior" title="Permanent link">&para;</a></h4>
-<p>At inference, the model must condition on its <strong>own predictions</strong>.</p>
-<ol>
-<li>
-<p><strong>Input:</strong> <code>The</code><br />
-<strong>Prediction:</strong> <code>dog</code></p>
-</li>
-<li>
-<p><strong>Next input:</strong> <code>The dog</code><br />
-   Errors now propagate forward</p>
-</li>
-</ol>
-<p>This train–test mismatch is known as <strong>exposure bias</strong> and is a key limitation of teacher forcing.</p>
+<p><strong>Where:</strong></p>
+<ul>
+<li><span class="arithmatex">\(\theta_t\)</span>: Model parameters at training step <span class="arithmatex">\(t\)</span>.</li>
+<li><span class="arithmatex">\(\theta_{t+1}\)</span>: Updated model parameters after applying one optimization step.</li>
+<li><span class="arithmatex">\(\eta\)</span> (Learning Rate): Global step size that controls how large the parameter update is.</li>
+<li><span class="arithmatex">\(\hat{m}_t\)</span> (Bias Corrected First Moment): Exponentially decayed moving average of past gradients, corrected for initialization bias.<br />
+  Represents the estimated mean of the gradients.
+  $$
+  \hat{m}_t = \frac{m_t}{1 - \beta_1^t}
+  $$</li>
+<li><span class="arithmatex">\(\hat{v}_t\)</span> (Bias Corrected Second Moment): Exponentially decayed moving average of squared gradients, corrected for initialization bias.<br />
+  Represents the estimated variance of the gradients.
+  $$
+  \hat{v}_t = \frac{v_t}{1 - \beta_2^t}
+  $$</li>
+<li><span class="arithmatex">\(\beta_1\)</span>: Exponential decay rate for the first moment estimate.<br />
+  Typical value: 0.9</li>
+<li><span class="arithmatex">\(\beta_2\)</span>: Exponential decay rate for the second moment estimate.<br />
+  Typical value: 0.999</li>
+<li><span class="arithmatex">\(\epsilon\)</span>: Small constant added for numerical stability to prevent division by zero.<br />
+  Typical value: <span class="arithmatex">\(10^{-8}\)</span></li>
+</ul>
 <p><strong>Advantages:</strong></p>
 <ul>
-<li><strong>Full parallelization</strong> of loss computation across all positions in a Transformer</li>
-<li><strong>Stable gradients</strong>, since errors do not compound during training</li>
+<li>Fast convergence</li>
+<li>Works well with sparse gradients</li>
+<li>Requires minimal tuning compared to SGD</li>
 </ul>
-<p><strong>Limitation: Exposure Bias</strong></p>
+<p><strong>Limitations:</strong></p>
 <ul>
-<li>Introduces <strong>exposure bias</strong>: during inference, the model must condition on its own past predictions, a distribution shift that can lead to error accumulation. This gap motivates post-training techniques such as supervised fine-tuning and reinforcement learning based alignment.</li>
+<li>Implicitly couples L2 regularization with adaptive learning rates</li>
+<li>Often leads to worse generalization compared to SGD or AdamW in large models</li>
 </ul>
-<h3 id="23-perplexity-as-an-evaluation-metric">2.3 Perplexity as an Evaluation Metric<a class="headerlink" href="#23-perplexity-as-an-evaluation-metric" title="Permanent link">&para;</a></h3>
-<p><strong>Perplexity</strong> measures how uncertain a language model is, on average, when predicting the next token in a sequence.</p>
-<p>Formally, if a model is trained using cross-entropy loss <span class="arithmatex">\(\mathcal{L}\)</span>, then perplexity is defined as:</p>
+<hr />
+<h4 id="adamw-optimizer">AdamW Optimizer<a class="headerlink" href="#adamw-optimizer" title="Permanent link">&para;</a></h4>
+<p>AdamW decouples weight decay from the gradient-based update.</p>
+<p><strong>Key difference from Adam:</strong></p>
+<ul>
+<li>Weight decay is applied directly to parameters, not via the gradient</li>
+</ul>
+<p><strong>Update rule (conceptually):</strong></p>
 <div class="arithmatex">\[
-\text{PPL} = \exp(\mathcal{L})
+\theta_{t+1} = \theta_t - \eta \frac{\hat{m}_t}{\sqrt{\hat{v}_t} + \epsilon} - \eta \lambda \theta_t
 \]</div>
-<p>where <span class="arithmatex">\(\mathcal{L}\)</span> is the <strong>average negative log-probability</strong> assigned to the correct next token.</p>
-<h4 id="intuition">Intuition<a class="headerlink" href="#intuition" title="Permanent link">&para;</a></h4>
-<p>A language model repeatedly answers the question:</p>
+<p><strong>where</strong>:</p>
+<ul>
+<li><span class="arithmatex">\(\lambda\)</span> (Weight Decay Coefficient): Controls the strength of weight decay regularization.<br />
+  Larger values enforce stronger penalization of large parameter magnitudes.</li>
+<li><span class="arithmatex">\(- \eta \lambda \theta_t\)</span> (Decoupled Weight Decay Term): Applies weight decay directly to the parameters, independent of the gradient-based update.<br />
+  This ensures consistent regularization regardless of adaptive learning rates.</li>
+</ul>
+<p><strong>Why AdamW matters:</strong></p>
+<ul>
+<li>Correctly implements weight decay as regularization</li>
+<li>Prevents adaptive learning rates from weakening regularization</li>
+<li>Standard optimizer for modern Transformers (BERT, GPT, ViT)</li>
+</ul>
 <blockquote>
-<p>How many plausible choices do I believe the next token could be?</p>
+<p>Note: AdamW is almost always preferred over Adam for large-scale Transformer training.</p>
 </blockquote>
-<p>Perplexity converts log probabilities back into an interpretable scale representing the <strong>effective number of choices</strong>.</p>
-<ul>
-<li>
-<p><strong>PPL = 1</strong><br />
-  The model is fully confident and assigns probability 1 to the correct token.</p>
-</li>
-<li>
-<p><strong>PPL = 10</strong><br />
-  The model behaves as if it is choosing uniformly among about 10 tokens.</p>
-</li>
-<li>
-<p><strong>PPL = 100</strong><br />
-  The model is highly uncertain, with roughly 100 plausible next tokens.</p>
-</li>
-</ul>
-<p>This is why perplexity is often described as the model’s <strong>average branching factor</strong>.</p>
-<h4 id="why-lower-perplexity-is-better">Why Lower Perplexity Is Better<a class="headerlink" href="#why-lower-perplexity-is-better" title="Permanent link">&para;</a></h4>
-<ul>
-<li>Lower PPL means the model assigns higher probability to the correct next token.</li>
-<li>This corresponds to lower uncertainty and better next-token prediction.</li>
-<li>Minimizing cross-entropy during training directly minimizes perplexity.</li>
-</ul>
-<h4 id="important-clarification">Important Clarification<a class="headerlink" href="#important-clarification" title="Permanent link">&para;</a></h4>
-<p>Perplexity is <strong>not</strong> a direct measure of:
-- Reasoning ability
-- Factual correctness
-- Alignment or instruction following</p>
-<p>It only measures how well the model predicts the data distribution. While lower perplexity often correlates with better text quality, it does not guarantee better downstream performance.</p>
 <hr />
-<h2 id="3-why-scaling-works-and-where-it-breaks">3. Why Scaling Works and Where it Breaks<a class="headerlink" href="#3-why-scaling-works-and-where-it-breaks" title="Permanent link">&para;</a></h2>
-<h3 id="31-empirical-scaling-laws">3.1 Empirical Scaling Laws<a class="headerlink" href="#31-empirical-scaling-laws" title="Permanent link">&para;</a></h3>
-<p>Performance improves predictably as a power-law function of:</p>
+<h3 id="12-learning-rate-warmup-and-decay">1.2 Learning Rate Warmup and Decay<a class="headerlink" href="#12-learning-rate-warmup-and-decay" title="Permanent link">&para;</a></h3>
+<h4 id="learning-rate-warmup">Learning Rate Warmup<a class="headerlink" href="#learning-rate-warmup" title="Permanent link">&para;</a></h4>
+<p><strong>What it is:</strong></p>
 <ul>
-<li>Model parameters</li>
-<li>Training tokens</li>
-<li>Compute budget</li>
+<li>Gradually increases the learning rate from a small value to the target value over the first few training steps</li>
 </ul>
-<p>This empirical behavior explains the rapid gains from larger models.</p>
-<h4 id="kaplan-scaling-laws-2020">Kaplan Scaling Laws (2020)<a class="headerlink" href="#kaplan-scaling-laws-2020" title="Permanent link">&para;</a></h4>
-<p>Early results suggested scaling model size was the dominant factor.</p>
+<p><strong>Why it is needed:</strong></p>
 <ul>
-<li>Loss scales roughly as a power-law in parameter count</li>
-<li>Data was treated as effectively unlimited</li>
+<li>Large models have unstable gradients at initialization</li>
+<li>Prevents divergence caused by large updates early in training</li>
+<li>Especially critical for Transformers and mixed precision training</li>
 </ul>
-<h4 id="chinchilla-scaling-laws-2022">Chinchilla Scaling Laws (2022)<a class="headerlink" href="#chinchilla-scaling-laws-2022" title="Permanent link">&para;</a></h4>
-<p>Later work showed most large models were undertrained.</p>
-<p>Key findings:</p>
+<p><strong>Common strategies:</strong></p>
 <ul>
-<li>Optimal performance requires balancing parameters and tokens</li>
-<li>Roughly <strong>20 training tokens per parameter</strong> is compute optimal</li>
-<li>Smaller models trained on more data can outperform larger undertrained models</li>
+<li>Linear warmup</li>
+<li>Warmup for a fixed number of steps (e.g., 1k to 10k steps)</li>
 </ul>
-<p>This led to data-centric model design such as LLaMA and Mistral.</p>
 <hr />
-<h3 id="32-where-scaling-breaks">3.2 Where Scaling Breaks<a class="headerlink" href="#32-where-scaling-breaks" title="Permanent link">&para;</a></h3>
-<h4 id="1-data-scarcity-and-synthetic-feedback-loops">1. Data Scarcity and Synthetic Feedback Loops<a class="headerlink" href="#1-data-scarcity-and-synthetic-feedback-loops" title="Permanent link">&para;</a></h4>
+<h4 id="learning-rate-decay">Learning Rate Decay<a class="headerlink" href="#learning-rate-decay" title="Permanent link">&para;</a></h4>
+<p>After warmup, the learning rate is gradually reduced to improve convergence.</p>
+<p><strong>Common decay schedules:</strong></p>
 <ul>
-<li>High-quality human text is limited</li>
-<li>Synthetic data risks reducing diversity</li>
-<li>Repeated self-training can lead to model collapse</li>
+<li>Linear decay</li>
+<li>Cosine decay</li>
+<li>Step decay</li>
+<li>Polynomial decay</li>
 </ul>
-<h4 id="2-capability-saturation">2. Capability Saturation<a class="headerlink" href="#2-capability-saturation" title="Permanent link">&para;</a></h4>
+<p><strong>Cosine decay (widely used):</strong></p>
 <ul>
-<li>Loss improves smoothly, but abilities emerge discontinuously</li>
-<li>Reasoning, planning, and tool use do not scale linearly with perplexity</li>
-<li>Small loss gains can hide large behavioral differences</li>
+<li>Smoothly reduces learning rate</li>
+<li>Avoids sudden drops that can destabilize training</li>
 </ul>
-<h4 id="3-inference-cost-and-latency">3. Inference Cost and Latency<a class="headerlink" href="#3-inference-cost-and-latency" title="Permanent link">&para;</a></h4>
-<ul>
-<li>Larger models increase memory, latency, and cost</li>
-<li>This motivates inference-efficient designs</li>
-</ul>
-<h4 id="4-test-time-scaling">4. Test-Time Scaling<a class="headerlink" href="#4-test-time-scaling" title="Permanent link">&para;</a></h4>
-<ul>
-<li>Recent systems scale inference compute rather than parameters</li>
-<li>Models generate longer internal reasoning traces</li>
-<li>This shifts scaling from training time to inference time</li>
-</ul>
-<p>Examples include OpenAI o1 and DeepSeek-R1.</p>
+<blockquote>
+<p>Insight: Warmup handles early instability, decay improves late-stage convergence and generalization.</p>
+</blockquote>
 <hr />
+<h3 id="13-weight-decay-and-regularization">1.3 Weight Decay and Regularization<a class="headerlink" href="#13-weight-decay-and-regularization" title="Permanent link">&para;</a></h3>
+<h4 id="weight-decay">Weight Decay<a class="headerlink" href="#weight-decay" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Penalizes large weights to prevent overfitting</li>
+</ul>
+<p><strong>Important distinction:</strong></p>
+<ul>
+<li>L2 regularization modifies the loss</li>
+<li>Weight decay directly modifies the parameter update</li>
+</ul>
+<p><strong>Why decoupling matters:</strong></p>
+<ul>
+<li>With adaptive optimizers, L2 regularization is not equivalent to weight decay</li>
+<li>AdamW fixes this mismatch</li>
+</ul>
+<details>
+<summary><strong>Explanation: L2 regularization is not equivalent to weight decay</strong></summary>
+
+1. L2 Regularization: It adds a penalty term to the loss function:
+
+$$
+\mathcal{L}' = \mathcal{L} + \frac{\lambda}{2} \|\theta\|^2
+$$
+
+Taking the gradient:
+
+$$
+\nabla_\theta \mathcal{L}' = \nabla_\theta \mathcal{L} + \lambda \theta
+$$
+
+So the optimizer update becomes:
+
+$$
+\theta_{t+1} = \theta_t - \eta \left( \nabla_\theta \mathcal{L} + \lambda \theta_t \right)
+$$
+
+This means regularization is applied through the gradient. <br><br>
+
+2. Why This Works for SGD <br><br>
+
+For SGD, the update is:
+
+$$
+\theta_{t+1} = \theta_t - \eta \nabla_\theta \mathcal{L} - \eta \lambda \theta_t
+$$
+
+Here, L2 regularization is mathematically equivalent to weight decay because: <br>
+- All parameters use the same learning rate <br>
+- No per parameter scaling is applied <br><br>
+
+So both methods shrink weights uniformly. <br><br>
+
+3. What Breaks with Adam <br><br>
+
+Adam modifies the update using adaptive, per parameter learning rates:
+
+$$
+\theta_{t+1} = \theta_t - \eta \frac{\hat{m}_t}{\sqrt{\hat{v}_t} + \epsilon}
+$$
+
+When L2 regularization is added, the penalty term $\lambda \theta_t$ is also scaled by the adaptive denominator:
+
+$$
+\theta_{t+1} =
+\theta_t -
+\eta \frac{\hat{m}_t + \lambda \theta_t}{\sqrt{\hat{v}_t} + \epsilon}
+$$
+
+Consequence <br><br>
+
+- Parameters with large gradient variance receive less regularization<br>
+- Parameters with small gradient variance receive more regularization<br>
+- Regularization strength becomes parameter dependent and inconsistent<br><br>
+
+This is not true weight decay.<br><br>
+
+4. What Weight Decay Actually Means<br><br>
+
+True weight decay directly shrinks parameters independently of gradients:
+
+$$
+\theta_{t+1} = (1 - \eta \lambda)\theta_t - \eta \frac{\hat{m}_t}{\sqrt{\hat{v}_t} + \epsilon}
+$$
+
+Key properties:<br>
+
+- Uniform shrinkage across parameters<br>
+- Independent of gradient statistics<br>
+- Matches the intended regularization behavior<br><br>
+
+5. How AdamW Fixes the Problem <br><br>
+
+AdamW explicitly decouples weight decay from the gradient update:
+
+$$
+\theta_{t+1} =
+\theta_t -
+\eta \frac{\hat{m}_t}{\sqrt{\hat{v}_t} + \epsilon} -
+\eta \lambda \theta_t
+$$
+<br><br>
+
+6. Why this works <br><br>
+
+- Weight decay is applied directly to parameters<br>
+- Adaptive learning rates affect only the gradient update<br>
+- Regularization strength remains consistent<br><br>
+
+</details>
+
+<h4 id="intuition-summary">Intuition Summary<br><br><a class="headerlink" href="#intuition-summary" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>How Regularization Is Applied</th>
+<th>Problem</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SGD + L2</td>
+<td>Uniform parameter shrinkage</td>
+<td>None</td>
+</tr>
+<tr>
+<td>Adam + L2</td>
+<td>Scaled by adaptive learning rates</td>
+<td>Inconsistent regularization</td>
+</tr>
+<tr>
+<td>AdamW</td>
+<td>Direct parameter decay</td>
+<td>Correct behavior</td>
+</tr>
+</tbody>
+</table>
+<h4 id="other-regularization-techniques">Other Regularization Techniques<a class="headerlink" href="#other-regularization-techniques" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Dropout</li>
+<li>Label smoothing</li>
+<li>Data augmentation</li>
+<li>Early stopping</li>
+</ul>
+<p><strong>Transformer-specific note:</strong></p>
+<ul>
+<li>Biases and LayerNorm parameters often exclude weight decay</li>
+<li>This is a common best practice in large models</li>
+</ul>
+<hr />
+<h2 id="2-numerical-stability">2 Numerical Stability<a class="headerlink" href="#2-numerical-stability" title="Permanent link">&para;</a></h2>
+<h3 id="21-fp16-vs-bf16">2.1 FP16 vs BF16<a class="headerlink" href="#21-fp16-vs-bf16" title="Permanent link">&para;</a></h3>
+<h4 id="fp16-half-precision">FP16 (Half Precision)<a class="headerlink" href="#fp16-half-precision" title="Permanent link">&para;</a></h4>
+<p><strong>Characteristics:</strong></p>
+<ul>
+<li>16-bit floating point</li>
+<li>Limited exponent range</li>
+<li>Higher risk of overflow and underflow</li>
+</ul>
+<p><strong>Challenges:</strong></p>
+<ul>
+<li>Gradient underflow for small values</li>
+<li>Requires loss scaling for stability</li>
+</ul>
+<hr />
+<h4 id="bf16-brain-floating-point">BF16 (Brain Floating Point)<a class="headerlink" href="#bf16-brain-floating-point" title="Permanent link">&para;</a></h4>
+<p><strong>Characteristics:</strong></p>
+<ul>
+<li>16-bit floating point with larger exponent range</li>
+<li>Same exponent range as FP32</li>
+<li>Lower mantissa precision than FP16</li>
+</ul>
+<p><strong>Advantages:</strong></p>
+<ul>
+<li>Much more numerically stable than FP16</li>
+<li>Usually does not require loss scaling</li>
+<li>Widely supported on TPUs and newer GPUs</li>
+</ul>
+<blockquote>
+<p>Insight: BF16 is preferred when hardware supports it due to better stability with minimal complexity.</p>
+</blockquote>
+<hr />
+<h3 id="22-mixed-precision-training">2.2 Mixed Precision Training<a class="headerlink" href="#22-mixed-precision-training" title="Permanent link">&para;</a></h3>
+<p>This technique uses both FP16/BF16 and FP32 to get the "best of both worlds": the speed of 16-bit and the accuracy of 32-bit.</p>
+<ul>
+<li><strong>Forward Pass:</strong> Done in FP16 for speed.</li>
+<li><strong>Loss Scaling:</strong> Since FP16 has a narrow range, gradients can "underflow" (become zero). We multiply the loss by a large scale factor to push gradients into a representable range.</li>
+<li><strong>Master Weights:</strong> A copy of the weights is kept in FP32. The gradients are converted to FP32 to update these master weights, ensuring precision isn't lost over time.</li>
+</ul>
+<h4 id="benefits">Benefits<a class="headerlink" href="#benefits" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Faster training</li>
+<li>Lower memory usage</li>
+<li>Enables larger batch sizes and models</li>
+</ul>
+<h4 id="loss-scaling">Loss Scaling<a class="headerlink" href="#loss-scaling" title="Permanent link">&para;</a></h4>
+<p><strong>Why it is needed (mainly for FP16):</strong></p>
+<ul>
+<li>Prevents gradients from underflowing to zero</li>
+</ul>
+<p><strong>How it works:</strong></p>
+<ul>
+<li>Multiply loss by a scale factor before backprop</li>
+<li>Divide gradients by the same factor before optimizer step</li>
+</ul>
+<p><strong>Dynamic loss scaling:</strong></p>
+<ul>
+<li>Automatically adjusts scale based on overflow detection</li>
+<li>Common in frameworks like PyTorch AMP</li>
+</ul>
+<hr />
+<h3 id="23-gradient-clipping">2.3 Gradient Clipping<a class="headerlink" href="#23-gradient-clipping" title="Permanent link">&para;</a></h3>
+<h4 id="what-is-gradient-clipping">What is Gradient Clipping?<a class="headerlink" href="#what-is-gradient-clipping" title="Permanent link">&para;</a></h4>
+<p>To prevent "Exploding Gradients" (where a large update ruins the model weights), we cap the gradients.</p>
+<ul>
+<li><strong>Value Clipping:</strong> Caps each element of the gradient at a min/max.</li>
+<li><strong>Norm Clipping:</strong> Scales the entire gradient vector so its <span class="arithmatex">\(L_2\)</span> norm does not exceed a threshold. This preserves the direction of the gradient while limiting the magnitude.</li>
+</ul>
+<p>Norm Clipping is more common.</p>
+<div class="arithmatex">\[
+g \leftarrow g \cdot \min\left(1, \frac{\tau}{\|g\|}\right)
+\]</div>
+<p>where <span class="arithmatex">\(\tau\)</span> is the clipping threshold.</p>
+<hr />
+<h4 id="why-it-matters">Why it matters<a class="headerlink" href="#why-it-matters" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Prevents exploding gradients</li>
+<li>Stabilizes training in deep or recurrent models</li>
+<li>Especially important for large learning rates or noisy gradients</li>
+</ul>
+<p><strong>Typical values:</strong></p>
+<ul>
+<li>Global norm between 0.5 and 1.0 for Transformers</li>
+</ul>
+<hr />
+<h3 id="24-loss-spikes-and-divergence-diagnosis">2.4 Loss Spikes and Divergence Diagnosis<a class="headerlink" href="#24-loss-spikes-and-divergence-diagnosis" title="Permanent link">&para;</a></h3>
+<h4 id="common-causes-of-loss-spikes">Common Causes of Loss Spikes<a class="headerlink" href="#common-causes-of-loss-spikes" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Learning rate too high</li>
+<li>Insufficient warmup</li>
+<li>Numerical overflow in FP16</li>
+<li>Poor initialization</li>
+<li>Data outliers or corrupted batches</li>
+</ul>
+<hr />
+<h4 id="diagnosis-checklist">Diagnosis Checklist<a class="headerlink" href="#diagnosis-checklist" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Check learning rate schedule and warmup length</li>
+<li>Monitor gradient norms</li>
+<li>Enable gradient clipping</li>
+<li>Inspect loss scaling behavior</li>
+<li>Compare FP16 vs BF16 runs</li>
+<li>Verify data preprocessing and labels</li>
+</ul>
+<hr />
+<h4 id="practical-debugging-tips">Practical Debugging Tips<a class="headerlink" href="#practical-debugging-tips" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Reduce learning rate and re-run</li>
+<li>Increase warmup steps</li>
+<li>Switch from FP16 to BF16 if possible</li>
+<li>Enable anomaly detection for NaNs and Infs</li>
+<li>Log per-layer gradient norms</li>
+</ul>
+<hr />
+<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
+<ul>
+<li>AdamW is the default optimizer for modern large models</li>
+<li>Learning rate warmup is critical for early stability</li>
+<li>Weight decay must be decoupled from adaptive updates</li>
+<li>BF16 offers better numerical stability than FP16</li>
+<li>Mixed precision improves efficiency but requires care</li>
+<li>Gradient clipping and monitoring are essential debugging tools</li>
+</ul>
+<p>These concepts form the backbone of stable and efficient training for large-scale neural networks and are frequently tested in machine learning interviews.</p>
 
 
 
